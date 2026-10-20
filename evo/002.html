@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>全维进化日报 · 第002期 · 2026年10月19日</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+if (window.tailwind) tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+serif: ['"Noto Serif SC"', '"Songti SC"', 'SimSun', 'serif'],
+sans: ['"Noto Sans SC"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif']
+}
+}
+}
+};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<style>
+:root, [data-theme="light"] {
+--paper: #FAFAF7;
+--paper-2: #F3F1EA;
+--ink: #1A1A1A;
+--ink-2: #4A4A45;
+--ink-3: #8A877E;
+--line: #DDD9CE;
+--line-strong: #1A1A1A;
+--red: #C8102E;
+--health: #2D5A3D;
+--health-soft: #EAF1EC;
+--health-mid: #B9D2C0;
+--wealth: #A8842C;
+--wealth-soft: #F6EFDD;
+--wealth-mid: #E3D3A4;
+--mind: #1B365D;
+--mind-soft: #E9EEF5;
+--mind-mid: #B4C6DE;
+--card: #FFFFFF;
+}
+[data-theme="dark"] {
+--paper: #12141A;
+--paper-2: #171A21;
+--ink: #E8E6E0;
+--ink-2: #B9B6AD;
+--ink-3: #7E7C74;
+--line: #2C3038;
+--line-strong: #E8E6E0;
+--red: #E5484D;
+--health: #7FB685;
+--health-soft: #1C2A20;
+--health-mid: #33513B;
+--wealth: #D4A94E;
+--wealth-soft: #2B2415;
+--wealth-mid: #57481F;
+--mind: #7FA8D4;
+--mind-soft: #182233;
+--mind-mid: #2C4568;
+--card: #171A21;
+}
+html { scroll-behavior: smooth;}
+img { max-width: 100%; height: auto;}
+figure { margin: 0;}
+body {
+background: var(--paper);
+color: var(--ink);
+transition: background.3s ease, color.3s ease;
+}
+body::before {
+content: "";
+position: fixed; inset: 0;
+pointer-events: none;
+opacity:.5;
+background-image: radial-gradient(var(--line).5px, transparent.5px);
+background-size: 22px 22px;
+z-index: 0;
+}
+main, header, footer { position: relative; z-index: 1;}
+.hairline { border-color: var(--line);}
+.rule-double { border-top: 3px solid var(--line-strong); position: relative;}
+.rule-double::after { content: ""; position: absolute; left: 0; right: 0; top: 4px; border-top: 1px solid var(--line-strong);}
+.rule-red { border-top: 3px solid var(--red);}
+.dropcap::first-letter {
+font-family: "Noto Serif SC", serif;
+font-weight: 900;
+font-size: 3.4em;
+float: left;
+line-height:.82;
+padding: 6px 10px 0 0;
+color: var(--wealth);
+}
+.pullquote {
+font-family: "Noto Serif SC", serif;
+font-weight: 700;
+line-height: 1.55;
+}
+.article-body p { margin-bottom:.9em; line-height: 1.85; color: var(--ink-2); font-size: 15px;}
+.article-body p strong,.article-body li strong { color: var(--ink);}
+.article-body ul { list-style: none; padding: 0; margin: 0 0.9em 0;}
+.article-body ul li { line-height: 1.8; color: var(--ink-2); font-size: 15px; padding-left: 1.1em; position: relative; margin-bottom:.35em;}
+.article-body ul li::before { content: "·"; position: absolute; left:.3em; font-weight: 900; color: var(--ink-3);}
+.kicker { letter-spacing:.35em; font-size: 11px; font-weight: 700;}
+.photo-cap { font-size: 12px; color: var(--ink-3); line-height: 1.6;}
+.tag { font-size: 11px; padding: 2px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-2); white-space: nowrap;}
+.stat-num { font-family: "Noto Serif SC", serif; font-weight: 900;}
+textarea { background: var(--card); color: var(--ink); border: 1px solid var(--line);}
+textarea:focus { outline: 2px solid var(--mind); outline-offset: 1px;}
+.theme-btn { border: 1px solid var(--line); background: var(--card); color: var(--ink);}
+.theme-btn:hover { border-color: var(--ink-3);}
+.navlink { color: var(--ink-2);}
+.navlink:hover { color: var(--ink); text-decoration: underline;}
+::selection { background: var(--red); color: #fff;}
+/* ── 随手记 ── */
+.note-zone { margin-top: 18px;}
+.note-toggle { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 500; padding: 6px 0; border: none; background: none; color: var(--ink-3); cursor: pointer; letter-spacing:.02em; -webkit-tap-highlight-color: transparent; touch-action: manipulation;}
+.note-toggle:hover { color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px;}
+.note-badge { font-size: 11px; font-weight: 500; background: transparent; color: var(--ink-3); border: 1px solid var(--line); border-radius: 999px; padding: 0 6px; line-height: 17px;}
+.note-editor { margin-top: 10px; display: none; position: relative; z-index: 2;}
+.note-editor.open { display: block;}
+.note-editor textarea { background: var(--paper); border: 1px solid var(--line); font-size: 16px; -webkit-user-select: text; user-select: text; touch-action: manipulation;}
+.note-editor textarea:focus { outline: none; border-color: var(--ink-3);}
+.note-actions { display: flex; gap: 8px; margin-top: 8px;}
+.note-save { font-size: 13px; font-weight: 500; padding: 7px 18px; border-radius: 6px; border: 1px solid var(--line); background: transparent; color: var(--ink-2); cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation;}
+.note-save:hover { border-color: var(--ink-3); color: var(--ink);}
+.note-cancel { font-size: 13px; padding: 7px 12px; border-radius: 6px; border: 1px solid var(--line); background: transparent; color: var(--ink-3); cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation;}
+.note-cancel:hover { color: var(--ink-2); border-color: var(--ink-3);}
+.note-list { margin-top: 10px; display: flex; flex-direction: column; gap: 8px;}
+.note-item { border: 1px solid var(--line); background: var(--paper); border-radius: 6px; padding: 8px 12px;}
+.note-item-text { font-size: 14px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; word-break: break-word;}
+.note-item-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 11.5px; color: var(--ink-3);}
+.note-del { background: none; border: none; color: var(--ink-3); cursor: pointer; font-size: 12px; padding: 2px 4px;}
+.note-del:hover { color: var(--ink);}
+#basketFab { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); color: var(--ink-3); font-size: 17px; line-height: 1; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation;}
+#basketFab.basket-count { position: absolute; top: -5px; right: -5px; background: var(--paper); color: var(--ink-3); border: 1px solid var(--line); border-radius: 999px; padding: 0 5px; font-size: 11px; font-weight: 500; line-height: 17px; min-width: 18px; text-align: center;}
+#basketOverlay { position: fixed; inset: 0; z-index: 70; background: rgba(0,0,0,.45); display: none;}
+#basketOverlay.open { display: block;}
+#basketPanel { position: absolute; right: 0; top: 0; bottom: 0; width: min(430px, 92vw); background: var(--paper); color: var(--ink); border-left: 1px solid var(--line); display: flex; flex-direction: column;}
+#basketList { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;}
+.basket-item { border: 1px solid var(--line); background: var(--paper); border-radius: 8px; padding: 10px 12px;}
+.basket-item-title { font-size: 12.5px; font-weight: 700; color: var(--ink-2); margin-bottom: 4px;}
+.quick-note { padding: 12px 16px; border-bottom: 1px solid var(--line);}
+.quick-note select { width: 100%; background: var(--paper); color: var(--ink-2); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; padding: 8px 10px; margin-bottom: 8px; -webkit-appearance: none; appearance: none; cursor: pointer;}
+.quick-note select:focus { outline: none; border-color: var(--ink-3);}
+.quick-note textarea { width: 100%; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; font-size: 16px; -webkit-user-select: text; user-select: text; touch-action: manipulation;}
+.quick-note textarea:focus { outline: none; border-color: var(--ink-3);}
+#basketToast { position: fixed; left: 50%; bottom: 84px; transform: translateX(-50%) translateY(8px); z-index: 80; background: var(--paper); color: var(--ink-2); border: 1px solid var(--line); font-size: 13.5px; padding: 9px 18px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity.25s ease, transform.25s ease; white-space: nowrap;}
+#basketToast.show { opacity: 1; transform: translateX(-50%) translateY(0);}
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- ══════════ 报头 ══════════ -->
+<header class="max-w-6xl mx-auto px-4 sm:px-6 pt-5" style="position:relative">
+<button id="themeToggle" class="theme-btn flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-medium" style="position:absolute;top:0;right:16px;z-index:5" aria-label="切换深浅色">
+<i data-lucide="moon" class="w-4 h-4" id="themeIconMoon"></i>
+<i data-lucide="sun" class="w-4 h-4 hidden" id="themeIconSun"></i>
+<span id="themeLabel">墨夜</span>
+</button>
+<div class="flex items-start justify-between gap-3 pb-3">
+<div class="text-[11px] leading-relaxed" style="color:var(--ink-3)">
+<div>2026年10月19日 · 星期一</div>
+<div>农历九月初十</div>
+</div>
+<div class="text-center flex-1">
+<div class="kicker mb-1" style="color:var(--ink-3)">THE OMNI EVOLUTION DAILY</div>
+<h1 class="font-serif font-black text-4xl sm:text-6xl tracking-wide">全维进化日报</h1>
+<div class="text-[12px] mt-2" style="color:var(--ink-2)">健康 · 财富 · 认知 —— 每天讲透三件事</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<div class="text-[11px] text-right" style="color:var(--ink-3)">
+<div>第 <span class="font-serif font-bold" style="color:var(--ink)">002</span> 期</div>
+<div>本期约 68 分钟读完</div>
+</div>
+</div>
+</div>
+<div class="rule-red"></div>
+<nav class="flex flex-wrap items-center gap-x-5 gap-y-1 py-2 text-[13px] border-b hairline">
+<a href="#headline" class="navlink font-bold" style="color:var(--ink)">头版头条</a>
+<span style="color:var(--red)">◆</span>
+<a href="#health" class="navlink">健康版</a>
+<span style="color:var(--red)">◆</span>
+<a href="#wealth" class="navlink">财富版</a>
+<span style="color:var(--red)">◆</span>
+<a href="#mind" class="navlink">认知版</a>
+<span style="color:var(--red)">◆</span>
+<a href="#dailyq" class="navlink">每日一问</a>
+<span class="ml-auto hidden sm:block text-[12px]" style="color:var(--ink-3)">头条续接第001期：伊朗战争对供给端的扰动</span>
+</nav>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6">
+
+<!-- ══════════ 头版头条 ══════════ -->
+<section id="headline" class="pt-6 pb-8 border-b hairline">
+
+<h2 class="font-serif font-black text-3xl sm:text-5xl leading-tight">
+特朗普暂缓对俄制裁关税，<span style="color:var(--red)">60天评估期</span>开启
+</h2>
+<div class="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-[12px]" style="color:var(--ink-3)">
+<span>本报综合报道</span><span>|</span>
+<span>据路透社 2026年10月18日报道</span>
+</div>
+
+<figure class="mt-5 border hairline" style="background:var(--card)">
+<img src="assets-002/img-01.jpg" alt="日落下的炼油厂：塔器与管道在晚霞中形成剪影" class="block w-full h-auto" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">日落下的炼油厂——政策是噪音，供给是信号。（图片来源：NARA 档案）</figcaption>
+</figure>
+<div class="flex items-center gap-3 mt-4">
+<span class="text-[11px] font-bold px-2 py-1" style="background:var(--ink);color:var(--paper)">头版头条</span>
+<span class="kicker" style="color:var(--wealth)">财富版 · 宏观雷达</span>
+<span class="tag">3 分钟速览</span>
+</div>
+
+<div class="grid md:grid-cols-5 gap-6 mt-6">
+<div class="md:col-span-3 article-body">
+<p class="dropcap">据路透社2026年10月18日报道，特朗普上周五签署行政令，暂缓执行上月签署的《格雷厄姆法案》(Graham Act) 项下针对俄罗斯的关键制裁与关税措施。国务卿鲁比奥表示，总统将用最长60天评估加征制裁关税对全球经济乃至美国经济的影响。该法案原定下周生效，内容包括对俄商品加征关税、并惩罚购买俄油气的国家（鲁比奥点名印度）。乌克兰总统泽连斯基批评此举将助长普京、延长战争。</p>
+<p><strong>进化视角。</strong>对做交易的人来说，这是「表态 vs 实际」的又一堂课——制裁暂缓不等于俄油立刻回流，60天窗口里油价真正的变量，仍是伊朗战争对供给端的扰动（接第001期头条）。看事情看本质：少盯「暂缓/加码」的措辞，多看油轮、库存、炼厂开工这些实际流动——这正是本报「信号 vs 噪音」栏目的由来。</p>
+<p><strong>再往深一层看：60天评估期本身，也是一个定价窗口。</strong>行政令暂缓的是「关税何时落地」，没有改变的是俄油的实际流向、影子船队 (shadow fleet) 的运力、以及印度炼厂对折价原油的依赖度。评估期内，市场交易的不是事实，是「60天后政策转向的概率」——概率每被一条讲话推高或压低一次，油价就会跳一次，但炼厂的原油采购合同、油轮的航线和保险费率，调整速度要慢得多。这正是短期价格与中期供给经常背离的原因：金融定价以分钟计，实物流动以周和月计。</p>
+<p><strong>怎么用这60天。</strong>不要每天追一条新表态，先列一张供给清单：OPEC+ 实际产量有没有变、俄罗斯海运出口量有没有变、美国商业原油库存连续几周的方向、炼厂开工率 (refinery utilization) 在什么分位。四项里有三项同向，趋势才值得下注；只有讲话在动、四项纹丝不动，就按噪音处理。把「评估期」当成观察期，而不是猜测期——这是本期头条留给交易者的真正作业。</p>
+</div>
+<div class="md:col-span-2">
+<blockquote class="pl-4 border-l-4" style="border-color:var(--wealth)">
+<p class="pullquote text-[17px]">政策是噪音，供给是信号——油价只认后者。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 头条</cite>
+</blockquote>
+<p class="text-[12.5px] mt-4" style="color:var(--ink-3)">延伸阅读：想跟这条线，直接去看本期财富版「信号 vs 噪音」拆的仓单——制裁消息影响的是预期，仓单记录的是现实。</p>
+</div>
+</div>
+</section>
+
+<!-- ══════════ 健康版 ══════════ -->
+<section id="health" class="py-8 border-b hairline">
+<div class="flex items-end justify-between flex-wrap gap-2 mb-1">
+<div class="flex items-center gap-3">
+<span class="font-serif font-black text-4xl" style="color:var(--health)">健康版</span>
+<span class="kicker" style="color:var(--health)">第一版 · 身体底层逻辑</span>
+</div>
+<span class="text-[12px]" style="color:var(--ink-3)">本版 5 个选题 · 睡眠规律 / 久坐代谢 / 咖啡因 / 蛋白质 / 光与褪黑素</span>
+</div>
+<div class="border-t-2 mb-6" style="border-color:var(--health)"></div>
+
+<div class="grid lg:grid-cols-2 gap-x-10 gap-y-10">
+
+<!-- 健康 1：睡眠规律性 -->
+<article class="lg:col-span-2">
+<h3 class="font-serif font-black text-2xl sm:text-3xl leading-snug mb-3">睡眠的规律性，比时长更重要</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-02.jpg" alt="清晨阳光洒进卧室，人迎着晨光醒来" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">清晨的光是最便宜的「校准器」——固定起床时间，先从见光开始。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="alarm-clock" class="w-4 h-4" style="color:var(--health)"></i>
+<span class="kicker" style="color:var(--health)">睡眠与节律</span>
+<span class="tag">15 分钟深读</span>
+</div>
+<div class="article-body">
+<p>先把结论摆前面：对多数人来说，「几点睡、几点起是否稳定」，比「睡了几个小时」更能预测长期健康。2023年发表在《Sleep》期刊的一项研究，用了英国生物银行 (UK Biobank) 超6万名成年人的腕戴监测数据，给每个人算了一个睡眠规律性指数 (Sleep Regularity Index, SRI)——粗略说，就是「昨天的这个时刻你在睡，今天同一时刻你也在睡」的概率。结果是：SRI 越低，死亡风险越高；而且在统计模型里，规律性的预测力超过了睡眠时长本身。每天睡满8小时、但入睡时间在23点和凌晨3点之间乱飘的人，风险并不比睡7小时、作息如钟的人低。</p>
+<p><strong>机制是什么。</strong>身体里不止一个时钟。主时钟位于下丘脑的视交叉上核 (suprachiasmatic nucleus, SCN)，主要靠光来校准；肝脏、胰腺、肠道、脂肪组织里还散布着一圈外周时钟 (peripheral clocks)，主要靠进食、运动和体温来校准。褪黑素、皮质醇、核心体温、胰岛素敏感性，全是这套时钟系统排的班次：皮质醇在清晨冲高把你推醒，深睡 (slow-wave sleep) 主要压在前半夜，快速眼动睡眠 (REM) 堆在后半夜，体温在凌晨探底后回升。昼夜节律 (circadian rhythm) 不是一句养生口号，是一张精确到小时的全身排班表。</p>
+<p><strong>为什么规律比时长更狠。</strong>作息一乱，主时钟和外周时钟先「吵架」：大脑以为天黑了，肝脏还按上一班的饭点待命，这叫昼夜节律失同步 (circadian misalignment)。后果很具体——胰腺在错误的时间点分泌胰岛素，血糖控制变差；血压本该在夜间出现的下降被抹平；炎症水平跟着抬头。换句话说，时长决定「睡了多少」，规律决定「各器官有没有在同一张时间表上开会」。这也是社会时差 (social jetlag) 这个概念的由来：工作日和周末的睡眠中点差出2小时，生理效果约等于每周往返一次跨两三个时区的航班——你以为在补觉，身体在倒时差，补的是时长，欠的是规律。</p>
+<p>做个对照就直观了。两个人同样睡8小时：甲每天23:30睡、7:30起，周末只浮动半小时；乙工作日1点睡、9点起，周末嗨到3点、睡到中午。乙的总时长一点不吃亏，但他的 SRI 会明显更低，按上面那项研究的口径，他正落在风险更高的那一端。差别不在谁更「努力养生」，在排班表有没有被反复重写。</p>
+<p><strong>怎么用。</strong>改规律，抓手按性价比排序：第一，固定起床时间，浮动控制在半小时内——起床时间是整条节律的锚，它比「几点睡」更可控，你锚住它，困意会自己提前追上来；第二，起床后30分钟内见光15到30分钟，阴天也要出门，户外光照是室内灯光的几十倍，这是给主时钟对表最强的信号；第三，周末最多比平时晚起1小时，真想补觉用「提前睡」补，别用「赖床」补；第四，下午3点以后别睡超过30分钟的午觉，免得把晚上的睡眠压力提前泄掉。坚持一两周，你会发现自己开始在固定时间犯困、固定时间自然醒——那不是自律的胜利，是时钟终于对齐了。</p>
+<p><strong>还有一层常被忽略的机制：睡眠压力与节律是两套独立系统。</strong>睡眠科学里经典的双进程模型 (two-process model) 把睡眠拆成进程 S 和进程 C：进程 S 是腺苷堆积带来的困意，清醒越久压力越大、睡着后逐步释放；进程 C 是昼夜节律，它决定你在哪个时间窗口最容易入睡、最容易清醒。只补时长，是在还进程 S 的债；只调作息，是在校进程 C 的表。两者错位时会出现一个典型体感：明明很累、躺下却睡不着——那是压力够了、节律窗口还没开。理解这个分工，你就不会在「困」和「该睡」之间反复内耗。</p>
+<p><strong>个体差异也要认账。</strong>时型 (chronotype) 有遗传成分，有人天生偏早、有人偏晚，强行把夜型人改成 5 点起床，多数时候只换来长期睡眠剥夺。现实的优化顺序是：先在自己的时型范围内把波动收窄，再谈提前或延后。给自己做一个 7 天重置实验：固定起床时间、晨起见光、下午设咖啡因截止线、睡前一小时调暗灯光，每天只记录三件事——起床时间、入睡时间、主观精神评分 (1–10)。一周后看的不是某一天睡得好不好，是起床时间的标准差有没有变小。规律先行，时长会自己跟上。</p>
+</div>
+<div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--health)">
+<p class="pullquote text-[17px]">你缺的可能不是睡眠，是准时。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 健康</cite>
+</blockquote>
+<p class="text-[12.5px] mt-3" style="color:var(--ink-3)">延伸阅读：想深挖，去看 Matthew Walker《我们为什么要睡觉》里讲规律性的章节。</p>
+</div>
+</article>
+
+<!-- 健康 2：久坐 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">久坐：一天里最被低估的代谢税</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-03.jpg" alt="人们步行上楼梯" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">对抗久坐不需要健身房，需要的是一双愿意走楼梯的腿。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="footprints" class="w-4 h-4" style="color:var(--health)"></i>
+<span class="kicker" style="color:var(--health)">代谢机制</span>
+<span class="tag">3 分钟速览</span>
+</div>
+<div class="article-body">
+<p>先说量级。人与人每天的热量消耗差距，很大一部分不来自健身房，而来自「坐不住的程度」。非运动性热消耗 (NEAT, non-exercise activity thermogenesis) 指除刻意运动外、一切日常活动烧掉的热量——走路、站立、做家务、收拾东西，甚至坐立不安的小动作。Mayo Clinic 的 James Levine 团队测过，NEAT 在人与人之间每天最多能差出约800大卡，相当于慢跑一个多小时。两个体重相近的人，一个常年微胖、一个常年精瘦，差的往往不是那一小时锻炼，是其余十几个小时的底盘。</p>
+<p><strong>机制：久坐先关掉的，是一把「清道夫」酶。</strong>骨骼肌长时间不收缩，脂蛋白脂肪酶 (lipoprotein lipase, LPL) 的活性会大幅下降。这种酶驻扎在毛细血管壁上，负责把血液里的甘油三酯拆下来、送给肌肉当燃料；它一罢工，餐后血脂的清除速度立刻变慢，脂质更容易在血管壁和内脏里沉积。与此同时，大腿、臀部这些大肌群闲置时摄取葡萄糖的能力同步下降——肌肉收缩本来能绕过胰岛素、直接把葡萄糖转运蛋白 GLUT4 搬到细胞表面「开门迎客」，一坐下，这扇后门就关了，血糖只能更多地靠胰岛素硬压。还有一层：下肢静脉回流靠小腿肌肉泵，久坐时血流变慢，这也是长途飞行被反复提醒要起来活动的原因。</p>
+<p><strong>为什么「晚上练1小时」补不回来。</strong>运动医学里有个说法叫「运动的沙发土豆」(active couch potato)：每天雷打不动练1小时、其余11小时钉在椅子上的人，代谢指标依然明显差于那些没正经锻炼、但全天零碎活动的人。原因在于，LPL 和肌肉摄糖是「按小时计费」的机制——它们响应的是肌肉收缩的频率，而不是单次运动的强度。一次大汗淋漓，没法给接下来10小时的静止「预付费」。</p>
+<p><strong>证据具体长什么样。</strong>2023年发表在《Medicine &amp; Science in Sports &amp; Exercise》的一项试验把「打断久坐」的剂量测得很细：对比多种方案后，每坐30分钟、起来轻走5分钟的那一组效果最好——餐后血糖的曲线下面积较全程久坐下降约58%（该试验口径），收缩压也降了约4到5毫米汞柱；每60分钟走5分钟效果次之，1分钟的象征性打断则基本不够看。注意关键词是「轻强度」：散步速度，不出汗、不喘。那5分钟的作用不是锻炼，是把 LPL 和肌肉的葡萄糖转运重新点着。</p>
+<p><strong>怎么用。</strong>把规则做成默认动作，而不是靠意志力硬撑：第一，给久坐设定时——30分钟一响，起来走5分钟，接水、上厕所、去窗边站一会儿都算，核心是让大肌群收缩一次；第二，把事务分开办：电话、语音、刷资讯这类事站着做，写东西、开会再坐下，站立本身消耗不多，但它天然会诱发走动；第三，饭后别立刻坐下，慢走10分钟——餐后血糖高峰正出现在饭后30到60分钟，这段时间的步行性价比最高；第四，楼层间移动默认走楼梯，把 NEAT 埋进日常动线，而不是另设一个「运动项目」去咬牙坚持。判断标准很简单：一天结束时，久坐被打断的次数，比步数总数更值得盯。</p>
+<p><strong>再补一个底层细节：久坐的伤害，有相当一部分发生在餐后那两小时。</strong>进食后血糖和血脂同时冲高，这时肌肉若处于静止，葡萄糖和甘油三酯只能在血液里多停留一会儿，血管内皮就多暴露一会儿。饭后慢走之所以性价比最高，不是因为它消耗了多少热量，而是因为它恰好在峰值窗口把大肌群的「清道夫系统」打开了——时间点对了，低强度也能办大事。这也解释了为什么研究里「每 30 分钟打断一次」优于「攒到晚上一次练完」：代谢峰值不会等你下班。</p>
+<p><strong>关于站立办公，要泼一盆冷水。</strong>原地站着不动，NEAT 的提升有限，长时间静态站立还会带来静脉曲张和腰背不适。站立的价值不在站本身，在它降低了走动的启动成本——站着的人更容易迈步。所以顺序应该是：先有定时走动的节奏，再考虑桌子升不升。把水杯换小、把打印机和垃圾桶放远一点、把一对一沟通改成边走边聊，这些「让自己不得不起来」的环境设计，比任何提醒 App 都更持久，因为它们不消耗意志力。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--health)">
+<p class="pullquote text-[16.5px]">久坐伤身，解药不是周末的健身房，是每小时那5分钟。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 健康</cite>
+</blockquote>
+</article>
+
+<!-- 健康 3：咖啡因 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">咖啡因的半衰期陷阱</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-04.jpg" alt="一杯浓缩咖啡特写" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">下午三点的这杯，半夜三点还在替你值班。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="coffee" class="w-4 h-4" style="color:var(--health)"></i>
+<span class="kicker" style="color:var(--health)">身体机制拆解</span>
+<span class="tag">3 分钟速览</span>
+</div>
+<div class="article-body">
+<p>咖啡因 (caffeine) 是全世界用得最广的精神活性物质，但大多数人对它的计算方法从一开始就是错的：以为「喝完几小时就代谢完了」。真正起作用的是半衰期 (half-life)：健康成年人平均约5到6小时——喝下一杯5小时后，血液里还剩一半；10到12小时后还剩四分之一。而且这只是平均值，个体跨度可以从约2小时拉到近10小时，差异主要来自肝脏里的 CYP1A2 酶活性，由基因、吸烟与否、是否服用某些药物（比如部分避孕药会让代谢明显变慢）共同决定。你觉得自己「下午喝咖啡照样睡得香」，可能只是深睡被削掉了一块，而你没察觉。</p>
+<p><strong>机制：它不给你能量，只负责捂耳朵。</strong>清醒的时间越长，大脑里的腺苷 (adenosine) 堆得越多，腺苷与受体结合就是「困意」的信号源，也是睡眠压力 (sleep pressure) 的实体。咖啡因的分子结构和腺苷长得像，能抢先占住受体却不激活它——困意信号被捂住了，但腺苷本身一刻没停地在继续堆。等咖啡因代谢掉、受体空出来，积压的腺苷一次性涌入，这就是「咖啡劲一过反而更困」的崩塌感。更隐蔽的代价在夜里：哪怕你能「正常入睡」，残余咖啡因仍会压缩深睡 (slow-wave sleep) 的比例，而深睡正是记忆固化、身体修复的主时段。睡够了时长，质量被偷走一块，第二天只能再加一杯——循环就此闭合。</p>
+<p><strong>证据：睡前6小时喝，照样偷睡眠。</strong>2013年《Journal of Clinical Sleep Medicine》的一项实验给受试者400毫克咖啡因（约两大杯现煮咖啡的量），分别安排在睡前0小时、3小时、6小时服用，再用仪器监测整夜。结果睡前6小时那一组，客观测得的睡眠时长仍被削掉约1小时（该研究报告口径）——而受试者主观上多数觉得自己「没受什么影响」。这正是咖啡因最阴险的地方：它破坏睡眠的方式，恰好会让人低估破坏的程度。</p>
+<p><strong>算一笔账。</strong>下午3点喝一杯含咖啡因约200毫克的美式，按半衰期5.5小时折算：晚上11点上床时，体内还剩约70毫克在循环，相当于大半罐可乐的咖啡因；到凌晨3点还有约40毫克。如果你恰好是慢代谢体质，这两个数字还要再往上抬。</p>
+<p><strong>怎么用。</strong>三条能落地的规则。第一，设咖啡因宵禁 (caffeine curfew)：以睡觉时间为锚往前推8到10小时，那是最后一杯的截止线——想23点睡，下午1到3点就该收杯，先按这个执行一周，再根据自己的入睡情况微调。第二，减量要走台阶：如果已经喝到一天三四杯，别断崖式戒断，戒断性头痛通常在停喝后12到24小时找上门；每三四天减半杯，一周多平稳落地。第三，下午犯困先走非咖啡因流程：喝200毫升水、到窗边或户外见光5分钟、起来走一圈——很多「困」其实是缺水、缺光加久坐的叠加。真需要提神又怕毁掉夜里睡眠，可以试「咖啡小睡」(coffee nap)：喝完立刻眯15到20分钟，醒来时小睡带来的清醒感，和刚刚起效的咖啡因正好接上。</p>
+<p><strong>为什么喝久了会「没感觉」。</strong>长期摄入咖啡因，大脑会通过上调腺苷受体的数量来适应——受体变多了，同样剂量的咖啡因堵不住全部信号，于是需要更大的量才能回到原来的清醒感，这叫耐受 (tolerance)。更关键的是，此时早晨那第一杯咖啡的作用，大部分只是在缓解一夜代谢后出现的轻微戒断症状——头痛、迟钝、情绪低落被暂时压下去，人误以为是咖啡「给了能量」，其实只是回到了没喝咖啡的人的基线。看清这一层，你对剂量的态度就会变：加量是在追赶受体，不是购买额外清醒。</p>
+<p><strong>戒断的时间表，提前知道就不慌。</strong>停喝后 12–24 小时症状开始，24–51 小时左右达峰，整个过程通常持续 2–9 天，头痛、疲劳、注意力涣散是主项，之后受体数量会逐步回落，敏感性恢复。所以更聪明的用法不是彻底戒，而是周期性重置：每隔几周用台阶法把日摄入量降到一杯以内、维持几天，让受体重新变得「便宜好用」。咖啡因应该是你调用的工具，而不是你每天必须缴纳的过路费。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--health)">
+<p class="pullquote text-[16.5px]">下午那杯咖啡，半夜三点还在替你值班。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 健康</cite>
+</blockquote>
+</article>
+
+<!-- 健康 4：蛋白质 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">蛋白质：每餐都有一个「开关」</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-05.jpg" alt="水煮蛋剖面特写" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">两个水煮蛋，是学生党最便宜的「开关键」。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="egg" class="w-4 h-4" style="color:var(--health)"></i>
+<span class="kicker" style="color:var(--health)">营养处方</span>
+<span class="tag">3 分钟速览</span>
+</div>
+<div class="article-body">
+<p>关于吃蛋白，流传最广的误解是「一天总量吃够就行」。问题在于，肌肉蛋白合成 (muscle protein synthesis, MPS) 不是按天结算的水龙头，而是按餐触发的开关——每一餐都是一次独立的点火机会：点着了，合成开动几个小时；没点着，这餐的氨基酸更多被拿去氧化供能。总量达标但分配错位，等于三间工厂只给一间通了电。</p>
+<p><strong>机制：开关的钥匙是亮氨酸。</strong>必需氨基酸里的亮氨酸 (leucine) 兼任信号分子：它被细胞内的传感器感知到之后，会激活 mTOR 通路（具体是 mTORC1 复合物），下令核糖体开工、合成新蛋白。一餐大约需要2.5到3克亮氨酸，换算成食物约为25到30克优质蛋白（乳清、蛋、奶、瘦肉、鱼），才能把这次合成推到接近满格。没够到阈值，不是「合成少一点」那么温和，而是响应明显打折——这在文献里就叫亮氨酸阈值 (leucine threshold)。这也是为什么同样克数的蛋白，动物性来源和乳清的「点火」效率通常高于多数植物蛋白：钥匙的浓度不一样。</p>
+<p><strong>为什么「总量够」还会输。</strong>2014年一项对照试验把两组人的全天蛋白总量设成完全一样：一组三餐均匀分配（约30/30/30克），一组按多数人现实中的吃法倾斜到晚餐（约10/15/65克）。测下来，均匀组24小时的肌肉蛋白合成高出约25%。也就是说，同样的蛋白预算，分错了餐次，四分之一的效果直接蒸发。再看看多数人的早餐：粥、包子、油条，蛋白接近于零——全天最重要的一次点火，就这样被习惯性地跳过了。</p>
+<p><strong>总量那一端也要有个谱。</strong>2018年《British Journal of Sports Medicine》汇总49项研究的荟萃分析显示，对配合力量训练的人群，蛋白摄入到每公斤体重约1.6克/天之后，增肌收益基本封顶，再往上加主要是热量不是信号。不训练的人需求更低，但要注意另一件事：久坐、节食和年龄增长都会带来合成抵抗 (anabolic resistance)——同样的亮氨酸递过去，肌肉的响应变钝，点火阈值被悄悄抬高。年轻、能动、还能规律吃三餐的时候攒下的肌肉，是在给几十年后的自己存一笔「代谢本金」。</p>
+<p><strong>怎么用（学生党版本）。</strong>目标是让三餐都推过阈值，而不是先买粉。早餐：两个水煮蛋（1个约6克蛋白）加一盒250毫升牛奶（约8克），再配主食，基本摸到25克的边；午餐在食堂选一份掌心大的瘦肉、鱼或鸡胸（约20到25克蛋白），豆腐、豆干是便宜的补强；晚餐同理，别再让全天蛋白全押在一顿火锅上。乳清蛋白粉的定位只是「没条件吃正餐时的补位」：一勺约20到25克蛋白、自带约2.5克亮氨酸，早餐来不及或训练后用。不需要称重算克数，先盯一个信号就够了：早餐里有没有一个明确的蛋白来源——没有的话，加上两个蛋，就是全天性价比最高的一次升级。</p>
+<p><strong>把一天的分配画出来，就知道差距在哪。</strong>以 70 公斤、目标约 110 克蛋白为例：常见吃法是早餐 5 克、午餐 30 克、晚餐 75 克——总量达标，但只有午餐和晚餐两次点火成功，早餐那次机会白白浪费，晚餐超出阈值的部分又大部分被氧化供能。调整后是早餐 28 克、午餐 38 克、晚餐 44 克：总量几乎不变，点火次数从两次变三次，每一次都刚好越过亮氨酸阈值又不过量浪费。蛋白质管理的精髓不在「多吃」，在「把同样的预算，分到能触发开关的地方」。</p>
+<p><strong>再往远看，这是抗衰老的底层资产。</strong>30 岁以后，肌肉量以每十年约 3%–8% 的速度流失，60 岁后加速，这叫肌少症 (sarcopenia) 的进程。肌肉不只是力量，它是全身最大的葡萄糖储存库和氨基酸储备库——生病、受伤、手术时，身体要调用蛋白修复组织，储备不足的人恢复明显更慢。年轻时每餐点火的习惯，表面上是健身话题，本质上是在给老年期的代谢弹性和行动自由提前存款，而且这笔存款，越早开始存，复利越久。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--health)">
+<p class="pullquote text-[16.5px]">蛋白不是吃够总量就行，得每餐都够到开关键。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 健康</cite>
+</blockquote>
+</article>
+
+<!-- 健康 5：褪黑素 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">你的褪黑素，是怎么被灯光偷走的</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-06.jpg" alt="黑暗中低头看手机的人，屏幕光照亮脸庞" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">夜里这束光，正在撕掉身体的「天黑通知书」。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="moon-star" class="w-4 h-4" style="color:var(--health)"></i>
+<span class="kicker" style="color:var(--health)">睡眠与节律</span>
+<span class="tag">3 分钟速览</span>
+</div>
+<div class="article-body">
+<p>先纠正一个身份误认：褪黑素 (melatonin) 不是安眠药，它不负责让你睡着。它是松果体分泌的「天黑通知书」——只负责通知全身「夜班开始了」，把体温、血压、消化和激素分泌切换到夜间模式。通知书送不到，人躺在床上，身体还按白班运转，入睡自然一拖再拖。</p>
+<p><strong>机制：偷走通知书的，是眼睛里一条不负责「看东西」的线路。</strong>视网膜上除了负责成像的视锥、视杆细胞，还有一类内在光敏神经节细胞 (ipRGC)：它不参与视觉，只测光强，通过一条专门的通路直接向主时钟视交叉上核汇报。ipRGC 里的感光色素黑视素 (melanopsin)，对460到480纳米的蓝光波段最敏感——恰好是手机、电脑屏幕和冷白光 LED 灯光谱里最突出的那一段。天一黑，它汇报「光没了」，松果体才开始分泌褪黑素；夜里顶灯大开、屏幕贴脸，它的汇报就一直是「还是白天」，褪黑素分泌被压制，整条峰值曲线还会被往后推。</p>
+<p><strong>剂量上，别小看室内光。</strong>户外阴天的光照大约在1万勒克斯 (lux) 量级，晴天可达10万；而普通室内照明只有100到500勒克斯——白天看，这点光远远不够给生物钟「对表」；夜里看，它却足够干扰褪黑素。2015年《PNAS》一项交叉试验让受试者睡前连续读4小时平板电脑，与读纸质书对照：平板组的褪黑素分泌被压制五成以上，褪黑素开始上升的时间被明显推迟，入睡变慢，次日清晨的警觉性也更差。注意，这还不是「刷手机刷到凌晨」的剂量，只是睡前阅读级别的光而已。</p>
+<p><strong>为什么有人「越夜越精神」。</strong>褪黑素被推迟有个连带效应：节律相位整体后移。今晚1点才困，明晚更晚才困，可起床时间被闹钟和课表钉死，于是睡眠时长和规律一起被啃——这正是本版第一篇那条链路在夜里的入口。反过来理解同样成立：白天光照不足，会让夜间的褪黑素峰值变钝，「白天没晒够、晚上睡不沉」是同一枚硬币的两面。</p>
+<p><strong>怎么用。</strong>按成本从低到高排：第一，睡前1小时把主灯换成低位、暖色的台灯或落地灯，亮度调到「能看清路」即可，给 ipRGC 发出明确的黄昏信号；第二，手机、平板打开夜览模式并把亮度压低，屏幕尽量离脸远一点——光强随距离平方衰减，举远十几厘米就是实打实的减量；第三，补上白天那一端：起床后尽快接触户外光（呼应本版第一篇），昼夜之间的光对比拉得越开，晚上的通知书越准时。第四，关于褪黑素补充剂：它真正的定位是「改时间」的信号工具，最对口的场景是跨时区倒时差；用于日常助眠时，低剂量（0.3到0.5毫克量级）、睡前1到2小时服用才符合它的信号逻辑，临睡前大剂量当安眠药吞，既不对版，还可能把节律越调越乱。长期失眠先去看医生，别自己拿它当药吃。</p>
+<p><strong>补一个关键概念：暗光褪黑素起始 (DLMO)。</strong>睡眠医学用 DLMO (dim light melatonin onset) 标记褪黑素在暗光条件下开始上升的时刻，它通常出现在习惯入睡时间前约 2 小时，是衡量一个人真实生物钟相位最硬的指标之一。你以为自己是「天生夜猫子」，测出来可能只是 DLMO 被晚间强光系统性推迟了——相位是被环境写进去的，也就可以被环境改回来。晨光负责把相位往前拉、晚间暗光负责不让它往后滑，一推一拉，才是完整的校准。</p>
+<p><strong>还有一个容易踩的坑：光的时机比总量更重要。</strong>同样一束强光，晨起照会让生物钟提前、更容易早睡早起；深夜照则会让生物钟延后、越熬越晚。这就是为什么「白天多晒太阳」必须强调是上午的光，而不是傍晚补照。把规则压缩成一句：上午抢光、晚上让光——前半句决定你几点困，后半句决定你的困会不会被偷走。两端同时做，一周左右，入睡时间通常会自己往前挪。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--health)">
+<p class="pullquote text-[16.5px]">失眠有时候不是脑子停不下来，是灯没告诉它天黑了。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 健康</cite>
+</blockquote>
+</article>
+
+</div>
+</section>
+
+<!-- ══════════ 财富版 ══════════ -->
+<section id="wealth" class="py-8 border-b hairline">
+<div class="flex items-end justify-between flex-wrap gap-2 mb-1">
+<div class="flex items-center gap-3">
+<span class="font-serif font-black text-4xl" style="color:var(--wealth)">财富版</span>
+<span class="kicker" style="color:var(--wealth)">第二版 · 钱的底层逻辑</span>
+</div>
+<span class="text-[12px]" style="color:var(--ink-3)">本版 5 个选题 + 交易者手记 · 财富管理 / 生财逻辑 / 仓位数学</span>
+</div>
+<div class="border-t-2 mb-6" style="border-color:var(--wealth)"></div>
+
+<div class="grid lg:grid-cols-2 gap-x-10 gap-y-10">
+
+<!-- 财富 1：波动率税 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">波动率税：为什么「平均年化10%」到手只有7%</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-07.jpg" alt="电子行情屏上跳动的股票代码与数字" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">行情屏上的每一次大起大落，都在默默交税。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="activity" class="w-4 h-4" style="color:var(--wealth)"></i>
+<span class="kicker" style="color:var(--wealth)">仓位数学</span>
+<span class="tag">15 分钟深读</span>
+</div>
+<div class="article-body">
+<p>先做一道算术题。一只产品第一年涨50%、第二年跌40%：按算术平均，「年均收益+5%」，听起来不错；但你的钱实际经历的是 1 × 1.5 × 0.6 = 0.9——两年亏掉10%。另一只产品两年各涨4%，「年均」只有4%，结果却是 1.04² ≈ 1.082，赚了8.2%。前者平均数更高，后者到手更多。差别不在运气，在波动本身要收税。</p>
+<p><strong>机制：复利是乘法，乘法对波动天生不对称。</strong>几何平均收益率 ≈ 算术平均 − 方差/2，这条近似式里的 σ²/2 就叫波动率拖累 (volatility drag)。道理朴素到残酷：跌下去之后本金变小，同样的涨幅乘出来的绝对金额更少。回撤与回本的对应关系值得背下来：亏10%要涨11%回本，亏20%要25%，亏33%要50%，亏50%要100%，亏75%要300%，亏90%要900%。亏损越深，回本所需的涨幅以非线性的速度爆炸——这就是为什么所有成熟的交易系统，都把「先限制回撤」写在「追求收益」前面。</p>
+<p><strong>为什么它专挑大仓位和杠杆下手。</strong>波动率税的「税率」由方差决定，而方差随仓位放大呈平方级增长：仓位翻一倍，拖累大致变四倍。最典型的现实样本是每日重置的杠杆ETF (leveraged ETF)：标的指数一个月震荡着回到原点，2倍、3倍杠杆产品却普遍净值缩水——不是跟踪出了错，是每天按当日涨跌重新放大仓位之后，波动率税被制度性地征了一遍又一遍。个人交易里同理：同一套策略满仓跑和半仓跑，长期几何收益的差距远比直觉大，因为这道税按「波动」这个税基全额征收，一分不少。</p>
+<p><strong>怎么用。</strong>评估任何策略，把「只看平均收益」换成三个动作：第一，看收益序列而不是汇总数字——把每笔、每周的盈亏排开看，波动越大、单笔巨亏越扎眼，那个平均数越不可信；第二，先给回撤设预算再倒推仓位，比如「单策略最大回撤不超过账户的10%」，反推出每笔的风险敞口（这和下一篇凯利公式，是同一件事的两面）；第三，对「高收益、偶尔暴亏」的负偏态策略保持警惕——它的平均数是被少数好年份撑起来的，而一次暴亏的回本成本是非线性的。记住这组对照：平均数是广告，几何收益才是到账金额；波动不是免费的过山车，它是按方差明码标价的税。</p>
+<p><strong>再把数学往前推一步：对数收益揭示了真相。</strong>算术收益可以相加，对数收益 (log return) 却会诚实地记录每一次回撤的永久成本。涨 50% 的对数收益是 +0.405，跌 40% 是 −0.511，两段合起来是 −0.106——不需要任何高深模型，乘法的账本自己会说话。职业机构看一条净值曲线，先看的从来不是峰值有多高，而是从峰值跌到谷底的深度和爬出来的时长，因为客户的赎回、保证金的追缴、心理的崩溃，全都发生在回撤段，而不是发生在上涨段。</p>
+<p><strong>还有一个推论，叫序列风险 (sequence risk)。</strong>同样的多笔盈亏，顺序不同，结果可以完全不同：先亏后赚，你可能在谷底就因保证金或心态出局，根本等不到后面的盈利；先赚后亏，垫子厚了，同样的回撤只是利润回吐。无法控制顺序时，唯一能控制的是让任何一段连亏都不至于致命——这又回到了仓位。波动率税、回本不对称、序列风险，其实是同一件事的三个名字：先活下来，复利才有资格谈。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--wealth)">
+<p class="pullquote text-[16.5px]">波动不是免费的，每一次大起大落都在交税。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 财富</cite>
+</blockquote>
+</article>
+
+<!-- 财富 2：凯利公式 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">凯利公式：知道仓位公式的人，为什么没人敢满仓用</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-08.jpg" alt="赌场二十一点牌桌" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">二十一点牌桌——凯利公式最早的实战考场。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="dices" class="w-4 h-4" style="color:var(--wealth)"></i>
+<span class="kicker" style="color:var(--wealth)">仓位数学</span>
+<span class="tag">15 分钟深读</span>
+</div>
+<div class="article-body">
+<p>凯利公式 (Kelly criterion) 出自1956年贝尔实验室约翰·凯利 (John Kelly) 的一篇信息论论文，本意是研究噪声信道里的信号传输，却被赌场和华尔街抢去做了仓位圣经。公式很短：f* = (bp − q) / b，其中 b 是赔率（赢时每押1元净赚几元），p 是胜率，q = 1 − p 是败率，f* 是让资金长期几何增长率最大化的下注比例。注意它优化的目标不是「赢得最多」，而是「滚得最快且不会出局」——这正是它和赌徒直觉的分界线。</p>
+<p><strong>算一次，就懂它的脾气。</strong>假设一笔交易的胜率60%、盈亏比1:1（赢赚1元、输亏1元），f* = (1×0.6 − 0.4) / 1 = 0.2——每笔押总资金的20%。听着不算疯狂？把时间拉长看：满凯利的资金曲线最陡，但回撤也最凶，中途腰斩是家常便饭。再看它对参数的敏感度：如果真实胜率其实不是60%而是55%，最优仓位立刻降到10%；你若还按20%下注，等于用两倍于最优的仓位去跑一个被高估的优势，长期增长率会被直接拖成负数——爆仓不是因为公式错了，是因为喂给公式的 p 和 b，从来都只是估计值。</p>
+<p><strong>为什么职业玩家集体「打折使用」。</strong>爱德华·索普 (Edward Thorp) 是把凯利带进现实的第一人：先在二十一点牌桌上用记牌加凯利下注验证，再把同一套数学搬进证券市场。但包括索普在内的实务派，落点都不是满凯利，而是半凯利、四分之一凯利。账算得很清楚：凯利的增长率曲线在顶点附近相当平坦——用半凯利，大约能保留满凯利四分之三左右的长期增长率（这是这条曲线的经典性质），却把曲线的颠簸程度砍掉一半上下。往左退一格，速度损失不大，波动大幅下降；而满凯利的回撤强度，足以在心理上把绝大多数人中途洗下车——策略是对的，人先下了车，等于没对。</p>
+<p><strong>更深的一个坑：你的胜率是「测」出来的。</strong>回测里的 p 来自历史样本，样本外的表现几乎总要打折；赔率 b 也一样，趋势会变、滑点和手续费都在啃它。两个输入同时被高估时，公式给出的不是最优仓位，而是一个被双重放大的错误。这正是本期戳破句的含义：凯利真正的用法，是算出 f* 之后诚实地问一句——我对 p 和 b 的把握，配得上这个数字吗？</p>
+<p><strong>怎么用。</strong>把它当上限和标尺，而不是下单指令：第一，用自己的真实交易记录（不是想象，也不是别人的回测）估 p 和 b，样本不足100笔时，估计值先自动打八折再代入；第二，取算出结果的四分之一到二分之一，作为实际仓位的上限；第三，当连输出现、样本开始证伪原来的 p，第一反应是先降仓再复盘，而不是用「摊平」去对抗公式。仓位管理的全部艺术，用一句话说完：让数学决定天花板，让对自己估计误差的敬畏，决定你实际站在天花板以下的哪一格。</p>
+<p><strong>把「打折」的账算给你看。</strong>仍以胜率 60%、盈亏比 1:1 为例，满凯利是 20%：长期增长率最高，但资金腰斩的概率高到几乎必然在某个阶段发生。降到半凯利 10%，理论增长率只损失约四分之一，回撤的典型深度却大幅收敛；降到四分之一凯利 5%，增长率大约保留四成上下，但曲线平滑到普通人能真正拿得住。这里没有哪个数字「正确」，只有哪个数字与你的参数可信度匹配：胜率是 500 笔实盘统计出来的，可以站得高一点；是 30 笔回测跑出来的，就老老实实站到楼梯的下半段。</p>
+<p><strong>凯利还有一条隐藏禁令：相关性会吃掉你的额度。</strong>公式默认每一笔是独立下注，但现实中三笔同方向、同逻辑的单子，本质上是一笔放大了三倍的注——市场一转，三笔一起亏。实操上要把「同因头寸」合并计仓：同一个驱动逻辑（比如同一条油价叙事）下的所有仓位加总，不得超过你给单笔设的凯利上限。很多人爆仓不是单笔下注太大，是把同一注拆成了五笔，自以为分散，其实是加倍。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--wealth)">
+<p class="pullquote text-[16.5px]">凯利公式告诉你的不是该下多大注，而是你的估计有多不值得信任。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 财富</cite>
+</blockquote>
+</article>
+
+<!-- 财富 3：应急现金 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">应急现金留几个月？一个决策框架</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-09.jpg" alt="一叠美元现金" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">应急现金的任务是让你睡得着，不是让你发财。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="wallet" class="w-4 h-4" style="color:var(--wealth)"></i>
+<span class="kicker" style="color:var(--wealth)">财富管理</span>
+<span class="tag">3 分钟速览</span>
+</div>
+<div class="article-body">
+<p>「应急钱留几个月」之所以永远吵不出标准答案，是因为它本质上不是储蓄问题，而是保险问题：你在为「收入断流」这件事买保单——保额该多大，取决于断流发生的概率、可能持续多久，以及断流期间还有没有别的进水口。把这三个变量看清楚，3个月还是6个月，自己就有答案了。</p>
+<p><strong>变量一：收入的波动性与可替代性。</strong>收入越不稳定、重新找到同等收入所需的时间越长，要留的越多。月薪制、岗位需求稳定的工种，断流多半是短事件；收入靠项目、靠提成、靠行情吃饭的人，断流往往与经济周期同步出现，一断就是几个月——后者该留的量级，理应是前者的两倍起步。</p>
+<p><strong>变量二：支出的刚性。</strong>计算的基数不是「月收入」，是「月必要支出」：房租或房贷、吃饭、交通、保险、最低还款额。必要支出里刚性占比越高（比如房贷占了大头），缓冲就要越厚，因为断流时这些账单一分都不会少打。反过来，支出弹性大的人，断流时可以主动压缩开支，保额就能相应调低。</p>
+<p><strong>变量三：现金之外的接应顺序。</strong>应急现金真正需要 cover 的，只是「其他资产到账之前」的那段日子。所以先排一遍接应链：货币基金几天内能赎回多少？保障型保险齐不齐——一场大病是断流之外最常见的「第二事件」，没有医疗险兜底时，应急现金还得替保险留出一份。把接应链排完，剩下的缺口，才是应急现金的岗位。</p>
+<p><strong>和第001期「现金不动」怎么对齐。</strong>001期说，超额现金躺着不动，等于每年交一笔通胀税；这篇说，应急现金必须留够。两句话不矛盾，关键在「够」是算出来的，不是凭感觉留的：三变量算出的保额，一分不多地留；超过保额还躺在活期里的部分，才是001期说的那种「不动的现金」。还有一个常被忽略的点：应急现金必须放在与风险资产隔离的地方——货币基金、活期、短期存款，收益不重要，要的是「任何情况下几天内能全额取出」。因为收入断流最容易发生的时点，恰好是市场大跌、资产缩水的时点；把应急钱放进权益资产，等于让保单和风险同涨同跌，真出事时两边一起塌。</p>
+<p><strong>怎么用。</strong>今晚就能做的版本：第一步，拉出自己的月必要支出，只算刚性项；第二步，乘上系数——收入稳定取3，收入波动取6，自雇或家里单一收入来源取9到12；第三步，从现有现金里圈出这笔钱，单独放进货币基金或一个不绑消费的账户，物理隔离，不和日常花销混放；第四步，超出保额的部分，按原计划转入该去的资产，别再以「应急」为名继续躺平。自检标准就一句：这笔钱的任务，是让你在最差的几个月里不用被迫低价卖资产、不用去借高息的钱——它买的是「不被迫做决定」的自由，收益率从来不是它的考核指标。</p>
+<p><strong>进阶做法：把应急钱分层，而不是一锅烩。</strong>第一层是即时层：约 1 个月必要支出，放在随取随用的活期或货币基金里，应对手机坏了、临时就医这类小冲击，追求的是零等待。第二层是缓冲层：再放 2–5 个月必要支出到可快速赎回的低波动工具里，应对真正的收入断流，允许一两天到账。第三层其实不是现金，而是保障层：医疗险、意外险这类用小保费撬动大风险的安排——没有这一层，一场大病就能把前两层一次抽干。分层的意义在于，每一层只承担一种任务，不再用一笔钱同时兼任「日常周转」和「灾难兜底」，兼任的结果往往是平时被花掉、急时不够用。</p>
+<p><strong>还要定期给保额「年检」。</strong>必要支出会变：搬了家、房租涨了、多了一笔固定还款，保额就该同步上调；收入结构变了——从稳定月薪转到项目制——系数也要跟着抬。每年挑一个固定时点，用最新账单重算一遍，差额补齐、多余转走，五分钟的事。应急现金最怕的不是收益低，是数字停留在三年前的生活成本上，给你一种虚假的安全感。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--wealth)">
+<p class="pullquote text-[16.5px]">应急现金的任务是让你睡得着，不是让你发财——发财是资产的事。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 财富</cite>
+</blockquote>
+</article>
+
+<!-- 财富 4：生财三线 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">生财三线：打工、副业、资产</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-10.jpg" alt="在咖啡馆里用笔记本电脑工作的人" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">把技能卖第二遍的人，时间开始有了复利。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="trending-up" class="w-4 h-4" style="color:var(--wealth)"></i>
+<span class="kicker" style="color:var(--wealth)">生财逻辑</span>
+<span class="tag">3 分钟速览</span>
+</div>
+<div class="article-body">
+<p>收入这件事，先看结构，再看数字。绝大多数人的收入可以拆成三条线，而三条线的数学性质完全不同：打工线是线性的，卖一小时得一小时的钱，停了就断；副业线是边际成本递减的，同一份技能卖第二次、第三次，成本一次比一次低；资产线是指数型的，本金不动，收益再生收益。年轻人收入上不去，原因通常不在第一条线不够拼，而在后两条线从来没有开过户。</p>
+<p><strong>第一条线：打工，买的是确定性和入场券。</strong>工资的本质，是出卖时间的批发价。它的价值不只在钱：行业的 know-how、人脉、履历信用，都是在这条线上攒的，后两条线日后全要从它这里进货。但要注意技能溢价 (skill premium) 的时间结构：职业生涯早期的能力涨幅最陡，它决定了这条线此后几十年的斜率。同样是投入时间，投在「能迁移的硬技能」上的，和投在「只对本公司内部流程有用」的杂务上的，几年后在市场上的标价完全不同。</p>
+<p><strong>第二条线：副业，把技能卖第二遍。</strong>副业的关键不在「多一份收入」，在商业模式变了：一份时间从零售改成了批发。举个常见的例子：一位设计师白天在公司做图（卖时间），晚上把成熟的设计模板整理成素材包，挂到平台上卖——模板只做一次，可以成交一百次，睡觉时也在卖，这就是产品化 (productize)。还没法产品化的技能，先用服务形态验证需求：有人愿意为它付一次钱，才值得投入做成产品。副业最常见的死法，是「用第二份体力活假装副业」——下班再去跑一份按小时计酬的零工，那不是第二条线，只是第一条线加了个班，数学性质一点没变。</p>
+<p><strong>第三条线：资产，让钱替你值班。</strong>资产线的启动条件最苛刻：既要有本金，又要给它时间。所以三条线的正确顺序是接力而不是并列：先由打工线攒出第一笔本金和可迁移的技能，再由副业线把技能的价格和销量放大，最后把前两条线的结余持续转进资产线，让复利接管。顺序反了——本金没攒够就重仓资产线去搏一把——本版第一篇的波动率税会先教你做人。</p>
+<p><strong>怎么用。</strong>给三条线各设一个当下动作：打工线，选一个「换一家公司也值钱」的技能集中投入，让履历上多一行可迁移的硬通货；副业线，盘点自己已经被同事朋友免费咨询过的事——那通常是市场需求真实出现过的信号，先接小单验证，再谈产品化；资产线，把每月结余的一个固定比例设成自动转入，不手动、不择时，先让这条线「存在」，再谈优化。评估任何一个机会时，统一用本期戳破句的标准过一遍：25岁时最贵的不是工资条，是5年后还有人愿意为你的能力付费——只消耗、不沉淀的收入，时薪再高也是流沙。</p>
+<p><strong>再往深拆一层：三条线的区别，本质是杠杆形式的区别。</strong>打工用的是时间杠杆，1 小时只能卖 1 次，上限被一天 24 小时锁死；副业用的是产品杠杆 (product leverage)，一份成果可以被复制和重复交付，边际成本趋近于零；资产用的是资本杠杆 (capital leverage)，钱在你睡觉时也在工作，而且不需要向任何人申请许可。看懂这张杠杆表，很多职业选择就有了统一标尺：同样一件事，做完之后留下的是「只能再做一遍的东西」，还是「下次不用从零开始的东西」——笔记、模板、口碑、受众、代码、作品集，全是后者。每天哪怕只沉淀一点点，几年后的斜率差距会被杠杆放大成数量级差距。</p>
+<p><strong>三条线之间，还有一条暗线叫能力迁移率。</strong>打工线练出的技能，能迁移到副业线的比例越高，接力越顺：写作、数据分析、销售、设计、编程这类通用技能迁移率最高，因为它们直接对应市场愿意付费的需求；而只在单一公司流程里成立的「熟练」，迁移率接近于零。所以选工作时除了看薪资，还要看一句：这份工作练的东西，离开这家公司还值不值钱。值钱，接力棒就握在自己手里；不值钱，工资再高，也只是在替别人攒资产。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--wealth)">
+<p class="pullquote text-[16.5px]">25岁时最贵的不是工资条，是5年后还有人愿意为你的能力付费。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 财富</cite>
+</blockquote>
+</article>
+
+<!-- 财富 5：费率 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">费率：每年1%会吃掉你多少</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-11.jpg" alt="男子坐在椅子上读报纸" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">业绩是可能的，费率是确定的——先对确定的下手。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="percent" class="w-4 h-4" style="color:var(--wealth)"></i>
+<span class="kicker" style="color:var(--wealth)">财富管理</span>
+<span class="tag">3 分钟速览</span>
+</div>
+<div class="article-body">
+<p>投资里唯一能提前100%确定的数字，不是收益，是费率。而确定的负数最可怕：它每年都来，从不缺席，而且会复利。</p>
+<p><strong>先算账。</strong>年费率1%，意味着每年资产先被扣走百分之一，剩下的才参与增长：0.99 的30次方约等于0.74——30年下来，约四分之一的终值被费率吃掉，而且这还没单独算「被扣走的钱本可以继续生钱」的二次损失，复利公式已经替你算进去了。换个口径更直观：假设毛收益同为每年7%，费率0.2%的产品30年滚出约7.2倍，费率1.5%的只剩约5.0倍。业绩一模一样，只差1.3个百分点的费率，终值差了近三成。</p>
+<p><strong>机制：为什么费率是「确定的负复利」。</strong>收益的不确定性是对称的，可能更高也可能更低；费率的扣减是单向的，而且以当前资产为基数逐年征收，本质上是把复利公式里的增长率 g，永久改小成 g − f。时间越长，这条小小的减法被指数放大得越夸张：10年时，1%的费率只吃掉约9.6%的终值；30年时是约26%；40年时接近三分之一。这就是为什么费率之争永远发生在长期资金上——养老钱、教育金这种注定要滚几十年的钱，费率是第一变量，其他都要往后排。</p>
+<p><strong>费率藏在哪。</strong>对基金和理财产品，要看的是综合费率 (expense ratio)：管理费、托管费、销售服务费加总，再加申购、赎回费。销售页面最爱把管理费单拎出来讲，托管费和销售服务费往往躲在产品合同的后几页。对交易者还有一类隐形费率：佣金、滑点和买卖价差——频繁交易的人一年被它们吃掉的比例，常常超过任何一只基金的管理费。它们和费率是同一种税，只不过一种按年征、一种按笔征。（也呼应本版第一篇：波动之外，成本同样在按自己的节奏收税。）</p>
+<p><strong>费率高低，和业绩到底什么关系。</strong>这是最反直觉、也最有数据支持的一点：长期来看，费率是预测一只基金未来相对表现最有力的单一指标之一，而过往业绩的预测力要弱得多——晨星 (Morningstar) 的研究曾直接下过结论：费率比它自家的星级评级更能预测基金的成败。逻辑并不难懂：高费率产品每年要先跑赢一个多百分点，才刚刚和低费率产品站回同一起跑线，这个先天劣势很难靠选股长期补回来。</p>
+<p><strong>怎么用。</strong>买任何带费用的产品，把阅读顺序反过来：先翻到费率页，把综合费率和申赎费加总看清，再看业绩页；同类产品里，先淘汰费率明显偏高的那批，再在剩下的里面挑；已经持有的，每年复查一次有没有更便宜的同类替代——跟踪同一个指数的基金，费率能差出好几倍，买的却是同一个指数。原则就是本期戳破句：业绩是可能的，费率是确定的——先对确定的下手。</p>
+<p><strong>把费率表拉长看，数字会更扎心。</strong>以 10 万元、毛收益每年 7% 粗算：费率 0.2% 时，30 年后约 71 万元；费率 1% 时约 57 万元；费率 1.5% 时约 50 万元；费率 2% 时只剩约 44 万元。四个产品买的可以是完全相同的资产、承担完全相同的风险，终点却差出 27 万元——这笔差额没有换来任何额外的安慰或服务，纯粹是费率在 30 年里一口一口吃掉的。时间是费率的放大器：持有期越短，费率越像小钱；持有期越长，费率越像命运。</p>
+<p><strong>交易者版本同样成立，只是换了计价方式。</strong>假设每次往返交易的佣金、价差与滑点合计约 0.1%，一年交易 100 个往返，就是约 10% 的年化拖累——这意味着你的策略要先跑赢市场 10 个百分点，才刚刚回到起跑线。频率越高，这道隐形费率越陡。这也是为什么「降低交易频率」常常是普通交易者最便宜的一次升级：它不要求你预测得更准，只要求你少向市场交几次过路费。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--wealth)">
+<p class="pullquote text-[16.5px]">业绩是可能的，费率是确定的——先对确定的下手。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 财富</cite>
+</blockquote>
+</article>
+
+<!-- 交易者手记 · 信号 vs 噪音 -->
+<article class="border-2 p-5 sm:p-6" style="border-color:var(--wealth);background:var(--wealth-soft)">
+<div class="flex items-center gap-2 flex-wrap mb-2">
+<i data-lucide="radar" class="w-4 h-4" style="color:var(--wealth)"></i>
+<span class="kicker" style="color:var(--wealth)">交易者手记 · 信号 vs 噪音</span>
+</div>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">本周拆解：仓单 (warehouse receipts)</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-12.jpg" alt="仓库里整齐堆放的铝锭" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">仓库里的每一块铝锭，都是每天更新的「脚印」。</figcaption>
+</figure>
+<div class="article-body">
+<p><strong>先把定义说透。</strong>仓单 (warehouse receipts) 是交易所指定交割仓库里、已经注册成可用于期货交割的标准库存凭证，每天公布。一句话划清口径：它统计的不是「市面上一共有多少货」，而是「有多少货已经躺进交易所的仓库、随时能拿去交割」。这个口径决定了它的全部读法——它离「能立刻砸向盘面的供给」最近，所以是现货松紧最硬的温度计。读的时候还要分清「注册仓单」和「有效预报」：后者是货在路上、正办手续，还没正式注册成仓单，两个数字别混着看。</p>
+<p><strong>去哪看。</strong>上期所、郑商所、大商所官网，每个交易日收盘后都会公布各品种的仓单日报，期货日报、文华财经等也会做汇总；外盘对应的是 LME 的仓库库存与注销仓单 (cancelled warrants)、COMEX 的注册库存。全部公开、免费，门槛不在获取，在你能不能坚持每天连起来看。</p>
+<p><strong>核心读法一：背离。</strong>单看仓单涨跌没有意义，要把它和价格对照读。价格涨、仓单持续减少——货在被真实买走，现货偏紧，这波涨势有实物撑着；价格涨、仓单持续增加——有人正往仓库里搬货，等着交割给多头，盘面越热，头顶的供给越厚，这是最常见的见顶前兆之一；价格跌、仓单也跌——多半是需求真的弱，别急着抄底。三种组合背下来，仓单日报就从一串数字变成一段叙事。</p>
+<p><strong>核心读法二：注销与升贴水，交叉验证。</strong>仓单被「注销」，意味着货主要把货提出交割体系——注销量突然放大，是现货买家急着提货的信号，常出现在近月挤仓之前。再配基差和近远月价差一起看：仓单下降 + 近月升水 (backwardation) 扩大 + 现货升水走强，三个信号同向，「紧」才算坐实；只有一个信号在动，先按噪音处理。</p>
+<p><strong>必须知道的盲区。</strong>仓单只统计「进了交易所仓库的货」，看不见社会库存和隐性库存：港口堆场、贸易商的自有库、被拿去做融资质押的货，全不在这张表上。2014年青岛港有色金属重复质押事件爆出来时，市场才意识到同一批货可以在账面上「存在」好几份。另外还有季节性：不少品种的仓单在交割月前天然膨胀、交割后天然注销，那是制度节律而不是供需变化——读之前先问一句，现在是不是临近交割月。</p>
+<p><strong>怎么用：一套五分钟的日课。</strong>收盘后打开仓单日报，只看三件事。第一看方向：连续3到5天同向才算趋势，单日异动先当噪音放过。第二看背离：和当日价格涨跌对不对得上。第三看位置：仓单总量处在近一年区间的什么分位——同样是增一千吨，在历史低位和历史高位，含义完全相反。看完在交易日志里记一行事实，不必写结论。坚持一周，你手里就是一张谁也编不出来的供需地图。这也是本栏目把仓单放在拆解系列第一篇的原因：消息会迟到、会反转，仓库里货的进出不会。</p>
+<p><strong>再补一个进阶读法：仓单要和期限结构一起看。</strong>近月价格高于远月，叫现货升水结构 (backwardation)，通常对应现货偏紧、持货者不愿等；近月低于远月，叫期货升水结构 (contango)，对应现货宽松、库存需要有人出钱囤着。当仓单持续增加、同时 contango 走阔，说明市场正在用价差补贴仓储，货只会越囤越多，上涨缺乏现货配合；反过来，仓单持续下降、backwardation 走阔，是现货在真金白银地抢货。单看仓单是平面图，加上期限结构，才是立体图。</p>
+<p><strong>举一个完整的推演链。</strong>假设某金属价格连涨一周，新闻都在讲需求复苏。这时打开数据：仓单却连续 5 天增加、注销仓单接近于零、近月升水没有走阔——三项有两项在拆台，那就先把结论降级为「资金推动的预期行情」，仓位和止损按更严的那一档执行。反之，若价格还在横盘，仓单先悄悄连降两周、注销开始放大，这往往是现货层先动、盘面后跟的早期信号，值得提高关注等级。仓单的价值从来不在单日，而在它比价格更早、更诚实地转身的那几次。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--wealth)">
+<p class="pullquote text-[16.5px]">仓单不会说谎，但它每天都会留下脚印。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 交易者手记</cite>
+</blockquote>
+</article>
+
+</div>
+</section>
+
+<!-- ══════════ 认知版 ══════════ -->
+<section id="mind" class="py-8 border-b hairline">
+<div class="flex items-end justify-between flex-wrap gap-2 mb-1">
+<div class="flex items-center gap-3">
+<span class="font-serif font-black text-4xl" style="color:var(--mind)">认知版</span>
+<span class="kicker" style="color:var(--mind)">第三版 · 脑子的底层逻辑</span>
+</div>
+<span class="text-[12px]" style="color:var(--ink-3)">本版 5 个选题 · 心理账户 / 第二层思维 / 注意力 / 贝叶斯 / 幸存者偏差</span>
+</div>
+<div class="border-t-2 mb-6" style="border-color:var(--mind)"></div>
+
+<div class="grid lg:grid-cols-2 gap-x-10 gap-y-10">
+
+<!-- 认知 1：心理账户 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">心理账户：你给钱贴的标签，正在替你做决定</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-13.jpg" alt="把现金分装进贴了标签的信封" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">信封上贴的每一个标签，都是一次被默许的「区别对待」。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="tags" class="w-4 h-4" style="color:var(--mind)"></i>
+<span class="kicker" style="color:var(--mind)">行为金融</span>
+<span class="tag">15 分钟深读</span>
+</div>
+<div class="article-body">
+<p>心理账户 (mental accounting) 是行为经济学家理查德·塞勒 (Richard Thaler) 提出的概念，后来成了他获得诺贝尔经济学奖的工作的一部分。核心事实只有一句：钱在物理上完全可替代 (fungible)，一张百元钞不记得自己从哪来；但人脑不这么运作——人会按来源、用途和盈亏状态给钱开设不同的心理账户，每个账户配一套自己的预算和风险规则。工资要精打细算，年终奖花起来就大方；辛苦攒下的钱碰都不敢碰，中奖来的钱却敢一把下注。钱没有区别，标签有区别，而真正做决定的，其实是标签。</p>
+<p><strong>机制：为什么大脑非要贴标签。</strong>贴标签是一种省力装置：把无限复杂的财务决策切成小块，每块套用一条简单规则（「吃饭的钱不能省」「玩的钱可以浪」），认知负担骤降。代价是，全局最优被局部规则架空——每个账户内部都「合理」，合起来却可能荒谬。最经典的实验是这样的：丢了一张100元电影票的人，多半不肯再买一张；丢了100元现金的人，却照样买票进场。两次的损失完全等值，只因一个记在「电影账户」、一个记在「现金账户」，决策就翻了个面。</p>
+<p><strong>在交易里，它长这样。</strong>塞勒与约翰逊 (Thaler &amp; Johnson) 提出过一个著名推论，叫赌场盈利效应 (house money effect)：人赢了钱之后，愿意承担的风险会明显上升，因为赢来的钱被记进「赌场的钱」这个账户，亏掉不心疼。映射到交易台上就是：浮盈的单子拿得住、敢加仓，因为「亏的是利润」；浮亏的单子死扛不止损，因为止损意味着把亏损从「本金账户」里正式划掉。同一个交易者、同一份风险，只因盈亏状态不同，就被两个账户撕成了两种风险偏好——这和处置效应 (disposition effect，拿不住盈利、拿得住亏损）是同一台机器的两个出口。</p>
+<p><strong>机构是怎么对付它的。</strong>对冲基金和自营台几乎不用「本金/利润」这套语言记账，他们用的是统一的风险预算 (risk budget)：整个组合先定下总风险额度，每笔头寸按占总资金的百分比、按 R 倍数（以单笔风险为单位）计量，赚钱的仓位和亏钱的仓位，在风险权重上完全平等。这不是因为他们天生更理性，而是制度设计从源头堵死了贴标签的入口——钱一旦进了统一账户，标签就没有附着点。</p>
+<p><strong>怎么用。</strong>个人复制不了机构制度，但可以借三招。第一，换记账单位：交易日志里不写金额，写 R 和账户百分比——「这笔冒了账户0.8%的风险」，而不是「这笔是利润单」。第二，平仓决策前问一个锚定问题：如果我现在空仓、手里全是现金，我会以这个价格、这个仓位重新开这一笔吗？答案是否定的，就说明留住它的是标签，不是逻辑。第三，给「意外之财」预设规则：奖金、退款、落袋的浮盈，在到账之前就按和工资完全相同的比例分配好——多少进储蓄、多少进投资、多少可以花——不给心理账户临场发挥的空间。钱不认标签，认标签的是你；把标签撕掉的那一刻，决策才开始真正属于你。</p>
+<p><strong>它还有个孪生兄弟，叫狭窄框架 (narrow framing)。</strong>心理账户让人把钱分格存放，狭窄框架让人把每一笔决策单独审判：单看这一笔能不能赚钱、这一单能不能回本，而不看它放进整个组合、整个账户周期里是加分还是减分。两个偏差叠加，就是交易中最常见的画面——对浮亏单逐笔纠结「等回本就走」，对整体账户的最大回撤却毫无概念。解法是把审视的镜头主动拉远：复盘时先看组合层面的三个数——总风险敞口、相关性、回撤——再看单笔。顺序反过来，标签就会趁虚而入。</p>
+<p><strong>日常消费里同样有一笔账可算。</strong>「用返现买的，不心疼」「分期之后，每月才几百」——这些都是标签在替你降低支付痛感。支付痛感 (pain of paying) 本是消费的刹车，标签和分期把刹车拆了，决策就只剩油门。一个简单的还原术：任何消费，先换算成「税后时薪的几小时」，再问自己愿不愿意用那几小时去换它。把抽象金额翻译回自己最真实的成本单位，标签的魔术当场失效大半。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--mind)">
+<p class="pullquote text-[16.5px]">钱不认标签，认标签的是你——而标签正在替你亏钱。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 认知</cite>
+</blockquote>
+</article>
+
+<!-- 认知 2：第二层思维 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">第二层思维</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-14.jpg" alt="巴黎卢森堡公园里下象棋的人" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">好棋手想的从来不是「这步好不好」，而是「对手觉得这步好不好」。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="crown" class="w-4 h-4" style="color:var(--mind)"></i>
+<span class="kicker" style="color:var(--mind)">投资心智</span>
+<span class="tag">15 分钟深读</span>
+</div>
+<div class="article-body">
+<p>霍华德·马克斯 (Howard Marks) 在《投资最重要的事》开篇就立下了这个区分。第一层思维 (first-level thinking) 简单、直接、人人都会用：「这家公司前景好，买。」第二层思维 (second-level thinking) 则先把问题往回推一步：「前景好，同意——但好到什么程度？市场共识认为它有多好？价格里已经计入了多少？如果共识是对的，我赚什么；共识错在哪一边，我才赚什么？」市场最终奖励的从来不是「判断正确」，而是「比共识更正确」——因为共识已经定价了，共识之内的正确，一文不值。</p>
+<p><strong>机制：价格是共识的化石。</strong>任何资产的现价，都是所有参与者用真金白银投票后的结果，它凝固了市场对这家公司、这个品种的全部已知信息和平均预期。你买入的那一刻，等于在说：「我的判断与这块化石不同，而且我是对的。」这不是说共识总是对——共识经常错——而是说，你的收益来源被限定死了：只能来自分歧。找不到自己和共识差在哪里，那就不是在投资，是在替共识的定价接盘。</p>
+<p><strong>一套可操作的推演顺序。</strong>马克斯给过一份第二层思维的自问清单，简化成四步：第一，可能的结果范围是什么——不是一个点，而是一个区间；第二，我认为最可能发生的是什么，概率多大；第三，市场共识认为最可能发生什么；第四，我的判断和共识差在哪、凭什么。第三步最难，也最关键：多数人直接从「我觉得好」跳到「买」，中间那层「别人觉得有多好、已经标了多高的价」从未被打开过。下次看到任何「重大利好」落地，先做个体检：消息公布之前，价格已经走了多少？利好兑现当天，价格是冲上去还是冲高回落？市场用脚投票的结果，就是共识的实时报价单。</p>
+<p><strong>再往深一层：凯恩斯的选美博弈。</strong>这套思维有个更老的源头。凯恩斯 (John Maynard Keynes) 用报纸选美比赛打过比方：想猜中得票最多的那张脸，靠的不是挑你认为最美的，而是猜「大家认为大家认为最美的是哪张」。市场的短期博弈就是这场比赛的无限层版本——你预判的不是价值本身，而是共识的预判。这也解释了为什么「利好出尽是利空」反复上演：当所有人的第二层都算到「利好会涨」，买盘提前挤满，利好真正落地时，增量买家反而没了。知道这一层，才不会在共识最整齐的时候，站到队伍的最后面。</p>
+<p><strong>怎么用（不止于交易）。</strong>把四步自问搬到一切「大家都说好」的决策上：热门专业、人人争抢的 offer、公认的「好城市好行业」。问法是统一的：好，好到什么程度？这个「好」已经被标了多高的价——是挤破头的竞争、被炒上去的成本，还是一个被低估的冷门？第二层思维不保证你选对，它保证另一件事：你下注的时候，清楚自己在和谁对赌、赌的是哪一层分歧。清楚这一点，输也输得明白，赢也知道赢在哪里。</p>
+<p><strong>用一个数字例子，把四步走完。</strong>某公司发布业绩，利润同比增长 30%，新闻标题一片叫好，第一层思维会说「大利好，买」。第二层先查共识：机构一致预期原本是增长 45%，股价在发布前一个月已经涨了 25%——也就是说，30% 的增长在共识眼里是「不及预期」，价格里计入的是更高的数字。结果公布次日股价下跌，就不是市场 irrational，而是化石在重新凝固：旧共识被证伪，新共识把价格往下修。增长是事实，涨跌是共识与事实的差值——盯着事实做决策的人，永远会慢共识一步。</p>
+<p><strong>这套思维还有个使用边界。</strong>第二层思维适合「定价由共识主导」的场合，用过头会滑向无限套娃：我猜你猜我猜……层数越高，误差越大，最后变成纯粹的心理博弈。马克斯的落点其实很克制：回到概率与赔付——当价格已经计入了极度乐观的共识，哪怕公司继续优秀，你的赔付比也在恶化；当价格计入的是极度悲观，哪怕公司平庸，赔付比反而在改善。第二层思维最终服务的不是「比别人多想一层」，是「只在赔付比站在自己这边时下注」。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--mind)">
+<p class="pullquote text-[16.5px]">重要的不是消息好不好，是『好』这个词值多少钱——而价格已经替你标好了。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 认知</cite>
+</blockquote>
+</article>
+
+<!-- 认知 3：注意力残留 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">注意力残留：切换任务的隐形税</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-15.jpg" alt="一手拿着手机、一手用笔记本电脑工作的人" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">左手手机右手电脑，两边都在交税。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="smartphone" class="w-4 h-4" style="color:var(--mind)"></i>
+<span class="kicker" style="color:var(--mind)">注意力管理</span>
+<span class="tag">3 分钟速览</span>
+</div>
+<div class="article-body">
+<p>先还原一个场景：报告写到一半，手机亮了，回了两条消息，切回来——盯着屏幕愣了几秒：刚才写到哪了？那个「愣」，就是注意力残留 (attention residue) 露头的瞬间。提出这个概念的是组织行为学家索菲·勒罗伊 (Sophie Leroy)。她2009年的实验发现：当人从任务A切换到任务B、而A还没有做完时，一部分认知资源会继续滞留在A上，B的表现随之打折——哪怕主观上你觉得，自己已经完全切换过来了。残留不是态度问题，是工作记忆实打实的占用。</p>
+<p><strong>机制：未完成的事，在后台不肯下线。</strong>这背后有个更老的心理学效应垫底——蔡格尼克效应 (Zeigarnik effect)：未完成的任务比已完成的更容易被记住，因为大脑会给「未闭合」的事项保留一个后台进程。勒罗伊把两者接上了：A没做完就跳走，后台进程继续占用工作记忆 (working memory) 的带宽，而工作记忆的容量总共只有大约4个组块，被占掉一块，留给B的推理、理解和自控就少一块。实验里，被临时打断、在A未完成时切换的人，做B的成绩明显更差；而先被允许把A做完再切换的人，残留基本消失。</p>
+<p><strong>为什么现代人全天都在交这笔税。</strong>勒罗伊实验里的切换以「次」计，现实里的切换以「分钟」计。加州大学欧文分校的 Gloria Mark 长期追踪办公人群的屏幕使用，测得人们停留在单块屏幕上的平均时长，已从2004年的约2.5分钟缩短到近年的约44秒（口径：其实验室的屏幕注意力追踪研究）。每一次瞟通知、回消息、刷一下行情，都是一个「旧任务未闭合 + 新任务新开进程」的组合，全天几百次切换，等于让工作记忆常年处于被分租的状态。所谓多任务处理 (multitasking)，在认知科学里的结论早已明确：人脑并不并行处理两件需要思考的事，只是在两件事之间快速轮转，每一次轮转都要付一次重启成本。开会时回消息，不是高效，是两边都在交税。</p>
+<p><strong>怎么用。</strong>解法分两层。第一层，减少切换次数：用整块时间 (time blocking) 给深度工作圈出45到90分钟的地盘，期间手机静音并扣在桌面，消息集中到时间块之间批量处理——不是靠自律硬扛，而是靠环境把触发点拆掉。第二层更便宜，也更少人做：切换前花2分钟「收尾」。把当前任务写成一句话——做到哪了、下一步是什么、卡在哪——再起身离开。勒罗伊的后续研究验证的正是这一点：为未完成任务写下「恢复计划」的人，切换后的残留大幅减少。原理很直白：大脑肯下线，是因为它确认了这件事「有着落」，不需要再在后台替你记着。少切换、切前收尾，是这笔税仅有的两条减免通道。</p>
+<p><strong>把「收尾」做成一个固定动作，叫恢复锚点 (ready-to-resume plan)。</strong>离开工位前，用一句话写下三件事：刚做到哪一步、下一个动作是什么、回来先打开哪个文件。比如「表格算到第三部分，下一步核对口径，回来先开附件 2」。这句话的成本不到一分钟，换回的是两样东西：大脑确认任务有着落，后台进程愿意下线；回来时不用靠回忆重建现场，重启成本直接减半。勒罗伊的实验里，仅仅是写下计划这一动作，就显著降低了后续任务的残留损耗——这是目前已知最便宜的注意力补丁。</p>
+<p><strong>通知管理也要讲机制，而不是讲自律。</strong>每一次推送，本质上都是别人在你的工作记忆里强行开一个新进程。把非即时应用的通知全部关掉、只留电话和真正需要秒回的渠道，并不是「戒手机」，是把进程的开启权从算法手里收回来。再配合一个小规则：消息只在时间块的边界处理——整点、半点看一次。对方等 20 分钟，天塌不下来；你的深度工作被切碎 20 次，天才真的会塌。注意力是每天定额发放的货币，切换税交得越少，真正花在产出上的才越多。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--mind)">
+<p class="pullquote text-[16.5px]">你不是在 multitask，你是在 multi-tax。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 认知</cite>
+</blockquote>
+</article>
+
+<!-- 认知 4：贝叶斯更新 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">贝叶斯更新：别问对不对，问概率调多少</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-16.jpg" alt="桌面上几颗骰子的真实摄影" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">每一次掷骰，都是在给信念做一次「更新」。（图片来源：Wikimedia Commons）</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="refresh-ccw" class="w-4 h-4" style="color:var(--mind)"></i>
+<span class="kicker" style="color:var(--mind)">判断与概率</span>
+<span class="tag">15 分钟深读</span>
+</div>
+<div class="article-body">
+<p>贝叶斯更新 (Bayesian updating) 听起来是数学课，其实是一种日常判断的纪律。它的骨架只有三件东西：先验概率 (prior)——在看到新证据之前，你认为某件事有多大可能；似然 (likelihood)——如果这件事是真的（或假的），你看到眼前这条证据的概率分别有多大；后验概率 (posterior)——把证据吸收之后，更新过的判断。公式写作「后验 ∝ 先验 × 似然」，翻译成大白话：一条新证据该把你的信念推动多少，取决于两件事——你原来有多确信，以及这条证据有多「专一」，也就是它在对立假设下出现的概率差得有多大。</p>
+<p><strong>一个能算出反直觉答案的例子。</strong>假设某种疾病在人群中的患病率是1%（先验）。一种检测对患者的检出率是99%（真阳性率），对健康人的误报率是5%（假阳性率）。现在一个随机路人检测出阳性，他真的患病的概率是多少？直觉答案多半是「九成以上」，正确答案却是约17%。算一遍就清楚了：每一万人里约有100名患者，检出99人；9900名健康人里误报495人；阳性总共约594人，真正的患者只占 99/594 ≈ 17%。直觉错在哪？它只盯着「检测有多准」，却把「这病本来有多罕见」——基础率 (base rate)——扔在了一边。贝叶斯更新的一大半功力，就是强迫你先把先验写下来，再谈证据。</p>
+<p><strong>为什么它是「事后诸葛亮」的结构性解药。</strong>人的默认更新方式是二极管式的：新证据来了，要么全盘推翻——「我早觉得不行」；要么当作没看见——「那只是个意外」。两种都是把概率当开关。贝叶斯方式要求的是刻度：证据强，大幅调；证据弱，小幅调；而且调多少，在看到证据之前就由似然比决定，不由情绪决定。更关键的是，先验一旦被写下来并留了痕，「我早就知道」就没法篡改了。判断力能不能进步，全看有没有这种可复盘的记录——这也是交易日志、决策日志这类工具的底层逻辑：它们不是记事本，是先验的存档。</p>
+<p><strong>和「信号 vs 噪音」接上。</strong>戴上贝叶斯的眼镜看本报这个栏目：所谓噪音，就是似然比约等于1的证据——它出现与否，在「趋势成立」和「趋势不成立」两种假设下概率差不多，所以看完之后，后验理应纹丝不动；所谓信号，是似然比明显偏离1的证据，值得你挪动几个、甚至几十个百分点。制裁表态、一两天的价格异动，大多属于前者；仓单连续多日的方向、真实库存的进出（见本期财富版「交易者手记」），更接近后者。分不清两者的代价非常具体：对噪音过度更新的人，会在一周里把立场翻来覆去改十遍，每一遍都要付手续费和点差。</p>
+<p><strong>怎么用。</strong>给自己立三条小规矩。第一，重要判断先写先验：「我认为这事有60%的可能」，写进备忘录或日志，带上日期。第二，新证据出现时只回答一个问题：「如果我的判断是错的，这条证据出现的概率有多大？」答不上来，说明证据还没看懂，先别更新。第三，更新完写一句理由和新概率，几个月后回头对账：自己是系统性高估还是系统性低估，一目了然。成熟不是从不犯错，是每来一条证据，都愿意按它的分量、而不是按情绪，去调那几个百分点。</p>
+<p><strong>把同一套更新，搬到盘面上算一次。</strong>假设你对「这轮上涨是真趋势」的先验是 50%。现在出现一条证据：仓单连续 5 天下降。你估计，若真是趋势，这种连降出现的概率约 60%；若只是震荡假动作，连降出现的概率约 20%——似然比是 3:1。代入更新：后验 = (0.5×0.6) / (0.5×0.6 + 0.5×0.2) = 75%。注意这个过程里发生了什么：一条过硬的证据，只把信念从 50% 推到 75%，没有推到 100%——你依然留了四分之一的概率给「自己看错了」，仓位因此天然带着分寸。反过来，一条似然比接近 1 的讲话类消息，算完后验几乎不动，你也就不会为它付一笔手续费。</p>
+<p><strong>长期坚持更新，还有一个复利效应。</strong>每一次「先验—证据—后验」都被记录下来，你就拥有了一份校准档案 (calibration record)：说 70% 的那些事，最后大约有几成真的发生了？多数人第一次对账都会发现，自己的 70% 其实只值 50%，90% 只值 70%——系统性过度自信，被数字当场抓住。把每一档概率都往回收一点，之后的每一次下注都会更接近真实赔率。判断力不是天赋，是这样一笔一笔对账对出来的。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--mind)">
+<p class="pullquote text-[16.5px]">成熟不是从不犯错，是每次证据出现，都愿意调那几个百分点。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 认知</cite>
+</blockquote>
+</article>
+
+<!-- 认知 5：幸存者偏差 -->
+<article>
+<h3 class="font-serif font-black text-2xl leading-snug mb-3">幸存者偏差的交易版</h3>
+<figure class="border hairline mb-4" style="background:var(--card)">
+<img src="assets-002/img-17.jpg" alt="1944年执行轰炸任务的 B-24 轰炸机群历史照片" class="block w-full h-auto" loading="lazy" />
+<figcaption class="photo-cap px-3 py-2 border-t hairline">1944年，B-24轰炸机群——没回来的那些，才有信息。</figcaption>
+</figure>
+<div class="flex items-center gap-2 flex-wrap mt-4">
+<i data-lucide="plane" class="w-4 h-4" style="color:var(--mind)"></i>
+<span class="kicker" style="color:var(--mind)">统计陷阱</span>
+<span class="tag">3 分钟速览</span>
+</div>
+<div class="article-body">
+<p>幸存者偏差 (survivorship bias) 的经典现场在二战。美军统计返航轰炸机的弹孔分布，发现机翼和机身中弹最密，打算给这些部位加装装甲。哥伦比亚大学统计研究小组的亚伯拉罕·沃德 (Abraham Wald) 拦下了这个方案：弹孔密的地方，恰恰证明中弹了也能飞回来；真正该加固的，是弹孔稀少的发动机和座舱——因为那些部位中弹的飞机，根本没有出现在样本里。样本不是被随机抽缺的，是被结果筛选过的：在被筛过的样本上做再精确的统计，结论也可以系统地错。</p>
+<p><strong>机制：消失者不发言。</strong>偏差的根源在数据的生成方式：任何「成功者样本」在被你看到之前，都已经被淘汰机制过滤了一轮，而被过滤掉的那部分，恰好携带最重要的信息——失败的真实概率和具体的死法。只看幸存者，你估算的永远是「以活下来为条件」的分布：策略的真实期望被系统性高估，风险被系统性低估。注意，这不是样本量的问题——样本再大，缺失的那一块也不会自己长回来。</p>
+<p><strong>交易版的三个现场。</strong>第一，共同基金业绩：数据库会把清盘、被合并掉的基金悄悄移除，剩下的全是活到今天的，行业「平均业绩」因此被抬高——学术研究（Elton、Gruber 与 Blake 等人的经典测算）估计，这个偏差的量级约为每年0.9个百分点（研究估计口径），足以把一整类产品的宣传数字改头换面。第二，策略回测：用今天的指数成分股去回测十年前，等于默认当年就知道哪些公司不会退市、不被剔除，测出来的曲线天然偏乐观——这是回测里最隐蔽的幸存者偏差，也是量化新手最常踩的坑之一。第三，社交媒体：晒单者的胜率永远高于真实胜率，因为连亏的人会停止发帖、注销账号，你刷到的「交易员生态」，分母早就被情绪筛过一遍了。你看到的「稳定盈利」截图很多，销声匿迹的爆仓帖一个没有——不是它们不存在，是它们发不出声了。</p>
+<p><strong>怎么用。</strong>看任何「战绩」，先过沃德式的三问：第一，分母是谁——这批赢家是从多大的池子里筛出来的，入选率是多少？第二，缺席者去哪了——同期入场、如今消失的那些，数量大概多少、为什么消失？第三，如果把缺席者按最保守的口径补回去，这个结论还成立吗？补不回去的数据，就主动把结论的置信度调低一档。这套问法不止用于交易：看「名校毕业生平均薪资」，要问中途退学和延毕的人去哪了；看「创业成功故事」，要问同年倒闭的几万家公司由谁来讲。世界只给幸存者发麦克风，你的功课，是替缺席者留一把椅子。</p>
+<p><strong>把沃德的问法，用到你自己的交易记录上。</strong>复盘时最容易犯的幸存者偏差，是只复盘还留着的仓位和「印象深刻」的那几笔——爆仓出局的、手动删掉自选的、当初根本没敢下单的机会，统统不在样本里。结果是，你的「策略胜率」永远高于真实胜率，因为分母被记忆筛过。补法很机械：在日志里给每一笔交易编号，只增不删，平仓原因必填；每月统计时用全部编号做分母，而不是用「还记得的那些」。数字难看一点没关系，难看的数字才是真的，好看的样本多半是筛过的。</p>
+<p><strong>最后记住沃德那句话的完整含义。</strong>他看的从来不是「哪里中弹最多」，而是「缺失的数据长什么样」。这个视角迁移到任何领域都成立：招聘只看成功者的履历、创业只听幸存者的演讲、选策略只看活下来的基金——全是在给机翼加装甲。真正的信息密度，往往藏在沉默的那一群里。学会先问「谁不在场」，再问「在场的人说了什么」，你就已经躲开了统计学里最昂贵的一类错误。</p>
+</div>
+<blockquote class="mt-4 pl-4 border-l-4" style="border-color:var(--mind)">
+<p class="pullquote text-[16.5px]">你看到的每一张盈利截图背后，都有一百张没发出来的爆仓单。</p>
+<cite class="not-italic text-[12px]" style="color:var(--ink-3)">—— 本期戳破句 · 认知</cite>
+</blockquote>
+</article>
+
+</div>
+</section>
+
+<!-- ══════════ 每日一问 ══════════ -->
+<section id="dailyq" class="py-8">
+<div class="rule-double pt-5">
+<div class="flex items-center gap-2 mb-3">
+<i data-lucide="message-circle-question" class="w-4 h-4" style="color:var(--ink-2)"></i>
+<span class="text-[13px] font-bold">每日一问</span>
+</div>
+<p class="font-serif font-bold text-[21px] leading-relaxed">今天哪篇戳到你？有什么感悟？</p>
+<p class="text-[12.5px] mt-3" style="color:var(--ink-3)">点右下角 ✎，在 Notes 面板顶部就能直接写，写完一键复制发给猪哩。</p>
+</div>
+</section>
+</main>
+
+<!-- ══════════ 页脚 ══════════ -->
+<footer class="max-w-6xl mx-auto px-4 sm:px-6 pb-10">
+<div class="rule-red mb-4"></div>
+<div class="flex flex-col sm:flex-row justify-between gap-3 text-[12.5px]" style="color:var(--ink-3)">
+<div>
+<span class="font-serif font-bold text-[14px]" style="color:var(--ink)">全维进化日报</span>
+· 第 002 期 · 2026年10月19日（星期一）
+<div class="mt-1">本报内容为知识科普与观点分享，不构成医疗建议与投资建议。头条消息据路透社 2026年10月18日报道，其余以官方正式发布为准。</div>
+</div>
+<div class="sm:text-right shrink-0">
+<div>健康版 / 财富版 / 认知版，明早见。</div>
+</div>
+</div>
+</footer>
+
+<!-- ══════════ 随手记 · Notes ══════════ -->
+<button id="basketFab" aria-label="打开笔记汇总"><span aria-hidden="true">✎</span><span class="basket-count" id="basketCount">0</span></button>
+<div id="basketOverlay" role="dialog" aria-label="Notes">
+<div id="basketPanel">
+<div class="flex items-center justify-between px-4 py-3 border-b hairline">
+<div>
+<span class="font-serif font-black text-lg">Notes</span>
+<span class="text-[12px] ml-2" style="color:var(--ink-3)">全维进化日报 · 第002期</span>
+</div>
+<button id="basketClose" class="note-cancel" aria-label="关闭笔记汇总">✕ 关闭</button>
+</div>
+<div class="quick-note">
+<select id="quickNoteTitle" aria-label="选择这条笔记属于哪一篇"></select>
+<textarea id="quickNoteText" rows="3" class="p-3 leading-relaxed" placeholder="想到什么、想问什么，直接写在这里……"></textarea>
+<div class="note-actions">
+<button type="button" id="quickNoteSave" class="note-save">保存</button>
+</div>
+</div>
+<div id="basketList"></div>
+<div class="px-4 py-3 border-t hairline">
+<button id="basketCopy" class="note-save w-full" style="padding:11px 18px;font-size:14px">一键复制全部想法</button>
+<p class="text-[12.5px] text-center mt-2" style="color:var(--ink-3)">复制后粘贴发给猪哩，你的想法就到我这儿了。</p>
+</div>
+</div>
+</div>
+<div id="basketToast" role="status"></div>
+
+<script>
+(function () {
+// ── 主题切换（与第001期、知识库共用同一个 localStorage 键）──
+var root = document.documentElement;
+var saved = null;
+try { saved = localStorage.getItem('omni-daily-theme');} catch (e) {}
+var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+var theme = saved || (prefersDark? 'dark': 'light');
+function applyTheme(t) {
+root.setAttribute('data-theme', t);
+document.getElementById('themeIconMoon').classList.toggle('hidden', t === 'dark');
+document.getElementById('themeIconSun').classList.toggle('hidden', t!== 'dark');
+document.getElementById('themeLabel').textContent = t === 'dark'? '纸白': '墨夜';
+}
+applyTheme(theme);
+document.getElementById('themeToggle').addEventListener('click', function () {
+theme = root.getAttribute('data-theme') === 'dark'? 'light': 'dark';
+applyTheme(theme);
+try { localStorage.setItem('omni-daily-theme', theme);} catch (e) {}
+});
+
+// ── Lucide 图标 ──
+if (window.lucide) lucide.createIcons();
+})();
+</script>
+
+<script>
+(function () {
+// ── 随手记：每篇篇末记一笔，汇总进 Notes 面板 ──
+var ISSUE = '第002期';
+var KEY = 'omni-daily-notes-issue-002';
+var notes = [];
+try {
+var raw = JSON.parse(localStorage.getItem(KEY) || '[]');
+if (Array.isArray(raw)) notes = raw;
+} catch (e) { notes = [];}
+
+function persist() {
+try { localStorage.setItem(KEY, JSON.stringify(notes));} catch (e) {}
+}
+function esc(s) {
+return String(s).replace(/[&<>"']/g, function (c) {
+return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c];
+});
+}
+function fmtTime(ts) {
+var d = new Date(ts);
+function p(n) { return (n < 10? '0': '') + n;}
+return (d.getMonth() + 1) + '月' + d.getDate() + '日 ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function notesFor(title) {
+return notes.filter(function (n) { return n.title === title;});
+}
+
+var zones = []; // { title, listEl, badgeEl}
+
+function renderZone(z) {
+var mine = notesFor(z.title).slice().sort(function (a, b) { return a.ts - b.ts;});
+z.badgeEl.style.display = mine.length? '': 'none';
+z.badgeEl.textContent = mine.length;
+z.listEl.innerHTML = mine.map(function (n) {
+return '<div class="note-item">' +
+'<div class="note-item-text">' + esc(n.text) + '</div>' +
+'<div class="note-item-meta"><span>' + ISSUE + ' · ' + fmtTime(n.ts) + '</span>' +
+'<button type="button" class="note-del" data-del="' + n.id + '">删除</button></div></div>';
+}).join('');
+}
+function renderBasketCount() {
+document.getElementById('basketCount').textContent = notes.length;
+}
+function renderAll() {
+zones.forEach(renderZone);
+renderBasketCount();
+renderBasketList();
+}
+
+// ── 给头版头条与每篇文章装上「✎ note」──
+var targets = [];
+var headline = document.getElementById('headline');
+if (headline) targets.push(headline);
+var articles = document.querySelectorAll('main article');
+for (var i = 0; i < articles.length; i++) targets.push(articles[i]);
+
+targets.forEach(function (host) {
+var heading = host.querySelector('h2, h3');
+if (!heading) return;
+var title = heading.textContent.replace(/\s+/g, ' ').trim();
+var zone = document.createElement('div');
+zone.className = 'note-zone';
+zone.innerHTML =
+'<button type="button" class="note-toggle">✎ note <span class="note-badge" style="display:none"></span></button>' +
+'<div class="note-editor">' +
+'<textarea rows="3" class="w-full rounded-md p-3 text-base leading-relaxed" placeholder="读到这里，想说什么、想问什么，随手写下来……"></textarea>' +
+'<div class="note-actions">' +
+'<button type="button" class="note-save">保存</button>' +
+'<button type="button" class="note-cancel">收起</button>' +
+'</div>' +
+'</div>' +
+'<div class="note-list"></div>';
+host.appendChild(zone);
+
+var z = {
+title: title,
+listEl: zone.querySelector('.note-list'),
+badgeEl: zone.querySelector('.note-badge')
+};
+zones.push(z);
+
+var editor = zone.querySelector('.note-editor');
+var input = zone.querySelector('textarea');
+var toggleBtn = zone.querySelector('.note-toggle');
+var lastTouchEnd = 0;
+function toggleEditor() {
+var open = editor.classList.toggle('open');
+if (open) {
+// 在手势回调内同步 focus，iOS 才会弹出键盘
+input.focus();
+setTimeout(function () {
+try { input.scrollIntoView({ block: 'center'});} catch (e) {}
+}, 350);
+}
+}
+// iOS Safari/WKWebView 常吞掉 click 里迟到的程序化 focus，改以 touchend 手势为主、click 兜底
+toggleBtn.addEventListener('touchend', function (ev) {
+ev.preventDefault();
+lastTouchEnd = Date.now();
+toggleEditor();
+});
+toggleBtn.addEventListener('click', function () {
+if (Date.now() - lastTouchEnd < 700) return;
+toggleEditor();
+});
+zone.querySelector('.note-cancel').addEventListener('click', function () {
+editor.classList.remove('open');
+});
+zone.querySelector('.note-save').addEventListener('click', function () {
+var text = input.value.trim();
+if (!text) { input.focus(); return;}
+notes.push({ id: Date.now() + '-' + Math.random().toString(36).slice(2, 7), title: title, text: text, ts: Date.now()});
+persist();
+input.value = '';
+editor.classList.remove('open');
+renderAll();
+showToast('已存好 ✓');
+});
+z.listEl.addEventListener('click', function (ev) {
+var btn = ev.target.closest? ev.target.closest('[data-del]'): null;
+if (!btn) return;
+var id = btn.getAttribute('data-del');
+notes = notes.filter(function (n) { return String(n.id)!== id;});
+persist();
+renderAll();
+});
+});
+
+// ── Notes 面板 ──
+var overlay = document.getElementById('basketOverlay');
+var basketList = document.getElementById('basketList');
+function renderBasketList() {
+if (!notes.length) {
+basketList.innerHTML = '<p class="text-[14px] leading-relaxed" style="color:var(--ink-3)">还没有笔记。在上面选好篇目直接写，或点篇末的「✎ note」，都会汇总到这里。</p>';
+return;
+}
+var sorted = notes.slice().sort(function (a, b) { return a.ts - b.ts;});
+basketList.innerHTML = sorted.map(function (n) {
+return '<div class="basket-item">' +
+'<div class="basket-item-title"></div>' +
+'<div class="note-item-text">' + esc(n.text) + '</div>' +
+'<div class="note-item-meta"><span>' + fmtTime(n.ts) + '</span>' +
+'<button type="button" class="note-del" data-del="' + n.id + '">删除</button></div></div>';
+}).join('');
+}
+basketList.addEventListener('click', function (ev) {
+var btn = ev.target.closest? ev.target.closest('[data-del]'): null;
+if (!btn) return;
+var id = btn.getAttribute('data-del');
+notes = notes.filter(function (n) { return String(n.id)!== id;});
+persist();
+renderAll();
+});
+
+// ── 面板顶部快速记一笔：选篇目直接写，与篇末笔记共用同一份数据 ──
+var quickTitle = document.getElementById('quickNoteTitle');
+var quickText = document.getElementById('quickNoteText');
+var opts = ['<option value="本期随想">本期随想</option>'];
+zones.forEach(function (z) {
+opts.push('<option value="' + esc(z.title) + '">' + esc(z.title) + '</option>');
+});
+quickTitle.innerHTML = opts.join('');
+document.getElementById('quickNoteSave').addEventListener('click', function () {
+var text = quickText.value.trim();
+if (!text) { quickText.focus(); return;}
+notes.push({ id: Date.now() + '-' + Math.random().toString(36).slice(2, 7), title: quickTitle.value, text: text, ts: Date.now()});
+persist();
+quickText.value = '';
+renderAll();
+showToast('已存好 ✓');
+});
+
+var fab = document.getElementById('basketFab');
+var lastFabTouchEnd = 0;
+function openBasket() {
+renderBasketList();
+overlay.classList.add('open');
+// 点开就能写：在手势回调内同步聚焦，手机上直接弹出键盘
+quickText.focus();
+}
+// 与篇末编辑器同一套路：touchend 为主、click 兜底，避免移动端 WebView 吞掉 click 里的聚焦
+fab.addEventListener('touchend', function (ev) {
+ev.preventDefault();
+lastFabTouchEnd = Date.now();
+openBasket();
+});
+fab.addEventListener('click', function () {
+if (Date.now() - lastFabTouchEnd < 700) return;
+openBasket();
+});
+document.getElementById('basketClose').addEventListener('click', function () {
+overlay.classList.remove('open');
+});
+overlay.addEventListener('click', function (ev) {
+if (ev.target === overlay) overlay.classList.remove('open');
+});
+
+// ── 一键复制 ──
+var toastTimer = null;
+function showToast(msg) {
+var toast = document.getElementById('basketToast');
+toast.textContent = msg;
+toast.classList.add('show');
+clearTimeout(toastTimer);
+toastTimer = setTimeout(function () { toast.classList.remove('show');}, 2600);
+}
+document.getElementById('basketCopy').addEventListener('click', function () {
+if (!notes.length) { showToast('还没有笔记'); return;}
+var sorted = notes.slice().sort(function (a, b) { return a.ts - b.ts;});
+var text = sorted.map(function (n) {
+return '\n' + n.text;
+}).join('\n\n');
+function done() { showToast('已复制 ✓ 粘贴发给猪哩就行');}
+function fail() { showToast('复制失败，长按选中文字手动复制');}
+if (navigator.clipboard && navigator.clipboard.writeText) {
+navigator.clipboard.writeText(text).then(done, function () {
+if (fallbackCopy(text)) done(); else fail();
+});
+} else {
+if (fallbackCopy(text)) done(); else fail();
+}
+});
+function fallbackCopy(text) {
+try {
+var ta = document.createElement('textarea');
+ta.value = text;
+ta.style.position = 'fixed';
+ta.style.opacity = '0';
+document.body.appendChild(ta);
+ta.select();
+var ok = document.execCommand('copy');
+document.body.removeChild(ta);
+return ok;
+} catch (e) { return false;}
+}
+
+renderAll();
+})();
+</script>
+</body>
+</html>
