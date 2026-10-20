@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FI 4 道题 · 第二批 · 零基础手把手</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #ffffff; color: #232323; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 20px 18px 80px; }
+  header.hero { padding: 24px 4px 16px; border-bottom: 3px solid #232323; margin-bottom: 8px; }
+  header.hero h1 { font-size: 24px; }
+  header.hero .sub { font-size: 14px; color: #777; margin-top: 6px; }
+  header.hero .how { margin-top: 12px; font-size: 14px; color: #555; background: #faf9f6; border: 1px solid #eee; border-radius: 10px; padding: 12px 14px; line-height: 1.8; }
+  nav.toc { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); border-bottom: 1px solid #eee; padding: 10px 4px; display: flex; gap: 8px; overflow-x: auto; }
+  nav.toc a { flex: 0 0 auto; text-decoration: none; font-size: 13px; font-weight: 600; color: #555; border: 1px solid #e3e3e3; border-radius: 999px; padding: 6px 14px; background: #fff; }
+  section.q { margin-top: 32px; scroll-margin-top: 70px; }
+  .q-head { border-radius: 12px; padding: 18px; color: #fff; margin-bottom: 12px; }
+  .q-head .no { font-size: 12px; font-weight: 700; letter-spacing: 2px; opacity: .85; }
+  .q-head h2 { font-size: 20px; margin: 4px 0 2px; }
+  .q-head .one { font-size: 14px; opacity: .95; margin-top: 6px; line-height: 1.7; }
+  .qa .q-head { background: #3B4D8C; } .qb .q-head { background: #0E7C6B; }
+  .qc .q-head { background: #A86F14; } .qd .q-head { background: #A83A2C; }
+  .card { background: #fff; border: 1px solid #ececec; border-left: 5px solid #ccc; border-radius: 10px; padding: 15px 16px; margin: 12px 0; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .qa .card { border-left-color: #5B6FB5; } .qb .card { border-left-color: #0E7C6B; }
+  .qc .card { border-left-color: #D29A2B; } .qd .card { border-left-color: #C4553F; }
+  .card h3 { font-size: 14px; letter-spacing: 1px; margin-bottom: 6px; }
+  .qa .card h3 { color: #3B4D8C; } .qb .card h3 { color: #0E7C6B; }
+  .qc .card h3 { color: #8a5c0e; } .qd .card h3 { color: #A83A2C; }
+  .card p { font-size: 15px; margin: 6px 0; }
+  .card ul { padding-left: 20px; font-size: 14.5px; } .card li { margin: 5px 0; }
+  .say { font-size: 15px; }
+  .say b { background: #fff8e1; padding: 0 4px; border-radius: 4px; }
+  .qa .say b { background: #e8ecfa; } .qb .say b { background: #e0f2ee; } .qd .say b { background: #fbe9e4; }
+  .bignum { font-size: 20px; font-weight: 800; font-family: "SF Mono", Menlo, Consolas, monospace; background: #f7f6f3; border-radius: 8px; padding: 10px 12px; margin: 8px 0; overflow-x: auto; }
+  .step { border-top: 1px solid #f0f0f0; padding: 12px 0 10px; }
+  .step:first-of-type { border-top: none; }
+  .step .n { display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px; }
+  .qa .step .n { background: #3B4D8C; } .qb .step .n { background: #0E7C6B; }
+  .qc .step .n { background: #A86F14; } .qd .step .n { background: #A83A2C; }
+  .step .t { font-weight: 700; font-size: 15px; }
+  .step .why { font-size: 13.5px; color: #666; margin-top: 6px; }
+  .step .why b { color: #444; }
+  .oneformula { background: #f7f6f3; border: 1px dashed #ddd; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-weight: 700; margin: 8px 0; }
+  details.sym { margin-top: 10px; font-size: 13px; color: #888; }
+  details.sym summary { cursor: pointer; color: #666; font-size: 13px; }
+  details.sym .f { font-family: "SF Mono", Menlo, Consolas, monospace; background: #f7f6f3; border-radius: 6px; padding: 8px 10px; margin-top: 6px; font-size: 13.5px; color: #444; overflow-x: auto; }
+  .card.prob { border-left-color: #999; }
+  .prob .ptext { font-size: 14px; color: #333; }
+  .examwrite { font-family: Georgia, "Times New Roman", serif; background: #f7f6f3; border-radius: 8px; padding: 12px 14px; font-size: 14.5px; line-height: 1.9; white-space: pre-line; }
+  .prob .zh { color: #555; margin-top: 8px; }
+  .prob .zh .tag { display: inline-block; font-size: 12px; color: #fff; background: #888; border-radius: 4px; padding: 1px 7px; margin-right: 6px; }
+  .answer-big { font-size: 30px; font-weight: 800; margin: 6px 0; }
+  .qa .answer-big { color: #3B4D8C; } .qb .answer-big { color: #0E7C6B; }
+  .qc .answer-big { color: #8a5c0e; } .qd .answer-big { color: #A83A2C; }
+  .answer-big small { font-size: 14px; font-weight: 400; color: #777; }
+  .verify li b { color: #1d7a3a; }
+  .tip { background: #fffdf4; }
+  table.mini { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 10px 0; line-height: 1.6; }
+  table.mini th, table.mini td { border: 1px solid #e5e5e5; padding: 7px 8px; text-align: right; }
+  table.mini th:first-child, table.mini td:first-child { text-align: left; }
+  table.mini th { background: #f7f6f3; }
+  table.mini tr.total td { font-weight: 700; background: #fbfaf8; }
+  .en { color: rgba(255,255,255,.85); font-size: 13px; }
+  footer { margin-top: 36px; padding-top: 14px; border-top: 2px solid #232323; font-size: 12.5px; color: #888; line-height: 1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>FI 4 道题 · 第二批 · 零基础手把手</h1>
+  <div class="sub">和昨天一样的读法：题目原文 → 中文对照 → 故事 → 一步一步算（每步都有"为什么"）→ 英文作答版。所有答案我都用程序验算过。</div>
+  <div class="how">这批四道：<b>重定价缺口</b>（和昨天 Q9 同一个模型，这题是基础版）、<b>保险公司七个比率</b>、<b>股票承销包销 vs 代销</b>、<b>Megalopolis 银行体检五比率</b>。</div>
+</header>
+
+<nav class="toc">
+  <a href="#qa">Q8 · 重定价缺口</a>
+  <a href="#qb">Q31 · 保险比率</a>
+  <a href="#qc">Q8 · 股票承销</a>
+  <a href="#qd">Q26 · 银行体检</a>
+</nav>
+
+<!-- ================= 题1 重定价缺口 ================= -->
+<section class="q qa" id="qa">
+  <div class="q-head">
+    <div class="no">QUESTION 8 · REPRICING</div>
+    <h2>重定价缺口 <span class="en">Repricing Gap</span></h2>
+    <div class="one">一句话：一家银行有三种头寸，分别算利率涨 1%、跌 1% 时，它的净利息收入（net interest income）是多赚还是少赚、多多少。</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">8. Consider the following balance sheet positions for a financial institution:<br>
+    • Rate-sensitive assets = $200 million; Rate-sensitive liabilities = $100 million<br>
+    • Rate-sensitive assets = $100 million; Rate-sensitive liabilities = $150 million<br>
+    • Rate-sensitive assets = $150 million; Rate-sensitive liabilities = $140 million<br>
+    a. Calculate the repricing gap and the impact on net interest income of a 1 percent increase in interest rates for each position.<br>
+    b. Calculate the impact on net interest income of each of the above situations, assuming a 1 percent decrease in interest rates.<br>
+    c. What conclusion can you draw about the repricing model from these results?</div>
+    <div class="ptext zh"><span class="tag">中文</span>某金融机构有以下三种资产负债表头寸（RSA＝利率敏感资产，RSL＝利率敏感负债）：①RSA $200m、RSL $100m；②RSA $100m、RSL $150m；③RSA $150m、RSL $140m。<b>a.</b> 计算每种头寸的重定价缺口，以及利率<b>上升 1%</b> 对净利息收入的影响。<b>b.</b> 假设利率<b>下降 1%</b>，计算每种情况对净利息收入的影响。<b>c.</b> 从这些结果中，你能对重定价模型得出什么结论？</div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">银行的资产和负债分两种：<b>利率敏感</b>的，就是短期内会按新利率重新定价的（比如浮动利率贷款、短期存款）——市场利率一变，它收的、付的利息立刻跟着变。不敏感的（比如 10 年固定利率贷款）纹丝不动。</p>
+    <p class="say">想象你同时是<b>房东又是租客</b>：你租出去的房子是"浮动租金"，你租住的房子也是"浮动租金"。市场租金涨 10%：你多收的和多付的哪个多，就决定你赚还是亏。<b>重定价缺口（repricing gap）就是"会涨价的收入 − 会涨价的支出"</b>。</p>
+    <p class="say">这题和昨天 Q9 是同一个模型，区别是：昨天那题分时间段算了好几个缺口，这题每种头寸<b>只有一个缺口</b>，是基础版。</p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">先算三种头寸的缺口：缺口 ＝ 利率敏感资产 − 利率敏感负债</span>
+      <div class="bignum">① 200 − 100 = +100（百万美元）<br>② 100 − 150 = −50<br>③ 150 − 140 = +10</div>
+      <div class="why"><b>为什么先算这个：</b>缺口的<b>正负号决定方向</b>（利率变了是赚是亏），<b>大小决定幅度</b>（赚多少亏多少）。后面所有计算都只用这个数。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">a 问：利率上升 1%，影响 ＝ 缺口 × 1%</span>
+      <div class="bignum">① +100 × 1% = <b>+$1.00m</b>（多赚 100 万）<br>② −50 × 1% = <b>−$0.50m</b>（少赚 50 万）<br>③ +10 × 1% = <b>+$0.10m</b>（多赚 10 万）</div>
+      <div class="why"><b>为什么能这么算：</b>利率变 1%，只有"敏感"的那部分跟着变；收入端和支出端同时变，净效果就等于两边之差（缺口）乘以 1%。①收入端敏感的多，利率涨 → 多收的比多付的多 → 赚钱。②反过来，付的涨得比收的多 → 亏钱。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">b 问：利率下降 1% —— 全部反号，大小不变</span>
+      <div class="bignum">① <b>−$1.00m</b>　② <b>+$0.50m</b>　③ <b>−$0.10m</b></div>
+      <div class="why"><b>为什么直接反号：</b>这个模型是线性的、对称的——利率反向走，影响就反向、同等大小。所以 b 问不用重算，把 a 的结果翻个符号就是答案。</div>
+    </div>
+    <div class="step">
+      <span class="n">4</span><span class="t">c 问：结论 —— 三句话</span>
+      <div class="why" style="font-size:14.5px;color:#333;"><b>正缺口：利率涨就赚、跌就亏。负缺口：正好反过来。缺口越大，影响越大。</b>就这么简单——先看缺口是正是负，知道是赚是亏；再看缺口多大，知道赚多少亏多少。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案 · Answers</h3>
+    <table class="mini">
+      <tr><th>头寸</th><th>缺口 Gap</th><th>利率 +1%</th><th>利率 −1%</th></tr>
+      <tr><td>① RSA 200 / RSL 100</td><td>+$100m</td><td>+$1.00m</td><td>−$1.00m</td></tr>
+      <tr><td>② RSA 100 / RSL 150</td><td>−$50m</td><td>−$0.50m</td><td>+$0.50m</td></tr>
+      <tr><td>③ RSA 150 / RSL 140</td><td>+$10m</td><td>+$0.10m</td><td>−$0.10m</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">a. Position 1: Gap = 200 − 100 = +$100m; ΔNII = (+100) × 1% = +$1.0 million.
+Position 2: Gap = 100 − 150 = −$50m; ΔNII = (−50) × 1% = −$0.5 million.
+Position 3: Gap = 150 − 140 = +$10m; ΔNII = (+10) × 1% = +$0.1 million.
+b. With a 1 percent decrease in rates, the effects reverse: −$1.0 million, +$0.5 million, and −$0.1 million.
+c. A positive gap means the bank gains when rates rise and loses when rates fall. A negative gap is the opposite. The bigger the gap, the bigger the effect.</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式</h3>
+    <div class="oneformula">净利息收入的变化 ＝ 缺口 × 利率变化；缺口 ＝ 会改价的资产 − 会改价的负债</div>
+    <details class="sym"><summary>符号版（点开看，不用背）</summary>
+      <div class="f">Gap = RSA − RSL；　ΔNII = Gap × ΔR</div>
+    </details>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 自己检查一遍</h3>
+    <ul>
+      <li><b>直觉验 ②：</b>RSL 比 RSA 多 50，利率涨 1% → 多付的利息比多收的多 50 × 1% = 0.5 → 亏 $0.5m ✓ 和公式一致。</li>
+      <li><b>b 是 a 的镜像：</b>三组数字大小相同、符号相反 ✓ 符合"线性对称"。</li>
+      <li><b>缺口越大动静越大：</b>+$100m 缺口对应 $1m 影响，+$10m 缺口只对应 $0.1m ✓ 成正比。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <ul>
+      <li>a 问阅卷看两步：<b>先写缺口、再写影响</b>，只写最后数字会扣步骤分。</li>
+      <li>单位是 million（百万美元），答案后面别丢。</li>
+      <li>c 问记住三句就行：<b>正缺口喜涨怕跌、负缺口反过来、缺口越大影响越大</b>。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 题2 保险比率 ================= -->
+<section class="q qb" id="qb">
+  <div class="q-head">
+    <div class="no">QUESTION 31 · INSURANCE</div>
+    <h2>保险公司七个比率 <span class="en">Insurer Ratios</span></h2>
+    <div class="one">一句话：一家保险公司的一条保险线，每收 1 块钱保费，赔出去多少、花掉多少、最后到底赚不赚钱。</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">31. A property-casualty insurer brings in $6.25 million in premiums on its homeowners' multiple peril line of insurance. The line's losses amount to $4,343,750, expenses are $1,593,750, and dividends are $156,250. The insurer earns $218,750 on the investment of its premiums. Calculate the line's loss ratio, expense ratio, dividend ratio, combined ratio, investment ratio, operating ratio, and overall profitability.</div>
+    <div class="ptext zh"><span class="tag">中文</span>一家<b>财产意外险（property-casualty）</b>保险公司，在其<b>房主综合险（homeowners' multiple peril）</b>这条线上收到保费 <b>$6.25 million</b>。该线的赔付（losses）为 <b>$4,343,750</b>，费用（expenses）为 <b>$1,593,750</b>，分红（dividends，给投保人的红利）为 <b>$156,250</b>。公司用保费投资赚了 <b>$218,750</b>。计算这条线的：<b>赔付率、费用率、分红率、综合比率、投资比率、经营比率、整体盈利能力</b>。</div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">把这条保险线想成一家<b>餐厅</b>，保费就是营业额 $6.25m。钱有四个去向：</p>
+    <p class="say"><b>赔付</b>＝食材成本（出险赔给客户的钱）；<b>费用</b>＝人工房租水电（核保、理赔、销售佣金）；<b>分红</b>＝给老顾客的返现（保险公司把一部分利润以红利形式返给投保人）；还有一个进项：<b>投资收益</b>＝顾客预付的保费先攥在手里，拿去短期理财赚的钱。</p>
+    <p class="say">七个比率里有六个的<b>分母都是保费</b>——本质上全在回答一个问题："每一块钱保费，是怎么被分掉的？"</p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">赔付率（loss ratio）＝ 赔付 ÷ 保费</span>
+      <div class="bignum">4,343,750 ÷ 6,250,000 = 69.5%</div>
+      <div class="why"><b>为什么：</b>每收 1 块保费，69.5 分拿去赔了。这是保险公司最大的一块成本。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">费用率（expense ratio）＝ 费用 ÷ 保费</span>
+      <div class="bignum">1,593,750 ÷ 6,250,000 = 25.5%</div>
+      <div class="why"><b>为什么：</b>每收 1 块保费，25.5 分花在运营上（佣金、理赔人力、办公）。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">分红率（dividend ratio）＝ 分红 ÷ 保费</span>
+      <div class="bignum">156,250 ÷ 6,250,000 = 2.5%</div>
+      <div class="why"><b>为什么单独算：</b>分红也是从保费里掏出去的钱，所以它要算进下面的"总成本"。别漏掉它，这是这题最容易丢的一分。</div>
+    </div>
+    <div class="step">
+      <span class="n">4</span><span class="t">综合比率（combined ratio）＝ 赔付率 ＋ 费用率 ＋ 分红率</span>
+      <div class="bignum">69.5% + 25.5% + 2.5% = 97.5%</div>
+      <div class="why"><b>为什么重要：</b>这是承保业务的<b>总成本率</b>，保险业最看重的一条线就是 <b>100%</b>：低于 100% 说明光靠"卖保险"本身就赚钱（这里 97.5%，承保赚 2.5%）；高于 100% 说明卖保险在亏钱、只能靠投资收益补。</div>
+    </div>
+    <div class="step">
+      <span class="n">5</span><span class="t">投资比率（investment ratio）＝ 投资收益 ÷ 保费</span>
+      <div class="bignum">218,750 ÷ 6,250,000 = 3.5%</div>
+      <div class="why"><b>为什么：</b>每收 1 块保费，还能额外靠投资赚回 3.5 分。这是"帮手"，下一步要拿它去抵成本。</div>
+    </div>
+    <div class="step">
+      <span class="n">6</span><span class="t">经营比率（operating ratio）＝ 综合比率 − 投资比率</span>
+      <div class="bignum">97.5% − 3.5% = 94.0%</div>
+      <div class="why"><b>为什么是减不是加：</b>综合比率只看了承保的成本；把投资赚的钱算进来"帮忙"之后，真实的总成本率更低。投资收益是收入，所以从成本率里扣掉。</div>
+    </div>
+    <div class="step">
+      <span class="n">7</span><span class="t">整体盈利能力（overall profitability）＝ 1 − 经营比率</span>
+      <div class="bignum">1 − 94.0% = 6.0%</div>
+      <div class="why"><b>为什么：</b>每 1 块保费，成本占 94 分，剩下 6 分就是净赚。总利润 ＝ 6,250,000 × 6% ＝ <b>$375,000</b>。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案 · Answers</h3>
+    <div class="answer-big">6.0% <small>整体盈利，每 $6.25m 保费净赚 $375,000</small></div>
+    <table class="mini">
+      <tr><th>比率</th><th>结果</th><th>含义</th></tr>
+      <tr><td>赔付率 Loss ratio</td><td>69.5%</td><td>每块保费赔掉 69.5 分</td></tr>
+      <tr><td>费用率 Expense ratio</td><td>25.5%</td><td>运营花掉 25.5 分</td></tr>
+      <tr><td>分红率 Dividend ratio</td><td>2.5%</td><td>返给投保人 2.5 分</td></tr>
+      <tr><td>综合比率 Combined ratio</td><td>97.5%</td><td>＜100%，承保本身赚钱</td></tr>
+      <tr><td>投资比率 Investment ratio</td><td>3.5%</td><td>投资额外赚回 3.5 分</td></tr>
+      <tr><td>经营比率 Operating ratio</td><td>94.0%</td><td>算上投资后的总成本率</td></tr>
+      <tr class="total"><td>整体盈利 Overall profitability</td><td>6.0%</td><td>净赚 $375,000</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">Loss ratio = 4,343,750 / 6,250,000 = 69.5%.
+Expense ratio = 1,593,750 / 6,250,000 = 25.5%.
+Dividend ratio = 156,250 / 6,250,000 = 2.5%.
+Combined ratio = 69.5% + 25.5% + 2.5% = 97.5%.
+Investment ratio = 218,750 / 6,250,000 = 3.5%.
+Operating ratio = 97.5% − 3.5% = 94.0%.
+Overall profitability = 1 − 0.94 = 6.0%, i.e., a profit of $375,000 on $6.25 million of premiums. Because the combined ratio is below 100%, the line is profitable on underwriting alone, and investment income raises overall profitability to 6.0%.</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式</h3>
+    <div class="oneformula">综合比率 ＝ 赔付率 ＋ 费用率 ＋ 分红率；经营比率 ＝ 综合比率 − 投资比率；盈利 ＝ 1 − 经营比率</div>
+    <details class="sym"><summary>符号版（点开看，不用背）</summary>
+      <div class="f">LR = Losses/Premiums; ER = Expenses/Premiums; DR = Dividends/Premiums; CR = LR + ER + DR; IR = Investment income/Premiums; OR = CR − IR; Profitability = 1 − OR</div>
+    </details>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 自己检查一遍</h3>
+    <ul>
+      <li><b>直接算钱：</b>6,250,000 − 4,343,750 − 1,593,750 − 156,250 + 218,750 = <b>375,000</b>，正好是保费的 6% ✓ 两条路（比率法、金额法）指向同一个利润。</li>
+      <li><b>分项加总：</b>69.5 + 25.5 + 2.5 = 97.5 ✓；97.5 − 3.5 = 94 ✓；100 − 94 = 6 ✓ 环环对上。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <ul>
+      <li>所有比率<b>分母都是保费 6,250,000</b>，别顺手把赔付或费用当分母。</li>
+      <li><b>分红率最容易漏</b>：综合比率是三项之和，不是两项。</li>
+      <li>经营比率是<b>减</b>投资比率——投资是帮忙的，方向别反。</li>
+      <li>结论句带一句 "combined ratio below 100% → underwriting profit"，概念分稳拿。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 题3 承销 ================= -->
+<section class="q qc" id="qc">
+  <div class="q-head">
+    <div class="no">QUESTION 8 · UNDERWRITING</div>
+    <h2>股票承销：包销 vs 代销 <span class="en">Underwriting</span></h2>
+    <div class="one">一句话：一家公司要发 1500 万股新股，投行帮它卖。换两种卖法，问公司能拿到多少钱、投行赚多少钱——核心就一句：风险在谁头上。</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">8. An investment bank agrees to underwrite an issue of 15 million shares of stock for Looney Landscaping Corp.<br>
+    a. If the investment bank underwrites the stock on a firm commitment basis, it agrees to pay $12.50 per share to Looney Landscaping Corp. for the 15 million shares of stock. It can then sell those shares to the public for $13.25 per share. How much money does Looney receive? What is the profit to the investment bank? If the investment bank can sell the shares for only $11.95, how much money does Looney receive? What is the profit to the investment bank?<br>
+    b. Suppose, instead, that the investment bank agrees to underwrite the 15 million shares on a best-efforts basis. The investment bank is able to sell 13.6 million shares for $12.50 per share, and it charges Looney Landscaping Corp. $0.275 per share sold. How much money does Looney receive? What is the profit to the investment bank? If the investment bank can sell the shares for only $11.95, how much money does Looney receive? What is the profit to the investment bank?</div>
+    <div class="ptext zh"><span class="tag">中文</span>一家投行同意为 Looney Landscaping 公司承销发行 <b>1500 万股</b>股票。<b>a. 包销（firm commitment）</b>：投行承诺按 <b>$12.50/股</b> 向 Looney 买下全部 1500 万股，再转卖给公众，售价 <b>$13.25/股</b>。Looney 能拿到多少钱？投行利润多少？若投行只能卖到 <b>$11.95/股</b>，Looney 拿多少？投行利润多少？<b>b. 改成代销（best efforts）</b>：投行只卖出 <b>1360 万股</b>，售价 $12.50/股，并向 Looney 收取 <b>$0.275/股</b>（按卖出股数计）的费用。Looney 拿多少？投行利润多少？若只能卖到 $11.95/股，Looney 拿多少？投行利润多少？</div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say"><b>包销（firm commitment）＝投行是批发商。</b>它先按约定价 $12.50 把 1500 万股<b>全款买断</b>，然后自己往外卖。卖贵了，差价归它；卖便宜了甚至砸手里，亏损它自己吞。<b>公司拿的钱在签约那一刻就定死了</b>，旱涝保收。</p>
+    <p class="say"><b>代销（best efforts）＝投行是房产中介。</b>它只负责吆喝卖房，卖出多少算多少，按卖出的股数每股抽 $0.275 佣金。卖不掉、卖低价，<b>风险全在公司头上</b>；投行的佣金照拿不误。</p>
+    <p class="say">整道题只考一个判断：<b>每种卖法下，"卖价风险"和"卖不掉风险"归谁</b>。想通这个，数字就是乘法。</p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算 · a 包销</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">Looney 拿多少钱：约定价 × 全部股数</span>
+      <div class="bignum">15,000,000 × $12.50 = $187,500,000</div>
+      <div class="why"><b>为什么：</b>包销＝买断。合同价 $12.50、股数 1500 万，签约即定死。<b>后面投行卖多少钱，都不影响这个数</b>——这是 a 问两个小问的共同答案，先锁死它。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">投行利润（卖到 $13.25）：每股差价 × 股数</span>
+      <div class="bignum">(13.25 − 12.50) × 15,000,000 = 0.75 × 15,000,000 = $11,250,000</div>
+      <div class="why"><b>为什么：</b>批发商的利润就是"卖出价 − 进货价"。每股赚 0.75，1500 万股就是 1125 万。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">若只能卖到 $11.95：Looney 照旧 $187.5m，投行倒亏</span>
+      <div class="bignum">(11.95 − 12.50) × 15,000,000 = −0.55 × 15,000,000 = −$8,250,000</div>
+      <div class="why"><b>为什么：</b>卖价跌破了它的进货价，差价变负数——这就是"包销"两个字的分量：<b>价格风险整个转移给了投行</b>。公司那 $187.5m 一分不少。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算 · b 代销</h3>
+    <div class="step">
+      <span class="n">4</span><span class="t">先算投行佣金：卖出股数 × 每股费用 —— 这就是投行的利润</span>
+      <div class="bignum">13,600,000 × $0.275 = $3,740,000</div>
+      <div class="why"><b>为什么先算它：</b>代销下投行不买股票、不担风险，它的全部收入就是佣金。而且佣金<b>只跟"卖出多少股"挂钩，跟卖价无关</b>——记住这点，第 6 步直接复用。</div>
+    </div>
+    <div class="step">
+      <span class="n">5</span><span class="t">Looney 拿多少（卖价 $12.50）：卖股毛收入 − 佣金</span>
+      <div class="bignum">13,600,000 × 12.50 = 170,000,000；170,000,000 − 3,740,000 = $166,260,000</div>
+      <div class="why"><b>为什么比包销少两千多万：</b>两个原因——只卖出 1360 万股（140 万股没卖掉，钱没进来）；还要被扣掉佣金。这就是代销的代价：<b>"卖不掉"的风险在公司</b>。</div>
+    </div>
+    <div class="step">
+      <span class="n">6</span><span class="t">若只能卖到 $11.95：毛收入降，佣金不变</span>
+      <div class="bignum">13,600,000 × 11.95 = 162,520,000；162,520,000 − 3,740,000 = $158,780,000；投行利润仍是 $3,740,000</div>
+      <div class="why"><b>为什么佣金不变：</b>佣金按<b>股数</b>收，不按价格收。价格从 12.50 掉到 11.95，少的 $7.48m 全部由 Looney 自己承担——这就是"价格风险在公司头上"的具体长相。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案 · Answers</h3>
+    <table class="mini">
+      <tr><th>情形</th><th>Looney 收到</th><th>投行利润</th></tr>
+      <tr><td>a 包销 · 卖 $13.25</td><td>$187,500,000</td><td>+$11,250,000</td></tr>
+      <tr><td>a 包销 · 卖 $11.95</td><td>$187,500,000</td><td>−$8,250,000（亏损）</td></tr>
+      <tr><td>b 代销 · 卖 $12.50</td><td>$166,260,000</td><td>+$3,740,000</td></tr>
+      <tr><td>b 代销 · 卖 $11.95</td><td>$158,780,000</td><td>+$3,740,000</td></tr>
+    </table>
+    <p class="say">一张表看懂对比：<b>包销时 Looney 的收入纹丝不动、投行利润大起大落；代销时正好反过来。</b></p>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">a. Firm commitment: Looney receives 15 million × $12.50 = $187.5 million, regardless of the resale price. If the bank resells at $13.25, its profit is (13.25 − 12.50) × 15 million = $11.25 million. If it can resell only at $11.95, Looney still receives $187.5 million, but the bank's profit is (11.95 − 12.50) × 15 million = −$8.25 million, a loss.
+b. Best efforts: the bank's fee is 13.6 million × $0.275 = $3.74 million. At $12.50 per share, gross proceeds are 13.6 million × $12.50 = $170 million, so Looney receives $170 million − $3.74 million = $166.26 million, and the bank earns $3.74 million. At $11.95, gross proceeds are $162.52 million, so Looney receives $158.78 million, while the bank still earns $3.74 million. Under a firm commitment the bank bears the price risk; under best efforts the issuer bears both the price risk and the risk that not all shares are sold.</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式</h3>
+    <div class="oneformula">包销：公司收款 ＝ 约定价 × 全部股数（定死）；投行利润 ＝（卖价 − 约定价）× 全部股数<br>代销：投行利润 ＝ 每股费用 × 卖出股数；公司收款 ＝ 卖价 × 卖出股数 − 投行利润</div>
+    <details class="sym"><summary>符号版（点开看，不用背）</summary>
+      <div class="f">Firm: Proceeds_firm = P_agreed × N_total; Profit_bank = (P_sell − P_agreed) × N_total. Best efforts: Fee = f × N_sold; Proceeds_firm = P_sell × N_sold − Fee</div>
+    </details>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 自己检查一遍</h3>
+    <ul>
+      <li><b>守恒验 a：</b>卖 $13.25 时公众共付 13.25 × 1500万 = $198.75m，正好 ＝ 公司 187.5 ＋ 投行 11.25 ✓；卖 $11.95 时公众付 $179.25m ＝ 187.5 − 8.25 ✓ 钱没凭空多也没凭空少。</li>
+      <li><b>守恒验 b：</b>170 ＝ 166.26 ＋ 3.74 ✓；162.52 ＝ 158.78 ＋ 3.74 ✓。</li>
+      <li><b>方向验：</b>代销两种价格下投行利润相同（3.74m）✓ 符合"佣金只认股数"；包销两种价格下公司收款相同 ✓ 符合"买断定死"。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <ul>
+      <li>a 问"Looney 拿多少"出现两次，<b>答案都是 $187.5m</b>——这是包销的送分点，写错说明概念没懂。</li>
+      <li>投行利润为负时要写明 <b>loss（亏损）</b>，别只写负数。</li>
+      <li>b 问最容易错的是拿 1500 万股算佣金——佣金只按<b>实际卖出的 1360 万股</b>算。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 题4 Megalopolis ================= -->
+<section class="q qd" id="qd">
+  <div class="q-head">
+    <div class="no">QUESTION 26 · BANK RATIOS</div>
+    <h2>Megalopolis 银行体检 <span class="en">Bank Performance Ratios</span></h2>
+    <div class="one">一句话：给你一家银行的资产负债表和利润表，算五个比率，看它赚钱效率多高、杠杆多大——五个比率其实是一条链。</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">26. Megalopolis Bank has the following balance sheet and income statement (in millions). For Megalopolis, calculate: a. Return on equity; b. Return on assets; c. Asset utilization; d. Equity multiplier; e. Profit margin.（照片下缘被切掉，教材原题后面还有 f. 利息费用率、g. 贷款损失拨备率、h. 非利息费用率、i. 税率——在下面一并教你，作业只到 e 的话可跳过。）</div>
+    <table class="mini">
+      <tr><th>Assets 资产</th><th>$</th><th>Liabilities &amp; Equity 负债与权益</th><th>$</th></tr>
+      <tr><td>Cash and due from banks 现金及存放同业</td><td>9,000</td><td>Demand deposits 活期存款</td><td>19,000</td></tr>
+      <tr><td>Investment securities 投资证券</td><td>23,000</td><td>NOW accounts NOW 账户</td><td>89,000</td></tr>
+      <tr><td>Repurchase agreements 回购协议</td><td>42,000</td><td>Retail CDs 零售定期存单</td><td>28,000</td></tr>
+      <tr><td>Loans 贷款</td><td>90,000</td><td>Debentures 债券</td><td>19,000</td></tr>
+      <tr><td>Fixed assets 固定资产</td><td>15,000</td><td>Total liabilities 负债合计</td><td>155,000</td></tr>
+      <tr><td>Other assets 其他资产</td><td>4,000</td><td>Common stock 普通股</td><td>12,000</td></tr>
+      <tr><td></td><td></td><td>Paid-in capital 实收资本</td><td>4,000</td></tr>
+      <tr><td></td><td></td><td>Retained earnings 留存收益</td><td>12,000</td></tr>
+      <tr class="total"><td>Total assets 总资产</td><td>183,000</td><td>Total L + E 总计</td><td>183,000</td></tr>
+    </table>
+    <table class="mini">
+      <tr><th>Income Statement 利润表</th><th>$</th></tr>
+      <tr><td>Total interest income 利息收入合计（贷款 9,000＋证券 4,000＋回购 6,000＋存放同业 1,000）</td><td>20,000</td></tr>
+      <tr><td>Total interest expense 利息支出合计（存款 9,000＋债券 2,000）</td><td>11,000</td></tr>
+      <tr><td>Net interest income 净利息收入</td><td>9,000</td></tr>
+      <tr><td>Provision for loan losses 贷款损失拨备</td><td>2,000</td></tr>
+      <tr><td>Other income 其他收入</td><td>2,000</td></tr>
+      <tr><td>Other expenses 其他费用</td><td>1,000</td></tr>
+      <tr><td>Income before taxes 税前利润</td><td>8,000</td></tr>
+      <tr><td>Taxes 所得税</td><td>3,000</td></tr>
+      <tr class="total"><td>Net income 净利润</td><td>5,000</td></tr>
+    </table>
+    <div class="ptext zh"><span class="tag">中文</span>Megalopolis 银行的资产负债表与利润表如上（单位：百万美元）。计算：<b>a. 净资产收益率（ROE）；b. 总资产收益率（ROA）；c. 资产利用率；d. 权益乘数；e. 利润率</b>。</div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">把银行想成一家<b>奶茶店</b>，五个比率是三个问题的答案：</p>
+    <p class="say">① 每卖出 1 块钱的奶茶，最后能<b>留下</b>多少？→ <b>利润率（profit margin）</b><br>② 店里每一块钱的设备家当，一年能<b>做出</b>多少营业额？→ <b>资产利用率（asset utilization）</b><br>③ 这家店有多少是<b>自己的钱</b>、撬动了多少倍的总资产？→ <b>权益乘数（equity multiplier）</b>，这就是杠杆。</p>
+    <p class="say">三个乘起来，正好等于股东最关心的那个数：<b>ROE（股东的钱一年赚回百分之几）</b>。这条链叫<b>杜邦分解（DuPont）</b>——不是五个孤立公式，是一条流水线：留存 × 周转 × 杠杆 ＝ 股东回报。</p>
+  </div>
+
+  <div class="card">
+    <h3>先备料 · 四个数备齐，后面全用它们</h3>
+    <div class="step">
+      <span class="n">0</span><span class="t">权益、总收入、净利润、总资产</span>
+      <div class="bignum">权益 ＝ 12,000 + 4,000 + 12,000 = 28,000<br>总收入 ＝ 利息收入 20,000 + 其他收入 2,000 = 22,000<br>净利润 ＝ 5,000（利润表直接给）　总资产 ＝ 183,000</div>
+      <div class="why"><b>为什么先备料：</b>五个比率全是这四个数的两两相除。<b>权益</b>要自己加（普通股＋实收资本＋留存收益，别把负债算进去）；<b>总收入</b>要把"其他收入"加进利息收入——这两个是最常见的翻车点，先在这里钉死。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算 · a–e</h3>
+    <div class="step">
+      <span class="n">a</span><span class="t">ROE 净资产收益率 ＝ 净利润 ÷ 权益</span>
+      <div class="bignum">5,000 ÷ 28,000 = 17.86%</div>
+      <div class="why"><b>为什么：</b>股东真正掏出来的钱是 28,000，一年赚回 5,000。股东每投 1 块，年回报约 0.179 块。</div>
+    </div>
+    <div class="step">
+      <span class="n">b</span><span class="t">ROA 总资产收益率 ＝ 净利润 ÷ 总资产</span>
+      <div class="bignum">5,000 ÷ 183,000 = 2.73%</div>
+      <div class="why"><b>为什么比 ROE 小这么多：</b>总资产里绝大部分是<b>别人的钱</b>（存款等负债 155,000）。同一笔利润 5,000，摊到全部资产上自然薄。ROE 和 ROA 的差距，就是杠杆放大的结果，下一步就量化它。</div>
+    </div>
+    <div class="step">
+      <span class="n">c</span><span class="t">资产利用率 ＝ 总收入 ÷ 总资产</span>
+      <div class="bignum">22,000 ÷ 183,000 = 12.02%</div>
+      <div class="why"><b>为什么：</b>每一块钱资产一年能"做"出 0.12 块收入，衡量的是资产干活的效率（奶茶店的翻台率）。</div>
+    </div>
+    <div class="step">
+      <span class="n">d</span><span class="t">权益乘数 ＝ 总资产 ÷ 权益</span>
+      <div class="bignum">183,000 ÷ 28,000 = 6.54（倍）</div>
+      <div class="why"><b>为什么：</b>股东 1 块钱撬动 6.54 块资产——这就是银行的杠杆倍数。它没有 % 号，单位是"倍"。杠杆把 ROA 的 2.73% 放大成 ROE 的 17.86%。</div>
+    </div>
+    <div class="step">
+      <span class="n">e</span><span class="t">利润率 ＝ 净利润 ÷ 总收入</span>
+      <div class="bignum">5,000 ÷ 22,000 = 22.73%</div>
+      <div class="why"><b>为什么：</b>每收进 1 块钱收入，扣完利息、拨备、费用、税，最后留下 0.227 块。收入的"漏点"在哪，就是下面 f–i 要拆的。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>照片外的 f–i · 收入的四个漏点（每个都是"某项 ÷ 总收入"）</h3>
+    <div class="step">
+      <span class="n">f</span><span class="t">利息费用率 ＝ 利息支出 ÷ 总收入</span>
+      <div class="bignum">11,000 ÷ 22,000 = 50.00%</div>
+      <div class="why"><b>为什么最大：</b>收入的一半要付给存款人和债券持有人——这是银行最贵的成本。</div>
+    </div>
+    <div class="step">
+      <span class="n">g</span><span class="t">贷款损失拨备率 ＝ 拨备 ÷ 总收入</span>
+      <div class="bignum">2,000 ÷ 22,000 = 9.09%</div>
+      <div class="why"><b>为什么：</b>预提出来防坏账的钱，占收入约 9 分。</div>
+    </div>
+    <div class="step">
+      <span class="n">h</span><span class="t">非利息费用率 ＝ 其他费用 ÷ 总收入</span>
+      <div class="bignum">1,000 ÷ 22,000 = 4.55%</div>
+      <div class="why"><b>为什么：</b>工资、房租这类运营开支（注意利润表里其他费用是 1,000，不是 2,000，别抄错行）。</div>
+    </div>
+    <div class="step">
+      <span class="n">i</span><span class="t">税率（占总收入）＝ 所得税 ÷ 总收入</span>
+      <div class="bignum">3,000 ÷ 22,000 = 13.64%</div>
+      <div class="why"><b>为什么：</b>这里问的不是法定税率，而是"税吃掉收入的百分之几"，方便和上面三个漏点并排比。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案 · Answers</h3>
+    <div class="answer-big">ROE 17.86% <small>股东每投 $1，一年赚回 $0.179</small></div>
+    <table class="mini">
+      <tr><th>比率</th><th>结果</th></tr>
+      <tr><td>a. ROE 净资产收益率</td><td>17.86%</td></tr>
+      <tr><td>b. ROA 总资产收益率</td><td>2.73%</td></tr>
+      <tr><td>c. Asset utilization 资产利用率</td><td>12.02%</td></tr>
+      <tr><td>d. Equity multiplier 权益乘数</td><td>6.54 倍</td></tr>
+      <tr><td>e. Profit margin 利润率</td><td>22.73%</td></tr>
+      <tr><td>f. 利息费用率</td><td>50.00%</td></tr>
+      <tr><td>g. 拨备率</td><td>9.09%</td></tr>
+      <tr><td>h. 非利息费用率</td><td>4.55%</td></tr>
+      <tr><td>i. 税率（占总收入）</td><td>13.64%</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">Equity = 12,000 + 4,000 + 12,000 = $28,000 million. Total income = 20,000 + 2,000 = $22,000 million.
+a. Return on equity = 5,000 / 28,000 = 17.86%.
+b. Return on assets = 5,000 / 183,000 = 2.73%.
+c. Asset utilization = 22,000 / 183,000 = 12.02%.
+d. Equity multiplier = 183,000 / 28,000 = 6.54.
+e. Profit margin = 5,000 / 22,000 = 22.73%.
+f. Interest expense ratio = 11,000 / 22,000 = 50.00%.
+g. Provision for loan loss ratio = 2,000 / 22,000 = 9.09%.
+h. Noninterest expense ratio = 1,000 / 22,000 = 4.55%.
+i. Tax ratio = 3,000 / 22,000 = 13.64%.</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式</h3>
+    <div class="oneformula">ROE ＝ 利润率 × 资产利用率 × 权益乘数（留存 × 周转 × 杠杆）</div>
+    <details class="sym"><summary>符号版（点开看，不用背）</summary>
+      <div class="f">ROE = NI/Equity; ROA = NI/Assets; AU = Total income/Assets; EM = Assets/Equity; PM = NI/Total income; ROE = PM × AU × EM</div>
+    </details>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 自己检查一遍</h3>
+    <ul>
+      <li><b>杜邦链闭合：</b>22.73% × 12.02% = 2.73% = ROA ✓；再 × 6.54 = 17.86% = ROE ✓ 三个分比率乘回去正好是总比率。</li>
+      <li><b>收入去向加总：</b>利息费用 50.00% ＋ 拨备 9.09% ＋ 非利息费用 4.55% ＋ 税 13.64% ＋ 利润率 22.73% = <b>100%</b> ✓ 每一分收入都有去处。</li>
+      <li><b>利润表勾稽：</b>净利息收入 9,000 − 拨备 2,000 ＋ 其他收入 2,000 − 其他费用 1,000 = 税前 8,000；− 税 3,000 = 净利润 5,000 ✓ 和表上一致。</li>
+      <li><b>资产负债表平：</b>资产 183,000 ＝ 负债 155,000 ＋ 权益 28,000 ✓。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <ul>
+      <li>单位是 <b>millions</b>，比率本身是百分比不受影响，但写金额时别把 5,000 写成 $5,000（它其实是 $5,000 million）。</li>
+      <li><b>利润率除收入、利用率除资产</b>——这两个分母最容易互换，记"率看利润配收入、利用看收入配资产"。</li>
+      <li>权益乘数写 <b>6.54</b> 就行，不要加 % 号。</li>
+      <li>先写备料（权益 28,000、总收入 22,000）再算五项，阅卷老师一眼能跟上，步骤分稳。</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  本批四题答案均经程序验算：题 1 缺口与 ±1% 影响逐项核对；题 2 比率法与金额法双路验证（利润 $375,000）；题 3 四种情形用"公众付款 ＝ 公司收款 ＋ 投行利润"守恒验证；题 4 杜邦链与收入去向双重闭合。<br>
+  题 4 的 f–i 两项（拨备率、税率等）来自教材原题的完整版本，你照片只拍到 e；若老师作业只要求 a–e，f–i 看个眼熟即可。
+</footer>
+
+</div>
+</body>
+</html>
