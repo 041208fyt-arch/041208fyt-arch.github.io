@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>全维进化日报 · 往期回顾</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Noto Serif SC"', '"Songti SC"', 'SimSun', 'serif'],
+              sans: ['"Noto Sans SC"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif']
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+      :root, [data-theme="light"] {
+        --paper: #FAFAF7;
+        --paper-2: #F3F1EA;
+        --ink: #1A1A1A;
+        --ink-2: #4A4A45;
+        --ink-3: #8A877E;
+        --line: #DDD9CE;
+        --line-strong: #1A1A1A;
+        --red: #C8102E;
+        --card: #FFFFFF;
+        --health: #2D5A3D;
+        --health-soft: #EAF1EC;
+        --wealth: #A8842C;
+        --wealth-soft: #F6EFDD;
+        --mind: #1B365D;
+        --mind-soft: #E9EEF5;
+      }
+      [data-theme="dark"] {
+        --paper: #12141A;
+        --paper-2: #171A21;
+        --ink: #E8E6E0;
+        --ink-2: #B9B6AD;
+        --ink-3: #7E7C74;
+        --line: #2C3038;
+        --line-strong: #E8E6E0;
+        --red: #E5484D;
+        --card: #171A21;
+        --health: #7FB685;
+        --health-soft: #1C2A20;
+        --wealth: #D4A94E;
+        --wealth-soft: #2B2415;
+        --mind: #7FA8D4;
+        --mind-soft: #182233;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        transition: background .3s ease, color .3s ease;
+      }
+      body::before {
+        content: "";
+        position: fixed; inset: 0;
+        pointer-events: none;
+        opacity: .5;
+        background-image: radial-gradient(var(--line) .5px, transparent .5px);
+        background-size: 22px 22px;
+        z-index: 0;
+      }
+      main, header, footer { position: relative; z-index: 1; }
+      .hairline { border-color: var(--line); }
+      .rule-double { border-top: 3px solid var(--line-strong); position: relative; }
+      .rule-double::after { content: ""; position: absolute; left: 0; right: 0; top: 4px; border-top: 1px solid var(--line-strong); }
+      .rule-red { border-top: 3px solid var(--red); }
+      .kicker { letter-spacing: .35em; font-size: 11px; font-weight: 700; }
+      .theme-btn { border: 1px solid var(--line); background: var(--card); color: var(--ink); }
+      .theme-btn:hover { border-color: var(--ink-3); }
+      .issue-row { transition: background .2s ease; }
+      .issue-row:hover { background: var(--paper-2); }
+      .issue-row:hover .issue-headline { color: var(--red); }
+      .issue-row:hover .issue-arrow { transform: translateX(4px); color: var(--red); }
+      .issue-headline { transition: color .2s ease; }
+      .issue-arrow { transition: transform .2s ease, color .2s ease; }
+      ::selection { background: var(--red); color: #fff; }
+
+      /* ── 顶部双页签 ── */
+      .tab-btn {
+        font-family: "Noto Serif SC", "Songti SC", SimSun, serif;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: .12em;
+        padding: 10px 4px 8px;
+        color: var(--ink-3);
+        border-bottom: 3px solid transparent;
+        margin-bottom: -1px;
+        transition: color .2s ease, border-color .2s ease;
+        background: none;
+        cursor: pointer;
+      }
+      .tab-btn:hover { color: var(--ink); }
+      .tab-btn.active { color: var(--ink); border-bottom-color: var(--red); }
+      .tab-btn .tab-count { font-family: "Noto Sans SC", sans-serif; font-size: 11px; font-weight: 500; color: var(--ink-3); letter-spacing: 0; margin-left: 4px; }
+
+      /* ── 知识库 ── */
+      .kb-search {
+        background: var(--card);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        transition: border-color .2s ease;
+      }
+      .kb-search:focus { outline: none; border-color: var(--ink-3); }
+      .kb-search::placeholder { color: var(--ink-3); }
+      .kb-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-top: 3px solid var(--basket, var(--red));
+        padding: 18px 18px 14px;
+        display: flex;
+        flex-direction: column;
+        scroll-margin-top: 24px;
+        transition: border-color .2s ease, box-shadow .2s ease;
+      }
+      .kb-card.flash { box-shadow: 0 0 0 2px var(--basket, var(--red)); }
+      /* ── 词条卡片默认收起：只显示词条名＋一句话定义，点击整行展开 ── */
+      .kb-card { cursor: pointer; }
+      .kb-card:focus-visible { outline: 2px solid var(--basket, var(--red)); outline-offset: 2px; }
+      .kb-card:not(.open) .kb-points, .kb-card:not(.open) .kb-foot { display: none; }
+      .kb-more {
+        display: flex; align-items: center; gap: 4px;
+        margin-top: auto; padding-top: 10px;
+        font-size: 12px; color: var(--ink-3);
+        transition: color .2s ease;
+      }
+      .kb-card:hover .kb-more { color: var(--basket, var(--red)); }
+      .kb-chevron { transition: transform .25s ease; }
+      .kb-card.open .kb-chevron { transform: rotate(180deg); }
+      .kb-def { font-size: 14px; line-height: 1.75; color: var(--ink); margin-top: 6px; }
+      .kb-points { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+      .kb-points li {
+        font-size: 13px; line-height: 1.7; color: var(--ink-2);
+        padding-left: 14px; position: relative;
+      }
+      .kb-points li::before {
+        content: ""; position: absolute; left: 0; top: 9px;
+        width: 5px; height: 5px; background: var(--basket, var(--red));
+      }
+      .kb-foot { margin-top: auto; padding-top: 12px; }
+      .kb-src { font-size: 12px; color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 10px; }
+      .kb-src a { color: var(--ink-2); text-decoration: none; border-bottom: 1px dotted var(--ink-3); }
+      .kb-src a:hover { color: var(--red); border-bottom-color: var(--red); }
+      .kb-rel {
+        font-size: 12px; color: var(--ink-2);
+        border: 1px solid var(--line); background: var(--paper);
+        padding: 2px 9px; border-radius: 999px; cursor: pointer;
+        transition: border-color .2s ease, color .2s ease;
+      }
+      .kb-rel:hover { border-color: var(--basket, var(--red)); color: var(--basket, var(--red)); }
+      .kb-theme-title {
+        display: flex; align-items: center; gap: 10px;
+        font-family: "Noto Serif SC", "Songti SC", SimSun, serif;
+        font-weight: 700; font-size: 15px; letter-spacing: .08em;
+      }
+      .kb-theme-title::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+
+      /* ── 词条标签 ── */
+      .kb-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+      .kb-tag {
+        font-size: 11.5px; line-height: 1.4; color: var(--ink-2);
+        background: var(--basket-soft, var(--paper-2));
+        padding: 3px 8px; border-radius: 999px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: border-color .2s ease, color .2s ease;
+      }
+      .kb-tag:hover { border-color: var(--basket, var(--red)); color: var(--basket, var(--red)); }
+
+      /* ── 系列阅读路径 ── */
+      .kb-path {
+        display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px;
+        background: var(--card); border: 1px solid var(--line);
+        padding: 10px 14px;
+      }
+      .kb-path-name { font-family: "Noto Serif SC", "Songti SC", SimSun, serif; font-weight: 700; font-size: 14px; letter-spacing: .06em; white-space: nowrap; }
+      .kb-path-sub { font-size: 11.5px; color: var(--ink-3); white-space: nowrap; }
+      .kb-path-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+      .kb-path-step {
+        font-size: 12.5px; color: var(--ink); background: var(--paper);
+        border: 1px solid var(--line); padding: 3px 10px; border-radius: 999px; cursor: pointer;
+        transition: border-color .2s ease, color .2s ease;
+      }
+      .kb-path-step:hover { border-color: var(--red); color: var(--red); }
+      .kb-path-arrow { color: var(--ink-3); font-size: 12px; }
+
+      /* ── 视图切换与知识图谱 ── */
+      .kb-view-btn {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-size: 12.5px; font-weight: 500; color: var(--ink-2);
+        background: var(--card); border: 1px solid var(--line);
+        padding: 5px 13px; cursor: pointer; border-radius: 999px;
+        transition: background .2s ease, color .2s ease, border-color .2s ease;
+      }
+      .kb-view-btn:hover { border-color: var(--ink-3); color: var(--ink); }
+      .kb-view-btn.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+      .kb-dot { width: 9px; height: 9px; border-radius: 999px; display: inline-block; }
+      .kb-graph-wrap { background: var(--card); border: 1px solid var(--line); }
+      .kb-graph-wrap svg { display: block; width: 100%; height: auto; }
+      .kb-node { cursor: pointer; }
+      .kb-node circle { stroke: var(--paper); stroke-width: 2; transition: stroke .15s ease, stroke-width .15s ease; }
+      .kb-node:hover circle { stroke: var(--ink); stroke-width: 2.5; }
+      #panelKb.graph-on .kb-basket, #panelKb.graph-on #kbPaths, #panelKb.graph-on #kbEmpty { display: none !important; }
+      .kb-tagbar-clear {
+        display: inline-flex; align-items: center; gap: 4px;
+        font-size: 12px; color: var(--ink-2); border: 1px solid var(--line);
+        background: var(--card); padding: 2px 9px; border-radius: 999px; cursor: pointer;
+        transition: border-color .2s ease, color .2s ease;
+      }
+      .kb-tagbar-clear:hover { border-color: var(--red); color: var(--red); }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+
+    <!-- ══════════ 报头 ══════════ -->
+    <header class="max-w-4xl mx-auto px-4 sm:px-6 pt-5" style="position:relative">
+      <button id="themeToggle" class="theme-btn flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-medium" style="position:absolute;top:0;right:16px;z-index:5" aria-label="切换深浅色">
+        <i data-lucide="moon" class="w-4 h-4" id="themeIconMoon"></i>
+        <i data-lucide="sun" class="w-4 h-4 hidden" id="themeIconSun"></i>
+        <span id="themeLabel">墨夜</span>
+      </button>
+      <div class="text-center pb-3 pt-10 sm:pt-0">
+        <div class="kicker mb-1" style="color:var(--ink-3)">THE OMNI EVOLUTION DAILY · ARCHIVE</div>
+        <h1 class="font-serif font-black text-4xl sm:text-5xl tracking-wide">全维进化日报</h1>
+        <div class="flex items-center justify-center gap-3 mt-3">
+          <span class="inline-block h-px w-10 sm:w-16" style="background:var(--red)"></span>
+          <span class="font-serif font-bold text-lg sm:text-xl tracking-[.3em]" style="color:var(--red)">往期回顾</span>
+          <span class="inline-block h-px w-10 sm:w-16" style="background:var(--red)"></span>
+        </div>
+        <div class="text-[12px] mt-2" style="color:var(--ink-2)">健康 · 财富 · 认知 —— 每天讲透三件事</div>
+      </div>
+      <div class="rule-red"></div>
+      <nav class="flex items-center gap-7 border-b hairline" aria-label="栏目切换">
+        <button class="tab-btn active" id="tabArchive" type="button">往期回顾<span class="tab-count">2 期</span></button>
+        <button class="tab-btn" id="tabKb" type="button">知识库<span class="tab-count">16 词条</span></button>
+      </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6">
+
+      <!-- ══════════ 页签一：往期回顾 ══════════ -->
+      <div id="panelArchive">
+      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-2 text-[13px]">
+        <span style="color:var(--ink-2)">点击任意一期，查看完整内容。</span>
+        <span class="text-[12px]" style="color:var(--ink-3)">已出刊 <span class="font-serif font-bold" style="color:var(--ink)">2</span> 期 · 按日期倒序</span>
+      </div>
+
+      <!-- ══════════ 往期目录（新期追加到此列表顶部） ══════════ -->
+      <section aria-label="往期目录" class="py-2">
+        <a href="../002/" class="issue-row flex items-stretch gap-4 sm:gap-6 py-5 sm:py-6 border-b hairline no-underline" style="color:inherit">
+          <div class="shrink-0 w-[76px] sm:w-[104px] text-center border-r hairline pr-4 sm:pr-6 flex flex-col justify-center">
+            <div class="text-[11px] tracking-[.2em]" style="color:var(--ink-3)">第</div>
+            <div class="font-serif font-black text-3xl sm:text-4xl leading-none my-1">002</div>
+            <div class="text-[11px] tracking-[.2em]" style="color:var(--ink-3)">期</div>
+          </div>
+          <div class="flex-1 min-w-0 flex flex-col justify-center">
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px]" style="color:var(--ink-3)">
+              <span class="inline-flex items-center gap-1.5">
+                <i data-lucide="calendar-days" class="w-3.5 h-3.5"></i>
+                2026年10月19日 · 星期一
+              </span>
+              <span class="text-[11px] font-bold px-2 py-0.5" style="background:var(--red);color:#fff">最新一期</span>
+              <span>日报</span>
+            </div>
+            <h2 class="issue-headline font-serif font-bold text-xl sm:text-2xl leading-snug mt-1.5">特朗普暂缓对俄制裁关税，60天评估期开启</h2>
+            <p class="text-[13.5px] leading-relaxed mt-1.5" style="color:var(--ink-2)">头版头条 · 据路透社10月18日报道，特朗普签署行政令暂缓《格雷厄姆法案》对俄制裁关税，60天评估期开启；另含健康、财富、认知三版全篇。</p>
+          </div>
+          <div class="shrink-0 flex items-center">
+            <i data-lucide="arrow-right" class="issue-arrow w-5 h-5 sm:w-6 sm:h-6" style="color:var(--ink-3)"></i>
+          </div>
+        </a>
+        <a href="../space-7/" class="issue-row flex items-stretch gap-4 sm:gap-6 py-5 sm:py-6 border-b hairline no-underline" style="color:inherit">
+          <div class="shrink-0 w-[76px] sm:w-[104px] text-center border-r hairline pr-4 sm:pr-6 flex flex-col justify-center">
+            <div class="text-[11px] tracking-[.2em]" style="color:var(--ink-3)">第</div>
+            <div class="font-serif font-black text-3xl sm:text-4xl leading-none my-1">001</div>
+            <div class="text-[11px] tracking-[.2em]" style="color:var(--ink-3)">期 · 创刊号</div>
+          </div>
+          <div class="flex-1 min-w-0 flex flex-col justify-center">
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px]" style="color:var(--ink-3)">
+              <span class="inline-flex items-center gap-1.5">
+                <i data-lucide="calendar-days" class="w-3.5 h-3.5"></i>
+                2026年10月18日 · 星期日
+              </span>
+            </div>
+            <h2 class="issue-headline font-serif font-bold text-xl sm:text-2xl leading-snug mt-1.5">特朗普宣布美伊和平协议一日反转</h2>
+            <p class="text-[13.5px] leading-relaxed mt-1.5" style="color:var(--ink-2)">头版头条 · 一天之内从「打击令」到「和平协议」，霍尔木兹重开；另含健康、财富、认知三版全篇。</p>
+          </div>
+          <div class="shrink-0 flex items-center">
+            <i data-lucide="arrow-right" class="issue-arrow w-5 h-5 sm:w-6 sm:h-6" style="color:var(--ink-3)"></i>
+          </div>
+        </a>
+      </section>
+
+      <p class="text-center text-[12.5px] py-8" style="color:var(--ink-3)">—— 创刊于 2026年10月18日，此前暂无更早的期数 ——</p>
+      </div><!-- /panelArchive -->
+
+      <!-- ══════════ 页签二：知识库 ══════════ -->
+      <div id="panelKb" hidden>
+        <p class="font-serif text-[15px] sm:text-base leading-relaxed pt-5" style="color:var(--ink)">这是随日报一天天长大的个人知识库。</p>
+        <p class="text-[12.5px] mt-1.5" style="color:var(--ink-3)">每期日报的深选题都会沉淀为词条，按健康、财富、认知三筐归架；有新内容时，往对应词条里增补。</p>
+
+        <!-- 搜索 -->
+        <div class="relative mt-5">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" style="color:var(--ink-3)"></i>
+          <input id="kbSearch" type="search" class="kb-search w-full rounded-none py-2.5 pl-10 pr-4 text-[14px]" placeholder="搜索词条、定义、要点……如：镁、杠杆、方差" aria-label="搜索知识库词条" />
+        </div>
+        <p class="text-[12px] mt-2" style="color:var(--ink-3)" id="kbCount">共 16 个词条 · 来自第 001–002 期</p>
+
+        <!-- 视图切换 + 标签筛选状态 -->
+        <div class="flex items-center gap-3 flex-wrap mt-4">
+          <div id="kbTagBar" class="items-center gap-2 text-[12.5px]" style="display:none;color:var(--ink-2)">
+            <span>标签 <span id="kbTagName" class="font-bold" style="color:var(--red)"></span> 筛选中</span>
+            <button id="kbTagClear" type="button" class="kb-tagbar-clear"><i data-lucide="x" class="w-3 h-3"></i>清除</button>
+          </div>
+          <div class="flex items-center gap-1.5 ml-auto" role="group" aria-label="知识库视图切换">
+            <button id="kbViewList" type="button" class="kb-view-btn active"><i data-lucide="list" class="w-3.5 h-3.5"></i>列表</button>
+            <button id="kbViewGraph" type="button" class="kb-view-btn"><i data-lucide="network" class="w-3.5 h-3.5"></i>图谱</button>
+          </div>
+        </div>
+
+        <!-- ── 从这里读起：系列阅读路径 ── -->
+        <section id="kbPaths" class="mt-5" aria-label="系列阅读路径">
+          <div class="flex items-center gap-2.5 flex-wrap">
+            <i data-lucide="route" class="w-4 h-4" style="color:var(--red)"></i>
+            <h3 class="font-serif font-bold text-[17px] tracking-wide">从这里读起</h3>
+            <span class="text-[12px]" style="color:var(--ink-3)">词条不是散点，是线——点任意一步，跳到对应卡片</span>
+          </div>
+          <div class="mt-3 flex flex-col gap-2.5">
+            <div class="kb-path">
+              <span class="kb-path-name" style="color:var(--health)">睡眠线</span>
+              <span class="kb-path-sub">健康 · 一条链读懂睡眠</span>
+              <div class="kb-path-steps">
+                <button type="button" class="kb-path-step" data-target="kb-dark-circles">黑眼圈</button><span class="kb-path-arrow">→</span>
+                <button type="button" class="kb-path-step" data-target="kb-morning-light">褪黑素</button><span class="kb-path-arrow">→</span>
+                <button type="button" class="kb-path-step" data-target="kb-cortisol">皮质醇</button><span class="kb-path-arrow">→</span>
+                <button type="button" class="kb-path-step" data-target="kb-magnesium">镁</button><span class="kb-path-arrow">→</span>
+                <button type="button" class="kb-path-step" data-target="kb-morning-light">晨起见光</button><span class="kb-path-arrow">→</span>
+                <button type="button" class="kb-path-step" data-target="kb-sri">睡眠规律性</button>
+              </div>
+            </div>
+            <div class="kb-path">
+              <span class="kb-path-name" style="color:var(--red)">压力线</span>
+              <span class="kb-path-sub">跨筐 · 从身体烧到盘面</span>
+              <div class="kb-path-steps">
+                <button type="button" class="kb-path-step" data-target="kb-cortisol">皮质醇</button><span class="kb-path-arrow">→</span>
+                <button type="button" class="kb-path-step" data-target="kb-loss-aversion">损失厌恶</button><span class="kb-path-arrow">→</span>
+                <button type="button" class="kb-path-step" data-target="kb-variance">执行方差</button>
+              </div>
+            </div>
+            <div class="kb-path">
+              <span class="kb-path-name" style="color:var(--wealth)">杠杆线</span>
+              <span class="kb-path-sub">跨筐 · 钱与选择怎么互相放大</span>
+              <div class="kb-path-steps">
+                <button type="button" class="kb-path-step" data-target="kb-leverage">杠杆</button><span class="kb-path-arrow">→</span>
+                <button type="button" class="kb-path-step" data-target="kb-agent-opc">一人公司</button><span class="kb-path-arrow">→</span>
+                <button type="button" class="kb-path-step" data-target="kb-barbell">杠铃策略</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 知识图谱（视图切换后显示） ── -->
+        <div id="kbGraph" hidden>
+          <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5 mt-5 text-[12.5px]" style="color:var(--ink-2)">
+            <span class="inline-flex items-center gap-1.5"><span class="kb-dot" style="background:var(--health)"></span>健康</span>
+            <span class="inline-flex items-center gap-1.5"><span class="kb-dot" style="background:var(--wealth)"></span>财富</span>
+            <span class="inline-flex items-center gap-1.5"><span class="kb-dot" style="background:var(--mind)"></span>认知</span>
+            <span style="color:var(--ink-3)">节点是词条，线是引用关系——点任意节点，跳到对应卡片</span>
+          </div>
+          <div class="kb-graph-wrap mt-3">
+            <svg id="kbGraphSvg" viewBox="0 0 760 500" role="img" aria-label="知识图谱：十六个词条的引用关系网"></svg>
+          </div>
+        </div>
+
+        <!-- ── 🧬 健康筐 ── -->
+        <section class="kb-basket mt-8" style="--basket:var(--health);--basket-soft:var(--health-soft)" aria-label="健康知识库">
+          <div class="flex items-end justify-between flex-wrap gap-2 mb-1">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl leading-none" aria-hidden="true">🧬</span>
+              <span class="font-serif font-black text-3xl" style="color:var(--health)">健康</span>
+              <span class="kicker" style="color:var(--health)">身体底层逻辑</span>
+            </div>
+            <span class="text-[12px] kb-basket-count" style="color:var(--ink-3)">5 个词条</span>
+          </div>
+          <div class="border-t-2 mb-6" style="border-color:var(--health)"></div>
+
+          <div class="kb-theme mb-8">
+            <h3 class="kb-theme-title mb-4" style="color:var(--health)">身体机制</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-dark-circles" data-short="黑眼圈" data-tags="睡眠 眼部 循环">
+                <h4 class="font-serif font-bold text-lg leading-snug">黑眼圈静脉淤血机制</h4>
+                <p class="kb-def">血管型黑眼圈的成因：眼周静脉血流变慢，脱氧血红蛋白淤积，透过约 0.5 毫米的薄皮肤显出青紫色——不是色素沉着，是堵住的血透出来的。</p>
+                <ul class="kb-points">
+                  <li>眼周皮肤仅约 0.5mm（其他部位约 2mm），是全身最薄，皮下静脉丛几乎隔着一层纱就能看见。</li>
+                  <li>血流一慢，脱氧血红蛋白呈暗红偏紫，淤在静脉里，颜色就透过皮肤显形。</li>
+                  <li>帮凶清单：睡眠不足让皮肤更苍白、血管更显形；久盯屏幕眨眼减少，眼周肌肉泵血闲置；揉眼既伤血管又招色素。</li>
+                  <li>过敏性鼻炎会堵住鼻窦静脉回流，眼周跟着淤血——医学上称「过敏性黑眼圈」，有鼻炎先治鼻炎，那是上游堵点。</li>
+                  <li>解法只有八个字：让血流动起来。晨起冷敷收缩血管、枕头略垫高减少夜间淤积；色素型则靠防晒与不揉眼。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../space-7/">第 001 期 · 《黑眼圈解剖学：那不是「没睡好」，是你眼周的静脉在堵车》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-morning-light">晨起见光与褪黑素</button>
+                    <button class="kb-rel" type="button" data-target="kb-cortisol">皮质醇与昼夜节律</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="kb-theme mb-8">
+            <h3 class="kb-theme-title mb-4" style="color:var(--health)">睡眠与节律</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-cortisol" data-short="皮质醇" data-tags="激素 压力 节律 睡眠">
+                <h4 class="font-serif font-bold text-lg leading-snug">皮质醇与昼夜节律</h4>
+                <p class="kb-def">皮质醇由 HPA 轴（下丘脑—垂体—肾上腺）调控，正常节奏晨高夜低；慢性压力会把节律磨平，让它「下不了班」，账单按多个器官系统开。</p>
+                <ul class="kb-points">
+                  <li>晨峰负责把你叫醒，深夜降到谷底让褪黑素接班——问题从来不是皮质醇，而是它下不了班。</li>
+                  <li>长期偏高的代价：命令肝脏放糖、脂肪囤向内脏，通往胰岛素抵抗；升压伤血管内皮；免疫失调；海马体受损，记忆与情绪变钝；拆蛋白质、丢骨量。</li>
+                  <li>抓手不在消灭压力，在恢复节律：固定起床时间比固定睡觉时间更能锚定晨峰。</li>
+                  <li>晨起见自然光是给 HPA 轴对表；中等强度运动能代谢多余皮质醇，睡前高强度反而顶高它。</li>
+                  <li>睡前 1 小时切断工作信息流，等于给夜班的皮质醇发下班通知。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../space-7/">第 001 期 · 《慢性压力与皮质醇：救火队住进你家之后》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-morning-light">晨起见光与褪黑素</button>
+                    <button class="kb-rel" type="button" data-target="kb-magnesium">镁</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="kb-card" id="kb-morning-light" data-short="晨起见光" data-tags="节律 睡眠 光照 激素">
+                <h4 class="font-serif font-bold text-lg leading-snug">晨起见光与褪黑素</h4>
+                <p class="kb-def">起床后 30 分钟内到户外或窗边见 5–10 分钟自然光：同时给皮质醇晨峰对表、给约 14 小时后的褪黑素分泌按下倒计时。</p>
+                <ul class="kb-points">
+                  <li>不用装备、不用跑步：阳台、窗边、楼下站一会儿即可，阴天也有效——户外照度仍是室内的几十倍。</li>
+                  <li>一眼光干三件事：锚定皮质醇晨峰、启动褪黑素倒计时、顺手把昨夜淤在眼周的静脉血「叫醒」。</li>
+                  <li>它和睡眠是一条线：光管节律，节律管皮质醇，皮质醇管睡眠，睡眠管黑眼圈。</li>
+                  <li>缺的可能不是更多睡眠，而是给身体一个准时的「天亮了」。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../space-7/">第 001 期 · 《起床后 30 分钟内，去见一次光》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-cortisol">皮质醇与昼夜节律</button>
+                    <button class="kb-rel" type="button" data-target="kb-dark-circles">黑眼圈静脉淤血机制</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="kb-card" id="kb-sri" data-short="睡眠规律性" data-tags="睡眠 节律 健康风险">
+                <h4 class="font-serif font-bold text-lg leading-snug">睡眠规律性指数（SRI）</h4>
+                <p class="kb-def">Sleep Regularity Index：衡量一个人每天入睡、起床时间有多规律的指标——规律性越差，健康风险越高。</p>
+                <ul class="kb-points">
+                  <li>2023 年《Sleep》期刊基于英国生物银行超 6 万成年人的研究发现：睡眠最不规律者死亡风险最高，且规律性的预测力超过睡眠时长本身。</li>
+                  <li>机制：昼夜节律被频繁打乱，等于让全身器官持续倒时差。</li>
+                  <li>社会时差是可观测的危险信号：工作日与周末的睡眠中点相差 2 小时以上，就亮起红灯。</li>
+                  <li>干预优先级：固定起床时间 ＞ 固定入睡时间；周末晚起不超过 1 小时；起床后 15–30 分钟见光。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../002/">第 002 期 · 《睡眠的规律性，比时长更重要》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-morning-light">晨起见光与褪黑素</button>
+                    <button class="kb-rel" type="button" data-target="kb-cortisol">皮质醇与昼夜节律</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="kb-theme mb-2">
+            <h3 class="kb-theme-title mb-4" style="color:var(--health)">营养与矿物质</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-magnesium" data-short="镁" data-tags="营养 矿物质 睡眠">
+                <h4 class="font-serif font-bold text-lg leading-snug">镁</h4>
+                <p class="kb-def">负责让肌肉「松手」的矿物质：钙涌入让肌肉收缩，镁把钙「请出去」，肌肉才能放松——镁就是钙的放行条。</p>
+                <ul class="kb-points">
+                  <li>缺镁时放行程序卡顿，肌肉长期半收缩待命：肩颈发硬、眼皮跳、小腿抽筋，都是同一套逻辑。</li>
+                  <li>镁参与调节 GABA（大脑的「刹车」递质）活性，又是褪黑素合成通路的辅因子；缺镁常见入睡慢、睡眠浅、半夜易醒。</li>
+                  <li>细胞的能量货币 ATP 必须先结合镁成 Mg-ATP 才有活性，所以缺镁的人累，不全是错觉。</li>
+                  <li>食补清单（按性价比）：南瓜子 28g 约 156mg、黑巧克力（70%+）28g 约 65mg、香蕉一根约 32mg，另有燕麦、坚果、牛奶。</li>
+                  <li>成年人每日推荐量约 330–420mg；食补优先，补剂别空腹猛上。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../space-7/">第 001 期 · 《镁：那个负责让肌肉「松手」的矿物质》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-cortisol">皮质醇与昼夜节律</button>
+                    <button class="kb-rel" type="button" data-target="kb-morning-light">晨起见光与褪黑素</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 💰 财富筐 ── -->
+        <section class="kb-basket mt-10" style="--basket:var(--wealth);--basket-soft:var(--wealth-soft)" aria-label="财富知识库">
+          <div class="flex items-end justify-between flex-wrap gap-2 mb-1">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl leading-none" aria-hidden="true">💰</span>
+              <span class="font-serif font-black text-3xl" style="color:var(--wealth)">财富</span>
+              <span class="kicker" style="color:var(--wealth)">生财逻辑与财富管理</span>
+            </div>
+            <span class="text-[12px] kb-basket-count" style="color:var(--ink-3)">6 个词条</span>
+          </div>
+          <div class="border-t-2 mb-6" style="border-color:var(--wealth)"></div>
+
+          <div class="kb-theme mb-8">
+            <h3 class="kb-theme-title mb-4" style="color:var(--wealth)">生财逻辑</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-leverage" data-short="杠杆" data-tags="杠杆 生财">
+                <h4 class="font-serif font-bold text-lg leading-snug">杠杆四种形式</h4>
+                <p class="kb-def">杠杆就是让一次投入产生多次回报的东西；纳瓦尔分四种，关键区别在两个问题：需不需要别人许可，复制一份的边际成本是多少。</p>
+                <ul class="kb-points">
+                  <li>人力杠杆（最古老）：雇人替你干活。需要许可——说服别人跟你干；复制成本也高，多一个人多一份工资。</li>
+                  <li>资本杠杆：用钱生钱。同样需要许可——银行和投资人点头才能用；用错会反噬，爆仓就是它的负形态。</li>
+                  <li>代码杠杆：写一次程序，它在你睡觉时工作，服务第一万个用户的成本和第一个几乎一样，不需要任何人许可。</li>
+                  <li>媒体杠杆（最新）：文章、视频、播客的复制边际成本为零，一篇好文章能在三年后还在替你建立信任，同样免许可。</li>
+                  <li>启示：旧杠杆的门票在别人手里，新杠杆（代码、媒体）只看你自己——先把新杠杆转起来，交易（资本杠杆变体）排在其后。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../space-7/">第 001 期 · 《杠杆的四种形式：为什么有人睡着了还在赚钱》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-agent-opc">AI Agent 一人公司</button>
+                    <button class="kb-rel" type="button" data-target="kb-inflation-tax">通胀税</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="kb-theme mb-8">
+            <h3 class="kb-theme-title mb-4" style="color:var(--wealth)">宏观与货币</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-inflation-tax" data-short="通胀税" data-tags="宏观 货币 现金">
+                <h4 class="font-serif font-bold text-lg leading-snug">通胀税</h4>
+                <p class="kb-def">一种从不寄账单的税：不需要立法和发票，只需要货币购买力慢慢缩水，而你的现金静静躺着——它直接从购买力里扣款。</p>
+                <ul class="kb-points">
+                  <li>CPI 3.7% 翻译成个人语言：手里的现金一年自动贬值约 3.7%，10 万块放着不动，只剩约 9.63 万的购买力。</li>
+                  <li>分配极不公平：专挑攥着现金的人收，存款越多、资产越少被收得越狠；背固定利率贷款的人反而受益，还的钱越来越不值钱。</li>
+                  <li>坎蒂隆效应：新钱先到谁手里谁占便宜——离印钞机近的人按旧价格花，离得远的人按新价格付。</li>
+                  <li>防御只有一条原则：让钱至少跑赢 CPI。「现金不动」看似最安全，恰恰是数学上唯一保证亏损的选项。</li>
+                  <li>操作上：留够应急的现金，其余必须找到停泊进资产的方式，哪怕是最笨的那种。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../space-7/">第 001 期 · 《通胀税：一种从不寄账单的税》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-leverage">杠杆四种形式</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="kb-theme mb-8">
+            <h3 class="kb-theme-title mb-4" style="color:var(--wealth)">交易与复盘</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-variance" data-short="执行方差" data-tags="交易 复盘 决策">
+                <h4 class="font-serif font-bold text-lg leading-snug">运气方差 vs 执行方差</h4>
+                <p class="kb-def">策略没有正反馈时，把结果拆成两个方差：运气方差是样本还没走到该赚钱的那一段；执行方差是你实际打的根本不是写下的那套策略。</p>
+                <ul class="kb-points">
+                  <li>两者的药完全不同：运气方差要样本量和耐心，执行方差要复盘和纪律——用错药，越努力越亏。</li>
+                  <li>区分方法很笨但唯一：给每笔交易打「执行分」，不看盈亏，只看动作——进场、止损、仓位是不是按预案走的。</li>
+                  <li>连续记 20 笔：执行分长期 90+ 而账户阴跌，是运气方差，把仓位降到「亏得起」然后熬过去。</li>
+                  <li>执行分只有六七十分，恭喜找到真问题：它与行情无关，今晚就能开始改。</li>
+                  <li>短期盈亏是市场在投票，你的执行才是你自己的选票——别拿投票结果审判选票。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../space-7/">第 001 期 · 《没有正反馈的日子：先分清是运气方差，还是执行方差》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-loss-aversion">损失厌恶</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="kb-card" id="kb-warehouse" data-short="仓单" data-tags="交易 期货 现货 信号">
+                <h4 class="font-serif font-bold text-lg leading-snug">仓单解读</h4>
+                <p class="kb-def">Warehouse receipts：交易所指定仓库中可用于交割的现货库存凭证数量——每日公布、无法造假的可观测真实指标。</p>
+                <ul class="kb-points">
+                  <li>去哪看：上期所、郑商所、大商所官网每日公布；外盘看 LME 仓库库存与 COMEX，均为公开数据。</li>
+                  <li>价格涨＋仓单大减＝现货真紧，货被提走了。</li>
+                  <li>价格涨＋仓单大增＝有人在备货准备交割，小心天花板。</li>
+                  <li>交割月临近、仓单集中注销＝现货被提走，近月或有挤仓。</li>
+                  <li>单日异动是噪音：看连续 3–5 天的趋势，并结合升贴水一起判断。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../002/">第 002 期 · 《交易者手记「信号 vs 噪音」本周拆解：仓单》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-variance">运气方差 vs 执行方差</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="kb-theme mb-2">
+            <h3 class="kb-theme-title mb-4" style="color:var(--wealth)">投资数学与仓位</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-vol-drag" data-short="波动率拖累" data-tags="投资数学 复利 仓位 回撤">
+                <h4 class="font-serif font-bold text-lg leading-snug">波动率拖累</h4>
+                <p class="kb-def">Volatility drag：几何平均 ≈ 算术平均 − 方差/2——收益序列的波动本身，会吃掉一部分复利。</p>
+                <ul class="kb-points">
+                  <li>一年 +50%、一年 −40%：算术平均 +5%，实际两年亏 10%（1.5 × 0.6 = 0.9）。</li>
+                  <li>复利是乘法，回撤天然不对称：亏 50% 要赚 100% 才回得来。</li>
+                  <li>「高胜率＋小仓位」长期跑赢「大开大合」，是数学，不是鸡汤。</li>
+                  <li>评估一个策略，先看收益序列的方差，再看平均收益。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../002/">第 002 期 · 《波动率税：为什么「平均年化10%」到手只有7%》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-kelly">凯利公式</button>
+                    <button class="kb-rel" type="button" data-target="kb-variance">运气方差 vs 执行方差</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="kb-card" id="kb-kelly" data-short="凯利公式" data-tags="仓位 投资数学 复利 凯利">
+                <h4 class="font-serif font-bold text-lg leading-snug">凯利公式</h4>
+                <p class="kb-def">Kelly criterion：f* = (bp − q) / b，给出长期复利最大化的仓位比例（b 为赔率、p 为胜率、q 为败率）。</p>
+                <ul class="kb-points">
+                  <li>爱德华·索普先把它用于二十一点，后来带进市场。</li>
+                  <li>满凯利的回撤极其残酷：理论最优 ≠ 心理可承受。</li>
+                  <li>公式对胜率、赔率的估计误差极度敏感——估计错一点，可能就从最优公式变成爆仓公式。</li>
+                  <li>实践中用半凯利、四分之一凯利：牺牲理论增速，换一条自己执行得下去的曲线。</li>
+                  <li>加仓前先问一句：我的胜率估计，到底有几分把握？</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../002/">第 002 期 · 《凯利公式：知道仓位公式的人，为什么没人敢满仓用》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-vol-drag">波动率拖累</button>
+                    <button class="kb-rel" type="button" data-target="kb-variance">运气方差 vs 执行方差</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 🧠 认知筐 ── -->
+        <section class="kb-basket mt-10" style="--basket:var(--mind);--basket-soft:var(--mind-soft)" aria-label="认知知识库">
+          <div class="flex items-end justify-between flex-wrap gap-2 mb-1">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl leading-none" aria-hidden="true">🧠</span>
+              <span class="font-serif font-black text-3xl" style="color:var(--mind)">认知</span>
+              <span class="kicker" style="color:var(--mind)">奥德赛航行日志</span>
+            </div>
+            <span class="text-[12px] kb-basket-count" style="color:var(--ink-3)">5 个词条</span>
+          </div>
+          <div class="border-t-2 mb-6" style="border-color:var(--mind)"></div>
+
+          <div class="kb-theme mb-8">
+            <h3 class="kb-theme-title mb-4" style="color:var(--mind)">思维模型</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-barbell" data-short="杠铃" data-tags="思维模型 风险 决策">
+                <h4 class="font-serif font-bold text-lg leading-snug">杠铃策略</h4>
+                <p class="kb-def">塔勒布《反脆弱》的配置法：约 85–90% 的资源放在极端保守的一端，约 10–15% 放在极端冒险的一端，刻意避开所有「中等风险」——重量全在两头，中间不装货。</p>
+                <ul class="kb-points">
+                  <li>中间最危险：中等风险最会伪装，看起来稳，风险却从没被定价清楚，黑天鹅来时两头一起塌，投入又重，塌一次翻不了身。</li>
+                  <li>安全端保证你永远不下牌桌，冒险端保证你对向上的意外敞口最大：亏损锁死在小头，收益理论上没有天花板。</li>
+                  <li>本质是交易那句「截断亏损，让利润奔跑」，被塔勒布搬到了整个人生。</li>
+                  <li>当下映射：安全端是 Galway 硕士＋身份路径与回国退路，冒险端是小资金高弹性的交易。</li>
+                  <li>判断任何新选项只问一句：它属于杠铃的哪一头？两头都不靠，放下。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../space-7/">第 001 期 · 《塔勒布的杠铃：两头下注，中间不装货》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-loss-aversion">损失厌恶</button>
+                    <button class="kb-rel" type="button" data-target="kb-leverage">杠杆四种形式</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="kb-theme mb-8">
+            <h3 class="kb-theme-title mb-4" style="color:var(--mind)">心理效应</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-loss-aversion" data-short="损失厌恶" data-tags="心理 决策 交易">
+                <h4 class="font-serif font-bold text-lg leading-snug">损失厌恶</h4>
+                <p class="kb-def">前景理论的测量结果：同样一笔钱，失去时的痛苦强度约为得到时快乐的 2–2.5 倍——这是大脑的出厂设置，不是意志薄弱。</p>
+                <ul class="kb-points">
+                  <li>进化成因：对靠天吃饭的祖先，丢掉一天口粮可能致命，错过一次收获只是可惜，于是大脑给损失开了双倍权重。</li>
+                  <li>盘面马甲：盈利单刚跳两下急着落袋，亏损单一扛再扛、补仓摊平——行为金融学称之为「处置效应」。</li>
+                  <li>隐蔽变体是不敢开仓：你怕的不是这笔钱，是「下单即证明自己可能错了」的那个瞬间。</li>
+                  <li>解法绕开感觉、用记账：开仓前把「最多亏多少」写成一个已经花掉的数字（如报名费），大脑对已支出的痛感远低于对将损失的恐慌。</li>
+                  <li>损失厌恶关不掉，但可以骗。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../space-7/">第 001 期 · 《损失厌恶：亏 100 块的痛，约等于赚 250 块的乐》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-variance">运气方差 vs 执行方差</button>
+                    <button class="kb-rel" type="button" data-target="kb-barbell">杠铃策略</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="kb-card" id="kb-mental-accounting" data-short="心理账户" data-tags="行为金融 心理 决策 交易">
+                <h4 class="font-serif font-bold text-lg leading-snug">心理账户</h4>
+                <p class="kb-def">Mental accounting：理查德·塞勒提出——人们会把钱分进不同的心理账户区别对待的认知偏差。</p>
+                <ul class="kb-points">
+                  <li>「本金不能亏、利润可以浪」——钱不认标签，认的是人。</li>
+                  <li>交易版：浮盈单拿得住（那是赚来的）、浮亏单死扛（那是本金）——同一个人的风险偏好，被标签撕成两半。</li>
+                  <li>机构用统一风险预算，就是为了不给钱贴标签。</li>
+                  <li>检验法：如果这笔钱是刚转进来的本金，我还会这么做吗？</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../002/">第 002 期 · 《心理账户：你给钱贴的标签，正在替你做决定》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-loss-aversion">损失厌恶</button>
+                    <button class="kb-rel" type="button" data-target="kb-barbell">杠铃策略</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="kb-theme mb-8">
+            <h3 class="kb-theme-title mb-4" style="color:var(--mind)">前沿与工具</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-agent-opc" data-short="一人公司" data-tags="AI 杠杆 创业">
+                <h4 class="font-serif font-bold text-lg leading-snug">AI Agent 一人公司</h4>
+                <p class="kb-def">创始人只保留三件事——选方向、定标准、做判断，其余获客、交付、客服、财务、运营交给一组 AI Agent 流水线；人不再是劳动力，而是调度层。</p>
+                <ul class="kb-points">
+                  <li>它是财富版「代码＋媒体杠杆」的当代版本：Agent 是把两种免许可杠杆焊在一起的机器。</li>
+                  <li>为什么是现在：模型能力跨过「能独立完成多步骤任务」的可用线、工具链成熟到不用造轮子、调用成本两年跌了一个数量级。</li>
+                  <li>普通人的姿势：别从「做个产品」开始，从自己的一个重复痛点开始——先让 Agent 替你干一件具体的活。</li>
+                  <li>跑通了，它是你的第一个「员工」；把这套流程卖给有同样痛点的人，它就变成生意。</li>
+                  <li>全程成本可以压在一顿饭钱以内——试错便宜，是这个时代给普通人最大的礼物。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../space-7/">第 001 期 · 《AI Agent 一人公司：一个人的董事会，一群 Agent 的执行部》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-leverage">杠杆四种形式</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="kb-theme mb-2">
+            <h3 class="kb-theme-title mb-4" style="color:var(--mind)">专注力</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="kb-card" id="kb-attention-residue" data-short="注意力残留" data-tags="专注力 深度工作 切换">
+                <h4 class="font-serif font-bold text-lg leading-snug">注意力残留</h4>
+                <p class="kb-def">Attention residue：索菲·勒罗伊提出——从任务 A 切到任务 B 时，一部分注意力还粘在 A 上，导致 B 的表现打折。</p>
+                <ul class="kb-points">
+                  <li>大脑切换「任务集」有固定成本，频繁切换等于全天在交税。</li>
+                  <li>主观感觉「已经切换过来了」，不等于注意力真的过来了。</li>
+                  <li>解法一：整块时间（time blocking），一段时间只做一件事。</li>
+                  <li>解法二：切换前花 2 分钟把上一件事收尾——写下断点在哪，残留最少。</li>
+                </ul>
+                <div class="kb-foot">
+                  <p class="kb-src">出处 · <a href="../002/">第 002 期 · 《注意力残留：切换任务的隐形税》</a></p>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span class="text-[12px]" style="color:var(--ink-3)">相关词条</span>
+                    <button class="kb-rel" type="button" data-target="kb-agent-opc">AI Agent 一人公司</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <p id="kbEmpty" class="text-center text-[13px] py-10 hidden" style="color:var(--ink-3)">没有找到匹配的词条，换个关键词试试。</p>
+        <p class="text-center text-[12.5px] py-8" style="color:var(--ink-3)">—— 知识库随每一期日报增补，词条只增不减 ——</p>
+      </div><!-- /panelKb -->
+    </main>
+
+    <!-- ══════════ 页脚 ══════════ -->
+    <footer class="max-w-4xl mx-auto px-4 sm:px-6 pb-10">
+      <div class="rule-red mb-4"></div>
+      <div class="flex flex-col sm:flex-row justify-between gap-3 text-[12.5px]" style="color:var(--ink-3)">
+        <div>
+          <span class="font-serif font-bold text-[14px]" style="color:var(--ink)">全维进化日报</span>
+          · 往期回顾
+          <div class="mt-1">本报内容为知识科普与观点分享，不构成医疗建议与投资建议。</div>
+        </div>
+        <div class="sm:text-right shrink-0">
+          <div>新一期出刊后，将在此处按日期倒序追加。</div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        // ── 主题切换（与日报共用同一 localStorage 键，偏好互通）──
+        var root = document.documentElement;
+        var saved = null;
+        try { saved = localStorage.getItem('omni-daily-theme'); } catch (e) {}
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = saved || (prefersDark ? 'dark' : 'light');
+        function applyTheme(t) {
+          root.setAttribute('data-theme', t);
+          document.getElementById('themeIconMoon').classList.toggle('hidden', t === 'dark');
+          document.getElementById('themeIconSun').classList.toggle('hidden', t !== 'dark');
+          document.getElementById('themeLabel').textContent = t === 'dark' ? '纸白' : '墨夜';
+        }
+        applyTheme(theme);
+        document.getElementById('themeToggle').addEventListener('click', function () {
+          theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          applyTheme(theme);
+          try { localStorage.setItem('omni-daily-theme', theme); } catch (e) {}
+        });
+
+        // ── 页签切换：往期回顾 / 知识库 ──
+        var tabArchive = document.getElementById('tabArchive');
+        var tabKb = document.getElementById('tabKb');
+        var panelArchive = document.getElementById('panelArchive');
+        var panelKb = document.getElementById('panelKb');
+        function showTab(which) {
+          var kb = which === 'kb';
+          tabArchive.classList.toggle('active', !kb);
+          tabKb.classList.toggle('active', kb);
+          panelArchive.hidden = kb;
+          panelKb.hidden = !kb;
+        }
+        tabArchive.addEventListener('click', function () { showTab('archive'); });
+        tabKb.addEventListener('click', function () { showTab('kb'); });
+
+        // ── 知识库搜索 + 标签筛选：实时过滤词条，空主题与空筐自动收起 ──
+        var kbSearch = document.getElementById('kbSearch');
+        var kbCount = document.getElementById('kbCount');
+        var kbEmpty = document.getElementById('kbEmpty');
+        var kbCards = Array.prototype.slice.call(document.querySelectorAll('.kb-card'));
+        var kbThemes = Array.prototype.slice.call(document.querySelectorAll('.kb-theme'));
+        var kbBaskets = Array.prototype.slice.call(document.querySelectorAll('.kb-basket'));
+        var totalCards = kbCards.length;
+        var activeTag = null;
+        var graphOn = false;
+        var kbTagBar = document.getElementById('kbTagBar');
+        var kbTagName = document.getElementById('kbTagName');
+        function cardTags(card) {
+          return (card.getAttribute('data-tags') || '').split(/\s+/).filter(Boolean);
+        }
+        function syncTagBar() {
+          kbTagBar.style.display = activeTag ? 'flex' : 'none';
+          if (activeTag) kbTagName.textContent = '#' + activeTag;
+        }
+        function applyKbFilter() {
+          var q = kbSearch.value.trim().toLowerCase();
+          var filtering = !!q || !!activeTag;
+          var visible = 0;
+          kbCards.forEach(function (card) {
+            var hit = (!q || card.textContent.toLowerCase().indexOf(q) !== -1) &&
+                      (!activeTag || cardTags(card).indexOf(activeTag) !== -1);
+            card.style.display = hit ? '' : 'none';
+            if (hit) visible++;
+          });
+          kbThemes.forEach(function (theme) {
+            var any = Array.prototype.some.call(theme.querySelectorAll('.kb-card'), function (c) { return c.style.display !== 'none'; });
+            theme.style.display = any ? '' : 'none';
+          });
+          kbBaskets.forEach(function (basket) {
+            var cards = basket.querySelectorAll('.kb-card');
+            var n = 0;
+            Array.prototype.forEach.call(cards, function (c) { if (c.style.display !== 'none') n++; });
+            basket.style.display = n ? '' : 'none';
+            var countEl = basket.querySelector('.kb-basket-count');
+            if (countEl) countEl.textContent = filtering ? ('显示 ' + n + ' / ' + cards.length + ' 个词条') : (cards.length + ' 个词条');
+          });
+          kbEmpty.classList.toggle('hidden', visible !== 0);
+          if (activeTag) {
+            kbCount.textContent = '标签 #' + activeTag + (q ? ' ＋ 搜索「' + kbSearch.value.trim() + '」' : '') + ' · 找到 ' + visible + ' 个词条（共 ' + totalCards + ' 个）';
+          } else {
+            kbCount.textContent = q ? ('找到 ' + visible + ' 个词条（共 ' + totalCards + ' 个）') : ('共 ' + totalCards + ' 个词条 · 来自第 001–002 期');
+          }
+          syncTagBar();
+        }
+        if (kbSearch) kbSearch.addEventListener('input', function () {
+          if (graphOn) setView('list');
+          applyKbFilter();
+        });
+        document.getElementById('kbTagClear').addEventListener('click', function () {
+          activeTag = null;
+          applyKbFilter();
+        });
+
+        // ── 词条卡片展开/收起：默认收起，点击整行切换（搜索过滤不改变折叠状态）──
+        function setKbOpen(card, open) {
+          card.classList.toggle('open', open);
+          var t = card.querySelector('.kb-more-text');
+          if (t) t.textContent = open ? '收起' : '展开';
+        }
+        kbCards.forEach(function (card) {
+          var more = document.createElement('div');
+          more.className = 'kb-more';
+          more.setAttribute('aria-hidden', 'true');
+          more.innerHTML = '<span class="kb-more-text">展开</span><i data-lucide="chevron-down" class="kb-chevron w-4 h-4"></i>';
+          card.appendChild(more);
+          card.setAttribute('tabindex', '0');
+          card.addEventListener('click', function (e) {
+            if (e.target.closest('a, .kb-rel, .kb-tag')) return;
+            setKbOpen(card, !card.classList.contains('open'));
+          });
+          card.addEventListener('keydown', function (e) {
+            if (e.target !== card) return;
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setKbOpen(card, !card.classList.contains('open'));
+            }
+          });
+        });
+
+        // ── 词条标签：由每张卡片的 data-tags 生成，点标签跨筐筛选 ──
+        kbCards.forEach(function (card) {
+          var tags = cardTags(card);
+          if (!tags.length) return;
+          var row = document.createElement('div');
+          row.className = 'kb-tags';
+          tags.forEach(function (t) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'kb-tag';
+            b.textContent = '#' + t;
+            b.setAttribute('data-tag', t);
+            row.appendChild(b);
+          });
+          var def = card.querySelector('.kb-def');
+          def.parentNode.insertBefore(row, def.nextSibling);
+        });
+
+        // ── 双向链接：由「相关词条」反推「被谁引用」，写回每张卡片 ──
+        var kbById = {};
+        kbCards.forEach(function (c) { kbById[c.id] = c; });
+        var backMap = {};
+        kbCards.forEach(function (card) {
+          card.querySelectorAll('.kb-rel').forEach(function (btn) {
+            var tid = btn.getAttribute('data-target');
+            if (!backMap[tid]) backMap[tid] = [];
+            if (backMap[tid].indexOf(card.id) === -1) backMap[tid].push(card.id);
+          });
+        });
+        kbCards.forEach(function (card) {
+          var backs = backMap[card.id] || [];
+          if (!backs.length) return;
+          var foot = card.querySelector('.kb-foot');
+          if (!foot) return;
+          var row = document.createElement('div');
+          row.className = 'flex flex-wrap items-center gap-1.5 mt-2';
+          var label = document.createElement('span');
+          label.className = 'text-[12px]';
+          label.style.color = 'var(--ink-3)';
+          label.textContent = '被谁引用';
+          row.appendChild(label);
+          backs.forEach(function (bid) {
+            var src = kbById[bid];
+            if (!src) return;
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'kb-rel';
+            b.setAttribute('data-target', bid);
+            b.textContent = src.querySelector('h4').textContent;
+            row.appendChild(b);
+          });
+          foot.appendChild(row);
+        });
+
+        // ── 跳转到词条：清掉搜索与标签筛选、回列表视图，展开目标卡片并高亮 ──
+        function jumpToCard(target) {
+          if (!target) return;
+          if (graphOn) setView('list');
+          activeTag = null;
+          if (kbSearch && kbSearch.value) kbSearch.value = '';
+          applyKbFilter();
+          setKbOpen(target, true);
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          target.classList.add('flash');
+          setTimeout(function () { target.classList.remove('flash'); }, 1600);
+        }
+
+        // ── 链接类点击统一走事件委托：相关词条 / 被谁引用 / 阅读路径 / 标签 ──
+        panelKb.addEventListener('click', function (e) {
+          var tagBtn = e.target.closest('.kb-tag');
+          if (tagBtn) {
+            activeTag = tagBtn.getAttribute('data-tag');
+            if (graphOn) setView('list');
+            applyKbFilter();
+            kbSearch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+          }
+          var linkBtn = e.target.closest('.kb-rel, .kb-path-step');
+          if (linkBtn) jumpToCard(document.getElementById(linkBtn.getAttribute('data-target')));
+        });
+
+        // ── 视图切换：列表 / 图谱 ──
+        var kbGraph = document.getElementById('kbGraph');
+        var kbViewList = document.getElementById('kbViewList');
+        var kbViewGraph = document.getElementById('kbViewGraph');
+        var graphBuilt = false;
+        function setView(mode) {
+          graphOn = mode === 'graph';
+          panelKb.classList.toggle('graph-on', graphOn);
+          kbGraph.hidden = !graphOn;
+          kbViewList.classList.toggle('active', !graphOn);
+          kbViewGraph.classList.toggle('active', graphOn);
+          if (graphOn && !graphBuilt) { buildGraph(); graphBuilt = true; }
+        }
+        kbViewList.addEventListener('click', function () { setView('list'); });
+        kbViewGraph.addEventListener('click', function () { setView('graph'); });
+
+        // ── 知识图谱：力导向布局的关系网，节点按三筐着色，点节点跳卡片 ──
+        function buildGraph() {
+          var svg = document.getElementById('kbGraphSvg');
+          var NS = 'http://www.w3.org/2000/svg';
+          var W = 760, H = 500;
+          var basketKeys = ['health', 'wealth', 'mind'];
+          var nodes = kbCards.map(function (card, i) {
+            var basketIdx = kbBaskets.indexOf(card.closest('.kb-basket'));
+            var ang = (i / Math.max(kbCards.length, 1)) * Math.PI * 2;
+            return {
+              id: card.id,
+              card: card,
+              label: card.getAttribute('data-short') || card.querySelector('h4').textContent,
+              color: 'var(--' + (basketKeys[basketIdx] || 'red') + ')',
+              x: W / 2 + Math.cos(ang) * 210,
+              y: H / 2 + Math.sin(ang) * 150,
+              vx: 0, vy: 0
+            };
+          });
+          var idx = {};
+          nodes.forEach(function (n, i) { idx[n.id] = i; });
+          var edges = [], seen = {};
+          kbCards.forEach(function (card) {
+            card.querySelectorAll('.kb-rel').forEach(function (btn) {
+              var t = btn.getAttribute('data-target');
+              if (!(t in idx)) return;
+              var key = [card.id, t].sort().join('|');
+              if (seen[key]) return;
+              seen[key] = 1;
+              edges.push([idx[card.id], idx[t]]);
+            });
+          });
+          // 力导向模拟：节点互斥 + 连线弹簧 + 弱向心，迭代收敛后定版
+          for (var it = 0; it < 420; it++) {
+            for (var i = 0; i < nodes.length; i++) {
+              for (var j = i + 1; j < nodes.length; j++) {
+                var a = nodes[i], b = nodes[j];
+                var dx = a.x - b.x, dy = a.y - b.y;
+                var d2 = dx * dx + dy * dy || 1;
+                var d = Math.sqrt(d2);
+                var f = 30000 / d2;
+                var fx = dx / d * f, fy = dy / d * f;
+                a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+              }
+            }
+            edges.forEach(function (e) {
+              var a = nodes[e[0]], b = nodes[e[1]];
+              var dx = b.x - a.x, dy = b.y - a.y;
+              var d = Math.sqrt(dx * dx + dy * dy) || 1;
+              var f = (d - 180) * 0.02;
+              var fx = dx / d * f, fy = dy / d * f;
+              a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+            });
+            nodes.forEach(function (n) {
+              n.vx += (W / 2 - n.x) * 0.004;
+              n.vy += (H / 2 - n.y) * 0.004;
+              n.vx *= 0.82; n.vy *= 0.82;
+              n.x += n.vx; n.y += n.vy;
+              n.x = Math.max(58, Math.min(W - 58, n.x));
+              n.y = Math.max(42, Math.min(H - 54, n.y));
+            });
+          }
+          edges.forEach(function (e) {
+            var line = document.createElementNS(NS, 'line');
+            line.setAttribute('x1', nodes[e[0]].x.toFixed(1));
+            line.setAttribute('y1', nodes[e[0]].y.toFixed(1));
+            line.setAttribute('x2', nodes[e[1]].x.toFixed(1));
+            line.setAttribute('y2', nodes[e[1]].y.toFixed(1));
+            line.setAttribute('stroke-width', '1.2');
+            line.style.stroke = 'var(--ink-3)';
+            line.style.opacity = '.45';
+            svg.appendChild(line);
+          });
+          nodes.forEach(function (n) {
+            var g = document.createElementNS(NS, 'g');
+            g.setAttribute('class', 'kb-node');
+            var title = document.createElementNS(NS, 'title');
+            title.textContent = n.card.querySelector('h4').textContent;
+            var c = document.createElementNS(NS, 'circle');
+            c.setAttribute('cx', n.x.toFixed(1));
+            c.setAttribute('cy', n.y.toFixed(1));
+            c.setAttribute('r', '23');
+            c.style.fill = n.color;
+            var t = document.createElementNS(NS, 'text');
+            t.setAttribute('x', n.x.toFixed(1));
+            t.setAttribute('y', (n.y + 42).toFixed(1));
+            t.setAttribute('text-anchor', 'middle');
+            t.style.fill = 'var(--ink)';
+            t.style.fontSize = '12.5px';
+            t.style.fontWeight = '600';
+            t.textContent = n.label;
+            g.appendChild(title);
+            g.appendChild(c);
+            g.appendChild(t);
+            g.addEventListener('click', function () { jumpToCard(n.card); });
+            svg.appendChild(g);
+          });
+        }
+
+        // 带 #kb 或 #kb-xxx 打开时，直接落在知识库
+        if (location.hash === '#kb' || location.hash.indexOf('#kb-') === 0) {
+          showTab('kb');
+          var hashTarget = document.querySelector(location.hash);
+          if (hashTarget && hashTarget.classList.contains('kb-card')) {
+            setKbOpen(hashTarget, true);
+            setTimeout(function () {
+              hashTarget.scrollIntoView({ block: 'center' });
+              hashTarget.classList.add('flash');
+              setTimeout(function () { hashTarget.classList.remove('flash'); }, 1600);
+            }, 60);
+          }
+        }
+
+        // ── Lucide 图标 ──
+        if (window.lucide) lucide.createIcons();
+      })();
+    </script>
+  </body>
+</html>

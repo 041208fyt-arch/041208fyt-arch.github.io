@@ -1,5 +1,12 @@
-# FANG 的复习讲义站
+# FANG 的讲义与日报站
 
 浏览器打开：https://041208fyt-arch.github.io/
 
-- `index.html` — FI 4 道题 · 第二批（重定价缺口 / 保险比率 / 股票承销 / Megalopolis 银行比率）
+## 复习讲义
+- [FI 4 道题 · 第二批](https://041208fyt-arch.github.io/)（重定价缺口 / 保险比率 / 股票承销 / Megalopolis 银行比率）
+
+## 全维进化日报
+- [往期回顾 ＋ 知识库](https://041208fyt-arch.github.io/evo/)
+- [第 001 期（2026-10-18）](https://041208fyt-arch.github.io/evo/001.html)
+- [第 002 期（2026-10-19）](https://041208fyt-arch.github.io/evo/002.html)
+- [第 003 期（2026-10-20）](https://041208fyt-arch.github.io/evo/003.html)
