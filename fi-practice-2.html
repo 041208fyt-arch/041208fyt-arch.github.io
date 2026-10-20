@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FI 4 道题 · 第二批 · 练习版（数据换新）</title>
+<style>
+  :root{
+    --ink:#1c2330; --sub:#5a6478; --line:#dde3ec;
+    --red:#C8102E; --blue:#1B4F9C; --gold:#A8842C; --green:#2D5A3D; --plum:#6C3483;
+    --paper:#ffffff; --wash:#f6f8fb;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:#eceff4; color:var(--ink); font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; padding:26px 14px 40px;}
+  .sheet{background:var(--paper); max-width:1180px; margin:0 auto 30px; padding:30px 36px 32px; border-radius:6px; box-shadow:0 4px 24px rgba(20,30,50,.10);}
+  header.top{display:flex; justify-content:space-between; align-items:flex-end; border-bottom:3px solid var(--red); padding-bottom:10px; margin-bottom:20px;}
+  header.top h1{font-family:"Songti SC","STSong",serif; font-size:26px; letter-spacing:.5px;}
+  header.top .tag{font-size:12.5px; color:var(--sub); text-align:right; line-height:1.6;}
+  header.top .tag b{color:var(--red);}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .card{border:1px solid var(--line); border-radius:8px; padding:16px 18px 14px; background:#fff;}
+  .card h2{font-size:16.5px; margin-bottom:8px; display:flex; align-items:center; gap:8px;}
+  .chip{display:inline-block; min-width:26px; text-align:center; color:#fff; font-size:13px; font-weight:700; border-radius:5px; padding:2px 7px;}
+  .c1{background:var(--blue);} .c2{background:var(--gold);} .c3{background:var(--green);} .c4{background:var(--plum);}
+  .card h2 .cn{color:var(--sub); font-weight:400; font-size:13.5px;}
+  .q{font-size:13.8px; line-height:1.65; color:#242c3d;}
+  .q .ab{font-weight:700;}
+  .note{margin-top:9px; font-size:12.5px; color:var(--sub); background:var(--wash); border-radius:5px; padding:6px 9px; line-height:1.6;}
+  table{border-collapse:collapse; width:100%; font-size:12.8px; margin-top:6px;}
+  th,td{border:1px solid var(--line); padding:4px 7px; text-align:right;}
+  th{background:var(--wash); text-align:center; font-weight:600;}
+  td.l, th.l{text-align:left;}
+  tr.tot td{font-weight:700; background:#fbfcfe;}
+  .bs{display:grid; grid-template-columns:1fr 1fr; gap:0 16px;}
+  .bs h3, .is h3{font-size:13px; margin:8px 0 2px; color:var(--sub); font-weight:600;}
+  .step{font-size:13.6px; line-height:1.62; margin-bottom:7px;}
+  .step b.r{color:var(--red);}
+  .fx{color:#39445c; background:var(--wash); border-radius:5px; padding:6px 9px; font-size:13.2px; line-height:1.6; margin:8px 0;}
+  .eng{font-size:12.8px; color:#39445c; line-height:1.62; border-top:1px dashed var(--line); padding-top:8px; margin-top:9px;}
+  .eng b{color:var(--ink);}
+  .ansline{font-size:14.5px; font-weight:700; margin:6px 0 8px;}
+  footer.pg{display:flex; justify-content:space-between; margin-top:18px; font-size:12px; color:var(--sub); border-top:1px solid var(--line); padding-top:9px;}
+  @page{size:landscape; margin:10mm;}
+  @media print{
+    body{background:#fff; padding:0;}
+    .sheet{box-shadow:none; border-radius:0; max-width:none; margin:0; page-break-after:always;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 · 题目 ============ -->
+<section class="sheet">
+  <header class="top">
+    <h1>FI 4 道题 · 第二批 · 练习版</h1>
+    <div class="tag">题目结构与讲义版相同，<b>数据全部换新</b><br/>第 1 页 · 题目（先自己做，再翻第 2 页对答案）</div>
+  </header>
+  <div class="grid">
+
+    <div class="card">
+      <h2><span class="chip c1">1</span>Q8 · Repricing Gap <span class="cn">重定价缺口</span></h2>
+      <p class="q">8. Consider the following balance sheet positions for a financial institution:<br/>
+      • Rate-sensitive assets = $250 million; Rate-sensitive liabilities = $120 million<br/>
+      • Rate-sensitive assets = $90 million; Rate-sensitive liabilities = $150 million<br/>
+      • Rate-sensitive assets = $160 million; Rate-sensitive liabilities = $145 million<br/>
+      <span class="ab">a.</span> Calculate the repricing gap and the impact on net interest income of a 1 percent increase in interest rates for each position.<br/>
+      <span class="ab">b.</span> Calculate the impact on net interest income of each of the above situations, assuming a 1 percent decrease in interest rates.<br/>
+      <span class="ab">c.</span> What conclusion can you draw about the repricing model from these results?</p>
+      <p class="note">RSA＝利率敏感资产（rate-sensitive assets），RSL＝利率敏感负债，NII＝净利息收入（net interest income）。</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="chip c2">2</span>Q31 · Insurer Ratios <span class="cn">保险公司七个比率</span></h2>
+      <p class="q">31. A property-casualty insurer brings in $8 million in premiums on its homeowners' multiple peril line of insurance. The line's losses amount to $5,520,000, expenses are $2,080,000, and dividends are $240,000. The insurer earns $400,000 on the investment of its premiums. Calculate the line's loss ratio, expense ratio, dividend ratio, combined ratio, investment ratio, operating ratio, and overall profitability.</p>
+      <p class="note">财产意外险（property-casualty insurer）；房主综合险（homeowners' multiple peril）；dividends＝返给投保人的红利。七个比率里六个的分母都是保费（premiums）。</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="chip c3">3</span>Q8 · Underwriting <span class="cn">股票承销：包销 vs 代销</span></h2>
+      <p class="q">8. An investment bank agrees to underwrite an issue of 20 million shares of stock for Looney Landscaping Corp.<br/>
+      <span class="ab">a.</span> If the investment bank underwrites the stock on a firm commitment basis, it agrees to pay $9.80 per share to Looney Landscaping Corp. for the 20 million shares of stock. It can then sell those shares to the public for $10.60 per share. How much money does Looney receive? What is the profit to the investment bank? If the investment bank can sell the shares for only $9.25, how much money does Looney receive? What is the profit to the investment bank?<br/>
+      <span class="ab">b.</span> Suppose, instead, that the investment bank agrees to underwrite the 20 million shares on a best-efforts basis. The investment bank is able to sell 17.5 million shares for $9.80 per share, and it charges Looney Landscaping Corp. $0.32 per share sold. How much money does Looney receive? What is the profit to the investment bank? If the investment bank can sell the shares for only $9.25, how much money does Looney receive? What is the profit to the investment bank?</p>
+      <p class="note">包销（firm commitment）＝投行先买下全部再转卖；代销（best-efforts）＝卖多少算多少、按股收费。核心问题只有一个：价格风险在谁头上。</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="chip c4">4</span>Q26 · Megalopolis Bank <span class="cn">银行体检五比率（单位：百万美元）</span></h2>
+      <p class="q">26. Megalopolis Bank has the following balance sheet and income statement (in millions). For Megalopolis, calculate: <span class="ab">a.</span> Return on equity; <span class="ab">b.</span> Return on assets; <span class="ab">c.</span> Asset utilization; <span class="ab">d.</span> Equity multiplier; <span class="ab">e.</span> Profit margin.</p>
+      <div class="bs">
+        <div>
+          <h3>Assets 资产（$）</h3>
+          <table>
+            <tr><td class="l">Cash and due from banks 现金及存放同业</td><td>7,000</td></tr>
+            <tr><td class="l">Investment securities 投资证券</td><td>27,000</td></tr>
+            <tr><td class="l">Repurchase agreements 回购协议</td><td>38,000</td></tr>
+            <tr><td class="l">Loans 贷款</td><td>95,000</td></tr>
+            <tr><td class="l">Fixed assets 固定资产</td><td>12,000</td></tr>
+            <tr><td class="l">Other assets 其他资产</td><td>6,000</td></tr>
+            <tr class="tot"><td class="l">Total assets 总资产</td><td>185,000</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3>Liabilities &amp; Equity 负债与权益（$）</h3>
+          <table>
+            <tr><td class="l">Demand deposits 活期存款</td><td>22,000</td></tr>
+            <tr><td class="l">NOW accounts NOW 账户</td><td>84,000</td></tr>
+            <tr><td class="l">Retail CDs 零售定期存单</td><td>31,000</td></tr>
+            <tr><td class="l">Debentures 债券</td><td>23,000</td></tr>
+            <tr class="tot"><td class="l">Total liabilities 负债合计</td><td>160,000</td></tr>
+            <tr><td class="l">Common stock 普通股</td><td>10,000</td></tr>
+            <tr><td class="l">Paid-in capital 实收资本</td><td>5,000</td></tr>
+            <tr><td class="l">Retained earnings 留存收益</td><td>10,000</td></tr>
+            <tr class="tot"><td class="l">Total L + E 总计</td><td>185,000</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="is">
+        <h3>Income Statement 利润表（$）</h3>
+        <table>
+          <tr><td class="l">Total interest income 利息收入（贷款 10,000＋证券 4,500＋回购 5,500＋存放同业 1,000）</td><td>21,000</td></tr>
+          <tr><td class="l">Total interest expense 利息支出（存款 9,000＋债券 2,500）</td><td>11,500</td></tr>
+          <tr><td class="l">Net interest income 净利息收入</td><td>9,500</td></tr>
+          <tr><td class="l">Provision for loan losses 贷款损失拨备</td><td>1,500</td></tr>
+          <tr><td class="l">Other income 其他收入</td><td>3,000</td></tr>
+          <tr><td class="l">Other expenses 其他费用</td><td>2,000</td></tr>
+          <tr><td class="l">Income before taxes 税前利润</td><td>9,000</td></tr>
+          <tr><td class="l">Taxes 所得税</td><td>3,000</td></tr>
+          <tr class="tot"><td class="l">Net income 净利润</td><td>6,000</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <footer class="pg"><span>FI Practice · Batch 2 · New Data</span><span>Page 1 / 2 · Problems</span></footer>
+</section>
+
+<!-- ============ PAGE 2 · 答案解析 ============ -->
+<section class="sheet">
+  <header class="top">
+    <h1>答案解析 · Answers &amp; Worked Solutions</h1>
+    <div class="tag">全部答案已用程序验算<br/>第 2 页 · 对照讲义版的步骤看，套路一模一样</div>
+  </header>
+  <div class="grid">
+
+    <div class="card">
+      <h2><span class="chip c1">1</span>Q8 · Repricing Gap</h2>
+      <p class="fx">一句话套路：缺口 ＝ RSA − RSL；ΔNII ＝ 缺口 × 利率变化。符号决定赚亏，大小决定多少；利率反向，影响反号。</p>
+      <table>
+        <tr><th class="l">头寸</th><th>缺口 Gap</th><th>利率 +1%</th><th>利率 −1%</th></tr>
+        <tr><td class="l">① RSA 250 / RSL 120</td><td><b>+$130m</b></td><td><b class="r" style="color:var(--red)">+$1.30m</b></td><td>−$1.30m</td></tr>
+        <tr><td class="l">② RSA 90 / RSL 150</td><td><b>−$60m</b></td><td>−$0.60m</td><td><b>+$0.60m</b></td></tr>
+        <tr><td class="l">③ RSA 160 / RSL 145</td><td><b>+$15m</b></td><td>+$0.15m</td><td>−$0.15m</td></tr>
+      </table>
+      <p class="step" style="margin-top:8px;">逐步看 ②：缺口 90 − 150 ＝ −60；利率涨 1% → 多付的比多收的多 60 × 1% ＝ <b>亏 $0.60m</b>；利率跌则反过来 <b>赚 $0.60m</b>。③ 缺口绝对值最小，动静也最小。</p>
+      <p class="eng"><b>c（结论，三句）:</b> A positive gap means the bank gains when rates rise and loses when rates fall. A negative gap is the opposite. The bigger the gap, the bigger the effect.（正缺口：涨赚跌亏；负缺口正好反过来；缺口越大，影响越大。）</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="chip c2">2</span>Q31 · Insurer Ratios</h2>
+      <p class="fx">一句话套路：六个比率分母都是保费 $8,000,000；综合 ＝ 赔付＋费用＋分红；经营 ＝ 综合 − 投资；盈利 ＝ 1 − 经营。</p>
+      <table>
+        <tr><th class="l">比率</th><th class="l">算法</th><th>结果</th></tr>
+        <tr><td class="l">赔付率 Loss ratio</td><td class="l">5,520,000 ÷ 8,000,000</td><td><b>69.0%</b></td></tr>
+        <tr><td class="l">费用率 Expense ratio</td><td class="l">2,080,000 ÷ 8,000,000</td><td><b>26.0%</b></td></tr>
+        <tr><td class="l">分红率 Dividend ratio</td><td class="l">240,000 ÷ 8,000,000</td><td><b>3.0%</b></td></tr>
+        <tr><td class="l">综合比率 Combined</td><td class="l">69.0 ＋ 26.0 ＋ 3.0</td><td><b>98.0%</b></td></tr>
+        <tr><td class="l">投资比率 Investment</td><td class="l">400,000 ÷ 8,000,000</td><td><b>5.0%</b></td></tr>
+        <tr><td class="l">经营比率 Operating</td><td class="l">98.0 − 5.0</td><td><b>93.0%</b></td></tr>
+        <tr><td class="l">整体盈利 Profitability</td><td class="l">1 − 93.0%</td><td><b>7.0%</b></td></tr>
+      </table>
+      <p class="step" style="margin-top:8px;">净赚金额：8,000,000 × 7% ＝ <b>$560,000</b>。金额法复核：8,000,000 − 5,520,000 − 2,080,000 − 240,000 ＋ 400,000 ＝ 560,000 ✓ 两条路一致。综合比率 98.0% ＜ 100%，承保本身就赚钱，投资收益再往上加。</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="chip c3">3</span>Q8 · Underwriting</h2>
+      <p class="fx">一句话套路：包销（firm commitment）看约定价——公司收入锁死，价格风险全在投行；代销（best-efforts）看实际卖出——佣金按股数固定，价格风险全在公司。</p>
+      <p class="step"><b>a. 包销：</b>Looney 恒收 20m × $9.80 ＝ <b>$196.0m</b>（两种卖价都一样）。<br/>
+      投行卖 $10.60：(10.60 − 9.80) × 20m ＝ <b>赚 $16.0m</b>；<br/>
+      只能卖 $9.25：(9.25 − 9.80) × 20m ＝ <b>亏 $11.0m</b>（利润 −$11.0 million）。</p>
+      <p class="step"><b>b. 代销：</b>佣金 17.5m 股 × $0.32 ＝ <b>$5.60m</b>，只按卖出股数收、与价格无关，两种情况投行都赚这 $5.60m。<br/>
+      卖价 $9.80：毛收入 17.5m × 9.80 ＝ $171.50m → Looney 收 171.50 − 5.60 ＝ <b>$165.90m</b>；<br/>
+      卖价 $9.25：毛收入 17.5m × 9.25 ＝ $161.875m → Looney 收 161.875 − 5.60 ＝ <b>$156.275m</b>。</p>
+      <p class="eng">守恒复核：公众付款 ＝ 公司收款 ＋ 投行利润，两种情形都对得上 ✓ 价格从 9.80 掉到 9.25 少的 $9.625m，代销下全部由 Looney 自己承担。</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="chip c4">4</span>Q26 · Megalopolis Ratios</h2>
+      <p class="fx">先备料：权益 ＝ 10,000 ＋ 5,000 ＋ 10,000 ＝ <b>25,000</b>；总收入 ＝ 利息收入 21,000 ＋ 其他收入 3,000 ＝ <b>24,000</b>；净利润 <b>6,000</b>；总资产 <b>185,000</b>。五比率都是这四个数两两相除。</p>
+      <table>
+        <tr><th class="l">比率</th><th class="l">算法</th><th>结果</th></tr>
+        <tr><td class="l">a. ROE 净资产收益率</td><td class="l">6,000 ÷ 25,000</td><td><b>24.00%</b></td></tr>
+        <tr><td class="l">b. ROA 总资产收益率</td><td class="l">6,000 ÷ 185,000</td><td><b>3.24%</b></td></tr>
+        <tr><td class="l">c. Asset utilization 资产利用率</td><td class="l">24,000 ÷ 185,000</td><td><b>12.97%</b></td></tr>
+        <tr><td class="l">d. Equity multiplier 权益乘数</td><td class="l">185,000 ÷ 25,000</td><td><b>7.40 倍</b></td></tr>
+        <tr><td class="l">e. Profit margin 利润率</td><td class="l">6,000 ÷ 24,000</td><td><b>25.00%</b></td></tr>
+      </table>
+      <p class="step" style="margin-top:8px;">杜邦复核：利润率 × 资产利用率 × 权益乘数 ＝ 25.00% × 12.97% × 7.40 ≈ <b>24.00% ＝ ROE</b> ✓ 链条闭合。ROA 只有 3.24%，靠 7.40 倍杠杆放大到 ROE 24.00%。</p>
+      <p class="eng"><b>加餐 f–i（收入的四个漏点，同讲义版套路）:</b> f. 利息费用率 ＝ 11,500 ÷ 24,000 ＝ <b>47.92%</b>；g. 拨备率 ＝ 1,500 ÷ 24,000 ＝ <b>6.25%</b>；h. 非利息费用率 ＝ 2,000 ÷ 24,000 ＝ <b>8.33%</b>；i. 税率 ＝ 3,000 ÷ 24,000 ＝ <b>12.50%</b>。四漏点合计 75.00%，正好 ＝ 1 − 利润率 25% ✓</p>
+    </div>
+
+  </div>
+  <footer class="pg"><span>FI Practice · Batch 2 · New Data</span><span>Page 2 / 2 · Answers</span></footer>
+</section>
+
+</body>
+</html>
