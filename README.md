@@ -15,3 +15,4 @@
 - [第 005 期（2026-10-22）](https://041208fyt-arch.github.io/evo/005.html)
 - [第 006 期（2026-10-23）](https://041208fyt-arch.github.io/evo/006.html)
 - [第 007 期（2026-10-24）](https://041208fyt-arch.github.io/evo/007.html)
+- [周报第 001 期（2026-10-18—10-24）](https://041208fyt-arch.github.io/evo/w001.html)
