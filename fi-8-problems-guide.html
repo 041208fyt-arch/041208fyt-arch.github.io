@@ -6,24 +6,24 @@
 <title>FI 8 道题 · 零基础手把手</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #ffffff; color: #232323; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+  body { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif; background: #ffffff; color: #232323; line-height: 1.7; -webkit-font-smoothing: antialiased; }
   .wrap { max-width: 720px; margin: 0 auto; padding: 20px 18px 80px; }
   header.hero { padding: 24px 4px 16px; border-bottom: 3px solid #232323; margin-bottom: 8px; }
   header.hero h1 { font-size: 24px; }
   header.hero .sub { font-size: 14px; color: #777; margin-top: 6px; }
   header.hero .how { margin-top: 12px; font-size: 14px; color: #555; background: #faf9f6; border: 1px solid #eee; border-radius: 10px; padding: 12px 14px; line-height: 1.8; }
   nav.toc { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); border-bottom: 1px solid #eee; padding: 10px 4px; display: flex; gap: 8px; overflow-x: auto; }
-  nav.toc a { flex: 0 0 auto; text-decoration: none; font-size: 13px; font-weight: 600; color: #555; border: 1px solid #e3e3e3; border-radius: 999px; padding: 6px 14px; background: #fff; }
-  section.q { margin-top: 32px; scroll-margin-top: 70px; }
+  nav.toc a { flex: 0 0 auto; text-decoration: none; font-size: 14px; font-weight: 600; color: #555; border: 1px solid #e3e3e3; border-radius: 999px; padding: 6px 14px; background: #fff; }
+  section.q { margin-top: 48px; scroll-margin-top: 70px; }
   .q-head { border-radius: 12px; padding: 18px; color: #fff; margin-bottom: 12px; }
-  .q-head .no { font-size: 12px; font-weight: 700; letter-spacing: 2px; opacity: .85; }
+  .q-head .no { font-size: 14px; font-weight: 700; letter-spacing: 2px; opacity: .85; }
   .q-head h2 { font-size: 20px; margin: 4px 0 2px; }
   .q-head .one { font-size: 14px; opacity: .95; margin-top: 6px; line-height: 1.7; }
   .q19 .q-head { background: #A83A2C; } .q9 .q-head { background: #3B4D8C; }
   .q37 .q-head { background: #A86F14; } .q15 .q-head { background: #0E7C6B; }
   .qdi .q-head { background: #5B4A8A; } .q10 .q-head { background: #1F6F8B; }
   .q22 .q-head { background: #7A3B2E; } .q8 .q-head { background: #3D6B35; }
-  .card { background: #fff; border: 1px solid #ececec; border-left: 5px solid #ccc; border-radius: 10px; padding: 15px 16px; margin: 12px 0; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .card { background: #fff; border: 1px solid #ececec; border-left: 5px solid #ccc; border-radius: 12px; padding: 18px 16px; margin: 20px 0; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
   .q19 .card { border-left-color: #C4553F; } .q9 .card { border-left-color: #5B6FB5; }
   .q37 .card { border-left-color: #D29A2B; } .q15 .card { border-left-color: #0E7C6B; }
   .qdi .card { border-left-color: #7C6FB5; } .q10 .card { border-left-color: #3E8FA8; }
@@ -33,27 +33,28 @@
   .q37 .card h3 { color: #8a5c0e; } .q15 .card h3 { color: #0E7C6B; }
   .qdi .card h3 { color: #5B4A8A; } .q10 .card h3 { color: #1F6F8B; }
   .q22 .card h3 { color: #7A3B2E; } .q8 .card h3 { color: #3D6B35; }
-  .card p { font-size: 15px; margin: 6px 0; }
-  .card ul { padding-left: 20px; font-size: 14.5px; } .card li { margin: 5px 0; }
+  .card p { font-size: 16px; line-height: 1.7; margin: 0 0 13px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul { padding-left: 20px; font-size: 16px; } .card li { margin: 5px 0; }
   .say { font-size: 15px; }
   .say b { background: #fff8e1; padding: 0 4px; border-radius: 4px; }
-  .bignum { font-size: 20px; font-weight: 800; font-family: "SF Mono", Menlo, Consolas, monospace; background: #f7f6f3; border-radius: 8px; padding: 10px 12px; margin: 8px 0; overflow-x: auto; }
-  .step { border-top: 1px solid #f0f0f0; padding: 12px 0 10px; }
+  .bignum { font-size: 20px; font-weight: 800; font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif; background: #f7f6f3; border-radius: 8px; padding: 10px 12px; margin: 8px 0; overflow-x: auto; }
+  .step { border-top: 1px solid #f0f0f0; padding: 16px 0 14px; margin: 0 0 4px; }
   .step:first-of-type { border-top: none; }
-  .step .n { display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px; }
+  .step .n { display: inline-block; width: 26px; height: 26px; line-height: 26px; text-align: center; border-radius: 50%; color: #fff; font-size: 14px; font-weight: 700; margin-right: 8px; }
   .q19 .step .n { background: #A83A2C; } .q9 .step .n { background: #3B4D8C; }
   .q37 .step .n { background: #A86F14; } .q15 .step .n { background: #0E7C6B; }
   .qdi .step .n { background: #5B4A8A; } .q10 .step .n { background: #1F6F8B; }
   .q22 .step .n { background: #7A3B2E; } .q8 .step .n { background: #3D6B35; }
   .step .t { font-weight: 700; font-size: 15px; }
-  .step .why { font-size: 13.5px; color: #666; margin-top: 6px; }
+  .step .why { font-size: 15px; color: #666; margin-top: 8px; line-height: 1.7; }
   .step .why b { color: #444; }
   .oneformula { background: #f7f6f3; border: 1px dashed #ddd; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-weight: 700; margin: 8px 0; }
   .card.prob { border-left-color: #999; }
   .prob .ptext { font-size: 14px; color: #333; }
-  .examwrite { font-family: Georgia, "Times New Roman", serif; background: #f7f6f3; border-radius: 8px; padding: 12px 14px; font-size: 14.5px; line-height: 1.9; white-space: pre-line; }
+  .examwrite { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif; background: #f7f6f3; border-radius: 8px; padding: 12px 14px; font-size: 16px; line-height: 1.7; white-space: pre-line; }
   .prob .zh { color: #555; margin-top: 8px; }
-  .prob .zh .tag { display: inline-block; font-size: 12px; color: #fff; background: #888; border-radius: 4px; padding: 1px 7px; margin-right: 6px; }
+  .prob .zh .tag { display: inline-block; font-size: 14px; color: #fff; background: #888; border-radius: 4px; padding: 1px 7px; margin-right: 6px; }
   .answer-big { font-size: 30px; font-weight: 800; margin: 6px 0; }
   .q19 .answer-big { color: #A83A2C; } .q9 .answer-big { color: #3B4D8C; }
   .q37 .answer-big { color: #8a5c0e; } .q15 .answer-big { color: #0E7C6B; }
@@ -62,22 +63,22 @@
   .answer-big small { font-size: 14px; font-weight: 400; color: #777; }
   .verify li b { color: #1d7a3a; }
   .tip { background: #fffdf4; }
-  table.mini { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 10px 0; line-height: 1.6; }
+  table.mini { width: 100%; border-collapse: collapse; font-size: 15px; margin: 10px 0; line-height: 1.6; }
   table.mini th, table.mini td { border: 1px solid #e5e5e5; padding: 7px 8px; text-align: right; }
   table.mini th:first-child, table.mini td:first-child { text-align: left; }
   table.mini th { background: #f7f6f3; }
   table.mini tr.total td { font-weight: 700; background: #fbfaf8; border-top: 2px solid #232323; }
   table.mini tr.title td { text-align: center; font-weight: 700; background: #f7f6f3; }
-  .tag { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 5px; padding: 1px 8px; }
-  .en { color: #555; font-size: 13px; }
-  footer { margin-top: 36px; padding-top: 14px; border-top: 2px solid #232323; font-size: 12.5px; color: #888; line-height: 1.8; }
+  .tag { display: inline-block; font-size: 14px; font-weight: 700; border-radius: 5px; padding: 1px 8px; }
+  .en { color: #555; font-size: 14px; }
+  footer { margin-top: 36px; padding-top: 14px; border-top: 2px solid #232323; font-size: 14px; color: #888; line-height: 1.8; }
 
   /* ===== Responsive layout: phone / iPad / desktop (content unchanged) ===== */
   html, body { overflow-x: clip; }
   body { font-size: 16px; }
   .wrap { max-width: 820px; min-width: 0; }
   .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 10px 0; padding-bottom: 4px; }
-  .table-hint { font-size: 13px; color: #888; margin: 8px 0 4px; }
+  .table-hint { font-size: 14px; color: #888; margin: 8px 0 4px; }
   table.mini { min-width: 480px; font-size: 14px; }
   .q9 table.mini, .q10 table.mini { min-width: 560px; }
   .examwrite, .bignum { overflow-x: auto; overflow-wrap: anywhere; word-break: break-word; }
@@ -127,6 +128,66 @@
     .table-hint { display: none; }
     table.mini { min-width: 0; width: 100%; }
   }
+
+  /* ===== 2026-10-28 mobile fix: nav overlap, table no-wrap, font + paragraph rhythm ===== */
+  body { line-height: 1.7; }
+  .prob .ptext { line-height: 1.7; margin: 0 0 13px; }
+  .prob .ptext:last-child { margin-bottom: 0; }
+  .card ul li { margin: 10px 0; }
+  .card h3 { font-size: 17px; margin-bottom: 12px; }
+  .q-head { padding: 20px 18px 18px; }
+  .q-head h2 { margin: 6px 0 12px; }
+  .q-head .one { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.35); line-height: 1.7; }
+  /* Tables: never break a word, scroll as a whole, subtle scrollbar */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; margin: 12px 0 16px; }
+  .table-wrap::-webkit-scrollbar { height: 4px; }
+  .table-wrap::-webkit-scrollbar-track { background: transparent; }
+  .table-wrap::-webkit-scrollbar-thumb { background: rgba(0,0,0,.18); border-radius: 4px; }
+  table.mini { overflow-wrap: normal; table-layout: auto; }
+  table.mini th, table.mini td { white-space: nowrap; word-break: keep-all; overflow-wrap: normal; font-size: 14px; }
+  table.mini { min-width: 560px; }
+  .q9 table.mini { min-width: 760px; }
+  .q10 table.mini { min-width: 680px; }
+  .q15 table.mini { min-width: 540px; }
+  @media (max-width: 600px) {
+    /* Nav: NOT sticky on phones, so it can never cover a question header */
+    nav.toc { position: static; top: auto; z-index: auto; padding: 10px 0; padding-right: 16px; scroll-padding-right: 16px; margin-bottom: 12px; }
+    nav.toc::after { content: ""; flex: 0 0 16px; }
+    nav.toc a { font-size: 14px; padding: 10px 14px; min-height: 44px; }
+    section.q { margin-top: 48px; scroll-margin-top: 16px; }
+    .wrap { padding: 16px 16px calc(110px + env(safe-area-inset-bottom)); }
+    .card { margin: 20px 0; padding: 18px 16px; }
+    .card h3 { font-size: 17px; margin-bottom: 12px; }
+    .card p, .card ul, .say, .step .t, .prob .ptext { font-size: 16px; line-height: 1.7; }
+    .card p { margin: 0 0 13px; }
+    .step .why, .oneformula, .en { font-size: 15px; line-height: 1.7; }
+    .examwrite, .bignum { font-size: 16px; line-height: 1.7; }
+    .q-head { padding: 20px 18px 18px; }
+    .q-head h2 { font-size: 20px; margin: 6px 0 12px; }
+    .q-head .one { font-size: 16px; line-height: 1.7; margin-top: 12px; padding-top: 12px; }
+    .q-head .no { font-size: 14px; }
+    table.mini th, table.mini td { font-size: 14px; padding: 8px 12px; }
+    footer { font-size: 14px; }
+  }
+  @media (min-width: 601px) and (max-width: 1024px) {
+    body, .card p, .card ul, .say, .step .t, .prob .ptext { font-size: 17px; line-height: 1.7; }
+    .card p { margin: 0 0 13px; }
+    .card h3 { font-size: 18px; }
+    .table-wrap { overflow-x: auto; }
+    table.mini { min-width: 0; width: 100%; font-size: 15px; }
+    .q9 table.mini, .q10 table.mini { min-width: 0; }
+    .table-hint { display: none; }
+    nav.toc { flex-wrap: wrap; overflow-x: visible; }
+  }
+  @media (min-width: 1025px) {
+    body, .card p { font-size: 17px; line-height: 1.7; }
+    .card p { margin: 0 0 13px; }
+    .table-wrap { overflow-x: auto; }
+    table.mini { min-width: 0; width: 100%; }
+    .q9 table.mini, .q10 table.mini { min-width: 0; }
+    .table-hint { display: none; }
+    nav.toc { flex-wrap: wrap; overflow-x: visible; }
+  }
 </style>
 </head>
 <body>
@@ -159,7 +220,7 @@
 
   <div class="card prob">
     <h3>题目 · Problem Statement</h3>
-    <div class="ptext">Consider the simple FI balance sheet below ($ millions). Suppose depositors unexpectedly withdraw $50 million in deposits and the FI receives no new deposits to replace them. Assume that the FI cannot borrow any more funds in the short-term money markets, and because it cannot wait to get better prices for its assets in the future (as it needs the cash now to meet immediate depositor withdrawals), the FI has to sell any nonliquid assets at 75 cents on the dollar. Show the FI's balance sheet after adjustments are made for the $50 million of deposit withdrawals.</div>
+    <div class="ptext">Consider the simple FI balance sheet below ($ millions). <br>Suppose depositors unexpectedly withdraw $50 million in deposits and the FI receives no new deposits to replace them. <br>Assume that the FI cannot borrow any more funds in the short-term money markets, and because it cannot wait to get better prices for its assets in the future (as it needs the cash now to meet immediate depositor withdrawals), the FI has to sell any nonliquid assets at 75 cents on the dollar. <br>Show the FI's balance sheet after adjustments are made for the $50 million of deposit withdrawals.</div>
     <div class="table-wrap"><div class="table-hint">表格可左右滑动查看 ↔</div><table class="mini">
       <tr class="title"><td colspan="4">Before the Withdrawal</td></tr>
       <tr><th>Assets</th><th></th><th>Liabilities/Equity</th><th></th></tr>
@@ -248,7 +309,7 @@ After: Assets $115m = Deposits $100m + Equity $15m</div>
 
   <div class="card prob">
     <h3>题目 · Problem Statement</h3>
-    <div class="ptext">Consider the following balance sheet for MMC Bancorp ($ millions). (a) Calculate the value of MMC's rate-sensitive assets, rate-sensitive liabilities, and repricing gap over the next year. (b) Calculate the expected change in the net interest income for the bank if interest rates rise by 1 percent on both RSAs and RSLs and if interest rates fall by 1 percent on both RSAs and RSLs.</div>
+    <div class="ptext">Consider the following balance sheet for MMC Bancorp ($ millions). <br>(a) Calculate the value of MMC's rate-sensitive assets, rate-sensitive liabilities, and repricing gap over the next year. <br>(b) Calculate the expected change in the net interest income for the bank if interest rates rise by 1 percent on both RSAs and RSLs and if interest rates fall by 1 percent on both RSAs and RSLs.</div>
     <div class="table-wrap"><div class="table-hint">表格可左右滑动查看 ↔</div><table class="mini">
       <tr><th>Assets</th><th></th><th>Liabilities/Equity</th><th></th></tr>
       <tr><td>1. Cash and due from</td><td>$6.25</td><td>1. Equity capital (fixed)</td><td>$25.00</td></tr>
@@ -347,7 +408,7 @@ Rates −1%: −$68.80m × (−1%) = +$0.688m (NII rises by $688,000)</div>
 
   <div class="card prob">
     <h3>题目 · Problem Statement</h3>
-    <div class="ptext">An FI wants to evaluate the credit risk of a <b>$5 million</b> loan with a <b>duration of 4.3 years</b> to a <b>AAA</b> borrower. There are currently 500 publicly traded bonds in that class. The current average level of rates (R) on AAA bonds is <b>8 percent</b>. The largest increase in credit risk premiums on AAA loans, the <b>99 percent worst-case</b> scenario over the last year, was <b>1.2 percent</b> (only 6 of 500 bonds exceeded it). The projected one-year <b>spread</b> on the loan is <b>0.3 percent</b> and the FI charges <b>0.25 percent</b> of face value in <b>fees</b>. <b>Calculate the capital at risk and the RAROC on this loan.</b></div>
+    <div class="ptext">An FI wants to evaluate the credit risk of a <b>$5 million</b> loan with a <b>duration of 4.3 years</b> to a <b>AAA</b> borrower. <br>There are currently 500 publicly traded bonds in that class. <br>The current average level of rates (R) on AAA bonds is <b>8 percent</b>. <br>The largest increase in credit risk premiums on AAA loans, the <b>99 percent worst-case</b> scenario over the last year, was <b>1.2 percent</b> (only 6 of 500 bonds exceeded it). <br>The projected one-year <b>spread</b> on the loan is <b>0.3 percent</b> and the FI charges <b>0.25 percent</b> of face value in <b>fees</b>. <b>Calculate the capital at risk and the RAROC on this loan.</b></div>
     <div class="ptext zh"><span class="tag">中文</span>一家金融机构想评估一笔 <b>500 万美元</b>贷款的信用风险：Duration（久期）4.3 年，借款人 <b>AAA</b> 评级。该级别现有 500 只公开交易的债券。AAA 债券当前平均利率为 <b>8%</b>。过去一年，AAA 贷款信用风险溢价的最大涨幅（<b>99% 最坏情形</b>）为 <b>1.2%</b>（500 只里只有 6 只超过它）。该贷款预计一年期 Spread（利差）0.3%，银行另收面值 <b>0.25% 的 Fees（费用）</b>。<b>计算这笔贷款的 Capital at Risk（风险资本）和 RAROC（风险调整资本回报率）。</b></div>
   </div>
 
@@ -430,7 +491,7 @@ RAROC = $27,500 / $238,889 = 11.51%</div>
 
   <div class="card prob">
     <h3>题目 · Problem Statement</h3>
-    <div class="ptext">Conglomerate Corporation acquired Acme Corporation. To finance the takeover, it will liquidate the overfunded portion of Acme's pension fund. The face values and current (t = 0) and one-year future (t = 1) liquidation values of the assets are given below. <b>Calculate the one-year liquidity index for these securities.</b></div>
+    <div class="ptext">Conglomerate Corporation acquired Acme Corporation. <br>To finance the takeover, it will liquidate the overfunded portion of Acme's pension fund. <br>The face values and current (t = 0) and one-year future (t = 1) liquidation values of the assets are given below. <b>Calculate the one-year liquidity index for these securities.</b></div>
     <div class="table-wrap"><div class="table-hint">表格可左右滑动查看 ↔</div><table class="mini">
       <tr class="title"><td colspan="4">Liquidation Values</td></tr>
       <tr><th>Asset</th><th>Face Value</th><th>t = 0</th><th>t = 1 year</th></tr>
@@ -513,7 +574,7 @@ I = 0.3143 + 0.1481 + 0.4643 = 0.9267, about 0.93</div>
 
   <div class="card prob">
     <h3>题目 · Problem Statement</h3>
-    <div class="ptext">A DI has the following balance sheet (in millions). The DI's securities portfolio includes $16 million in T-bills and $10 million in GNMA securities. The DI has a $20 million line of credit to borrow in the repo market and $5 million in excess cash reserves (above reserve requirements) with the Fed. The DI currently has borrowed $22 million in Fed funds and $18 million from the Fed discount window to meet seasonal demands. 1. Calculate the financing gap. 2. What is the financing requirement?</div>
+    <div class="ptext">A DI has the following balance sheet (in millions). <br>The DI's securities portfolio includes $16 million in T-bills and $10 million in GNMA securities. <br>The DI has a $20 million line of credit to borrow in the repo market and $5 million in excess cash reserves (above reserve requirements) with the Fed. <br>The DI currently has borrowed $22 million in Fed funds and $18 million from the Fed discount window to meet seasonal demands. <br>1. <br>Calculate the financing gap. <br>2. <br>What is the financing requirement?</div>
     <div class="table-wrap"><div class="table-hint">表格可左右滑动查看 ↔</div><table class="mini">
       <tr><th>Assets</th><th></th><th>Liabilities and Equity</th><th></th></tr>
       <tr><td>Cash</td><td>$9</td><td>Deposits</td><td>$75</td></tr>
@@ -599,7 +660,7 @@ Check: Purchased funds + Equity = 40 + 15 = 55.</div>
 
   <div class="card prob">
     <h3>题目 · Problem Statement</h3>
-    <div class="ptext">The following are the foreign currency positions of an FI, expressed in the foreign currency. The exchange rate of dollars per SFr is 1.0230, dollars per British pound is 1.3100, and dollars per yen is 0.008800. The following are the foreign currency positions converted to dollars. a. What is the FI's net exposure in Swiss francs stated in SFr and $? b. What is the FI's net exposure in British pounds stated in £ and $? c. What is the FI's net exposure in Japanese yen stated in ¥ and $?</div>
+    <div class="ptext">The following are the foreign currency positions of an FI, expressed in the foreign currency. <br>The exchange rate of dollars per SFr is 1.0230, dollars per British pound is 1.3100, and dollars per yen is 0.008800. <br>The following are the foreign currency positions converted to dollars. a. <br>What is the FI's net exposure in Swiss francs stated in SFr and $? b. <br>What is the FI's net exposure in British pounds stated in £ and $? c. <br>What is the FI's net exposure in Japanese yen stated in ¥ and $?</div>
     <div class="table-wrap"><div class="table-hint">表格可左右滑动查看 ↔</div><table class="mini">
       <tr><th>Currency</th><th>Assets</th><th>Liabilities</th><th>FX Bought</th><th>FX Sold</th></tr>
       <tr><td>Swiss francs (SFr)</td><td>SFr 122,190</td><td>SFr 48,876</td><td>SFr 9,775</td><td>SFr 14,663</td></tr>
@@ -685,7 +746,7 @@ SFr: 122,190 − 48,876 + 9,775 − 14,663 = 68,426 SFr; 68,426 x 1.0230 = $70,0
 
   <div class="card prob">
     <h3>题目 · Problem Statement</h3>
-    <div class="ptext">A bank is in the process of renegotiating a sovereign loan. The principal outstanding is $50 million and is to be paid back in two installments of $25 million each, plus interest of 8 percent. The new terms will stretch the loan out to five years with only interest payments of 6 percent, no principal payments, for the first three years. The principal will be paid in the last two years in payments of $25 million along with the interest. The cost of funds for the bank is 6 percent for both the old loan and the renegotiated loan. An upfront fee of 1 percent is to be included for the renegotiated loan. a. What is the present value of the existing loan for the bank? b. What is the present value of the restructured loan for the bank?</div>
+    <div class="ptext">A bank is in the process of renegotiating a sovereign loan. <br>The principal outstanding is $50 million and is to be paid back in two installments of $25 million each, plus interest of 8 percent. <br>The new terms will stretch the loan out to five years with only interest payments of 6 percent, no principal payments, for the first three years. <br>The principal will be paid in the last two years in payments of $25 million along with the interest. <br>The cost of funds for the bank is 6 percent for both the old loan and the renegotiated loan. <br>An upfront fee of 1 percent is to be included for the renegotiated loan. a. <br>What is the present value of the existing loan for the bank? b. <br>What is the present value of the restructured loan for the bank?</div>
     <div class="ptext zh"><span class="tag">中文</span>一家银行正在重新谈判一笔主权贷款。本金余额 5,000 万美元，原定分两期每期还 2,500 万，另加 8% 利息。新条款把贷款展期到 5 年，前三年只付 6% 利息、不还本金；本金在最后两年每期还 2,500 万并付利息。银行新旧贷款的 Cost of Funds（资金成本）都是 6%。重新谈判贷款要收 1% 的 Upfront Fee（前期费用）。a. 该贷款对银行的现值（现有贷款）是多少？b. 重组后贷款对银行的现值是多少？</div>
   </div>
 
@@ -765,7 +826,7 @@ Restructured value = 50.00 + upfront fee (1% x 50 = 0.50) = 50.50.</div>
 
   <div class="card prob">
     <h3>题目 · Problem Statement</h3>
-    <div class="ptext">We can extend this analysis to calculate the potential loss over 2, 3, ..., N days. If we assume that yield shocks are independent and daily volatility is approximately constant and that the FI is locked in to holding this asset for N number of days, then the N-day market value at risk (VAR) is related to daily earnings at risk (DEAR) by: N-day VAR = DEAR x sqrt(N).</div>
+    <div class="ptext">We can extend this analysis to calculate the potential loss over 2, 3, ..., N days. <br>If we assume that yield shocks are independent and daily volatility is approximately constant and that the FI is locked in to holding this asset for N number of days, then the N-day market value at risk (VAR) is related to daily earnings at risk (DEAR) by: N-day VAR = DEAR x sqrt(N).</div>
     <div class="ptext zh"><span class="tag">中文</span>我们可以把分析推广到 2 天、3 天、……、N 天的潜在损失。如果假设收益率冲击各天相互独立、日波动率大致不变、且金融机构被锁定持有该资产 N 天，那么 N 天的市场风险价值（Value at Risk，VAR）与 Daily Earnings at Risk（日风险价值，DEAR）的关系是：N 天 VAR = DEAR × 根号 N。注意：这道题只有一段原文和一个公式，没有数字题，下面讲公式、假设和局限，算例明确标注为示例。</div>
   </div>
 
