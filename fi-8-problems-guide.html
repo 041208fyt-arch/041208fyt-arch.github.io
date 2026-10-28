@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FI 8 道题 · 零基础手把手</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #ffffff; color: #232323; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 20px 18px 80px; }
+  header.hero { padding: 24px 4px 16px; border-bottom: 3px solid #232323; margin-bottom: 8px; }
+  header.hero h1 { font-size: 24px; }
+  header.hero .sub { font-size: 14px; color: #777; margin-top: 6px; }
+  header.hero .how { margin-top: 12px; font-size: 14px; color: #555; background: #faf9f6; border: 1px solid #eee; border-radius: 10px; padding: 12px 14px; line-height: 1.8; }
+  nav.toc { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); border-bottom: 1px solid #eee; padding: 10px 4px; display: flex; gap: 8px; overflow-x: auto; }
+  nav.toc a { flex: 0 0 auto; text-decoration: none; font-size: 13px; font-weight: 600; color: #555; border: 1px solid #e3e3e3; border-radius: 999px; padding: 6px 14px; background: #fff; }
+  section.q { margin-top: 32px; scroll-margin-top: 70px; }
+  .q-head { border-radius: 12px; padding: 18px; color: #fff; margin-bottom: 12px; }
+  .q-head .no { font-size: 12px; font-weight: 700; letter-spacing: 2px; opacity: .85; }
+  .q-head h2 { font-size: 20px; margin: 4px 0 2px; }
+  .q-head .one { font-size: 14px; opacity: .95; margin-top: 6px; line-height: 1.7; }
+  .q19 .q-head { background: #A83A2C; } .q9 .q-head { background: #3B4D8C; }
+  .q37 .q-head { background: #A86F14; } .q15 .q-head { background: #0E7C6B; }
+  .qdi .q-head { background: #5B4A8A; } .q10 .q-head { background: #1F6F8B; }
+  .q22 .q-head { background: #7A3B2E; } .q8 .q-head { background: #3D6B35; }
+  .card { background: #fff; border: 1px solid #ececec; border-left: 5px solid #ccc; border-radius: 10px; padding: 15px 16px; margin: 12px 0; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .q19 .card { border-left-color: #C4553F; } .q9 .card { border-left-color: #5B6FB5; }
+  .q37 .card { border-left-color: #D29A2B; } .q15 .card { border-left-color: #0E7C6B; }
+  .qdi .card { border-left-color: #7C6FB5; } .q10 .card { border-left-color: #3E8FA8; }
+  .q22 .card { border-left-color: #B06A52; } .q8 .card { border-left-color: #5E8F57; }
+  .card h3 { font-size: 14px; letter-spacing: 1px; margin-bottom: 6px; }
+  .q19 .card h3 { color: #A83A2C; } .q9 .card h3 { color: #3B4D8C; }
+  .q37 .card h3 { color: #8a5c0e; } .q15 .card h3 { color: #0E7C6B; }
+  .qdi .card h3 { color: #5B4A8A; } .q10 .card h3 { color: #1F6F8B; }
+  .q22 .card h3 { color: #7A3B2E; } .q8 .card h3 { color: #3D6B35; }
+  .card p { font-size: 15px; margin: 6px 0; }
+  .card ul { padding-left: 20px; font-size: 14.5px; } .card li { margin: 5px 0; }
+  .say { font-size: 15px; }
+  .say b { background: #fff8e1; padding: 0 4px; border-radius: 4px; }
+  .bignum { font-size: 20px; font-weight: 800; font-family: "SF Mono", Menlo, Consolas, monospace; background: #f7f6f3; border-radius: 8px; padding: 10px 12px; margin: 8px 0; overflow-x: auto; }
+  .step { border-top: 1px solid #f0f0f0; padding: 12px 0 10px; }
+  .step:first-of-type { border-top: none; }
+  .step .n { display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px; }
+  .q19 .step .n { background: #A83A2C; } .q9 .step .n { background: #3B4D8C; }
+  .q37 .step .n { background: #A86F14; } .q15 .step .n { background: #0E7C6B; }
+  .qdi .step .n { background: #5B4A8A; } .q10 .step .n { background: #1F6F8B; }
+  .q22 .step .n { background: #7A3B2E; } .q8 .step .n { background: #3D6B35; }
+  .step .t { font-weight: 700; font-size: 15px; }
+  .step .why { font-size: 13.5px; color: #666; margin-top: 6px; }
+  .step .why b { color: #444; }
+  .oneformula { background: #f7f6f3; border: 1px dashed #ddd; border-radius: 8px; padding: 12px 14px; font-size: 16px; font-weight: 700; margin: 8px 0; }
+  .card.prob { border-left-color: #999; }
+  .prob .ptext { font-size: 14px; color: #333; }
+  .examwrite { font-family: Georgia, "Times New Roman", serif; background: #f7f6f3; border-radius: 8px; padding: 12px 14px; font-size: 14.5px; line-height: 1.9; white-space: pre-line; }
+  .prob .zh { color: #555; margin-top: 8px; }
+  .prob .zh .tag { display: inline-block; font-size: 12px; color: #fff; background: #888; border-radius: 4px; padding: 1px 7px; margin-right: 6px; }
+  .answer-big { font-size: 30px; font-weight: 800; margin: 6px 0; }
+  .q19 .answer-big { color: #A83A2C; } .q9 .answer-big { color: #3B4D8C; }
+  .q37 .answer-big { color: #8a5c0e; } .q15 .answer-big { color: #0E7C6B; }
+  .qdi .answer-big { color: #5B4A8A; } .q10 .answer-big { color: #1F6F8B; }
+  .q22 .answer-big { color: #7A3B2E; } .q8 .answer-big { color: #3D6B35; }
+  .answer-big small { font-size: 14px; font-weight: 400; color: #777; }
+  .verify li b { color: #1d7a3a; }
+  .tip { background: #fffdf4; }
+  table.mini { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 10px 0; line-height: 1.6; }
+  table.mini th, table.mini td { border: 1px solid #e5e5e5; padding: 7px 8px; text-align: right; }
+  table.mini th:first-child, table.mini td:first-child { text-align: left; }
+  table.mini th { background: #f7f6f3; }
+  table.mini tr.total td { font-weight: 700; background: #fbfaf8; border-top: 2px solid #232323; }
+  table.mini tr.title td { text-align: center; font-weight: 700; background: #f7f6f3; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 5px; padding: 1px 8px; }
+  .en { color: #555; font-size: 13px; }
+  footer { margin-top: 36px; padding-top: 14px; border-top: 2px solid #232323; font-size: 12.5px; color: #888; line-height: 1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>FI 8 道题 · 零基础手把手</h1>
+  <div class="sub">不用看懂符号，跟着中文走 —— 所有算式都是具体数字，算完我又验了一遍</div>
+  <div class="how">读法：先看<b>「题目」</b>（考试原题）→ <b>「一句话」</b>知道在问什么 → <b>「故事」</b>建立感觉 → <b>「一步一步算」</b>（中文讲懂，每步都有为什么）→ <b>「英文作答版」</b>（考试照这个写）→ <b>「一句话公式」</b>。每题最后有验证和考场提示。</div>
+</header>
+
+<nav class="toc">
+  <a href="#q19">Q19 · 挤兑贱卖</a>
+  <a href="#q9">Q9 · 重定价缺口</a>
+  <a href="#q37">Q37 · 风险资本</a>
+  <a href="#q15">Q15 · 流动性指数</a>
+  <a href="#qdi">DI · 融资缺口</a>
+  <a href="#q10">Q10 · 外汇净敞口</a>
+  <a href="#q22">Q22 · 贷款重谈现值</a>
+  <a href="#q8">Q8 · N 天风险价值</a>
+</nav>
+
+<!-- ================= Q19 ================= -->
+<section class="q q19" id="q19">
+  <div class="q-head">
+    <div class="no">Q19</div>
+    <h2>挤兑贱卖 <span class="en">Fire Sale</span></h2>
+    <div class="one">一句话：储户突然取走 5,000 万，银行现金不够、又借不到钱，只能打折贱卖资产 —— 最后资产负债表长什么样？</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">Consider the simple FI balance sheet below ($ millions). Suppose depositors unexpectedly withdraw $50 million in deposits and the FI receives no new deposits to replace them. Assume that the FI cannot borrow any more funds in the short-term money markets, and because it cannot wait to get better prices for its assets in the future (as it needs the cash now to meet immediate depositor withdrawals), the FI has to sell any nonliquid assets at 75 cents on the dollar. Show the FI's balance sheet after adjustments are made for the $50 million of deposit withdrawals.</div>
+    <table class="mini">
+      <tr class="title"><td colspan="4">Before the Withdrawal</td></tr>
+      <tr><th>Assets</th><th></th><th>Liabilities/Equity</th><th></th></tr>
+      <tr><td>Cash assets</td><td>$20</td><td>Deposits</td><td>$150</td></tr>
+      <tr><td>Nonliquid assets</td><td>155</td><td>Equity</td><td>25</td></tr>
+      <tr class="total"><td></td><td>175</td><td></td><td>175</td></tr>
+    </table>
+    <div class="ptext zh"><span class="tag">中文</span>提款前资产负债表如上表所示（单位：百万美元）。假设存款人意外提走 50，没有新存款补回；假设该机构不能在短期货币市场再借钱，也不能等以后卖个好价（因为现在就要现金付提款），只能按每 1 美元账面值卖 75 美分的价格卖非流动资产。列出为这 50 提款调整后的资产负债表。</div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">一家小银行：资产是<b>现金 20</b> + <b>不好卖的资产 155</b>；欠储户 <b>150</b>，自己有 <b>25</b> 股本。</p>
+    <p class="say">某天储户突然取走 <b>50</b>，还没有新存款进来，短期市场也借不到钱。手里的 20 现金不够，只能把“不好卖的资产”按 <b>75 折</b>贱卖（账面 1 美元只能卖 0.75 美元）。</p>
+    <p class="say">记住链条：<b>挤兑 → 贱卖 → 股东亏钱</b>。存款人必须足额拿到钱，亏的那部分只能股东认，这就是 Liquidity Risk（流动性风险）最后变成权益损失的过程。</p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">先花光现金，还差多少</span>
+      <div class="bignum">50 − 20 = 30</div>
+      <div class="why"><b>为什么：</b>现金（Cash）是 1 比 1 兑付的，没有损失，当然先用。20 花完，还差 30 才凑够提走的 50。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">倒推：要卖多少账面资产</span>
+      <div class="bignum">30 ÷ 0.75 = 40</div>
+      <div class="why"><b>为什么：</b>打 75 折的意思是“账面 40 只能换回 30 现金”。这是全题唯一的除法：<b>还差多少现金 ÷ 折扣率 = 要牺牲多少账面</b>，用乘法方向就反了。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">算贱卖损失，冲减权益</span>
+      <div class="bignum">损失 = 40 − 30 = 10；权益 = 25 − 10 = 15</div>
+      <div class="why"><b>为什么：</b>卖了账面 40 只收回 30，中间亏了 10。这 10 不能算到存款头上，因为存款是银行欠储户的钱；资产少了、负债不变，差额只能由所有者权益（Equity）承担。</div>
+    </div>
+    <div class="step">
+      <span class="n">4</span><span class="t">拼调整后的表</span>
+      <div class="bignum">现金 0；非流动资产 155 − 40 = 115；资产合计 115。存款 150 − 50 = 100；权益 15；合计 100 + 15 = 115。</div>
+      <div class="why"><b>为什么：</b>现金是手头 20 全付了，卖资产收回的 30 也付给提款人了，所以剩下 0；两边都要重新拼一次，不能只算一边。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案</h3>
+    <div class="answer-big">$115m <small>资产（现金 0 + 非流动 115）</small></div>
+    <div class="answer-big">$100m <small>存款 + $15m 股本</small></div>
+    <p class="say" style="margin-top:8px">贱卖损失 <b>$10m</b>，全部由股本吸收。资产负债表依然平衡：115 = 100 + 15。</p>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">Cash shortfall = $50m − $20m = $30m
+Book value to sell = $30m / 0.75 = $40m
+Nonliquid assets = $155m − $40m = $115m
+Fire-sale loss = $40m − $30m = $10m → Equity = $25m − $10m = $15m
+Deposits = $150m − $50m = $100m; Cash = $0
+After: Assets $115m = Deposits $100m + Equity $15m</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式（记住这句就够了）</h3>
+    <div class="oneformula">要卖的账面 = 还差的现金 ÷ 折扣率；损失 = 账面 − 实收（从股本里扣）</div>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 我算完又验了一遍</h3>
+    <ul>
+      <li><b>✓</b> 115 = 100 + 15，资产负债表平衡 —— 硬检验通过。</li>
+      <li><b>✓</b> 损失链条闭合：卖 40 → 到手 30 → 损失 10 = 股本减少 10，一分不差。</li>
+      <li><b>✓</b> 现金归零符合题设（20 全付出、借不到新钱、只能贱卖）。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <p>核心就两步：<b>“差多少现金 → 除以折扣率 → 倒推账面卖多少”</b>。千万别写成 30 × 0.75（那是反的）。最后一定用“资产 = 负债 + 股本”验算平衡；不要把卖 40 写成卖 30，30 是收回的现金，40 是卖掉的账面值。</p>
+  </div>
+</section>
+
+<!-- ================= Q9 ================= -->
+<section class="q q9" id="q9">
+  <div class="q-head">
+    <div class="no">Q9</div>
+    <h2>重定价缺口 <span class="en">Repricing Gap</span></h2>
+    <div class="one">一句话：未来 1 年里，银行有多少资产和负债会跟着利率变？资产减负债 = 缺口，缺口告诉你<b>加息是赚还是赔</b>。</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">Consider the following balance sheet for MMC Bancorp ($ millions). (a) Calculate the value of MMC's rate-sensitive assets, rate-sensitive liabilities, and repricing gap over the next year. (b) Calculate the expected change in the net interest income for the bank if interest rates rise by 1 percent on both RSAs and RSLs and if interest rates fall by 1 percent on both RSAs and RSLs.</div>
+    <table class="mini">
+      <tr><th>Assets</th><th></th><th>Liabilities/Equity</th><th></th></tr>
+      <tr><td>1. Cash and due from</td><td>$6.25</td><td>1. Equity capital (fixed)</td><td>$25.00</td></tr>
+      <tr><td>2. Short-term consumer loans (1-year maturity)</td><td>62.50</td><td>2. Demand deposits</td><td>50.00</td></tr>
+      <tr><td>3. Long-term consumer loans (2-year maturity)</td><td>31.30</td><td>3. One-month CDs</td><td>37.50</td></tr>
+      <tr><td>4. Three-month T-bills</td><td>37.50</td><td>4. Three-month CDs</td><td>50.00</td></tr>
+      <tr><td>5. Six-month T-notes</td><td>43.70</td><td>5. Three-month bankers' acceptances</td><td>25.00</td></tr>
+      <tr><td>6. 3-year T-bonds</td><td>75.00</td><td>6. Six-month commercial paper</td><td>75.00</td></tr>
+      <tr><td>7. 10-year, fixed-rate mortgages</td><td>25.00</td><td>7. 1-year time deposits</td><td>25.00</td></tr>
+      <tr><td>8. 30-year, floating-rate mortgages (reset every nine months)</td><td>50.00</td><td>8. 2-year time deposits</td><td>50.00</td></tr>
+      <tr><td>9. Premises</td><td>6.25</td><td></td><td></td></tr>
+      <tr class="total"><td></td><td>337.50</td><td></td><td>337.50</td></tr>
+    </table>
+    <div class="ptext zh"><span class="tag">中文</span>MMC Bancorp 的资产负债表如上表所示（单位：百万美元）。(a) 计算未来 1 年的<b>利率敏感资产、利率敏感负债和重定价缺口</b>。(b) 若利率<b>上升 1%</b>（资产和负债都升），净利息收入预期变化多少？若利率<b>下降 1%</b> 呢？</div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">银行像个<b>“借短贷长”的二房东</b>：借来的钱（存款、存单）期限很短，贷出去的钱（长期贷款、债券）期限很长。</p>
+    <p class="say">加息的时候，<b>负债的成本立刻涨</b>（存款到期了要按新利率续），但<b>资产的收益涨不动</b>（长期贷款早就锁死了）—— 一边多付钱、一边没多收钱，Net Interest Income（净利息收入，NII）就跌了。</p>
+    <p class="say">所以第一步是分类：把资产负债表每一行分成 <b>“1年内会变利率的”</b> 和 <b>“不会变的”</b> 两类。</p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">资产打勾：1年内会变利率的加起来</span>
+      <div class="bignum">62.50 + 37.50 + 43.70 + 50.00 = 193.70</div>
+      <div class="why"><b>为什么：</b>只看“1年内到期或重定价”。1年期贷款到期要重签 → 算；浮动按揭看 Reset Period（重定价周期，9个月 &lt; 1年 → 算），不看它30年的总期限；现金和房产不生息 → 不算。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">负债打勾：1年内会变利率的加起来（主口径）</span>
+      <div class="bignum">50.00 + 37.50 + 50.00 + 25.00 + 75.00 + 25.00 = 262.50</div>
+      <div class="why"><b>为什么：</b>主口径里 Demand Deposits（活期存款）50 算，因为它可随时支取、利率可变；1个月存单、3个月存单、3个月银行承兑、6个月商业票据、1年期定存（1年内到期）都算；2年期定存和固定股本不算。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">缺口 = 资产 − 负债</span>
+      <div class="bignum">193.70 − 262.50 = −68.80（百万）</div>
+      <div class="why"><b>为什么：</b>负数 = Negative Gap（负缺口）= Liability-Sensitive（负债敏感型）：1年内要跟着涨价的负债比资产多 68.80。</div>
+    </div>
+    <div class="step">
+      <span class="n">4</span><span class="t">利率变 1%，净利息收入变多少</span>
+      <div class="bignum">加息1%：−68.80 × 1% = −0.688百万 → 少赚 $688,000<br>降息1%：−68.80 × (−1%) = +0.688百万 → 多赚 $688,000</div>
+      <div class="why"><b>为什么：</b>资产和负债利率同向同幅变动时，只有缺口部分会产生净影响，所以只乘缺口。记住：<b>负缺口 + 加息 = 赔钱</b>。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案</h3>
+    <div class="answer-big">$193.70m <small>Rate-Sensitive Assets（利率敏感资产，RSA）</small></div>
+    <div class="answer-big">$262.50m <small>Rate-Sensitive Liabilities（利率敏感负债，RSL，主口径）</small></div>
+    <div class="answer-big">−$68.80m <small>Repricing Gap（重定价缺口，负缺口）</small></div>
+    <p class="say" style="margin-top:8px">加息 1% → 净利息收入 <b>−$688,000</b>；降息 1% → <b>+$688,000</b>。</p>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">RSA = $62.50 + $37.50 + $43.70 + $50.00 = $193.70m
+(1-yr consumer loans, 3-mo T-bills, 6-mo T-notes, floating-rate mortgages resetting in 9 months)
+RSL = $50.00 + $37.50 + $50.00 + $25.00 + $75.00 + $25.00 = $262.50m
+(demand deposits, 1-mo and 3-mo CDs, 3-mo bankers' acceptances, 6-mo commercial paper, 1-yr time deposits)
+Repricing gap = $193.70m − $262.50m = −$68.80m (liability-sensitive)
+Change in NII = Gap × change in rates
+Rates +1%: −$68.80m × 1% = −$0.688m (NII falls by $688,000)
+Rates −1%: −$68.80m × (−1%) = +$0.688m (NII rises by $688,000)</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式（记住这句就够了）</h3>
+    <div class="oneformula">缺口 = 1年内会变利率的资产 − 会变利率的负债；利息收入变化 = 缺口 × 利率变化</div>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 我算完又验了一遍</h3>
+    <ul>
+      <li><b>✓</b> 资产加总 337.50 = 负债加总 337.50，表是平的 —— 分类时没漏行、没多行。</li>
+      <li><b>✓</b> 方向检验：负缺口 → 加息时净利息收入跌，符合“负债敏感型”直觉；如果算出来加息反而赚钱，说明符号搞反了。</li>
+      <li><b>✓</b> 0.688百万 = $688,000，单位换算无误（题目单位是 $ millions）。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <p>三处最容易丢分：① 30 年浮动按揭不要因为“30 年”就排除，重定价看的是重定价周期（9 个月），不是到期日；② 1 年期定存算（“1 年内”包含 1 年），2 年期定存不算；③ 活期存款的口径要跟老师讲义走。</p>
+    <p><b>口径注意（只看老师讲义选一种，不要两个都写）：</b>如果老师把活期存款排除在 RSL 之外，RSL = 212.50，缺口 = −18.80，利率上升 1% 时净利息收入变化 −0.188，下降 1% 时 +0.188。本题主答案按计入活期存款算：RSL 262.50，缺口 −68.80，变化 ∓0.688。</p>
+  </div>
+</section>
+
+<!-- ================= Q37 ================= -->
+<section class="q q37" id="q37">
+  <div class="q-head">
+    <div class="no">Q37</div>
+    <h2>风险资本 &amp; RAROC <span class="en">Capital at Risk</span></h2>
+    <div class="one">一句话：银行借出 500 万，最坏情况下会亏多少（要垫多少钱）？赚的钱够不够覆盖这个风险？</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">An FI wants to evaluate the credit risk of a <b>$5 million</b> loan with a <b>duration of 4.3 years</b> to a <b>AAA</b> borrower. There are currently 500 publicly traded bonds in that class. The current average level of rates (R) on AAA bonds is <b>8 percent</b>. The largest increase in credit risk premiums on AAA loans, the <b>99 percent worst-case</b> scenario over the last year, was <b>1.2 percent</b> (only 6 of 500 bonds exceeded it). The projected one-year <b>spread</b> on the loan is <b>0.3 percent</b> and the FI charges <b>0.25 percent</b> of face value in <b>fees</b>. <b>Calculate the capital at risk and the RAROC on this loan.</b></div>
+    <div class="ptext zh"><span class="tag">中文</span>一家金融机构想评估一笔 <b>500 万美元</b>贷款的信用风险：Duration（久期）4.3 年，借款人 <b>AAA</b> 评级。该级别现有 500 只公开交易的债券。AAA 债券当前平均利率为 <b>8%</b>。过去一年，AAA 贷款信用风险溢价的最大涨幅（<b>99% 最坏情形</b>）为 <b>1.2%</b>（500 只里只有 6 只超过它）。该贷款预计一年期 Spread（利差）0.3%，银行另收面值 <b>0.25% 的 Fees（费用）</b>。<b>计算这笔贷款的 Capital at Risk（风险资本）和 RAROC（风险调整资本回报率）。</b></div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">银行借给一家 AAA 公司 <b>500 万</b>，期限很长（久期 4.3 年）。一年里银行赚两笔钱：<b>利差 0.3%</b>（像收租：0.3% × 500万 = <b>1.5万</b>）+ <b>手续费 0.25%</b>（签约费：0.25% × 500万 = <b>1.25万</b>），一年总共赚 <b>2.75 万</b>。</p>
+    <p class="say">但有个风险：如果整个 AAA 市场的<b>信用利差突然扩大</b>，这笔贷款的市场价值会下跌。题目说：历史上 99% 的情况都没这么惨，最坏的那 1% 里利差扩大了 <b>1.2%</b> —— 我们就按这个最坏情况算银行会亏多少。</p>
+    <p class="say"><b>Duration 4.3 年是个“放大器”</b>：期限越长，同样的利差冲击，市值跌得越多。</p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">先算一年赚多少</span>
+      <div class="bignum">1.5万 + 1.25万 = 2.75万</div>
+      <div class="why"><b>为什么：</b>这是 RAROC 的分子 —— “一年总共赚多少”，利差和手续费都要算，漏掉手续费就会少算 1.25 万。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">把 1.2% 的冲击“修正”一下</span>
+      <div class="bignum">Modified Duration（修正久期）= 4.3 ÷ 1.08 ≈ 3.9815</div>
+      <div class="why"><b>为什么：</b>现在市场利率是 8%，利率越高，同样的利差跳动冲击越小，所以除以 1.08 打个折。记住 1.08 = 1 + 8% 就行。注意：1.2% 是利差的<b>变化</b>（冲击），0.3% 才是赚钱的利差，别混。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">算最坏情况下亏多少</span>
+      <div class="bignum">500万 × 3.9815 × 1.2% ≈ 23.9万</div>
+      <div class="why"><b>为什么：</b>500万 × 1.2% 是“期限只有1年”的亏损规模；再 × 修正久期 3.9815（放大器），得到约 <b>23.9 万</b>。算出来带负数就是“亏”的意思。银行得准备 <b>23.9 万风险资本</b> 垫着 —— 这就是 Capital at Risk。</div>
+    </div>
+    <div class="step">
+      <span class="n">4</span><span class="t">算 RAROC：赚的 ÷ 垫的</span>
+      <div class="bignum">2.75万 ÷ 23.9万 = 11.5%</div>
+      <div class="why"><b>为什么：</b>每垫 1 美元风险资本，一年赚回约 0.115 美元。银行拿这个数跟股东要求的回报（门槛收益率）比：更高就放贷，更低就拒绝。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案</h3>
+    <div class="answer-big">$238,889 <small>Capital at Risk（风险资本）</small></div>
+    <div class="answer-big">11.5% <small>RAROC（精确 11.51%）</small></div>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">Capital at risk:
+Modified duration = 4.3 / 1.08 = 3.9815
+Capital at risk = 3.9815 x $5,000,000 x 1.2% = $238,889
+
+RAROC:
+One-year income = 0.3% x $5,000,000 + 0.25% x $5,000,000
+               = $15,000 + $12,500 = $27,500
+RAROC = $27,500 / $238,889 = 11.51%</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式（记住这句就够了）</h3>
+    <div class="oneformula">风险资本 = 贷款额 × 修正久期 × 利差冲击；RAROC = 一年赚的 ÷ 风险资本</div>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 我算完又验了一遍</h3>
+    <ul>
+      <li><b>✓</b> 分步重算：0.012÷1.08=0.01111；500万×0.01111=55,556；×4.3=238,889，一致。</li>
+      <li><b>✓</b> 27,500÷238,889=0.1151 → 11.51%，一致。</li>
+      <li><b>✓</b> 量级合理：AAA 是最安全的等级，风险资本只占贷款额的约 4.8%，RAROC 十几个点符合直觉。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <p>三个最容易丢分的地方：① 1.2% 是利差的<b>变化</b>（冲击），0.3% 才是赚钱的利差，别混；② 别漏除以 1.08；③ 分子别漏手续费 0.25%。最后写成百分数。</p>
+  </div>
+</section>
+
+<!-- ================= Q15 ================= -->
+<section class="q q15" id="q15">
+  <div class="q-head">
+    <div class="no">Q15</div>
+    <h2>流动性指数 <span class="en">Liquidity Index</span></h2>
+    <div class="one">一句话：养老金里的证券如果被迫<b>现在立刻</b>全卖掉，能拿回有序卖出价值的几成？</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">Conglomerate Corporation acquired Acme Corporation. To finance the takeover, it will liquidate the overfunded portion of Acme's pension fund. The face values and current (t = 0) and one-year future (t = 1) liquidation values of the assets are given below. <b>Calculate the one-year liquidity index for these securities.</b></div>
+    <table class="mini">
+      <tr class="title"><td colspan="4">Liquidation Values</td></tr>
+      <tr><th>Asset</th><th>Face Value</th><th>t = 0</th><th>t = 1 year</th></tr>
+      <tr><td>IBM stock</td><td>$10,000</td><td>$9,900</td><td>$10,500</td></tr>
+      <tr><td>GE bonds</td><td>5,000</td><td>4,000</td><td>4,500</td></tr>
+      <tr><td>Treasury securities</td><td>15,000</td><td>13,000</td><td>14,000</td></tr>
+    </table>
+    <div class="ptext zh"><span class="tag">中文</span>Conglomerate 公司收购了 Acme 公司。为给收购融资，它将变现 Acme 养老金中“超额注资”的部分。下表给出这些资产的<b>面值</b>、<b>当前（t=0）</b>和<b>一年后（t=1）的变现价值</b>。<b>计算这些证券的一年期流动性指数。</b></div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">一家公司收购了另一家，要把对方养老金里<b>多出来的证券</b>卖掉变现。账上有 3 样东西：IBM 股票、GE 债券、国债。</p>
+    <p class="say">题目给了两列价：<b>t=0</b> 是“现在急卖，只能卖这个价”（9,900 / 4,000 / 13,000）；<b>t=1年</b> 是“慢慢卖，能卖这个价”（10,500 / 4,500 / 14,000）。急卖永远更便宜 —— 因为买方知道你急着脱手，会拼命压价。</p>
+    <p class="say">所以这道题就是在问：<b>每项资产急卖能拿回几成，再按面值比重加权，整个组合能拿回几成？</b></p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">定公式：现在除以一年后，再按面值加权</span>
+      <div class="bignum">流动性指数 = 各项（面值权重 × 现在清算值 ÷ 一年后清算值）之和</div>
+      <div class="why"><b>为什么：</b>指数衡量的是“现在马上贱卖”相对“等一年有序卖”打了几折，所以分子是现在能拿到的钱，分母是一年后有序卖能拿到的钱；指数在 0 到 1 之间，越接近 1 越流动。不要把清算值除以面值，指数比较的是两个清算时点，不是清算值和面值之比。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">算面值权重</span>
+      <div class="bignum">总面值 = 10,000 + 5,000 + 15,000 = 30,000；IBM 权重 0.3333；GE 权重 0.1667；国库券权重 0.5000</div>
+      <div class="why"><b>为什么：</b>面值是固定的尺子，不会被价格本身带偏。大头资产的折价对整体影响更大，小头资产影响更小，所以要用面值做权重，而不是把三个比率简单平均。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">逐项算，再加总</span>
+      <div class="bignum">IBM：0.3333 × (9,900 ÷ 10,500) = 0.3143；GE：0.1667 × (4,000 ÷ 4,500) = 0.1481；国库券：0.5000 × (13,000 ÷ 14,000) = 0.4643；合计 0.3143 + 0.1481 + 0.4643 = 0.9267 ≈ 0.93</div>
+      <div class="why"><b>为什么：</b>每一项都是“这项资产占多大比重 × 这项资产急卖能拿回几成”，三项加起来就是整个组合急卖能拿回几成。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案</h3>
+    <div class="answer-big">0.93 <small>（精确 0.9267，Saunders 定义）</small></div>
+    <p class="say">顺带看一眼谁最不经砸：IBM 9,900÷10,500=0.94，GE 4,000÷4,500=0.89，国债 13,000÷14,000=0.93 —— <b>国债最抗跌，GE 债券最脆</b>，越危险的资产砸盘折价越大，很符合直觉。</p>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">Liquidity index I = sum [(Face value / Total face value) x (Immediate value / One-year value)]
+Total face value = 10,000 + 5,000 + 15,000 = 30,000
+IBM: (10,000 / 30,000) x (9,900 / 10,500) = 0.3333 x 0.9429 = 0.3143
+GE: (5,000 / 30,000) x (4,000 / 4,500) = 0.1667 x 0.8889 = 0.1481
+Treasury: (15,000 / 30,000) x (13,000 / 14,000) = 0.5000 x 0.9286 = 0.4643
+I = 0.3143 + 0.1481 + 0.4643 = 0.9267, about 0.93</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式（记住这句就够了）</h3>
+    <div class="oneformula">流动性指数 = 各项（面值权重 × 现在清算值 ÷ 一年后清算值）之和</div>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 我算完又验了一遍</h3>
+    <ul>
+      <li><b>✓</b> 换一种算法交叉验证（只当验证，不当主算法）：清算值加总 (9,900 + 4,000 + 13,000) ÷ (10,500 + 4,500 + 14,000) = 26,900 ÷ 29,000 = 0.9276，和加权结果 0.9267 一致。</li>
+      <li><b>✓</b> 三个分项比率 0.94 / 0.89 / 0.93 都在 0 和 1 之间，且国债最抗跌 —— 符合常识，没算反。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <p>分子永远是 <b>t=0 那列（更小的数字）</b>。别拿面值去算，那是算权重的尺子，不是清算值。</p>
+    <p><b>口径注意（只看老师讲义选一种，不要两个都写）：</b>如果老师把流动性指数定义成反方向（一年后清算值 ÷ 现在清算值），结果就是上面这个数的倒数：1 ÷ 0.9267 = 1.08。本题主答案按 Saunders 定义（马上卖 ÷ 有序卖）写 0.93；反方向定义才写 1.08，并写清定义。</p>
+  </div>
+</section>
+
+<!-- ================= DI ================= -->
+<section class="q qdi" id="qdi">
+  <div class="q-head">
+    <div class="no">DI</div>
+    <h2>融资缺口与融资需求 <span class="en">Financing Gap and Financing Requirement</span></h2>
+    <div class="one">一句话：银行把存款拿去放贷款，贷款比存款多出来的口子有多大？如果手里的流动资产一分不动，总共需要多少非存款资金来撑场面？</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">A DI has the following balance sheet (in millions). The DI's securities portfolio includes $16 million in T-bills and $10 million in GNMA securities. The DI has a $20 million line of credit to borrow in the repo market and $5 million in excess cash reserves (above reserve requirements) with the Fed. The DI currently has borrowed $22 million in Fed funds and $18 million from the Fed discount window to meet seasonal demands. 1. Calculate the financing gap. 2. What is the financing requirement?</div>
+    <table class="mini">
+      <tr><th>Assets</th><th></th><th>Liabilities and Equity</th><th></th></tr>
+      <tr><td>Cash</td><td>$9</td><td>Deposits</td><td>$75</td></tr>
+      <tr><td>Loans</td><td>95</td><td>Purchased funds</td><td>40</td></tr>
+      <tr><td>Securities</td><td>26</td><td>Equity</td><td>15</td></tr>
+      <tr class="total"><td>Total assets</td><td>130</td><td>Total liabilities and equity</td><td>130</td></tr>
+    </table>
+    <div class="ptext zh"><span class="tag">中文</span>一家 Depository Institution（存款机构，DI）资产负债表如上表所示（单位：百万美元）。证券组合含国库券 16 和 GNMA 证券 10。该机构有 2,000 万美元回购市场借款额度，以及 500 万美元超额现金准备（高于准备金要求，存在美联储）。目前已借联邦基金 2,200 万和贴现窗口 1,800 万以满足季节性需求。1. 计算融资缺口。2. 融资需求是多少？</div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">银行把储户的存款拿去放贷款，如果贷款放得比存款多，中间就出现一个口子，需要另外找钱来补。同时银行手里还要留一部分随时能用的 Liquid Assets（流动资产），不能全都放出去。</p>
+    <p class="say">这道题要分清三个数：<b>口子本身（融资缺口）、口子加上要留着不动的备用资产（融资需求）、以及真正还要新借多少（新增借款）</b>。三个数分工不同，混在一起就会算大。</p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">算融资缺口（Financing Gap）</span>
+      <div class="bignum">融资缺口 = 贷款 − 存款 = 95 − 75 = 20</div>
+      <div class="why"><b>为什么：</b>存款是核心资金来源，贷款超出存款的部分必须靠其他资金来补。缺口为正说明机构依赖非存款资金；顺序不能反，存款减贷款会得到负数，意思就反了。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">算流动资产</span>
+      <div class="bignum">流动资产 = 现金 + 证券 = 9 + 26 = 35</div>
+      <div class="why"><b>为什么：</b>这里的流动资产按资产负债表口径就是现金加证券，国库券 16 加 GNMA 证券 10 正好等于证券 26，对得上。超额准备 5 已经包含在现金 9 里面，不能在现金之外再加一次。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">算融资需求（Financing Requirement）</span>
+      <div class="bignum">融资需求 = 融资缺口 + 流动资产 = 20 + 35 = 55</div>
+      <div class="why"><b>为什么：</b>融资需求问的是“除了存款之外，总共需要多少非存款资金来支撑贷款和流动资产”，所以缺口之外还要加上手里持有的流动资产。缺口是口子本身，需求是口子加上要留着不动的备用资产，需求比缺口大。</div>
+    </div>
+    <div class="step">
+      <span class="n">4</span><span class="t">验算资金来源，并分清新增借款</span>
+      <div class="bignum">购买资金 40 + 权益 15 = 55；贷款 95 + 流动资产 35 = 130；存款 75 + 融资需求 55 = 130。保持流动资产不变、只补缺口时，新增借款 = 缺口本身 = 20，可用未动用回购额度 20 覆盖。</div>
+      <div class="why"><b>为什么：</b>55 已经由购买资金 40 和权益 15 撑起来了，是存量结构，不是还要再去借 55。购买资金 40 里面已经包含了联邦基金 22 和贴现窗口 18，不要把 22 和 18 在 40 之外再加一次，那是同一笔钱算两遍。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案</h3>
+    <div class="answer-big">$20m <small>Financing Gap（融资缺口）</small></div>
+    <div class="answer-big">$55m <small>Financing Requirement（融资需求，Saunders 定义）</small></div>
+    <p class="say" style="margin-top:8px">保持流动资产不变、只补缺口时，新增借款 <b>20</b>。</p>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">(1) Financing gap = Loans − Deposits = 95 − 75 = 20 ($ millions).
+Liquid assets = Cash + Securities = 9 + 26 = 35.
+(2) Financing requirement = Financing gap + Liquid assets = 20 + 35 = 55.
+Check: Purchased funds + Equity = 40 + 15 = 55.</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式（记住这句就够了）</h3>
+    <div class="oneformula">融资缺口 = 贷款 − 存款；融资需求 = 融资缺口 + 流动资产</div>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 我算完又验了一遍</h3>
+    <ul>
+      <li><b>✓</b> 资产负债表平衡：贷款 95 + 流动资产 35 = 130，存款 75 + 融资需求 55 = 130，两边对上。</li>
+      <li><b>✓</b> 资金来源闭合：购买资金 40 + 权益 15 = 55，正好等于融资需求，没有缺口也没有多余。</li>
+      <li><b>✓</b> 证券拆分闭合：国库券 16 + GNMA 证券 10 = 26，正好等于证券项，没有重复计算。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <p><b>口径注意：</b>融资需求 55 不是“还需再借 55”。40 已经借了（购买资金，含联邦基金 22 和贴现窗口 18，不得再算成可用额度）；超额准备 5 已含在现金 9 里，不得重复加；国库券 16 加 GNMA 证券 10 等于证券 26，不得重复加。如果老师问的是“在保持流动资产不变的前提下，为补缺口还需新增借多少”，答案就是缺口本身 20（可用未动用回购额度 20 覆盖）。三个数分工不同：缺口 20、融资需求 55、新增借款 20，写答案时先写定义再写数字。</p>
+  </div>
+</section>
+
+<!-- ================= Q10 ================= -->
+<section class="q q10" id="q10">
+  <div class="q-head">
+    <div class="no">Q10</div>
+    <h2>外汇净敞口 <span class="en">Net Foreign Exchange Exposure</span></h2>
+    <div class="one">一句话：把已经持有的和将来要收付的外币都算进来，银行在每种外币上到底是多头还是空头、净剩多少？</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">The following are the foreign currency positions of an FI, expressed in the foreign currency. The exchange rate of dollars per SFr is 1.0230, dollars per British pound is 1.3100, and dollars per yen is 0.008800. The following are the foreign currency positions converted to dollars. a. What is the FI's net exposure in Swiss francs stated in SFr and $? b. What is the FI's net exposure in British pounds stated in £ and $? c. What is the FI's net exposure in Japanese yen stated in ¥ and $?</div>
+    <table class="mini">
+      <tr><th>Currency</th><th>Assets</th><th>Liabilities</th><th>FX Bought</th><th>FX Sold</th></tr>
+      <tr><td>Swiss francs (SFr)</td><td>SFr 122,190</td><td>SFr 48,876</td><td>SFr 9,775</td><td>SFr 14,663</td></tr>
+      <tr><td>British pound (£)</td><td>£38,168</td><td>£16,794</td><td>£11,450</td><td>£15,267</td></tr>
+      <tr><td>Japanese yen (¥)</td><td>¥8,522,727</td><td>¥3,406,091</td><td>¥1,363,636</td><td>¥10,000,000</td></tr>
+    </table>
+    <table class="mini">
+      <tr><th>Currency</th><th>Assets</th><th>Liabilities</th><th>FX Bought</th><th>FX Sold</th></tr>
+      <tr><td>Swiss francs (SFr)</td><td>$125,000</td><td>$50,000</td><td>$10,000</td><td>$15,000</td></tr>
+      <tr><td>British pound (£)</td><td>50,000</td><td>22,000</td><td>15,000</td><td>20,000</td></tr>
+      <tr><td>Japanese yen (¥)</td><td>75,000</td><td>30,000</td><td>12,000</td><td>88,000</td></tr>
+    </table>
+    <div class="ptext zh"><span class="tag">中文</span>一家金融机构的外汇头寸如上两表所示（以外币表示一张、美元折算一张），汇率：每瑞士法郎 1.0230 美元，每英镑 1.3100 美元，每日元 0.008800 美元。a. 该机构在瑞士法郎上的净敞口（以瑞士法郎和美元表示）；b. 英镑净敞口（以英镑和美元表示）；c. 日元净敞口（以日元和美元表示）。</div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">银行持有外币资产，也欠着外币负债，还签了远期合约约定将来买入或者卖出外币。汇率一动，银行是赚还是亏，就看它手里净剩多少外币。</p>
+    <p class="say">Net Exposure（净敞口）的算法像盘点仓库：已经有的加上将来要进来的，减去已经欠的和将来要付出去的，剩下的正数就是 Long（多头，多出来的外币升值会赚钱），负数就是 Short（空头，欠着的外币升值会亏钱）。</p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">瑞士法郎（Swiss Francs，SFr）</span>
+      <div class="bignum">净敞口 = 122,190 − 48,876 + 9,775 − 14,663 = 68,426；折美元 68,426 × 1.0230 ≈ 70,000，多头</div>
+      <div class="why"><b>为什么：</b>买入是将来要收到的外币，要加；卖出是将来要付出去的外币，要减。用美元表直接验算：125,000 − 50,000 + 10,000 − 15,000 = 70,000，和汇率换算一致。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">英镑（British Pounds，£）</span>
+      <div class="bignum">净敞口 = 38,168 − 16,794 + 11,450 − 15,267 = 17,557；折美元 17,557 × 1.3100 ≈ 23,000，多头</div>
+      <div class="why"><b>为什么：</b>算法和瑞士法郎完全一样，换数字即可。用美元表验算：50,000 − 22,000 + 15,000 − 20,000 = 23,000，和汇率换算一致，正数所以是多头。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">日元（Japanese Yen，¥），最容易算错的一步</span>
+      <div class="bignum">净敞口 = 8,522,727 − 3,406,091 + 1,363,636 − 10,000,000 = −3,519,728；折美元 −3,519,728 × 0.008800 ≈ −30,974（美元表四舍五入为 −31,000），空头</div>
+      <div class="why"><b>为什么：</b>关键在中间一步：8,522,727 − 3,406,091 = 5,116,636，再加买入 1,363,636 得到 6,480,272，最后减卖出 10,000,000 得到 −3,519,728。最容易错的是把 6,480,272 写错再减 10,000,000，结果变成 −4,519,728；还有人会漏掉买入那一项。负数就是空头，意思是将来要净付出去这么多日元，日元升值会亏钱。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案</h3>
+    <div class="answer-big">68,426 <small>瑞士法郎（约 $70,000，多头）</small></div>
+    <div class="answer-big">17,557 <small>英镑（约 $23,000，多头）</small></div>
+    <div class="answer-big">−3,519,728 <small>日元（约 −$30,974，美元表四舍五入 −$31,000，空头）</small></div>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">Net exposure = Assets − Liabilities + FX Bought − FX Sold.
+SFr: 122,190 − 48,876 + 9,775 − 14,663 = 68,426 SFr; 68,426 x 1.0230 = $70,000 (long).
+£: 38,168 − 16,794 + 11,450 − 15,267 = 17,557; 17,557 x 1.3100 = $23,000 (long).
+¥: 8,522,727 − 3,406,091 + 1,363,636 − 10,000,000 = −3,519,728; −3,519,728 x 0.008800 = −$30,974 (short; −$31,000 rounded in the dollar table).</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式（记住这句就够了）</h3>
+    <div class="oneformula">净敞口 = 资产 − 负债 + 买入 − 卖出，正数是多头、负数是空头</div>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 我算完又验了一遍</h3>
+    <ul>
+      <li><b>✓</b> 两种算法交叉：外币表用汇率换算，和美元表直接加减，结果一致（瑞士法郎 70,000、英镑 23,000、日元 −31,000 四舍五入）。</li>
+      <li><b>✓</b> 日元中间步重算：8,522,727 − 3,406,091 = 5,116,636；+ 1,363,636 = 6,480,272；− 10,000,000 = −3,519,728，不是 −4,519,728。</li>
+      <li><b>✓</b> 符号检验：两个正数是多头、一个负数是空头，和“日元卖出 10,000,000 远大于其他项”直觉一致。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <p>最容易丢分的地方：买入加、卖出减，方向写反整题全错；日元那一步先算 6,480,272 再减 10,000,000，不要跳步；美元折算用题目给的汇率，不要自己另找汇率；空头要写负号，漏负号就是方向错。</p>
+  </div>
+</section>
+
+<!-- ================= Q22 ================= -->
+<section class="q q22" id="q22">
+  <div class="q-head">
+    <div class="no">Q22</div>
+    <h2>主权贷款重谈的现值 <span class="en">Present Value of Renegotiated Loan</span></h2>
+    <div class="one">一句话：借款人还不上原来的贷款了，银行同意换一个还款计划，两个计划换算成今天的钱，哪个更值钱？</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">A bank is in the process of renegotiating a sovereign loan. The principal outstanding is $50 million and is to be paid back in two installments of $25 million each, plus interest of 8 percent. The new terms will stretch the loan out to five years with only interest payments of 6 percent, no principal payments, for the first three years. The principal will be paid in the last two years in payments of $25 million along with the interest. The cost of funds for the bank is 6 percent for both the old loan and the renegotiated loan. An upfront fee of 1 percent is to be included for the renegotiated loan. a. What is the present value of the existing loan for the bank? b. What is the present value of the restructured loan for the bank?</div>
+    <div class="ptext zh"><span class="tag">中文</span>一家银行正在重新谈判一笔主权贷款。本金余额 5,000 万美元，原定分两期每期还 2,500 万，另加 8% 利息。新条款把贷款展期到 5 年，前三年只付 6% 利息、不还本金；本金在最后两年每期还 2,500 万并付利息。银行新旧贷款的 Cost of Funds（资金成本）都是 6%。重新谈判贷款要收 1% 的 Upfront Fee（前期费用）。a. 该贷款对银行的现值（现有贷款）是多少？b. 重组后贷款对银行的现值是多少？</div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">借款人还不上原来的贷款了，银行同意重组，也就是换一个还款计划，可能是少收一点、晚收一点，或者先收一笔前期费用。银行要判断：重组后的还款计划换算成今天的钱，到底值多少，和原来贷款今天的价值比起来是亏了还是差不多。</p>
+    <p class="say">Present Value（现值）就是未来的钱换算成今天值多少钱：今天的钱比明天的钱更值钱，越远的钱折扣越大，把每年要收到的钱按资金成本折回来再加起来，才是整个还款计划今天的价值。</p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">先列出现有贷款每年现金流</span>
+      <div class="bignum">第 1 年还本 25 + 利息 50 × 8% = 4，合计 29；第 2 年还本 25 + 利息 25 × 8% = 2，合计 27</div>
+      <div class="why"><b>为什么：</b>第 2 年利息只有 2，是因为第 1 年还了 25 本金，剩下本金只有 25，利息按剩余本金算。利息基数每年都要跟着剩余本金走，不能一直按 50 算。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">现有贷款折现</span>
+      <div class="bignum">现值 = 29 ÷ 1.06 + 27 ÷ 1.06² = 27.358 + 24.030 = 51.388 ≈ 51.39</div>
+      <div class="why"><b>为什么：</b>第几年就折几年：第 1 年的钱折 1 年，第 2 年的钱折 2 年，越往后折得越多。现值高于本金 50，是因为原贷款利率 8% 高于资金成本 6%，这笔贷款本身是赚钱的。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">列出重组后每年现金流</span>
+      <div class="bignum">第 1–3 年每年只付利息 50 × 6% = 3，不还本；第 4 年还本 25 + 利息 50 × 6% = 3，合计 28；第 5 年还本 25 + 利息 25 × 6% = 1.5，合计 26.5</div>
+      <div class="why"><b>为什么：</b>第 4 年利息基数还是 50，因为前三年没有还本；第 5 年还了 25 本金之后，利息基数才变成 25。年份不能放错：3、3、3、28、26.5 这个顺序就是折现的顺序。</div>
+    </div>
+    <div class="step">
+      <span class="n">4</span><span class="t">重组后折现，再加前期费用</span>
+      <div class="bignum">现值 = 2.830 + 2.670 + 2.519 + 22.179 + 19.802 = 50.00；加上前期费用 1% × 50 = 0.50，合计 50.50</div>
+      <div class="why"><b>为什么：</b>重组后票息 6% 正好等于折现率 6%，按面值定价，现值就是本金 50.00，这是理解现值的一个锚：票息等于折现率时现值等于本金。比较：50.50 − 51.39 = −0.89，即重组让银行在现值上少了约 0.89。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案</h3>
+    <div class="answer-big">$51.39m <small>现有贷款现值（约数）</small></div>
+    <div class="answer-big">$50.50m <small>重组后贷款现值（50.00 + 前期费用 0.50）</small></div>
+    <p class="say" style="margin-top:8px">重组后比重组前低约 <b>0.89</b>。</p>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">(a) Existing loan: Year 1 cash flow = 25 + 50 x 8% = 29; Year 2 = 25 + 25 x 8% = 27.
+PV (at 6%) = 29 / 1.06 + 27 / 1.06^2 = 27.358 + 24.030 = 51.388, about 51.39 ($ millions).
+(b) Restructured loan: Years 1–3 cash flow = 3 each; Year 4 = 25 + 3 = 28; Year 5 = 25 + 1.5 = 26.5.
+PV (at 6%) = 3 / 1.06 + 3 / 1.06^2 + 3 / 1.06^3 + 28 / 1.06^4 + 26.5 / 1.06^5 = 2.830 + 2.670 + 2.519 + 22.179 + 19.802 = 50.00.
+Restructured value = 50.00 + upfront fee (1% x 50 = 0.50) = 50.50.</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式（记住这句就够了）</h3>
+    <div class="oneformula">现值 = 每年现金流按资金成本折回来再加总；重组价值 = 折现现值 + 前期费用</div>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 我算完又验了一遍</h3>
+    <ul>
+      <li><b>✓</b> 票息等于折现率的锚检验：重组后票息 6% 等于折现率 6%，现值恰好等于本金 50.00，和分步折现结果一致。</li>
+      <li><b>✓</b> 现有贷款现值高于本金检验：原贷款利率 8% 高于资金成本 6%，现值 51.39 高于本金 50，方向正确。</li>
+      <li><b>✓</b> 前期费用检验：前期费用是重组时就收到的钱，不用折现，直接加，50.00 + 0.50 = 50.50。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <p>最容易丢分的地方：不折现、直接把每年现金流加起来比较；前期费用也拿去折现，或者漏加前期费用；重组现金流的年份放错位置；第 4 年利息按 25 算（第 4 年还没还本，利息基数还是 50）。</p>
+  </div>
+</section>
+
+<!-- ================= Q8 ================= -->
+<section class="q q8" id="q8">
+  <div class="q-head">
+    <div class="no">Q8</div>
+    <h2>N 天风险价值 <span class="en">N-Day Value at Risk</span></h2>
+    <div class="one">一句话：一天的风险放大到 N 天，不是乘以 N，而是乘以根号 N，凭什么？</div>
+  </div>
+
+  <div class="card prob">
+    <h3>题目 · Problem Statement</h3>
+    <div class="ptext">We can extend this analysis to calculate the potential loss over 2, 3, ..., N days. If we assume that yield shocks are independent and daily volatility is approximately constant and that the FI is locked in to holding this asset for N number of days, then the N-day market value at risk (VAR) is related to daily earnings at risk (DEAR) by: N-day VAR = DEAR x sqrt(N).</div>
+    <div class="ptext zh"><span class="tag">中文</span>我们可以把分析推广到 2 天、3 天、……、N 天的潜在损失。如果假设收益率冲击各天相互独立、日波动率大致不变、且金融机构被锁定持有该资产 N 天，那么 N 天的市场风险价值（Value at Risk，VAR）与 Daily Earnings at Risk（日风险价值，DEAR）的关系是：N 天 VAR = DEAR × 根号 N。注意：这道题只有一段原文和一个公式，没有数字题，下面讲公式、假设和局限，算例明确标注为示例。</div>
+  </div>
+
+  <div class="card">
+    <h3>故事 · 先建立感觉</h3>
+    <p class="say">银行每天都可能赚钱也可能亏钱，管理层想问一个很实际的问题：如果未来几天行情不好，我最多可能亏多少，要准备多少垫子才够？Daily Earnings at Risk（日风险价值）就是一天之内、在一定置信水平下可能出现的最大亏损；风险价值就是把同样的问题拉长到一段时间。</p>
+    <p class="say">时间越长，不确定性越大，但好坏冲击会部分抵消，所以风险放大得比天数慢：<b>5 天不是 5 倍，而是约 2.24 倍</b>。</p>
+  </div>
+
+  <div class="card">
+    <h3>一步一步算</h3>
+    <div class="step">
+      <span class="n">1</span><span class="t">方差可以相加</span>
+      <div class="bignum">N 天总冲击的方差 = N × 一天的方差</div>
+      <div class="why"><b>为什么：</b>方差是衡量波动大小的平方单位。每天的收益率冲击相互独立时，今天涨跌和明天涨跌互不影响，独立变量之和的方差等于方差之和。独立是关键前提，独立时每天的方差加起来就是多天的方差。</div>
+    </div>
+    <div class="step">
+      <span class="n">2</span><span class="t">标准差开根号，得到公式</span>
+      <div class="bignum">N 天的标准差 = 根号 N × 一天的标准差；所以 N 天 VAR = DEAR × 根号 N</div>
+      <div class="why"><b>为什么：</b>Standard Deviation（标准差）是方差开根号之后的结果，单位回到了钱的单位，才好直接说亏多少钱。方差相加之后是天数的倍数，开根号之后就变成根号天数的倍数。风险价值和标准差成正比，所以多天风险价值等于日风险收益乘以根号天数，而不是乘以天数本身。</div>
+    </div>
+    <div class="step">
+      <span class="n">3</span><span class="t">示例（非原题数字，仅用于练手）</span>
+      <div class="bignum">假设 DEAR = 100,000 美元：5 天 VAR = 100,000 × 根号 5 = 223,607 美元；10 天 VAR = 100,000 × 根号 10 = 316,228 美元</div>
+      <div class="why"><b>为什么：</b>这组数字只是用来展示根号放大的感觉，明确标注为示例，不能把它写进原题答案。注意 10 天不是 5 天的 2 倍，因为 316,228 ÷ 223,607 = 1.4142，正好是根号 2。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>答案</h3>
+    <div class="answer-big">N-day VAR = DEAR × √N</div>
+    <p class="say">示例（非原题数字）：DEAR $100,000 时，5 天约 <b>$223,607</b>，10 天约 <b>$316,228</b>。</p>
+  </div>
+
+  <div class="card">
+    <h3>英文作答版 · What to write on the exam</h3>
+    <div class="examwrite">N-day VAR = DEAR x sqrt(N).
+Assumptions: (1) yield shocks are independent across days; (2) daily volatility is approximately constant; (3) the FI is locked in to holding the asset for N days.
+Limitations: volatility clustering (bad days cluster, independence fails); time-varying volatility; liquidity assumption (the asset may not be sellable at market prices); fat tails (extreme losses are more common than the normal distribution implies).
+Example (not from the original question): DEAR = $100,000; 5-day VAR = $100,000 x sqrt(5) = $223,607; 10-day VAR = $100,000 x sqrt(10) = $316,228.</div>
+  </div>
+
+  <div class="card">
+    <h3>一句话公式（记住这句就够了）</h3>
+    <div class="oneformula">多天风险 = 一天风险 × 根号天数（Square-Root-of-Time Rule，平方根时间法则）</div>
+  </div>
+
+  <div class="card verify">
+    <h3>验证 · 我算完又验了一遍</h3>
+    <ul>
+      <li><b>✓</b> 比值检验：10 天示例 ÷ 5 天示例 = 316,228 ÷ 223,607 = 1.4142，正好是根号 2，和“天数翻倍、风险只放大根号 2 倍”一致。</li>
+      <li><b>✓</b> 方向检验：天数越长，根号 N 越大，风险越大；但放大倍数小于天数本身，符合好坏冲击部分抵消的直觉。</li>
+      <li><b>✓</b> 假设清单检验：独立、日波动率大致不变、锁定持有 N 天，三个假设缺一不可，写答案时三个都要列出来。</li>
+    </ul>
+  </div>
+
+  <div class="card tip">
+    <h3>考场提示</h3>
+    <p>最容易丢分的地方：多天风险价值直接乘以天数，而不是乘以根号天数；把日风险收益直接当成多天风险价值；忘了公式成立的三个假设，任何市场都照搬；把示例数字当成原题数字，引用示例时要保留“非原题数字”的标注。</p>
+  </div>
+</section>
+
+<footer>
+  8 道题的答案都已用程序独立验算（Q15 加权法与总价相除交叉、Q9/Q19/DI 用资产负债表恒等式、Q37/Q22 分步重算、Q10 两种算法交叉、Q8 比值检验）。关键名词用 English（中文）格式；Q9 主答案按计入活期存款算（缺口 −68.80），Q15 主答案按 Saunders 定义加权法算（0.9267，约 0.93）。
+  <br>All answers verified with a computation script. Key terms in English（中文）; Q9 main answer uses demand deposits included (gap −68.80); Q15 main answer uses the Saunders weighted method (0.9267, about 0.93).
+</footer>
+
+</div>
+</body>
+</html>
