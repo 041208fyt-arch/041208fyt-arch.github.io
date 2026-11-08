@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>金融风险 第 7 题 &amp; 第 9 题 · 从零讲透</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Liberation Sans', 'Noto Sans SC', sans-serif; color: #111; background: #fff; line-height: 1.75; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 28px 22px 60px; }
+h1 { color: #0e7a6b; font-size: 26px; line-height: 1.35; margin: 6px 0 2px; }
+.sub { color: #666; font-size: 14px; margin: 0 0 8px; }
+h2 { color: #0e7a6b; font-size: 20px; margin: 34px 0 8px; padding-bottom: 6px; border-bottom: 2px solid #0e7a6b; }
+h3 { color: #0e7a6b; font-size: 16px; margin: 20px 0 4px; }
+p { font-size: 15px; margin: 8px 0; }
+.f { background: #e6f4f1; border-left: 4px solid #0e7a6b; padding: 10px 14px; margin: 12px 0; font-size: 15px; border-radius: 0 6px 6px 0; }
+.ex { border: 1.5px solid #0e7a6b; background: #eafaf3; padding: 12px 16px; margin: 14px 0; border-radius: 8px; }
+.ex h4 { margin: 0 0 6px; font-size: 15px; color: #0e7a6b; }
+.warn { background: #fff8e6; border-left: 4px solid #d9a400; padding: 10px 14px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 10px 0; }
+th, td { border: 1px solid #cbd5d1; padding: 7px 10px; text-align: left; }
+th { background: #e6f4f1; }
+.tag { display: inline-block; background: #0e7a6b; color: #fff; font-size: 12px; padding: 1px 8px; border-radius: 10px; margin-right: 6px; vertical-align: 1px; }
+b { font-weight: 700; }
+</style></head><body><div class="wrap">
+<h1>第 7 题 &amp; 第 9 题 · 从零讲透</h1>
+<p class="sub">金融风险管理 · 零基础版 · 一点一点讲，每一步都有为什么</p>
+<p>这两题考的其实是同一个问题：<b>银行的钱，够不够用。</b>第 7 题问的是“眼前的钱够不够周转”，第 9 题问的是“万一表外的承诺变成真贷款，资本够不够扛”。</p>
+
+<h2>第一部分 · 第 7 题：存款机构融资缺口</h2>
+<h3>1. 银行是干嘛的？</h3>
+<p>银行就干一件事：<b>收存款、放贷款，赚中间的利差。</b>存款是银行借来的钱（要付利息），贷款是银行放出去的钱（收利息）。所以银行最怕两件事：一是储户突然来提款，二是贷款放出去收不回来。</p>
+<h3>2. Financing Gap（融资缺口）：贷款比存款多的部分</h3>
+<p>如果贷款 110，存款只有 85，多的 25 就是缺口——放出去的钱比借来的钱多，这 25 得从别处找钱补。</p>
+<div class="f"><b>Financing Gap = Loans − Deposits（贷款 − 存款）</b><br>测试题：110 − 85 = <b>$25m</b></div>
+<h3>3. Liquid Assets（流动资产）：手里马上能变现的钱</h3>
+<p>现金不用说，证券为什么也算？因为国债（T-bills）和 GNMA 债券随时能卖掉换钱。所以流动资产就是这两样加起来。</p>
+<div class="f"><b>Liquid Assets = Cash + Securities（现金 + 证券）</b><br>测试题：12 + 30 = <b>$42m</b></div>
+<h3>4. Financing Requirement（融资需求）：为什么是加法？</h3>
+<p>银行既要补贷款缺口（25），又要留着流动资产应付储户提款（42），两部分都要准备钱，所以是加法，不是减法。</p>
+<div class="f"><b>Financing Requirement = Financing Gap + Liquid Assets</b><br>测试题：25 + 42 = <b>$67m</b></div>
+<h3>5. Sources vs Uses（流动性来源与运用）：钱从哪来、钱去哪了</h3>
+<p><b>Sources（来源）</b>是“还能从哪搞到钱”，分两种：<b>Stored Liquidity（卖东西）</b>——卖 T-bills、卖 GNMA、动用超额准备金；<b>Purchased Liquidity（借钱）</b>——repo 市场借钱。</p>
+<p><b>Uses（运用）</b>是“已经借了多少”：已经借的 Fed funds 和贴现窗口的钱。</p>
+<div class="f"><b>Net Liquidity = Sources − Uses</b><br>测试题：Sources = 18（T-bills）+ 12（GNMA）+ 6（超额准备金）+ 25（repo 额度）= <b>$61m</b><br>Uses = 25（Fed funds）+ 20（贴现窗口）= <b>$45m</b><br>Net Liquidity = 61 − 45 = <b>$16m</b>，正数说明流动性还有余量。</div>
+<div class="warn"><b>最容易错的点：</b>超额准备金 $6m 已经含在现金 $12m 里了，别再加一次。repo 额度是“能借多少”，算 Sources；Fed funds 和贴现窗口是“已经借了”，算 Uses。</div>
+<h3>6. 拿测试题的数字完整算一遍</h3>
+<p><b>第 1 步</b> Financing Gap = 110 − 85 = <b>$25m</b>。<br><b>第 2 步</b> Liquid Assets = 12 + 30 = <b>$42m</b>。<br><b>第 3 步</b> Financing Requirement = 25 + 42 = <b>$67m</b>。<br><b>第 4 步</b> Sources $61m，Uses $45m，Net Liquidity = <b>$16m</b>。</p>
+
+<h2>第二部分 · 第 9 题：或有资产与或有负债</h2>
+<h3>1. 表外业务是什么？</h3>
+<p>银行答应了、但还没发生的事，资产负债表上看不见，就叫<b>表外业务（Off-balance-sheet）</b>。比如答应给客户一笔贷款额度（客户还没提款），或者给客户开一张备用信用证（客户还没违约）。</p>
+<h3>2. 或有资产 vs 或有负债：看事件发生后表上多出什么</h3>
+<p>判据就一个：<b>或有事件发生后，表上出现的是资产还是负债。</b></p>
+<p><b>或有资产（Contingent Asset）</b>——事件发生后银行多了一项表内资产。比如贷款承诺：客户提款，银行就多了一笔贷款。<br><b>或有负债（Contingent Liability）</b>——事件发生后银行多了一项表内负债。比如备用信用证：客户违约，银行要替他付款。</p>
+<h3>3. 为什么表外也要算资本？</h3>
+<p>风险是真实的，不管进不进表。备用信用证今天不在表上，但客户一违约，银行马上就要掏真金白银，亏起来和表内贷款一模一样。如果表外不算资本，银行就可以无限开信用证、放贷款承诺，杠杆放到天上去——这就是<b>监管套利</b>。所以巴塞尔协议把表外项目折算成表内等值，逼银行为它们准备资本。</p>
+<h3>4. 两步法：CEA → RWA</h3>
+<p>第一步用 CCF 把面值折算成信用等值，第二步用风险权重折算成风险加权资产。</p>
+<div class="f"><b>CEA = Face Value × CCF（面值 × 信用转换系数）</b><br><b>RWA = CEA × Counterparty Risk Weight（信用等值 × 对手风险权重）</b></div>
+<h3>5. CCF 四档：看“银行真要掏钱的可能性”</h3>
+<table><tr><th>业务</th><th>CCF</th><th>怎么认</th></tr>
+<tr><td>直接信用替代（备用信用证、金融担保）</td><td><b>100%</b></td><td>跟“还钱”有关，客户还不上银行替他还</td></tr>
+<tr><td>交易相关（履约保函、投标保函）+ 票据发行便利</td><td><b>50%</b></td><td>跟“干活 / 发票据”有关，客户不履约、票卖不出去银行才兜底</td></tr>
+<tr><td>短期自偿性贸易（商业信用证）</td><td><b>20%</b></td><td>跟“货”有关，有货押着，货卖了钱就回来</td></tr>
+<tr><td>1 年内承诺</td><td><b>0%</b></td><td>期限短，银行能随时收回</td></tr></table>
+<p>背法：<b>货 20%、活 50%、票 50%、钱 100%</b>。</p>
+<h3>6. 风险权重四档：看对手是谁</h3>
+<table><tr><th>对手</th><th>权重</th></tr>
+<tr><td>政府（OECD 中央政府）</td><td><b>0%</b></td></tr>
+<tr><td>OECD 银行</td><td><b>20%</b></td></tr>
+<tr><td>房贷（Residential Mortgage）</td><td><b>50%</b></td></tr>
+<tr><td>一般企业</td><td><b>100%</b></td></tr></table>
+<p>背法：<b>0–20–50–100</b>，越安全越低。注意银行是 20%，50% 是房贷，别记混。</p>
+<h3>7. 衍生品：重置成本 + Add-on</h3>
+<p>互换、远期这类衍生品的敞口不是面值，而是“现在值多少钱 + 将来可能变多少”。</p>
+<div class="f"><b>CEA = Replacement Cost + Notional Principal × Add-on</b><br>重置成本就是合约现在的市价（mark-to-market）：正数说明对手现在就欠银行钱，<b>负数按 0 算</b>，不能冲减。<br>Add-on 是“将来可能变多少”的系数，按种类和剩余期限查表。</div>
+<table><tr><th>Add-on</th><th>1 年内</th><th>1–5 年</th><th>5 年以上</th></tr>
+<tr><td><b>利率类</b></td><td><b>0%</b></td><td><b>0.5%</b></td><td><b>1.5%</b></td></tr>
+<tr><td><b>外汇类</b></td><td><b>1%</b></td><td><b>5%</b></td><td><b>7.5%</b></td></tr></table>
+<p>为什么这样排？两条直觉：<b>期限越长，将来价格变动的空间越大</b>，所以系数随期限上升；<b>外汇比利率波动大</b>，所以外汇那一行整体比利率高。</p>
+<h3>8. Add-on 六档，每档一道例题</h3>
+<div class="ex"><h4><span class="tag">利率 0%</span>剩 6 个月，系数是 0</h4>
+<p>利率互换，名义本金 $100m，剩 6 个月，重置成本 $1m。6 个月落在“1 年内”那档，利率类系数 0%。<br>潜在未来敞口 = 100 × 0% = $0m；CEA = 1 + 0 = <b>$1m</b>。期限太短，将来几乎变不了，所以 add-on 是 0。</p></div>
+<div class="ex"><h4><span class="tag">利率 0.5%</span>剩 3 年，系数是 0.5%</h4>
+<p>利率互换，名义本金 $100m，剩 3 年，重置成本 $2m。3 年落在“1–5 年”那档。<br>潜在未来敞口 = 100 × 0.5% = $0.5m；CEA = 2 + 0.5 = <b>$2.5m</b>。（这就是测试第 9 题里那笔互换。）</p></div>
+<div class="ex"><h4><span class="tag">利率 1.5%</span>剩 6 年，系数是 1.5%</h4>
+<p>利率互换，名义本金 $200m，剩 6 年，重置成本 $1m。6 年落在“5 年以上”那档。<br>潜在未来敞口 = 200 × 1.5% = $3m；CEA = 1 + 3 = <b>$4m</b>。</p></div>
+<div class="ex"><h4><span class="tag">外汇 1%</span>剩 6 个月，系数是 1%</h4>
+<p>外汇远期，名义本金 $50m，剩 6 个月，重置成本 $0.8m。6 个月落在“1 年内”那档，外汇类系数 1%。<br>潜在未来敞口 = 50 × 1% = $0.5m；CEA = 0.8 + 0.5 = <b>$1.3m</b>。</p></div>
+<div class="ex"><h4><span class="tag">外汇 5%</span>剩 3 年，系数是 5%</h4>
+<p>外汇远期，名义本金 $80m，剩 3 年，重置成本 $2m。3 年落在“1–5 年”那档。<br>潜在未来敞口 = 80 × 5% = $4m；CEA = 2 + 4 = <b>$6m</b>。</p></div>
+<div class="ex"><h4><span class="tag">外汇 7.5%</span>剩 7 年，系数是 7.5%</h4>
+<p>外汇互换，名义本金 $60m，剩 7 年，重置成本 $0。7 年落在“5 年以上”那档。<br>潜在未来敞口 = 60 × 7.5% = $4.5m；CEA = 0 + 4.5 = <b>$4.5m</b>。重置成本是 0，CEA 就全是 add-on。</p></div>
+<h3>9. 资本充足率：两个都要过</h3>
+<div class="f"><b>Total CAR = Total Capital / Total RWA ≥ 8%</b><br><b>Tier 1 Ratio = Tier 1 Capital / Total RWA ≥ 4%</b></div>
+<p>一个不过就是不达标。为什么要两个都卡？总资本里包括二级资本（次级债这些质量差的），一级才是核心真金白银。只看总数的话，银行可以拿一堆二级资本充数，所以监管单独给一级也设一条线。</p>
+<h3>10. 拿测试题的数字完整算一遍</h3>
+<p><b>第 1 步 · 表外 RWA：</b>备用信用证 25 × 100% = 25，× 100% = $25m；商业信用证 15 × 20% = 3，× 100% = $3m；履约保函 10 × 50% = 5，× 100% = $5m；未提取承诺（3 年）40 × 50% = 20，× 100% = $20m；NIF 20 × 50% = 10，× 20%（OECD 银行）= $2m。合计 <b>$55m</b>。</p>
+<p><b>第 2 步 · 利率互换：</b>CEA = 3 + 150 × 0.5%（剩 4 年，利率类 1–5 年档）= 3 + 0.75 = <b>$3.75m</b>；对手一般企业 100% → RWA <b>$3.75m</b>。</p>
+<p><b>第 3 步 · 资本充足率：</b>Total RWA = 600 + 55 + 3.75 = <b>$658.75m</b>；Total CAR = 70 / 658.75 = <b>10.63%</b> ≥ 8% ✓；Tier 1 ratio = 45 / 658.75 = <b>6.83%</b> ≥ 4% ✓。两个都达标。</p>
+<div class="warn"><b>最容易错的五个点：</b>① CCF 档位错一个，RWA 差几倍（备用 100% vs 商业 20%）；② 承诺看期限（3 年 50%，6 个月 0%）；③ 风险权重看对手（同样 NIF，OECD 银行 20%，一般企业 100%）；④ 重置成本为负按 0 算；⑤ add-on 看<b>剩余期限</b>，不是原始期限。</div>
+<h3>两张速记卡</h3>
+<div class="f"><b>第 7 题：</b>Financing Gap = Loans − Deposits；Liquid Assets = Cash + Securities；Financing Requirement = Gap + Liquid Assets；Net Liquidity = Sources − Uses。</div>
+<div class="f"><b>第 9 题：</b>CEA = Face Value × CCF；RWA = CEA × Risk Weight；衍生品 CEA = Replacement Cost + Notional × Add-on；Total CAR ≥ 8%，Tier 1 ≥ 4%，两个都要过。</div>
+</div></body></html>
