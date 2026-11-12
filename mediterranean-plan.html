@@ -89,7 +89,9 @@
   .tab.on small{color:#e6ecd9}
   .close-btn{display:block;margin:12px auto 2px;background:var(--sand);border:1px solid var(--line);color:var(--olive-d);border-radius:999px;padding:5px 18px;font-size:13px;cursor:pointer;font-family:inherit}
   .close-btn:active{background:var(--wheat)}
-  @media print{.item input{display:none}.open-hint{display:none}.close-btn{display:none}.tabs{display:none}.diet-sec{display:block!important}#train-sec{display:none!important}}
+  .back-btn{display:block;margin:8px auto 2px;background:var(--olive);border:1px solid var(--olive);color:#fff;border-radius:999px;padding:5px 18px;font-size:13px;cursor:pointer;font-family:inherit}
+  .back-btn:active{background:var(--olive-d)}
+  @media print{.item input{display:none}.open-hint{display:none}.close-btn{display:none}.back-btn{display:none}.tabs{display:none}.diet-sec{display:block!important}#train-sec{display:none!important}}
 </style>
 </head>
 <body>
@@ -196,7 +198,7 @@
   <div class="alert"><b>吃练配合（和营养节对齐）</b>：训练日热量吃到约 2,600（加量包全开再补一杯牛奶），蛋白 110–130g；当天的奶昔挪到练后 1 小时内喝（傍晚练就练完喝，不练的日子照旧晚上喝）。称重规矩：每周固定一天晨起空腹称，看平均趋势，目标每周 ＋0.25–0.4kg；连着两周不动，每天再加 200 大卡。睡眠奔着 8 小时去——肌肉是在睡觉时合成的，你鼻炎影响睡眠，睡前先把鼻子通一通，比任何补剂都实在。</div>
 </section>
 
-<section class="diet-sec">
+<section class="diet-sec" id="rot">
   <h2>一周轮换表 <span class="en">循环 4 周 = 一个月 · 菜名可点直达做法</span></h2>
   <p class="sec-note">第 2–4 周：午餐主菜在 10 款池子里依次往后挪 3 位、早晚餐同理，就不会吃腻。<b>两餐制读法</b>：早餐列＋午餐列合并成一顿 brunch，晚餐列照旧，奶昔列挪到晚上喝（咖啡款 S5 例外，只能白天）。三餐都吃的日子就按表原样执行。</p>
   <table class="rot">
@@ -504,6 +506,16 @@
       d.scrollIntoView({block:'center',behavior:'smooth'});
     });
     h.appendChild(b);
+  });
+  // 每张食谱卡底部加「回到轮换表」按钮（只加饮食区，训练卡不加）
+  document.querySelectorAll('.diet-sec details.card .how').forEach(h=>{
+    const r=document.createElement('button');
+    r.className='back-btn'; r.type='button'; r.textContent='回到轮换表 ↑';
+    r.addEventListener('click',()=>{
+      const t=document.getElementById('rot');
+      if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    h.appendChild(r);
   });
   // 饮食 / 训练 双视图切换（默认饮食，每次打开都回到饮食）
   const trainSec=document.getElementById('train-sec');
