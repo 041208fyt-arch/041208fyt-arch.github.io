@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地中海饮食 · 假期 30 天计划</title>
+<style>
+  :root{
+    --olive:#5c7350; --olive-d:#43553b; --terra:#c96f4a; --tomato:#bc4633;
+    --wheat:#e9d8a6; --sand:#f6efe3; --ink:#2b2622; --sub:#6f6659;
+    --card:#ffffff; --line:#e7dcc8; --good:#5c7350;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;background:#fffdf8;color:var(--ink);line-height:1.65}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px 60px}
+  header.hero{background:linear-gradient(135deg,#5c7350 0%,#7d8f5e 55%,#c96f4a 130%);color:#fff;padding:44px 30px 34px;border-radius:0 0 22px 22px}
+  header.hero h1{font-size:34px;letter-spacing:1px;line-height:1.25}
+  header.hero p.lead{margin-top:10px;font-size:16px;opacity:.94;max-width:640px}
+  .chips{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.45);padding:4px 12px;border-radius:999px;font-size:13px}
+  section{margin-top:38px}
+  h2{font-size:24px;color:var(--olive-d);border-left:6px solid var(--terra);padding-left:12px;margin-bottom:6px}
+  h2 .en{font-size:13px;color:var(--sub);font-weight:normal;letter-spacing:1px;margin-left:8px}
+  .sec-note{color:var(--sub);font-size:14px;margin:4px 0 16px 18px}
+  .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+  .pr{background:var(--sand);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .pr b{color:var(--tomato);display:block;font-size:15px;margin-bottom:4px}
+  .pr span{font-size:13.5px;color:#4c463d}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+  th{background:var(--olive);color:#fff;padding:9px 10px;text-align:left;font-weight:600}
+  td{padding:8px 10px;border-top:1px solid #f0e8d8;vertical-align:top}
+  tr:nth-child(even) td{background:#fdfaf3}
+  .rot td:first-child{font-weight:700;color:var(--olive-d);white-space:nowrap}
+  a.dish{color:var(--olive-d);text-decoration:underline dotted var(--terra);text-underline-offset:3px;font-weight:600}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;align-items:start}
+  details.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px 16px;box-shadow:0 1px 3px rgba(90,70,40,.05)}
+  details.card summary{cursor:pointer;list-style:none;outline:none}
+  details.card summary::-webkit-details-marker{display:none}
+  details.card h3{font-size:17px;color:var(--olive-d);margin-bottom:2px;display:inline}
+  details.card h3 .no{color:var(--terra);margin-right:6px}
+  details.card .meta{font-size:12.5px;color:var(--sub);margin:2px 0 6px}
+  details.card .intro{font-size:14px;color:#403a31}
+  .open-hint{font-size:12.5px;color:var(--terra);margin-top:8px;font-weight:600}
+  details.card[open ] .open-hint{display:none}
+  .how{border-top:1px dashed var(--line);margin-top:10px;padding-top:10px;font-size:14px}
+  .how h4{font-size:13px;color:var(--terra);letter-spacing:1px;margin:8px 0 3px}
+  .how h4:first-child{margin-top:0}
+  .how ul,.how ol{margin-left:19px}
+  .how li{margin:2px 0}
+  .fail{font-size:13px;color:var(--tomato);margin-top:8px}
+  .tag{display:inline-block;background:#eef2e4;color:var(--olive-d);border-radius:6px;padding:1px 8px;font-size:12px;margin-right:5px}
+  .tag.hot{background:#fbe9e2;color:var(--tomato)}
+  .tag.pro{background:#e8eef7;color:#3c5a86}
+  .shake-formula{background:linear-gradient(120deg,#fdf3e3,#fbe9e2);border:1px dashed var(--terra);border-radius:14px;padding:16px 20px;font-size:15px;margin-bottom:14px}
+  .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px}
+  .day{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--olive);border-radius:12px;padding:12px 13px;font-size:13.5px}
+  .day.warn{border-top-color:var(--tomato)}
+  .day b{display:block;font-size:15px;color:var(--olive-d);margin-bottom:4px}
+  .day.warn b{color:var(--tomato)}
+  .recipe-box{background:var(--sand);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:14px;font-size:14.5px}
+  .recipe-box h3{color:var(--olive-d);margin-bottom:8px;font-size:17px}
+  .recipe-box ol,.recipe-box ul{margin-left:20px}
+  .recipe-box li{margin:3px 0}
+  .alert{background:#fbe9e2;border:1px solid #eec3b4;border-radius:12px;padding:13px 16px;font-size:14px;margin-top:12px}
+  .alert b{color:var(--tomato)}
+  .shop-group{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 18px 12px;margin-bottom:14px}
+  .shop-group h3{font-size:17px;color:var(--olive-d);padding:12px 0 6px;border-bottom:2px solid var(--sand);margin-bottom:8px}
+  .item{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid #f4eee0;font-size:14.5px;align-items:flex-start}
+  .item:last-child{border-bottom:none}
+  .item input{margin-top:5px;width:17px;height:17px;accent-color:var(--olive);flex:none}
+  .item .nm{font-weight:600}
+  .item .dt{color:var(--sub);font-size:13px}
+  .item.done .nm{color:#a39a8a;text-decoration:line-through}
+  .warn-inline{color:var(--tomato);font-size:13px}
+  .budget{background:linear-gradient(120deg,#f6efe3,#fdf6ec);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:16px}
+  .budget h3{color:var(--olive-d);font-size:18px;margin-bottom:8px}
+  .budget table{background:transparent;border:none;font-size:14px}
+  .budget td{border-top:1px solid #eadfc9;background:transparent!important}
+  .budget .big{font-size:20px;color:var(--terra);font-weight:700;white-space:nowrap}
+  footer{margin-top:44px;padding:18px 20px;background:var(--sand);border-radius:14px;font-size:13.5px;color:var(--sub)}
+  .kpi{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .kpi div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 16px;text-align:center}
+  .kpi b{display:block;font-size:22px;color:var(--terra)}
+  .kpi span{font-size:12.5px;color:var(--sub)}
+  .tabs{position:sticky;top:0;z-index:20;display:flex;gap:10px;padding:12px 0 10px;background:rgba(255,253,248,.96)}
+  .tab{flex:1;padding:12px 10px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font-size:16.5px;font-weight:700;color:var(--sub);cursor:pointer;font-family:inherit;letter-spacing:1px}
+  .tab small{display:block;font-size:11.5px;font-weight:400;letter-spacing:0;margin-top:1px}
+  .tab.on{background:var(--olive);border-color:var(--olive);color:#fff}
+  .tab.on small{color:#e6ecd9}
+  .close-btn{display:block;margin:12px auto 2px;background:var(--sand);border:1px solid var(--line);color:var(--olive-d);border-radius:999px;padding:5px 18px;font-size:13px;cursor:pointer;font-family:inherit}
+  .close-btn:active{background:var(--wheat)}
+  @media print{.item input{display:none}.open-hint{display:none}.close-btn{display:none}.tabs{display:none}.diet-sec{display:block!important}#train-sec{display:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>地中海饮食 · 假期 30 天计划</h1>
+  <p class="lead">植物打底、橄榄油当油、鱼代替肉、红肉当节日菜。按你的口味、装备和假期节奏定做：在家吃、自制酸面包、韩国泡菜、高蛋白冻果奶昔，一样不少。节奏按你大概率的两餐制排：brunch 吃饱、晚餐吃好、晚上一杯奶昔收尾。食谱卡点开就是完整做法，照着做就行。</p>
+  <div class="chips">
+    <span class="chip">一人份 · 30 天</span><span class="chip">两餐 ＋ 晚间奶昔</span><span class="chip">居家增肌 · 周 3 练</span>
+    <span class="chip">山姆会员采购</span><span class="chip">破壁机 ＋ 烤箱</span>
+    <span class="chip">口味无禁忌</span><span class="chip">品牌配料已逐个核实</span>
+  </div>
+  <div class="kpi">
+    <div><b>29</b><span>道食谱 · 点开看做法</span></div>
+    <div><b>33 种</b><span>植物/周（目标 30）</span></div>
+    <div><b>约 ¥88</b><span>全天吃喝成本</span></div>
+    <div><b>7 天</b><span>养出自己的酵种</span></div>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tab on" id="tab-diet" type="button">饮食计划<small>主体 · 默认打开这一页</small></button>
+  <button class="tab" id="tab-train" type="button">增肌训练<small>居家徒手 ＋ 3kg 哑铃</small></button>
+</div>
+
+<section class="diet-sec">
+  <h2>为什么这样吃 <span class="en">坚持下来的好处</span></h2>
+  <p class="sec-note">地中海饮食是被研究得最充分的饮食模式之一：不是短期食疗，而是一种能长期执行的吃法。坚持一个月，你能实际感受到的变化主要在四件事上。</p>
+  <div class="principles">
+    <div class="pr"><b>对心脏和血管友好</b><span>橄榄油的单不饱和脂肪＋鱼类的 Omega-3＋豆类全谷物的纤维，这个组合在大型研究里长期与更低的心血管事件风险相关联。油换对、鱼吃够，是全计划收益最大的一块。</span></div>
+    <div class="pr"><b>血糖稳，不容易饿过头</b><span>全谷物、豆类、酸面包都是慢升糖的主食，配上足够的蛋白和好油，一餐能稳稳顶 4–5 小时。血糖不坐过山车，下午的困意和对甜食的渴望都会轻很多。</span></div>
+    <div class="pr"><b>肠道舒服，状态在线</b><span>每周 30 多种植物提供多样的纤维，喂的是肠道菌群；酸奶、味噌、韩国泡菜再补活菌。排便规律、餐后不胀气，是最先能感觉到的变化，通常一两周就有。</span></div>
+    <div class="pr"><b>对大脑和抗炎是长线收益</b><span>鱼油、多酚（橄榄油、莓果、可可、香料里都有）、足量蔬果——这类饮食模式在观察研究里与认知衰退更慢、慢性炎症水平更低相关联。21 岁攒这个习惯，复利比任何补剂都实在。</span></div>
+  </div>
+  <p class="sec-note" style="margin-top:12px">还有一条不在营养表里：这套吃法不靠饿、不戒碳水、不算卡路里算到焦虑——好吃、能社交、能执行十年，这才是它被推崇几十年的真正原因。对你（偏瘦）它也不是减肥餐，吃够量就是增肌打底餐，关键在下一节的账。</p>
+</section>
+
+<section class="diet-sec">
+  <h2>营养够不够 <span class="en">按你本人算 · 180cm / 60kg / 21 岁</span></h2>
+  <p class="sec-note">先说结论：<b>搭配本身够，而且够得挺漂亮——真正的风险不在搭配，在你只吃两餐时总量吃不够。</b>你的 BMI 约 18.5，正卡在正常范围的下限，偏瘦。所以这份计划对你的目标不是"减"，是"吃够、吃对，最好慢慢长到 63–65kg"。</p>
+  <table>
+    <tr><th style="width:26%">指标</th><th style="width:30%">你的数</th><th>说明</th></tr>
+    <tr><td>基础代谢</td><td>约 1,625 kcal/天</td><td>躺着不动也要烧掉的量</td></tr>
+    <tr><td>全天总消耗</td><td>约 2,200–2,500 kcal</td><td>假期以久坐＋轻活动估；活动量大的日子靠上限</td></tr>
+    <tr><td>热量目标</td><td><b>约 2,400 kcal 打底，训练日约 2,600</b></td><td>低于消耗就会继续瘦，这是两餐制最容易踩的坑；增肌要吃出盈余，训练日多出的约 200 大卡就是盈余</td></tr>
+    <tr><td>蛋白目标</td><td><b>110–130g/天</b></td><td>按约 1.8–2.2g/kg 体重的增肌口径；不训练的日子吃到 100g 也够</td></tr>
+    <tr><td>纤维 / 钙</td><td>纤维 30g+ / 钙 800–1,000mg</td><td>计划内豆类全谷物管纤维，酸奶牛奶菲达管钙，都能达标</td></tr>
+  </table>
+  <div class="recipe-box">
+    <h3>两餐制怎么吃才不缺（brunch＋晚餐＋晚间奶昔）</h3>
+    <ol>
+      <li><b>brunch 要合并吃</b>：轮换表里的"早餐"和"午餐主菜"一起上桌（比如酸奶碗＋煎鱼），一顿约 1,000–1,100 kcal、蛋白约 55–60g。只吃一份早餐就出门，两餐制直接崩盘。</li>
+      <li><b>晚餐不缩水</b>：晚餐卡按一人份做满，该配的面包、主食都配齐，约 600–700 kcal。晚餐本来就是轻食设计，再减量全天就见底了。</li>
+      <li><b>晚上的奶昔是刚需，不是加餐</b>：它一杯扛着约 35g 蛋白——全天蛋白的近三分之一。省掉它，蛋白立刻掉到 70g 出头，不够。款式选 S1–S4，咖啡款（S5）只能放在 brunch。</li>
+    </ol>
+    <p style="margin-top:8px"><b>样例一天（周一）</b>：brunch＝希腊酸奶碗＋橄榄油柠檬煎鱼（约 980 kcal / 蛋白 60g）→ 晚餐＝希腊沙拉＋酸面包（约 520 kcal / 蛋白 15g）→ 晚间莓果奶昔（约 380 kcal / 蛋白 38g）。合计约 <b>1,900 kcal、蛋白约 113g</b>：蛋白漂亮达标，热量还差约 400–500，靠下面的加量包补。</p>
+  </div>
+  <div class="recipe-box">
+    <h3>加量包 · 补那 400 大卡（任选拼凑，不改变搭配）</h3>
+    <ul>
+      <li>全天橄榄油多 1 汤匙（煎鱼或淋沙拉时加）：＋约 120 kcal</li>
+      <li>坚果多一小把 20g（酸奶碗或随手吃）：＋约 120 kcal</li>
+      <li>brunch 多 1 片酸面包：＋约 90 kcal</li>
+      <li>奶昔里加燕麦 20g，或牛奶多倒 100ml：＋约 70–110 kcal</li>
+    </ul>
+    <p style="margin-top:8px">四样全开约 ＋450 kcal，全天到 2,350 上下，正好落在目标区。不用天天称重算，记住手感：一顿正餐吃到"饱但不撑"，再加坚果和奶昔，基本就够。</p>
+  </div>
+  <div class="alert"><b>微量元素体检（按轮换表一周平均）</b>：钙约 900mg ✓（酸奶＋牛奶＋菲达）；铁 ✓（豆、鱼、蛋＋蔬果维 C 帮忙吸收）；镁 ✓（燕麦、豆类、坚果、叶菜、香蕉全在）；B12 ✓（鱼、蛋、奶每天都有）；Omega-3 ✓（一周 4–5 顿鱼，含 2 顿沙丁鱼）。<b>唯一要留意的短板是维生素 D</b>：食物里主要靠鱼，剩下的靠日照——冬天日照少、又常在室内的话它是全计划最容易缺的一项，你本来想养的晨起见光习惯正好补在这。钠则相反，是要防超的：罐头鱼、菲达、泡菜同日出现时，其他菜就少放点盐。</div>
+</section>
+
+<section id="train-sec" style="display:none">
+  <h2>居家增肌训练 <span class="en">徒手 ＋ 一对 3kg 哑铃</span></h2>
+  <p class="sec-note">先说实话：3kg 哑铃对肩膀、手臂正合适，对腿、背、胸偏轻——所以这套计划的主力是<b>徒手进阶＋书包负重</b>，哑铃当辅助和加重工具。你是新手，这是红利最大的阶段：前 3 个月只要练对、吃够，涨 2–4kg 是合理预期。一周 3 练，A、B 两套交替（周一 A、周三 B、周五 A，下周反过来），每次约 45 分钟，放在 brunch 之后。</p>
+  <div class="grid">
+
+    <details class="card" id="W1"><summary><h3><span class="no">A 日</span>深蹲 ＋ 推 ＋ 拉</h3><div class="meta">约 45 分钟 · 腿、胸、背</div><p class="intro">全身大肌群日：深蹲和分腿蹲管腿，俯卧撑管推，划船管背——背是居家最容易漏的，漏了体态会往前扣，这天专门补上。</p><div class="open-hint">展开训练单 ▾</div></summary>
+    <div class="how"><h4>热身 5 分钟</h4><ul><li>原地慢跑/开合跳 2 分钟＋徒手深蹲 10 次＋俯卧撑 5 次＋肩绕环</li></ul><h4>正式组（组间休息 90 秒–2 分钟）</h4><ol><li><b>高脚杯深蹲</b> 3 组 × 12–15 次：双手抱两只哑铃（共 6kg）于胸前；蹲到大腿与地面平行。轻松了就背上书包。</li><li><b>俯卧撑</b> 4 组：每组做到"还剩约 2 次力竭"就停。标准版做不动先跪姿；太轻松就脚垫高或书包压背。</li><li><b>保加利亚分腿蹲</b> 3 组 × 8–12 次/侧：后脚搭床沿，双手各持一只哑铃。单腿动作负重等于翻倍，3kg 在这里立刻够用。</li><li><b>单臂哑铃划船</b> 3 组 × 15–20 次/侧：一手撑床沿，下放数 3 秒、拉起来在顶峰停 1 秒挤背。升级版：家里有结实的桌子，躺在桌下抓桌沿做反向划船 3 组 × 10–15 次，练背更狠。</li><li><b>平板支撑</b> 3 组 × 40–60 秒收尾。</li></ol><p class="fail">翻车点：分腿蹲时膝盖内扣、身体乱晃——先扶墙降难度，动作稳比次数多重要。</p></div></details>
+
+    <details class="card" id="W2"><summary><h3><span class="no">B 日</span>硬拉 ＋ 肩胸 ＋ 臀臂</h3><div class="meta">约 45 分钟 · 后链、肩、胸、手臂</div><p class="intro">练身体后侧和肩臂：硬拉和臀桥管臀腿后侧（久坐最弱的一块），派克俯卧撑练肩，弯举和平举是 3kg 哑铃的主场。</p><div class="open-hint">展开训练单 ▾</div></summary>
+    <div class="how"><h4>热身 5 分钟</h4><ul><li>同 A 日，再加徒手臀桥 10 次激活臀部</li></ul><h4>正式组（组间休息 90 秒–2 分钟）</h4><ol><li><b>罗马尼亚硬拉</b> 3 组 × 12–15 次：双手各持哑铃贴腿下放，髋部向后推、背挺直，到小腿中段回起。6kg 不够就改一手提书包（装书约 8–10kg）做。</li><li><b>派克俯卧撑</b> 3 组 × 8–15 次：臀部抬高成倒 V，头朝地面方向推起——这是居家练肩最有效的动作。</li><li><b>哑铃地板卧推</b> 3 组 × 15–25 次：躺地板推，下放数 3 秒、推起时挤胸。觉得轻是正常的，靠慢速和次数堆满它。</li><li><b>单腿臀桥</b> 3 组 × 12–15 次/侧：顶峰停 1 秒，臀部发力，不要用腰顶。</li><li><b>哑铃弯举</b> 2 组 × 12–20 次 ＋ <b>侧平举</b> 2 组 × 12–18 次：3kg 对这两样正合适；别借力甩，慢起慢放。</li><li><b>死虫</b> 3 组 × 10 次/侧收尾：腰贴地，对侧手脚伸展。</li></ol><p class="fail">翻车点：硬拉弓背用腰拉——全程想象"用屁股把门顶回去"，背一旦弯了就减轻重量重来。</p></div></details>
+
+  </div>
+
+  <div class="recipe-box">
+    <h3>进阶规则（增肌的核心机制，记住这四条）</h3>
+    <ol>
+      <li><b>接近力竭</b>：每组做到还剩 1–3 次就做不动时停——肌肉只对"吃力"有反应，做得轻松的组数等于热身。</li>
+      <li><b>双进步加难</b>：某个动作所有组都摸到次数上限、且连续两次训练都轻松，下次就加难度。顺序：放慢下落 → 底部暂停 2 秒 → 换单侧版本 → 书包多装一本书。</li>
+      <li><b>记次数</b>：手机备忘录记下每个动作每组做了多少，下次的目标就是多 1 次。增肌说到底是和上周的自己比赛，记录就是记分牌。</li>
+      <li><b>第一周减半</b>：组数先做一半，让酸痛适应一周；肌肉酸是正常的，<b>关节疼立刻停那个动作</b>，别硬顶。</li>
+    </ol>
+  </div>
+
+  <div class="recipe-box">
+    <h3>书包负重指南（你的万能可调器械）</h3>
+    <ul>
+      <li>书包＋书或水瓶就是可调重量：从 5kg 起步，用采购清单里那台电子秤称一下，心里有数。</li>
+      <li>三种用法：深蹲时背着、俯卧撑时压背、硬拉和划船时提着顶部提手。</li>
+      <li>书包提带不是为负重设计的，超过 15kg 先检查提带牢不牢；等 A/B 两套都练满 4–6 周还觉得轻，下一个升级再考虑弹力带套装（约 ¥50–100），现在不用买。</li>
+    </ul>
+  </div>
+
+  <div class="alert"><b>吃练配合（和营养节对齐）</b>：训练日热量吃到约 2,600（加量包全开再补一杯牛奶），蛋白 110–130g；当天的奶昔挪到练后 1 小时内喝（傍晚练就练完喝，不练的日子照旧晚上喝）。称重规矩：每周固定一天晨起空腹称，看平均趋势，目标每周 ＋0.25–0.4kg；连着两周不动，每天再加 200 大卡。睡眠奔着 8 小时去——肌肉是在睡觉时合成的，你鼻炎影响睡眠，睡前先把鼻子通一通，比任何补剂都实在。</div>
+</section>
+
+<section class="diet-sec">
+  <h2>一周轮换表 <span class="en">循环 4 周 = 一个月 · 菜名可点直达做法</span></h2>
+  <p class="sec-note">第 2–4 周：午餐主菜在 10 款池子里依次往后挪 3 位、早晚餐同理，就不会吃腻。<b>两餐制读法</b>：早餐列＋午餐列合并成一顿 brunch，晚餐列照旧，奶昔列挪到晚上喝（咖啡款 S5 例外，只能白天）。三餐都吃的日子就按表原样执行。</p>
+  <table class="rot">
+    <tr><th style="width:52px">日</th><th>早餐</th><th>午餐（主餐）</th><th>晚餐（轻食）</th><th>奶昔</th></tr>
+    <tr><td>周一</td><td><a class="dish" href="#B1">希腊酸奶碗</a></td><td><a class="dish" href="#L1">橄榄油柠檬煎鱼＋蒜炒时蔬</a></td><td><a class="dish" href="#D1">希腊沙拉</a>＋泡菜小碟</td><td><a class="dish" href="#S1">莓果款</a></td></tr>
+    <tr><td>周二</td><td><a class="dish" href="#B2">隔夜燕麦</a></td><td><a class="dish" href="#L2">番茄炖白豆</a>配酸面包</td><td><a class="dish" href="#D3">菠菜番茄煎蛋卷</a></td><td>—</td></tr>
+    <tr><td>周三</td><td><a class="dish" href="#B3">番茄擦面包＋水煮蛋</a></td><td><a class="dish" href="#L3">金枪鱼橄榄意面</a></td><td><a class="dish" href="#D2">扁豆汤</a>＋泡菜小碟</td><td><a class="dish" href="#S2">芒果燕麦款</a></td></tr>
+    <tr><td>周四</td><td><a class="dish" href="#B4">菲达煎蛋开放三明治</a></td><td><a class="dish" href="#L5">蒜香辣椒沙丁鱼意面</a></td><td><a class="dish" href="#D4">鹰嘴豆泥＋蔬菜条</a></td><td>—</td></tr>
+    <tr><td>周五</td><td><a class="dish" href="#B5">肉桂香蕉热燕麦粥</a></td><td><a class="dish" href="#L6">番茄鱼汤</a>配酸面包</td><td><a class="dish" href="#D6">味噌蔬菜豆腐汤</a></td><td><a class="dish" href="#S3">花生香蕉可可款</a></td></tr>
+    <tr><td>周六</td><td><a class="dish" href="#B6">鹰嘴豆泥吐司＋水波蛋</a></td><td><a class="dish" href="#L7">牛至烤鸡胸＋烤蔬菜</a></td><td><a class="dish" href="#D5">沙丁鱼吐司＋沙拉</a></td><td>—</td></tr>
+    <tr><td>周日</td><td><a class="dish" href="#B1">希腊酸奶碗</a>（换水果）</td><td><a class="dish" href="#L8">蒜油虾配糙米饭</a></td><td><a class="dish" href="#D7">烤红薯＋酸奶蒜酱</a>／<a class="dish" href="#D8">剩菜改造</a></td><td><a class="dish" href="#S4">绿款</a>或<a class="dish" href="#S5">咖啡款</a>（上午）</td></tr>
+  </table>
+</section>
+
+<section class="diet-sec">
+  <h2>食谱库 · 早餐 <span class="en">6 款 · 基本不用开火</span></h2>
+  <p class="sec-note">收起时只看营养账，点开就是一人份克数＋步骤。每款都标了最容易翻车的一步。</p>
+  <div class="grid">
+
+    <details class="card" id="B1"><summary><h3><span class="no">B1</span>希腊酸奶碗</h3><div class="meta">5 分钟 · 免开火 · 难度 ★☆☆</div><p class="intro">一碗约 20g 蛋白（希腊酸奶是普通酸奶的 2 倍多）＋活菌＋钙；核桃给植物 Omega-3 和镁，水果给维 C 和纤维。起床最没负担的一餐。</p><p style="margin-top:6px"><span class="tag">发酵</span><span class="tag pro">高蛋白</span><span class="tag">补镁</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料（一人份）</h4><ul><li>无糖希腊酸奶 200g</li><li>当季水果 100g（或冻莓微波 30 秒）</li><li>核桃碎 15g、亚麻籽粉 5g</li><li>蜂蜜 5g（一小茶匙，封顶）</li></ul><h4>步骤</h4><ol><li>酸奶打底，水果、核桃、亚麻籽依次铺上。</li><li>蜂蜜最后淋一圈，吃的时候拌开。</li></ol><p class="fail">翻车点：蜂蜜手抖——它就是糖，5g 是调味，50g 是甜品。</p></div></details>
+
+    <details class="card" id="B2"><summary><h3><span class="no">B2</span>隔夜燕麦</h3><div class="meta">前晚 3 分钟 · 免开火 · 难度 ★☆☆</div><p class="intro">燕麦的 β-葡聚糖是明确能帮着压餐后血糖和胆固醇的可溶纤维；冷藏浸泡还顺带产生一点抗性淀粉。镁和 B 族维生素也靠它。</p><p style="margin-top:6px"><span class="tag">纤维</span><span class="tag">补镁</span><span class="tag">缓升糖</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>桂格纯燕麦片 50g</li><li>牛奶 150ml＋希腊酸奶 100g</li><li>亚麻籽粉 5g</li><li>早上加：冻莓 80g、坚果碎 10g</li></ul><h4>步骤</h4><ol><li>前晚把燕麦、牛奶、酸奶、亚麻籽在罐/碗里拌匀，封好冷藏。</li><li>早上取出，冻莓微波 30 秒回温倒进去，撒坚果碎直接吃。</li></ol><p class="fail">翻车点：液体太少会稠成砖——牛奶别少于 150ml，第二天太稠可再兑 30ml。</p></div></details>
+
+    <details class="card" id="B3"><summary><h3><span class="no">B3</span>番茄擦面包＋水煮蛋</h3><div class="meta">10 分钟 · 西班牙经典 · 难度 ★☆☆</div><p class="intro">番茄红素是脂溶性的，配橄榄油才吸收得好，这对搭配是教科书级的；水煮蛋补齐蛋白和胆碱。自制酸面包发酵过，GI 比白吐司低一截。</p><p style="margin-top:6px"><span class="tag">番茄红素</span><span class="tag">自制酸包</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>酸面包 2 片（约 80g）</li><li>熟番茄 1 个（约 150g）、蒜 1 瓣</li><li>特级初榨橄榄油 10ml、海盐少许</li><li>鸡蛋 1–2 个</li></ul><h4>步骤</h4><ol><li>鸡蛋冷水下锅，水开后关火焖 8 分钟，过凉水剥壳。</li><li>面包烤/煎到表面脆，趁热用蒜瓣断面擦一遍。</li><li>番茄对半，在粗擦丝器上擦出果泥（皮留在手里扔掉），厚涂面包，淋橄榄油、撒盐。</li></ol><p class="fail">翻车点：番茄不够熟就是酸水味——挑软红、沉手的；果泥太稀先沥 1 分钟。</p></div></details>
+
+    <details class="card" id="B4"><summary><h3><span class="no">B4</span>菲达煎蛋开放三明治</h3><div class="meta">10 分钟 · 难度 ★☆☆</div><p class="intro">鸡蛋＋菲达双蛋白，菲达还给钙；黄瓜给清爽和水分，把菲达的咸压住。周末感最强的一款早餐。</p><p style="margin-top:6px"><span class="tag pro">高蛋白</span><span class="tag">钙</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>酸面包 1–2 片</li><li>菲达 30g（提前清水泡 10 分钟去盐）</li><li>鸡蛋 2 个、黄瓜 50g 切片</li><li>橄榄油 5ml、黑胡椒、干牛至少许</li></ul><h4>步骤</h4><ol><li>面包烤脆，菲达捏碎厚铺。</li><li>小火橄榄油煎蛋到蛋白凝固、蛋黄半流。</li><li>蛋盖在菲达上，摆黄瓜片，撒黑胡椒和牛至。</li></ol><p class="fail">翻车点：菲达没泡水会咸到压过一切——泡水这步不能省。</p></div></details>
+
+    <details class="card" id="B5"><summary><h3><span class="no">B5</span>肉桂香蕉热燕麦粥</h3><div class="meta">8 分钟 · 凉天款 · 难度 ★☆☆</div><p class="intro">香蕉是补镁和钾的平价主力，燕麦给缓释碳水和纤维，核桃补好油。整碗的升糖速度比白粥慢得多——你说过白粥不健康，这碗就是替代答案。</p><p style="margin-top:6px"><span class="tag">补镁</span><span class="tag">热食</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>燕麦片 50g、牛奶 250ml</li><li>香蕉 1 根、核桃碎 15g</li><li>肉桂粉约 1g（一小撮）</li></ul><h4>步骤</h4><ol><li>燕麦加牛奶小火煮 5 分钟，边煮边搅到浓稠。</li><li>香蕉一半压泥拌进粥里（天然甜味），一半切片摆面。</li><li>撒核桃碎和肉桂，关火焖 1 分钟。</li></ol><p class="fail">翻车点：大火不搅必糊底——全程小火＋搅。</p></div></details>
+
+    <details class="card" id="B6"><summary><h3><span class="no">B6</span>鹰嘴豆泥吐司＋水波蛋</h3><div class="meta">12 分钟 · 难度 ★★☆</div><p class="intro">鹰嘴豆给植物蛋白＋纤维＋叶酸，水波蛋补动物蛋白和胆碱，一餐里动植物蛋白拼齐；烟熏红椒粉是让豆泥不"素得无聊"的关键。</p><p style="margin-top:6px"><span class="tag">豆类</span><span class="tag pro">高蛋白</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>酸面包 2 片</li><li>鹰嘴豆泥 80g（做法见 D4，一次多打些冷藏）</li><li>鸡蛋 1 个、白醋几滴</li><li>烟熏红椒粉、橄榄油 5ml</li></ul><h4>步骤</h4><ol><li>面包烤脆，豆泥厚抹。</li><li>小锅水烧到微微冒泡（不翻滚），加醋，搅出漩涡，蛋滑入，煮 3 分钟捞出。</li><li>蛋放豆泥上，撒红椒粉、淋橄榄油，切开让蛋黄流下来。</li></ol><p class="fail">翻车点：水滚大了蛋会散成蛋花汤——水面只冒小泡时下蛋。</p></div></details>
+
+  </div>
+</section>
+
+<section class="diet-sec">
+  <h2>食谱库 · 午餐主菜 <span class="en">10 款 · 一天的主餐</span></h2>
+  <div class="grid">
+
+    <details class="card" id="L1"><summary><h3><span class="no">L1</span>橄榄油柠檬煎鱼＋蒜炒时蔬</h3><div class="meta">20 分钟 · 难度 ★★☆</div><p class="intro">鲜鱼给优质蛋白和（视鱼种的）EPA/DHA，橄榄油的单不饱和脂肪是地中海饮食的心血管核心；蒜炒绿叶菜补镁和叶酸。德化离海近，这道是你的主场。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>鲜鱼 200g（鲈鱼/鲷鱼/带鱼都行）</li><li>橄榄油 10ml、柠檬半个、盐、黑胡椒</li><li>西兰花/青豆等时蔬 200g、蒜 2 瓣</li></ul><h4>步骤</h4><ol><li>鱼身擦干，盐、胡椒、柠檬汁腌 10 分钟。</li><li>橄榄油中火热锅，鱼皮朝下煎 3–4 分钟不翻动，翻面再煎 2 分钟。</li><li>鱼盛出，余油下蒜片和时蔬大火快炒 3 分钟，点盐。</li></ol><p class="fail">翻车点：鱼身带水下锅会粘锅溅油——下锅前厨房纸擦到干。</p></div></details>
+
+    <details class="card" id="L2"><summary><h3><span class="no">L2</span>番茄炖白豆</h3><div class="meta">25 分钟 · 一锅出 · 难度 ★☆☆</div><p class="intro">白豆是纤维和植物蛋白的大户，还给钾和镁；番茄炖过之后番茄红素释放更多。这一锅的饱腹感能撑一下午，且越炖越入味。</p><p style="margin-top:6px"><span class="tag">豆类</span><span class="tag">高纤维</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>Mutti 整番茄半罐（200g）</li><li>白豆：熟豆 150g（干豆 60g 泡一夜煮熟，或罐装冲洗后用）</li><li>洋葱 50g、蒜 2 瓣、干牛至一小撮</li><li>橄榄油 10ml；配酸面包 1–2 片</li></ul><h4>步骤</h4><ol><li>橄榄油炒香洋葱末和蒜末，下番茄压碎，加小半碗水。</li><li>下白豆和牛至，小火炖 15–20 分钟到汤汁浓稠，盐调味。</li><li>配烤脆的酸面包蘸汤吃。</li></ol><p class="fail">翻车点：罐装豆直接下锅会咸——沥水冲洗后再用，能去三四成钠。</p></div></details>
+
+    <details class="card" id="L3"><summary><h3><span class="no">L3</span>金枪鱼橄榄意面</h3><div class="meta">15 分钟 · 难度 ★☆☆</div><p class="intro">全麦意面比白意面多一倍多纤维、升糖慢；金枪鱼给蛋白和 Omega-3（Rio Mare 用鲣鱼，汞在金枪鱼里最低）；橄榄的油香把罐头味彻底带正。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>百味来全麦意面 90g（干重）</li><li>Rio Mare 橄榄油浸金枪鱼 1 罐（160g，连油）</li><li>蒜 2 瓣、小番茄/番茄 100g、黑橄榄 6 颗</li><li>柠檬 1/4 个、黑胡椒</li></ul><h4>步骤</h4><ol><li>意面按包装时间少 1 分钟煮好，留半杯面汤。</li><li>金枪鱼连油下锅，加蒜片、番茄、橄榄中火炒 3 分钟。</li><li>意面回锅，加 2–3 勺面汤拌到酱汁裹匀，挤柠檬汁、撒胡椒。</li></ol><p class="fail">翻车点：把罐头油倒掉＝倒掉一半风味——连油下锅，再不用额外放油。</p></div></details>
+
+    <details class="card" id="L4"><summary><h3><span class="no">L4</span>鹰嘴豆菲达沙拉</h3><div class="meta">10 分钟 · 免开火 · 难度 ★☆☆</div><p class="intro">鹰嘴豆＋菲达凑齐蛋白和钙，生蔬菜给维 C 和钾，橄榄油帮脂溶性维生素吸收。天热不想开火时的完整一餐，不是"凑合吃点草"。</p><p style="margin-top:6px"><span class="tag">免开火</span><span class="tag">高纤维</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>熟鹰嘴豆 200g（干豆 80g 泡煮，或罐装冲洗）</li><li>菲达 40g、番茄 100g、黄瓜 100g、洋葱 30g</li><li>橄榄油 15ml、柠檬汁 10ml、干牛至、盐</li></ul><h4>步骤</h4><ol><li>菲达先泡水 10 分钟去盐；蔬菜全切丁，洋葱切细丝泡水 5 分钟去冲味。</li><li>全部入大碗，油、柠檬汁、牛至拌匀，静置 5 分钟入味。</li><li>配一片酸面包就是完整午餐。</li></ol><p class="fail">翻车点：拌完立刻吃没味道——静置入味这 5 分钟别省。</p></div></details>
+
+    <details class="card" id="L5"><summary><h3><span class="no">L5</span>蒜香辣椒沙丁鱼意面</h3><div class="meta">15 分钟 · 难度 ★★☆</div><p class="intro">沙丁鱼是 Omega-3 性价比之王：一罐约 1600mg EPA+DHA，还连骨吃进钙和维 D。蒜、辣、柠檬三件套把腥味压干净，只剩鲜。</p><p style="margin-top:6px"><span class="tag hot">Omega-3 之王</span><span class="tag">钙</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>全麦意面 90g（干重）</li><li>King Oscar 橄榄油浸沙丁鱼 1 罐（106g）</li><li>蒜 3 瓣、干辣椒/辣椒粉、柠檬半个（含皮屑）</li></ul><h4>步骤</h4><ol><li>意面煮到比包装时间少 1 分钟，留面汤。</li><li>罐头油小火爆香蒜片辣椒，下沙丁鱼用铲子压散，炒 2 分钟。</li><li>意面回锅加面汤拌匀，关火挤柠檬汁、擦一点柠檬皮屑。</li></ol><p class="fail">翻车点：大火炒蒜会苦——罐头油小火慢爆，蒜片金黄就下鱼。</p></div></details>
+
+    <details class="card" id="L6"><summary><h3><span class="no">L6</span>番茄鱼汤</h3><div class="meta">25 分钟 · 难度 ★★☆</div><p class="intro">汤里的番茄红素吸收率是生吃的好几倍（加热＋油脂）；鱼给蛋白，土豆给钾和扎实碳水。冷天喝一碗，胃和心情都落地。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>Mutti 整番茄半罐（200g）</li><li>鲜鱼块 150g、土豆 100g 切块、洋葱 50g</li><li>蒜 2 瓣、橄榄油 10ml、水 400ml、牛至少许</li></ul><h4>步骤</h4><ol><li>橄榄油炒香洋葱蒜，下番茄压碎、水、土豆，中火煮 12 分钟。</li><li>土豆软后下鱼块，再煮 4–5 分钟到鱼肉刚熟，盐和牛至调味。</li><li>配酸面包蘸汤。</li></ol><p class="fail">翻车点：鱼下太早会煮老煮散——一定等土豆先软。</p></div></details>
+
+    <details class="card" id="L7"><summary><h3><span class="no">L7</span>牛至烤鸡胸＋豆泥＋烤蔬菜</h3><div class="meta">30 分钟 · 烤箱 · 难度 ★★☆</div><p class="intro">鸡胸是全计划蛋白密度最高的一餐（约 40g+），豆泥补纤维和植物蛋白，烤蔬菜一次吃下 3–4 种植物。一周里少数的禽肉餐，放在周六。</p><p style="margin-top:6px"><span class="tag pro">高蛋白</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>鸡胸 180g、橄榄油 10ml、干牛至、蒜末、盐、黑胡椒</li><li>茄子 100g、西葫芦 100g（切厚片）</li><li>鹰嘴豆泥 60g（见 D4）</li></ul><h4>步骤</h4><ol><li>鸡胸用油、牛至、蒜、盐腌 15 分钟；蔬菜拌油盐，同盘排好。</li><li>烤箱 200°C 烤 20–25 分钟，中途给蔬菜翻一次面。</li><li>鸡胸出炉静置 5 分钟再切（锁肉汁），配豆泥上桌。</li></ol><p class="fail">翻车点：鸡胸烤过头变柴——厚处切开无粉红就立刻出炉，靠静置焖熟。</p></div></details>
+
+    <details class="card" id="L8"><summary><h3><span class="no">L8</span>蒜油虾配糙米饭</h3><div class="meta">15 分钟 · 难度 ★★☆</div><p class="intro">虾给蛋白、硒和虾青素；蒜油是慢浸出来的，吃的是香不是辣；糙米替白米，纤维和镁翻倍、升糖慢半拍。西班牙蒜油虾的家庭版。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>鲜虾 150g（去壳留尾更香）</li><li>橄榄油 20ml、蒜 4 瓣切片、干辣椒少许</li><li>糙米饭熟重 150g（生米约 60g，提前煮）</li></ul><h4>步骤</h4><ol><li>橄榄油小火下蒜片辣椒，浸 3 分钟到蒜片微金黄——这步是蒜油的灵魂。</li><li>转大火下虾，煎到两面变红卷曲（约 2 分钟）。</li><li>连油浇在糙米饭上，撒盐和欧芹（没有可省）。</li></ol><p class="fail">翻车点：虾煎久变橡皮——变红卷曲立刻离火，余温还会继续熟。</p></div></details>
+
+    <details class="card" id="L9"><summary><h3><span class="no">L9</span>孜然辣椒扁豆炖菜</h3><div class="meta">30 分钟 · 难度 ★☆☆</div><p class="intro">红扁豆不用泡、煮 20 分钟就烂，是全计划最省事的豆类：纤维、植物蛋白、叶酸、铁一次给齐。孜然辣椒的中式香料打法，想吃重口时的正解。</p><p style="margin-top:6px"><span class="tag">豆类</span><span class="tag hot">有锅气</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>红扁豆 80g（干重，淘洗即可）</li><li>Mutti 番茄 150g 或鲜番茄 1 个、洋葱 50g、蒜 2 瓣</li><li>孜然粉 2g、辣椒粉 1g、橄榄油 10ml、水约 500ml</li></ul><h4>步骤</h4><ol><li>油炒香洋葱蒜和孜然辣椒，下番茄炒出汁。</li><li>下扁豆和水，中小火炖 20–25 分钟到豆烂汤浓，盐调味。</li><li>配糙米饭或酸面包；喜欢可最后挤几滴柠檬汁提亮。</li></ol><p class="fail">翻车点：水一次加太多变稀汤——先加 400ml，不够再添。</p></div></details>
+
+    <details class="card" id="L10"><summary><h3><span class="no">L10</span>烤蔬菜藜麦碗</h3><div class="meta">30 分钟 · 烤箱 · 难度 ★☆☆</div><p class="intro">一碗集齐 5 种以上植物，种类数直接拉满；藜麦是少有的植物完全蛋白（氨基酸齐全），菲达补钙和咸香。颜色最丰富的一餐。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>藜麦 60g（干重）</li><li>茄子、西葫芦、青椒、洋葱共 300g 切大块</li><li>菲达 30g、橄榄油 10ml、巴萨米克醋 10ml、牛至</li></ul><h4>步骤</h4><ol><li>蔬菜拌油盐牛至，烤箱 200°C 烤 25 分钟到边缘焦香。</li><li>藜麦加 1.5 倍水煮 15 分钟，焖 5 分钟拨松。</li><li>藜麦打底，盖烤蔬菜，捏碎菲达，淋巴萨米克醋。</li></ol><p class="fail">翻车点：蔬菜切太小会烤干——切大块、别叠太密。</p></div></details>
+
+  </div>
+</section>
+
+<section class="diet-sec">
+  <h2>食谱库 · 晚餐轻食 <span class="en">8 款 · 量是午餐的六成</span></h2>
+  <div class="grid">
+
+    <details class="card" id="D1"><summary><h3><span class="no">D1</span>希腊沙拉</h3><div class="meta">10 分钟 · 免开火 · 难度 ★☆☆</div><p class="intro">生蔬菜的维 C 和钾保留最完整，菲达给蛋白和钙，橄榄给单不饱和脂肪。晚餐吃它，第二天早上脸都不带肿的（钠控制在泡水去盐这一步）。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>番茄 150g、黄瓜 100g、青椒 50g、紫洋葱 20g</li><li>菲达整块 50g、黑橄榄 6 颗</li><li>橄榄油 10ml、干牛至、盐</li></ul><h4>步骤</h4><ol><li>菲达泡水 10 分钟去盐；蔬菜切大块（沙拉要块不要丝）。</li><li>蔬菜、橄榄入碗，菲达整块摆在最上面。</li><li>淋橄榄油、撒牛至，吃的时候再把菲达拌开。</li></ol><p class="fail">翻车点：提前拌好会出水变蔫——上桌前 5 分钟再淋油。</p></div></details>
+
+    <details class="card" id="D2"><summary><h3><span class="no">D2</span>扁豆汤</h3><div class="meta">25 分钟 · 难度 ★☆☆</div><p class="intro">扁豆的纤维＋植物蛋白打底，配一小碟韩国泡菜：一个给饱腹、一个给活菌和酸辣开胃，发酵＋纤维一次到位，热量还低。</p><p style="margin-top:6px"><span class="tag">发酵搭档</span><span class="tag">高纤维</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>红扁豆 60g（干重）、胡萝卜 50g、洋葱 50g</li><li>橄榄油 10ml、水 450ml、柠檬汁几滴</li><li>配韩国泡菜 40g</li></ul><h4>步骤</h4><ol><li>油炒香洋葱胡萝卜丁，下扁豆和水。</li><li>中火煮 20 分钟到豆烂，盐调味，滴柠檬汁。</li><li>想更顺滑可用破壁机打 10 秒；泡菜单独小碟冷吃，别下锅。</li></ol><p class="fail">翻车点：泡菜下锅煮＝活菌全灭——永远冷吃配餐。</p></div></details>
+
+    <details class="card" id="D3"><summary><h3><span class="no">D3</span>菠菜番茄煎蛋卷</h3><div class="meta">10 分钟 · 难度 ★★☆</div><p class="intro">菠菜是补镁和叶酸的叶菜冠军，配番茄的维 C 还能帮菠菜里的铁吸收；鸡蛋给完整蛋白。冰箱有什么菜都能往里放的清库存款。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>鸡蛋 2 个</li><li>菠菜 80g、番茄 80g、洋葱 30g</li><li>橄榄油 8ml、盐、黑胡椒</li></ul><h4>步骤</h4><ol><li>油下洋葱番茄炒软，下菠菜炒到塌下去。</li><li>蛋液加盐打散倒入，小火盖盖焖 3 分钟。</li><li>对折出锅，撒黑胡椒。</li></ol><p class="fail">翻车点：火大蛋会老、菜会出水——全程小火，出水先把菜炒干再倒蛋。</p></div></details>
+
+    <details class="card" id="D4"><summary><h3><span class="no">D4</span>鹰嘴豆泥＋蔬菜条</h3><div class="meta">10 分钟 · 免开火 · 难度 ★☆☆</div><p class="intro">豆泥是 B6 和 L7 的共用底料，一次打一盒冷藏用三天。鹰嘴豆的纤维＋酸奶的蛋白和活菌，蘸生蔬菜吃，脆、酸、香，看电视时的正经零食。</p><p style="margin-top:6px"><span class="tag">豆类</span><span class="tag">发酵</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料（豆泥约 2–3 餐量）</h4><ul><li>熟鹰嘴豆 150g（罐装冲洗或干豆泡煮）</li><li>希腊酸奶 40g、蒜 1 瓣、柠檬汁 10ml、橄榄油 10ml、盐、孜然少许</li><li>配：黄瓜、胡萝卜条共 150g＋酸面包 1 片</li></ul><h4>步骤</h4><ol><li>豆和酸奶、蒜、柠檬汁、油、盐入破壁机，打到顺滑（太干加一勺煮豆水）。</li><li>装盘后表面用勺子划圈，再淋几滴橄榄油、撒红椒粉。</li><li>蔬菜条蘸着吃；余量密封冷藏，3 天内用完。</li></ol><p class="fail">翻车点：打得太干像水泥——液体分次加，目标是酸奶的稠度。</p></div></details>
+
+    <details class="card" id="D5"><summary><h3><span class="no">D5</span>沙丁鱼吐司＋沙拉</h3><div class="meta">8 分钟 · 难度 ★☆☆</div><p class="intro">晚餐版的 Omega-3 补给：沙丁鱼的 EPA/DHA＋钙，配绿叶沙拉的叶酸和钾。8 分钟一顿正经晚餐，累到不想开大火时的最优解。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>沙丁鱼 1 罐（106g）</li><li>酸面包 2 片、绿叶沙拉 100g</li><li>蒜泥、柠檬汁、黑胡椒</li></ul><h4>步骤</h4><ol><li>面包烤脆；沙丁鱼连油倒碗里，加蒜泥柠檬汁压成粗泥。</li><li>厚抹面包，撒黑胡椒。</li><li>沙拉只用橄榄油＋柠檬汁拌，配在旁边。</li></ol><p class="fail">翻车点：整条摆着吃腥感重——压成泥加柠檬蒜，腥味立刻降一半。</p></div></details>
+
+    <details class="card" id="D6"><summary><h3><span class="no">D6</span>味噌蔬菜豆腐汤</h3><div class="meta">12 分钟 · 难度 ★☆☆</div><p class="intro">味噌是正经的发酵食品（活菌怕热，所以最后下锅）；豆腐给大豆蛋白和钙，时蔬给纤维。一碗热汤收尾，睡眠都安稳些。</p><p style="margin-top:6px"><span class="tag">发酵</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>味噌 15g（一大勺）</li><li>嫩豆腐 150g、时蔬 150g（白菜/菠菜/蘑菇任选）</li><li>水 400ml</li></ul><h4>步骤</h4><ol><li>水烧开下蔬菜煮 2 分钟，下豆腐块再煮 1 分钟，关火。</li><li>味噌先用一勺热汤化开，倒回锅里拌匀，不要再煮沸。</li><li>直接喝；想加料可打个蛋花在关火前下。</li></ol><p class="fail">翻车点：味噌煮沸＝香气和活菌双杀——必须关火后下。</p></div></details>
+
+    <details class="card" id="D7"><summary><h3><span class="no">D7</span>烤红薯＋酸奶蒜酱</h3><div class="meta">40 分钟 · 烤箱（动手 3 分钟）· 难度 ★☆☆</div><p class="intro">红薯的 β-胡萝卜素和纤维顶格，升糖比白米饭慢；酸奶蒜酱补蛋白和活菌，把甜味拉回咸鲜。饱腹感出乎意料的一餐。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>红薯 1 个（约 250g）</li><li>希腊酸奶 80g、蒜泥少许、盐</li><li>坚果碎 10g、橄榄油几滴</li></ul><h4>步骤</h4><ol><li>红薯洗净擦干，叉子扎几个孔，烤箱 200°C 烤 35–40 分钟到捏着软、渗蜜。</li><li>酸奶＋蒜泥＋盐搅成蒜酱。</li><li>红薯剖开，蒜酱抹满，撒坚果碎、滴橄榄油。</li></ol><p class="fail">翻车点：没扎孔可能在烤箱里爆——扎孔这步别省。</p></div></details>
+
+    <details class="card" id="D8"><summary><h3><span class="no">D8</span>剩菜改造餐</h3><div class="meta">10 分钟 · 难度 ★☆☆</div><p class="intro">地中海人家的真实日常：午餐的炖豆、鱼汤剩一份，晚上加热配新鲜沙拉和泡菜，就是营养不打折的一餐。省钱、省事、零浪费——预算能压下来靠的就是它。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>午餐剩菜 1 份（炖豆/鱼汤/扁豆炖菜）</li><li>新鲜沙拉 100g、韩国泡菜 40g</li><li>酸面包 1 片</li></ul><h4>步骤</h4><ol><li>剩菜加热到彻底滚烫（中心冒大泡），汤类可加把新鲜菠菜焖 1 分钟变新菜。</li><li>配沙拉、泡菜、面包上桌。</li></ol><p class="fail">翻车点：剩菜只温一下就吃有风险——必须煮沸；冷藏超 3 天的直接扔。</p></div></details>
+
+  </div>
+</section>
+
+<section class="diet-sec">
+  <h2>高蛋白冻果奶昔 <span class="en">5 款 · 破壁机 60 秒</span></h2>
+  <div class="shake-formula"><b>通用公式：</b>液体先下 → 酸奶 → 蛋白粉 → 冻果最后 → 搅 60 秒。冻果不用解冻直接打，才有冰沙感；新鲜香蕉去皮掰段冷冻，就是现成的冻香蕉，不用买。一杯成本约 ¥10，是全天性价比最高的蛋白来源。你的节奏是晚上喝：选 S1–S4，S5 咖啡款只能放在白天（brunch）。</div>
+  <div class="grid">
+
+    <details class="card" id="S1"><summary><h3><span class="no">S1</span>莓果款</h3><div class="meta">蛋白约 38g · 3 分钟</div><p class="intro">蓝莓的花青素是明确对眼睛和认知友好的多酚，草莓给维 C；酸奶＋乳清把蛋白堆到 38g，还带活菌。颜色最漂亮的一款。</p><p style="margin-top:6px"><span class="tag">花青素</span><span class="tag pro">高蛋白</span></p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>冻蓝莓＋冻草莓 150g、冻香蕉半根</li><li>希腊酸奶 150g、牛奶 200ml</li><li>乳清蛋白粉 1 勺（约 30g）</li></ul><h4>步骤</h4><ol><li>按公式顺序入杯，搅 60 秒到无颗粒。</li><li>太稠兑牛奶 30ml 再搅 5 秒。</li></ol><p class="fail">翻车点：冻果先下会卡住刀头——顺序永远是液体打头。</p></div></details>
+
+    <details class="card" id="S2"><summary><h3><span class="no">S2</span>芒果燕麦款</h3><div class="meta">蛋白约 36g · 最顶饱</div><p class="intro">多了燕麦的缓释碳水和 β-葡聚糖，这杯可以当一顿轻早餐；芒果给 β-胡萝卜素和维 C。活动量大的上午喝它。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>冻芒果 150g、燕麦 20g</li><li>牛奶 250ml、希腊酸奶 100g</li><li>蛋白粉 1 勺</li></ul><h4>步骤</h4><ol><li>燕麦先和牛奶泡 5 分钟（不泡会带生涩感）。</li><li>其余按公式加入，搅 60 秒。</li></ol><p class="fail">翻车点：燕麦放多会稠成糊——20g 是上限。</p></div></details>
+
+    <details class="card" id="S3"><summary><h3><span class="no">S3</span>花生香蕉可可款</h3><div class="meta">蛋白约 35g</div><p class="intro">像甜品，但它是正经补给：花生酱给单不饱和脂肪和镁，可可给多酚，香蕉给钾。训练后或嘴馋时喝，替代奶茶的位置。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>冻香蕉 1 根、花生酱 15g（一大勺）</li><li>可可粉 5g（一勺）、牛奶 250ml</li><li>蛋白粉 1 勺</li></ul><h4>步骤</h4><ol><li>全部按公式入杯，搅 60 秒。</li><li>想更像甜品可加 2 块冰再搅 10 秒。</li></ol><p class="fail">翻车点：花生酱热量高——一大勺封顶，别挖两勺，它 100g 近 600 大卡。</p></div></details>
+
+    <details class="card" id="S4"><summary><h3><span class="no">S4</span>绿款</h3><div class="meta">蛋白约 34g</div><p class="intro">冻菠菜的叶酸、镁、维 K 全保留，味道被芒果香蕉完全盖住，只留下颜色。一杯喝下半天的叶菜缺口，适合当天没吃够菜的日子。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>冻菠菜 50g、冻芒果 100g、香蕉半根</li><li>希腊酸奶 100g、牛奶 200ml</li><li>蛋白粉 1 勺</li></ul><h4>步骤</h4><ol><li>按公式入杯，搅满 60 秒——绿款多搅一会儿才不挂丝。</li></ol><p class="fail">翻车点：菠菜超过 60g 草味压不住——称一下再下。</p></div></details>
+
+    <details class="card" id="S5"><summary><h3><span class="no">S5</span>咖啡可可款</h3><div class="meta">蛋白约 34g · <span class="warn-inline">仅限上午</span></div><p class="intro">咖啡的提神＋可可多酚＋完整蛋白，早晨一杯顶早餐加咖啡。代价写在前面：咖啡因半衰期 5–6 小时，下午喝就是拿晚上的睡眠换。</p><div class="open-hint">展开做法 ▾</div></summary>
+    <div class="how"><h4>用料</h4><ul><li>冷萃/速溶咖啡液 100ml（或速溶 2g＋水）</li><li>冻香蕉 1 根、可可粉 5g、牛奶 200ml</li><li>蛋白粉 1 勺</li></ul><h4>步骤</h4><ol><li>咖啡液当液体层先下，其余按公式，搅 60 秒。</li></ol><p class="fail">翻车点：热咖啡直接打会让蛋白粉结块变苦——用冷的。</p></div></details>
+
+  </div>
+</section>
+
+<section class="diet-sec">
+<h2>自制酸面包 <span class="en">养酵种 7 天 · T65 就够了</span></h2>
+<p class="sec-note">酸面包靠天然酵种（野生酵母＋乳酸菌），不是酵母粉——酵母粉留着做披萨和中式面点。先纠正一个数：<b>母种不用养 100g，平时常备 30–50g 就够</b>，做面包前一晚扩培一次，要多少有多少。酵种烤完活菌就没了，它的好处在发酵本身（GI 更低、植酸被分解），别信"益生菌面包"的话术。</p>
+<div class="days">
+<div class="day"><b>第 1 天 · 起种</b>酵种罐（已进采购清单）：T65 25g＋水 25g 搅匀，盖子虚掩，室温放。水用凉白开或敞口放过夜的自来水（除氯）。</div>
+<div class="day warn"><b>第 2–3 天 · 假繁荣</b>疯狂冒泡别高兴太早，这波是坏菌在产气。每天留 25g，倒掉其余，喂 25g 粉＋25g 水。</div>
+<div class="day warn"><b>第 3–4 天 · 换代期</b>突然没动静、可能有臭袜子/指甲油味——<b>不是死了</b>，是乳酸菌在接管。多数人死在这一步的误判里，坚持喂。</div>
+<div class="day"><b>第 5–7 天 · 养成</b>喂完 4–8 小时稳定涨到 2 倍、味道变清爽酸香（酸奶＋青苹果味），挖一勺丢水里能浮起 = 可以开烤。</div>
+<div class="day"><b>日常维护</b>母种 30–50g 冰箱冷藏，一周喂一次（留 25g 喂 25＋25）。表面浮灰黑水是"饿了"，搅回去喂一顿就好。</div>
+<div class="day warn"><b>真翻车信号</b>只有两个：粉/橙色条纹、毛茸茸的霉点——整罐扔掉重来，损失不过几十克面粉。冬天室温低会慢到 7–10 天，放家里最暖的角落。</div>
+</div>
+
+<div class="recipe-box">
+<h3>酵种状态自查表（喂之前先对一眼）</h3>
+<table>
+<tr><th style="width:34%">看到什么</th><th>说明什么 · 怎么办</th></tr>
+<tr><td>喂后 4–8 小时涨到 2 倍、顶部圆鼓</td><td>正值峰值，状态最佳——扩培或直接开做</td></tr>
+<tr><td>涨了但不到 1.5 倍</td><td>还没到峰值或屋里太凉——再等等，或挪到温暖处；连续两天如此就一天喂两次</td></tr>
+<tr><td>表面一层灰黑水</td><td>只是饿了（酒精和水分离）——搅回去，正常喂</td></tr>
+<tr><td>酸奶＋青苹果的清爽酸香</td><td>健康，就该是这个味</td></tr>
+<tr><td>臭袜子/指甲油味（第 3–4 天）</td><td>换代期正常现象——继续喂，过两天会变清爽</td></tr>
+<tr><td>粉/橙色条纹、毛茸茸霉点</td><td><b>真死了</b>——整罐扔掉重来，不要抢救</td></tr>
+</table>
+</div>
+
+<div class="recipe-box">
+<h3>做面包前一晚 · 扩培（母种变出配方量）</h3>
+<ol>
+<li><b>小份版（默认）</b>：从母种舀 10g，加 T65 25g＋水 25g，搅匀室温放一夜 → 得约 60g，配方用 50g，剩下约 10g 放回冰箱当新母种。</li>
+<li><b>全量版</b>：母种 10g＋粉 50g＋水 50g → 约 110g，用 100g，剩 10g 回冰箱。</li>
+<li>判断能用的标准不变：涨到 2 倍＋浮水测试通过。没涨够就多等 2 小时，不要将就。</li>
+</ol>
+</div>
+
+<div class="recipe-box">
+<h3>第一炉 · 免揉乡村酸包（为你的小烤盘定的默认量，动手不到 20 分钟）</h3>
+<ol>
+<li><b>配比</b>：T65 225g＋全麦粉 25g、水 188g、扩培酵种 50g、盐 5g。成品约 470g、直径约 17cm，小烤盘稳稳放得下。</li>
+<li><b>混合</b>：粉水先拌匀静置 30 分钟，加酵种和盐揉到无干粉。</li>
+<li><b>折叠</b>：室温发酵约 4 小时，前 2 小时每 30 分钟拉伸折叠一次（共 4 次），之后静置涨到 1.5 倍。</li>
+<li><b>整形冷藏</b>：整形成圆团，收口朝上放进撒粉的碗里（布垫底），冰箱冷藏过夜（8–14 小时），风味在这步成型。</li>
+<li><b>割包</b>：第二天面团扣在烘焙纸上，用割包刀（已进采购清单）斜着划一刀，深约 5mm——这刀是给膨胀留的开口，不划会自己乱裂。</li>
+<li><b>烘烤</b>：230°C。带盖烤 18 分钟，开盖再烤 15–18 分钟到深棕色。盖子三选一：带盖的锅（最优）／大金属盆倒扣在烤盘上／不盖也行，下层放一盘热水造蒸汽——盖子只为蒸汽，不盖能吃，只是皮厚些、裂口小些。</li>
+<li><b>冷却</b>：出炉至少凉 1 小时再切——切早了内部会发黏，这是新手最常见的"假翻车"。</li>
+</ol>
+<p style="margin-top:8px"><b>全量换算</b>：回家量了烤盘，内宽 ≥28cm 或有口 24cm 带盖锅，就把上面所有数字 ×2（酵种扩培按全量版），烘烤改带盖 20 分钟＋开盖 20 分钟。</p>
+</div>
+<div class="alert"><b>加速小技巧：</b>起种头两天用等量无糖菠萝汁代替水，酸度提前压下去，能跳过臭烘烘的坏菌阶段，成功率更高。没有也无妨，水版一样成。</div>
+</section>
+
+<section class="diet-sec">
+<h2>韩国泡菜 <span class="en">买现成 · 冷吃配餐</span></h2>
+<p class="sec-note">自己腌不值得，买现成的就行——它是这个计划里最便宜的发酵食品：活菌来自乳酸发酵，前提是<b>冷吃、别加热</b>（下锅煮一遍，活菌就没了）。定位是配菜：一餐 30–50g 一小碟，配扁豆汤、剩菜改造餐、沙丁鱼吐司都合适。</p>
+<div class="recipe-box">
+<h3>挑选标准（买的时候对四条）</h3>
+<ul>
+<li><b>买冷藏柜的，不买常温罐头款</b>：常温长保的多半巴氏杀菌，活菌不在了；冷藏短保的才是真发酵。</li>
+<li><b>配料表越短越好</b>：白菜、辣椒、蒜、姜、盐是主角；白砂糖排进前三位的跳过（韩式泡菜普遍带一点糖调味，排在后面、含量低的可接受）。</li>
+<li><b>钠要心里有数</b>：泡菜钠不低，所以吃它的那顿，菲达、罐头鱼这类咸口就自觉减量，全天算总账。</li>
+<li><b>别冲水洗</b>：洗掉的是乳酸和风味；觉得咸就减量吃，不要洗。</li>
+</ul>
+<p style="margin-top:8px">用量：约 40g/天、不是每天都吃，一个月 2–3 袋 500g 装足够，已进每周鲜货组。开封后冷藏，2–3 周内吃完（活菌一直在缓慢发酵，越放越酸，属正常）。</p>
+</div>
+</section>
+
+<section class="diet-sec">
+  <h2>采购清单 <span class="en">可勾选 · 勾选状态保存在本机</span></h2>
+  <p class="sec-note">品牌与配料已从品牌官网/海外商超标签逐个核实；京东、淘宝、山姆 App 的商品页无法从公开网络打开，国内价格凡标注"参考"的都是区间，下单以商品页为准。每件附了 App 内搜索词。总预算在清单最后，买之前先看那一段。</p>
+
+  <div class="shop-group"><h3>耐储组 · 一次买齐（山姆 / 淘宝 / 京东）</h3>
+    <label class="item"><input type="checkbox"><span><span class="nm">特级初榨橄榄油</span> — 翡力百瑞 Filippo Berio（经典绿瓶）500ml × 3，或百多力 Bertolli Originale 750ml × 2 <span class="dt">配料仅"特级初榨橄榄油"一项，钠 0。搜「翡力百瑞 特级初榨橄榄油」</span><br><span class="warn-inline">避坑：同品牌"Pure/纯橄榄油"是精炼混合油，只认 Extra Virgin。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">金枪鱼罐头</span> — Rio Mare 橄榄油浸 160g × 6 <span class="dt">配料：金枪鱼＋橄榄油＋盐；用的是鲣鱼 skipjack，金枪鱼里汞最低。平替雄鸡标（水浸款钠仅 95mg/100g，控钠更优）。搜「里奥马雷 橄榄油浸金枪鱼」</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">沙丁鱼罐头</span> — King Oscar 特级初榨橄榄油浸小沙丁鱼 106g × 8 <span class="dt">配料仅 3 项；每罐 Omega-3 约 1600mg。平替雄鸡标橄榄油浸。搜「奥斯卡国王 沙丁鱼」</span><br><span class="warn-inline">避坑：同品牌茄汁款含糖＋大豆油，只买橄榄油浸原味。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">罐装整番茄</span> — Mutti 慕意去皮整番茄 400g × 10 <span class="dt">配料：番茄＋番茄汁＋柠檬酸，无加糖无加盐，全清单配料最干净。搜「慕意 去皮整番茄」；选"整颗"款，番茄碎款含盐。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">罐装豆（应急）</span> — Cirio 茄意欧鹰嘴豆 400g × 4 ＋ 白芸豆 × 4 <span class="dt">配料：豆＋水＋盐。吃前沥水冲洗，可再去钠三四成。搜「茄意欧 鹰嘴豆」</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">干豆</span> — 鹰嘴豆 1.5kg ＋ 白豆/红腰豆 1kg ＋ 红扁豆 500g <span class="dt">无品牌要求，颗粒完整无霉点即可；干豆要泡一夜，红扁豆免泡。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">全麦意面</span> — Barilla 百味来全麦 500g × 2 <span class="dt">配料仅全麦硬质小麦粉，每 56g 纤维 7g、钠 0。约 ¥20–26/盒，京东/天猫旗舰店。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">燕麦片</span> — 桂格经典纯燕麦片 1000g × 1 <span class="dt">约 ¥15–25。只买原味经典款（避开"五黑"等调味线），到手查配料只有"燕麦"一项。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">糙米 / 藜麦</span> — 各 500g–1kg <span class="dt">中午偶尔替白米饭，缓升糖。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">坚果种子</span> — 原味核桃 300g ＋ 杏仁 300g ＋ 芝麻/亚麻籽/南瓜子各小袋 <span class="dt">凑植物种类＋补镁；到手直接冷藏，防油耗味。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">花生酱</span> — 1 罐 <span class="dt">选配料只有花生（顶多加盐）的款，含氢化油/糖的不要。奶昔 S3 专用。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">橄榄</span> — 黑、绿各 1 罐 <span class="dt">标准：配料橄榄＋水＋盐。吃前冲一下水去钠。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">菲达奶酪</span> — Dodoni 多诺尼 200g × 3 <span class="dt">希腊 PDO，配料：羊奶＋盐＋乳酸菌＋凝乳酶，无防腐剂。约 ¥45–65/块。盐 2.5g/100g，吃前泡水 10 分钟去盐。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">味噌</span> — 1 盒 <span class="dt">配料大豆＋米/大麦＋盐即可；D6 味噌汤专用，关火后下锅。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">香料组</span> — 干牛至、烟熏红椒粉、黑胡椒、肉桂、孜然、辣椒粉各 1 小瓶 ＋ 巴萨米克醋 1 瓶 <span class="dt">牛至是地中海菜的标志香草，一瓶用半年，这组是"买一次用几个月"的典型。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">乳清蛋白粉</span> — ON 金牌乳清香草 2 磅，或 Myprotein 天然香草 1kg <span class="dt">ON 每份 24g 蛋白；Myprotein 约 ¥199–299、每份 21–23g。认官方旗舰店，进口蛋白粉假货多。奶昔每天一杯约用 900g/月，2 磅装刚好够、1kg 装更稳妥，别买 5 磅囤着。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">全麦粉</span> — 1kg <span class="dt">酸面包掺约 10% 提风味＋喂酵种更活跃。T65 你已有，不用买。</span></span></label>
+  </div>
+
+  <div class="shop-group"><h3>面包工具组 · 做酸包才需要（一次买齐，都不贵）</h3>
+    <label class="item"><input type="checkbox"><span><span class="nm">酵种罐</span> — 500ml 直筒玻璃罐带盖 × 1 <span class="dt">约 ¥10–15。直筒是为了看涨幅、好刮取；家里有干净的同款罐子可直接用，省了这笔。搜「500ml 直筒 玻璃罐 带盖」</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">割包刀</span> — 美工刀或锋利小刀 × 1 <span class="dt">约 ¥10–20。专门给面团表面划口子用，刀刃越薄越不拖面团；家里的水果刀够锋利也可顶，但别用锯齿刀。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">烘焙纸</span> — 1 卷 <span class="dt">约 ¥10。面团连纸进锅、不粘烤盘，全程就靠它搬运。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">电子秤</span> — 先翻家里有没有，没有再买 <span class="dt">约 ¥25。养种和面团全按克数，这是唯一算刚需的工具；有就不买。</span></span></label>
+  </div>
+
+  <div class="shop-group"><h3>冷冻组 · 奶昔和酸奶碗的弹药</h3>
+    <label class="item"><input type="checkbox"><span><span class="nm">冻蓝莓 1.5kg ＋ 冻草莓 1kg ＋ 冻芒果 2kg ＋ 冻菠菜 500g</span> <span class="dt">按奶昔每天一杯的量备的。</span> <span class="dt">山姆 App 内搜门店库存（对外查不到确切 SKU）；或京东按"配料只有水果名一项"选 1kg 装。参考价：蓝莓 ¥35–55/kg、草莓 ¥20–35/kg、芒果 ¥25–40/kg。</span><br><span class="warn-inline">冻芒果最容易被掺糖浆，这项重点看配料表。</span></span></label>
+  </div>
+
+  <div class="shop-group"><h3>每周鲜货组 · 菜市场 / 山姆（× 4 周）</h3>
+    <label class="item"><input type="checkbox"><span><span class="nm">希腊酸奶 1.5kg / 周</span> <span class="dt">山姆在售款实测蛋白 10g/100g、蔗糖 0；或吾岛无蔗糖款约 ¥59.9、Chobani 原味脱脂 6 杯约 ¥64.9（水果杯含糖，别拿错）。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">牛奶 2.5–3L、鸡蛋 12 个 / 周</span> <span class="dt">牛奶大头是每天晚上的奶昔。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">鲜鱼 2–3 次的量 ＋ 虾 1 次 ＋ 鸡胸 1 次 / 周</span> <span class="dt">鲈鱼、鲷鱼、带鱼都行，德化离海近，这是你的主场。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">韩国泡菜 500g</span> <span class="dt">约每两周一袋，月约 2–3 袋。只买冷藏款，对四条挑选标准（见上方泡菜一节）；山姆/朴朴/菜市场韩国食品柜都有。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">豆腐 1 块 ＋ 土豆、红薯 / 周</span> <span class="dt">豆腐给 D6 味噌汤，买回 2–3 天内吃掉；土豆给 L6 鱼汤，红薯给 D7。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">蔬菜水果 / 周</span> <span class="dt">番茄、黄瓜、叶菜（含菠菜）、茄子、西葫芦、青椒、洋葱、大蒜、柠檬；香蕉一串（冻一半打奶昔）；当季水果随意。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">面包救急备选</span> <span class="dt">酸包没接上时用：淘宝捷森德国全麦（约 ¥20–30/500g，到手验标签）或本地烘焙房现烤法棍/恰巴塔。山姆没有核实到合格的全麦面包，别在那儿耗。</span></span></label>
+  </div>
+
+  <div class="budget">
+    <h3>预算总账 · 到底要准备多少钱（估算，下单以商品页为准）</h3>
+    <table>
+      <tr><td style="width:34%">首月一次性采购投入</td><td><span class="big">约 ¥3,200–3,600</span><br>耐储组约 ¥1,950–2,050（进口罐头、橄榄油、菲达、蛋白粉是大头）＋冷冻组约 ¥180–230（奶昔每天一杯，冻果量已加大）＋面包工具约 ¥35–70（秤家里有则再省 ¥25）＋四周鲜货约 ¥1,100–1,300（约 ¥300–330/周，泡菜含在内）。</td></tr>
+      <tr><td>按月实际消耗口径</td><td><span class="big">约 ¥2,500–2,800 / 月</span><br>首月买的香料、巴萨米克醋、全麦粉、橄榄油能用 2–3 个月，不该全算在这 30 天头上。摊掉这部分，真实月消耗就是这个数（已按奶昔每天一杯算）。</td></tr>
+      <tr><td>折合每天 / 每餐</td><td><span class="big">全天约 ¥85–95</span>（两顿正餐＋一杯奶昔）<br>折合每顿正餐 ¥35 上下、奶昔约 ¥10/杯。三餐的钱花在两餐上，单顿看着贵，全天并没有变贵。</td></tr>
+      <tr><td>贵不贵？</td><td>对比口径要选对：比普通家常（¥10–15/餐）确实贵，贵在进口罐头、蛋白粉、冻果三样；但比同食材等级的外食/轻食外卖（¥35–50/餐）便宜，且油、鱼、发酵食品的质量是你自己捏着的。结论：<b>属于"吃得讲究"的价位，不是奢侈价位</b>。</td></tr>
+      <tr><td>省钱开关（全开）</td><td>① 罐头鱼换雄鸡标平替 −¥200~300；② 蛋白粉等 Myprotein 活动价 −约 ¥80；③ 橄榄油在山姆买大规格自用分装；④ 冻果旺季用鲜果替一部分。全开后月消耗可压到 <b>¥2,100–2,300，全天约 ¥70–77</b>。</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="diet-sec">
+  <h2>保存速查 <span class="en">放哪儿 · 能放多久</span></h2>
+  <table>
+    <tr><th style="width:26%">食材</th><th style="width:30%">保存方式</th><th>期限</th></tr>
+    <tr><td>橄榄油</td><td>阴凉避光柜中</td><td>未开封约 2 年；开封 2 个月内用完（所以买小瓶轮着开）</td></tr>
+    <tr><td>干豆</td><td>密封罐，阴凉干燥</td><td>1 年；泡发煮熟后冷藏 3 天 / 冷冻 1 个月</td></tr>
+    <tr><td>罐头（鱼/番茄/豆）</td><td>阴凉处</td><td>未开封 1–2 年；开封转密封盒冷藏，2–3 天吃完</td></tr>
+    <tr><td>意面 / 糙米</td><td>密封防潮</td><td>6–12 个月</td></tr>
+    <tr><td>燕麦</td><td>密封</td><td>开封 3 个月内（含油脂，怕哈喇）</td></tr>
+    <tr><td>坚果种子</td><td><b>冷藏</b>密封</td><td>3–6 个月；常温容易出油耗味</td></tr>
+    <tr><td>冻果 / 冻菠菜</td><td>冷冻 −18°C，袋口扎紧</td><td>6 个月内风味最好</td></tr>
+    <tr><td>蛋白粉</td><td>阴凉干燥，勺子保持干燥</td><td>开封 3–6 个月</td></tr>
+    <tr><td>菲达 / 橄榄</td><td>菲达必须盐水浸泡冷藏；橄榄汁水没过</td><td>菲达开封 1–2 周；橄榄 2–3 周</td></tr>
+    <tr><td>味噌 / 韩国泡菜</td><td>冷藏</td><td>味噌数月；泡菜开封 2–3 周（一直在缓慢发酵，越放越酸，正常）</td></tr>
+    <tr><td>豆腐</td><td>冷藏，水没过</td><td>2–3 天，尽快吃</td></tr>
+    <tr><td>酸面包</td><td>切片冷冻，吃前 180°C 复烤 3 分钟</td><td>冷冻 1 个月；千万别冷藏，冷藏加速变干</td></tr>
+    <tr><td>鲜鱼</td><td>冷藏</td><td>只放 1 天，当天不吃就急冻</td></tr>
+    <tr><td>酵种（母种）</td><td>酵种罐冷藏，罐壁刮干净</td><td>一周喂一次可长期存活；长期不用可烘干保存</td></tr>
+  </table>
+</section>
+
+<footer class="diet-sec">
+  <b>口径说明</b>：品牌与配料表来自品牌官网、海外大型商超标签页逐项核实（2026-10-21）；国内渠道价格因山姆/京东/淘宝商品页无法从公开网络打开，标注"参考"者为电商常见区间，预算总账为按此口径的估算，下单时以商品页和罐身中文标签为准。营养数字为按常用食材成分的约数。计划参数：FANG 一人份、假期 30 天在家、一天两餐（brunch＋晚餐）＋晚间奶昔、山姆会员、无乳糖不耐与食物过敏、口味无禁忌。本页不推 GitHub，仅供本人使用；勾选状态保存在本设备浏览器内。
+</footer>
+
+</div>
+<script>
+  const boxes=[...document.querySelectorAll('.item input[type=checkbox]')];
+  const key='med-plan-checks-v2';
+  let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+  boxes.forEach((b,i)=>{
+    if(saved[i]){b.checked=true;b.closest('.item').classList.add('done')}
+    b.addEventListener('change',()=>{
+      saved[i]=b.checked;
+      b.closest('.item').classList.toggle('done',b.checked);
+      try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}
+    });
+  });
+  // 轮换表点菜名：若目标食谱卡未展开，顺手展开
+  document.querySelectorAll('a.dish').forEach(a=>{
+    a.addEventListener('click',()=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t&&t.tagName==='DETAILS')t.open=true;
+    });
+  });
+  // 每张食谱卡底部加「收起做法」按钮（点头部菜名同样可以收起）
+  document.querySelectorAll('details.card .how').forEach(h=>{
+    const b=document.createElement('button');
+    b.className='close-btn'; b.type='button'; b.textContent='收起做法 ▴';
+    b.addEventListener('click',()=>{
+      const d=h.closest('details'); d.open=false;
+      d.scrollIntoView({block:'center',behavior:'smooth'});
+    });
+    h.appendChild(b);
+  });
+  // 饮食 / 训练 双视图切换（默认饮食，每次打开都回到饮食）
+  const trainSec=document.getElementById('train-sec');
+  const tabDiet=document.getElementById('tab-diet');
+  const tabTrain=document.getElementById('tab-train');
+  function showView(v){
+    const isDiet = v==='diet';
+    document.querySelectorAll('.diet-sec').forEach(el=>{el.style.display=isDiet?'':'none'});
+    if(trainSec) trainSec.style.display=isDiet?'none':'';
+    tabDiet.classList.toggle('on',isDiet);
+    tabTrain.classList.toggle('on',!isDiet);
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  tabDiet.addEventListener('click',()=>showView('diet'));
+  tabTrain.addEventListener('click',()=>showView('train'));
+</script>
+</body>
+</html>
