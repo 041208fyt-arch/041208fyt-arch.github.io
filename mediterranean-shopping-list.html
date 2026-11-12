@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>地中海饮食 · 采购清单</title>
+<style>
+  :root{
+    --olive:#5c7350; --olive-d:#43553b; --terra:#c96f4a; --tomato:#bc4633;
+    --wheat:#e9d8a6; --sand:#f6efe3; --ink:#2b2622; --sub:#6f6659;
+    --card:#ffffff; --line:#e7dcc8; --good:#5c7350;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;background:#fffdf8;color:var(--ink);line-height:1.65;padding:22px 18px 40px;max-width:760px;margin:0 auto}
+  h1{font-size:26px;color:var(--olive-d);letter-spacing:1px}
+  h1 .en{font-size:13px;color:var(--sub);font-weight:normal;letter-spacing:1px;margin-left:8px}
+  .top-note{color:var(--sub);font-size:14px;margin:6px 0 4px}
+  .progress{position:sticky;top:0;background:#fffdf8;padding:10px 0 8px;font-size:15px;font-weight:600;color:var(--olive-d);border-bottom:2px solid var(--sand);margin-bottom:16px;z-index:5}
+  .progress .bar{height:8px;background:#f0e8d8;border-radius:99px;margin-top:8px;overflow:hidden}
+  .progress .bar i{display:block;height:100%;background:var(--olive);border-radius:99px;width:0%}
+  h2{font-size:22px;color:var(--olive-d);border-left:6px solid var(--terra);padding-left:12px;margin:18px 0 6px}
+  h2 .en{font-size:13px;color:var(--sub);font-weight:normal;letter-spacing:1px;margin-left:8px}
+  .sec-note{color:var(--sub);font-size:14px;margin:4px 0 16px 18px}
+  .shop-group{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 18px 12px;margin-bottom:14px}
+  .shop-group h3{font-size:17px;color:var(--olive-d);padding:12px 0 6px;border-bottom:2px solid var(--sand);margin-bottom:8px}
+  .item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #f4eee0;font-size:14.5px;align-items:flex-start;cursor:pointer}
+  .item:last-child{border-bottom:none}
+  .item input{margin-top:4px;width:19px;height:19px;accent-color:var(--olive);flex:none;cursor:pointer}
+  .item .nm{font-weight:600}
+  .item .dt{color:var(--sub);font-size:13px}
+  .item.done .nm{color:#a39a8a;text-decoration:line-through}
+  .item.done .dt{color:#b3ab9c}
+  .warn-inline{color:var(--tomato);font-size:13px}
+  .budget{background:linear-gradient(120deg,#f6efe3,#fdf6ec);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:16px}
+  .budget h3{color:var(--olive-d);font-size:18px;margin-bottom:8px}
+  .budget table{width:100%;border-collapse:collapse;background:transparent;border:none;font-size:14px}
+  .budget td{padding:8px 10px;border-top:1px solid #eadfc9;vertical-align:top;background:transparent!important}
+  .budget .big{font-size:20px;color:var(--terra);font-weight:700;white-space:nowrap}
+  .foot{margin-top:22px;font-size:13px;color:var(--sub);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+  <h1>地中海饮食 · 采购清单 <span class="en">SHOPPING LIST</span></h1>
+  <p class="top-note">假期 30 天计划 · 一人份 · 勾选状态保存在本机浏览器，关掉再打开还在。</p>
+  <div class="progress"><span id="prog-text">已买 0 / 29 项</span><div class="bar"><i id="prog-bar"></i></div></div>
+<h2>采购清单 <span class="en">可勾选 · 勾选状态保存在本机</span></h2>
+  <p class="sec-note">品牌与配料已从品牌官网/海外商超标签逐个核实；京东、淘宝、山姆 App 的商品页无法从公开网络打开，国内价格凡标注"参考"的都是区间，下单以商品页为准。每件附了 App 内搜索词。总预算在清单最后，买之前先看那一段。</p>
+
+  <div class="shop-group"><h3>耐储组 · 一次买齐（山姆 / 淘宝 / 京东）</h3>
+    <label class="item"><input type="checkbox"><span><span class="nm">特级初榨橄榄油</span> — 翡力百瑞 Filippo Berio（经典绿瓶）500ml × 3，或百多力 Bertolli Originale 750ml × 2 <span class="dt">配料仅"特级初榨橄榄油"一项，钠 0。搜「翡力百瑞 特级初榨橄榄油」</span><br><span class="warn-inline">避坑：同品牌"Pure/纯橄榄油"是精炼混合油，只认 Extra Virgin。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">金枪鱼罐头</span> — Rio Mare 橄榄油浸 160g × 6 <span class="dt">配料：金枪鱼＋橄榄油＋盐；用的是鲣鱼 skipjack，金枪鱼里汞最低。平替雄鸡标（水浸款钠仅 95mg/100g，控钠更优）。搜「里奥马雷 橄榄油浸金枪鱼」</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">沙丁鱼罐头</span> — King Oscar 特级初榨橄榄油浸小沙丁鱼 106g × 8 <span class="dt">配料仅 3 项；每罐 Omega-3 约 1600mg。平替雄鸡标橄榄油浸。搜「奥斯卡国王 沙丁鱼」</span><br><span class="warn-inline">避坑：同品牌茄汁款含糖＋大豆油，只买橄榄油浸原味。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">罐装整番茄</span> — Mutti 慕意去皮整番茄 400g × 10 <span class="dt">配料：番茄＋番茄汁＋柠檬酸，无加糖无加盐，全清单配料最干净。搜「慕意 去皮整番茄」；选"整颗"款，番茄碎款含盐。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">罐装豆（应急）</span> — Cirio 茄意欧鹰嘴豆 400g × 4 ＋ 白芸豆 × 4 <span class="dt">配料：豆＋水＋盐。吃前沥水冲洗，可再去钠三四成。搜「茄意欧 鹰嘴豆」</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">干豆</span> — 鹰嘴豆 1.5kg ＋ 白豆/红腰豆 1kg ＋ 红扁豆 500g <span class="dt">无品牌要求，颗粒完整无霉点即可；干豆要泡一夜，红扁豆免泡。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">全麦意面</span> — Barilla 百味来全麦 500g × 2 <span class="dt">配料仅全麦硬质小麦粉，每 56g 纤维 7g、钠 0。约 ¥20–26/盒，京东/天猫旗舰店。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">燕麦片</span> — 桂格经典纯燕麦片 1000g × 1 <span class="dt">约 ¥15–25。只买原味经典款（避开"五黑"等调味线），到手查配料只有"燕麦"一项。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">糙米 / 藜麦</span> — 各 500g–1kg <span class="dt">中午偶尔替白米饭，缓升糖。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">坚果种子</span> — 原味核桃 300g ＋ 杏仁 300g ＋ 芝麻/亚麻籽/南瓜子各小袋 <span class="dt">凑植物种类＋补镁；到手直接冷藏，防油耗味。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">花生酱</span> — 1 罐 <span class="dt">选配料只有花生（顶多加盐）的款，含氢化油/糖的不要。奶昔 S3 专用。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">橄榄</span> — 黑、绿各 1 罐 <span class="dt">标准：配料橄榄＋水＋盐。吃前冲一下水去钠。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">菲达奶酪</span> — Dodoni 多诺尼 200g × 3 <span class="dt">希腊 PDO，配料：羊奶＋盐＋乳酸菌＋凝乳酶，无防腐剂。约 ¥45–65/块。盐 2.5g/100g，吃前泡水 10 分钟去盐。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">味噌</span> — 1 盒 <span class="dt">配料大豆＋米/大麦＋盐即可；D6 味噌汤专用，关火后下锅。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">香料组</span> — 干牛至、烟熏红椒粉、黑胡椒、肉桂、孜然、辣椒粉各 1 小瓶 ＋ 巴萨米克醋 1 瓶 <span class="dt">牛至是地中海菜的标志香草，一瓶用半年，这组是"买一次用几个月"的典型。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">乳清蛋白粉</span> — ON 金牌乳清香草 2 磅，或 Myprotein 天然香草 1kg <span class="dt">ON 每份 24g 蛋白；Myprotein 约 ¥199–299、每份 21–23g。认官方旗舰店，进口蛋白粉假货多。奶昔每天一杯约用 900g/月，2 磅装刚好够、1kg 装更稳妥，别买 5 磅囤着。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">全麦粉</span> — 1kg <span class="dt">酸面包掺约 10% 提风味＋喂酵种更活跃。T65 你已有，不用买。</span></span></label>
+  </div>
+
+  <div class="shop-group"><h3>面包工具组 · 做酸包才需要（一次买齐，都不贵）</h3>
+    <label class="item"><input type="checkbox"><span><span class="nm">酵种罐</span> — 500ml 直筒玻璃罐带盖 × 1 <span class="dt">约 ¥10–15。直筒是为了看涨幅、好刮取；家里有干净的同款罐子可直接用，省了这笔。搜「500ml 直筒 玻璃罐 带盖」</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">割包刀</span> — 美工刀或锋利小刀 × 1 <span class="dt">约 ¥10–20。专门给面团表面划口子用，刀刃越薄越不拖面团；家里的水果刀够锋利也可顶，但别用锯齿刀。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">烘焙纸</span> — 1 卷 <span class="dt">约 ¥10。面团连纸进锅、不粘烤盘，全程就靠它搬运。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">电子秤</span> — 先翻家里有没有，没有再买 <span class="dt">约 ¥25。养种和面团全按克数，这是唯一算刚需的工具；有就不买。</span></span></label>
+  </div>
+
+  <div class="shop-group"><h3>冷冻组 · 奶昔和酸奶碗的弹药</h3>
+    <label class="item"><input type="checkbox"><span><span class="nm">冻蓝莓 1.5kg ＋ 冻草莓 1kg ＋ 冻芒果 2kg ＋ 冻菠菜 500g</span> <span class="dt">按奶昔每天一杯的量备的。</span> <span class="dt">山姆 App 内搜门店库存（对外查不到确切 SKU）；或京东按"配料只有水果名一项"选 1kg 装。参考价：蓝莓 ¥35–55/kg、草莓 ¥20–35/kg、芒果 ¥25–40/kg。</span><br><span class="warn-inline">冻芒果最容易被掺糖浆，这项重点看配料表。</span></span></label>
+  </div>
+
+  <div class="shop-group"><h3>每周鲜货组 · 菜市场 / 山姆（× 4 周）</h3>
+    <label class="item"><input type="checkbox"><span><span class="nm">希腊酸奶 1.5kg / 周</span> <span class="dt">山姆在售款实测蛋白 10g/100g、蔗糖 0；或吾岛无蔗糖款约 ¥59.9、Chobani 原味脱脂 6 杯约 ¥64.9（水果杯含糖，别拿错）。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">牛奶 2.5–3L、鸡蛋 12 个 / 周</span> <span class="dt">牛奶大头是每天晚上的奶昔。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">鲜鱼 2–3 次的量 ＋ 虾 1 次 ＋ 鸡胸 1 次 / 周</span> <span class="dt">鲈鱼、鲷鱼、带鱼都行，德化离海近，这是你的主场。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">韩国泡菜 500g</span> <span class="dt">约每两周一袋，月约 2–3 袋。只买冷藏款，对四条挑选标准（见上方泡菜一节）；山姆/朴朴/菜市场韩国食品柜都有。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">豆腐 1 块 ＋ 土豆、红薯 / 周</span> <span class="dt">豆腐给 D6 味噌汤，买回 2–3 天内吃掉；土豆给 L6 鱼汤，红薯给 D7。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">蔬菜水果 / 周</span> <span class="dt">番茄、黄瓜、叶菜（含菠菜）、茄子、西葫芦、青椒、洋葱、大蒜、柠檬；香蕉一串（冻一半打奶昔）；当季水果随意。</span></span></label>
+    <label class="item"><input type="checkbox"><span><span class="nm">面包救急备选</span> <span class="dt">酸包没接上时用：淘宝捷森德国全麦（约 ¥20–30/500g，到手验标签）或本地烘焙房现烤法棍/恰巴塔。山姆没有核实到合格的全麦面包，别在那儿耗。</span></span></label>
+  </div>
+
+  <div class="budget">
+    <h3>预算总账 · 到底要准备多少钱（估算，下单以商品页为准）</h3>
+    <table>
+      <tr><td style="width:34%">首月一次性采购投入</td><td><span class="big">约 ¥3,200–3,600</span><br>耐储组约 ¥1,950–2,050（进口罐头、橄榄油、菲达、蛋白粉是大头）＋冷冻组约 ¥180–230（奶昔每天一杯，冻果量已加大）＋面包工具约 ¥35–70（秤家里有则再省 ¥25）＋四周鲜货约 ¥1,100–1,300（约 ¥300–330/周，泡菜含在内）。</td></tr>
+      <tr><td>按月实际消耗口径</td><td><span class="big">约 ¥2,500–2,800 / 月</span><br>首月买的香料、巴萨米克醋、全麦粉、橄榄油能用 2–3 个月，不该全算在这 30 天头上。摊掉这部分，真实月消耗就是这个数（已按奶昔每天一杯算）。</td></tr>
+      <tr><td>折合每天 / 每餐</td><td><span class="big">全天约 ¥85–95</span>（两顿正餐＋一杯奶昔）<br>折合每顿正餐 ¥35 上下、奶昔约 ¥10/杯。三餐的钱花在两餐上，单顿看着贵，全天并没有变贵。</td></tr>
+      <tr><td>贵不贵？</td><td>对比口径要选对：比普通家常（¥10–15/餐）确实贵，贵在进口罐头、蛋白粉、冻果三样；但比同食材等级的外食/轻食外卖（¥35–50/餐）便宜，且油、鱼、发酵食品的质量是你自己捏着的。结论：<b>属于"吃得讲究"的价位，不是奢侈价位</b>。</td></tr>
+      <tr><td>省钱开关（全开）</td><td>① 罐头鱼换雄鸡标平替 −¥200~300；② 蛋白粉等 Myprotein 活动价 −约 ¥80；③ 橄榄油在山姆买大规格自用分装；④ 冻果旺季用鲜果替一部分。全开后月消耗可压到 <b>¥2,100–2,300，全天约 ¥70–77</b>。</td></tr>
+    </table>
+  </div>
+
+
+
+  
+  <p class="foot">完整版 30 天计划（食谱、轮换表、保存速查）见《地中海饮食 · 假期 30 天计划》。<br>价格为估算，下单以商品页为准。</p>
+<script>
+  const boxes=[...document.querySelectorAll('.item input[type=checkbox]')];
+  const key='med-list-checks-v1';
+  const txt=document.getElementById('prog-text');
+  const bar=document.getElementById('prog-bar');
+  let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+  function refresh(){
+    const n=boxes.filter(b=>b.checked).length;
+    txt.textContent='已买 '+n+' / '+boxes.length+' 项';
+    bar.style.width=(boxes.length?Math.round(n/boxes.length*100):0)+'%';
+  }
+  boxes.forEach((b,i)=>{
+    if(saved[i]){b.checked=true;b.closest('.item').classList.add('done')}
+    b.addEventListener('change',()=>{
+      saved[i]=b.checked;
+      b.closest('.item').classList.toggle('done',b.checked);
+      try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}
+      refresh();
+    });
+  });
+  refresh();
+</script>
+</body>
+</html>
